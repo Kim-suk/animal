@@ -45,7 +45,13 @@
 						</li>
 						<li class="nav-item">용품<ul class="submenu">
 								<li><a href="#">고양이</a></li>
+								<li><a href="#">사료</a></li>
+								<li><a href="#">용품</a></li>
+		
 								<li><a href="#">강아지</a></li>
+								<li><a href="#">사료</a></li>
+								<li><a href="#">용품</a></li>
+								
 							</ul>
 						</li>
 						<li class="nav-item"><a class="nav-link" href='${contextPath }/main.do'>홈</a>

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>어린 고양이</title>
+<title></title>
 </head>
 <body>
-
+	어린 고양이
 </body>
 </html>

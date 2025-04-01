@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고양이 용품</title>
+<title></title>
 </head>
 <body>
-
+	고양이 용품
 </body>
 </html>

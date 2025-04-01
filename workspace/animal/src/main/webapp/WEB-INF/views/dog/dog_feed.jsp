@@ -7,6 +7,6 @@
 <title>사료</title>
 </head>
 <body>
-
+	사료
 </body>
 </html>

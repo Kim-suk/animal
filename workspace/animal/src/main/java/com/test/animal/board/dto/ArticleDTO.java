@@ -3,21 +3,14 @@ package com.test.animal.board.dto;
 import java.sql.Date;
 
 public class ArticleDTO {
-	private int level;
 	private int articleNo;
 	private int parentNo;
 	private String title;
 	private String content;
 	private String imageFileName;
-	private Date writeDate;
 	private String id;
+	private Date writeDate;
 	
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
-	}
 	public int getArticleNo() {
 		return articleNo;
 	}

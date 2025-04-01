@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.member">
+	<resultMap type="memberDTO" id="memResult">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="age" column="age" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="email" column="email" />
+			<result property="joindate" column="joindate" />
+	</resultMap>
+	
+	<select id="listMembers" resultMap="memResult">
+		<![CDATA[
+			select * from animal_member order by joinDate desc
+		]]>
+	</select>
+	
+	<select id="memberDetail" resultType="memberDTO" parameterType="String">
+		<![CDATA[
+			select * from animal_member where id=#{id}
+		]]>
+	</select>
+	
+	<delete id="delMember" parameterType="String">
+		<![CDATA[
+			delete from animal_member where id=#{id}
+		]]>
+	</delete>
+	
+	<insert id="addMember" parameterType="memberDTO">
+		<![CDATA[
+			insert into animal_member (id, pwd, age, name, gender, email, joindate)
+						values (#{id}, #{pwd}, #{name}, #{age}, #{gender}, #{email}, sysdate)
+		]]>
+	</insert>
+	
+	<update id="modMember" parameterType="memberDTO">
+		<![CDATA[
+			update animal_member set #{pwd},#{name},#{age},#{name},#{gender},#{email}
+				where id=#{id}
+		]]>
+	</update>
+	
+	<select id="login" parameterType="memberDTO" resultType="memberDTO">
+		<![CDATA[
+			select * from animal_member where id=#{id} and pwd=#{pwd}
+		]]>	
+	</select>
+</mapper>

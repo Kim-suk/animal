@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>묘종</title>
+<title></title>
 </head>
 <body>
-
+	묘종
 </body>
 </html>

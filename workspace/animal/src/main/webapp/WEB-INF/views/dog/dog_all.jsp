@@ -7,6 +7,6 @@
 <title>강아지에 대한 모든 것</title>
 </head>
 <body>
-
+	강아지에 대한 모든 것
 </body>
 </html>

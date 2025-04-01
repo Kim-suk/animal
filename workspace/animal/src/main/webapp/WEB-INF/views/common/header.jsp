@@ -21,20 +21,21 @@
 			<nav class="navbar navbar-expand-sm bg-light navbar-light">
 				<div class="container-fluid">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active"
+						<li class="nav-item"><a class="nav-link active"	
 							href="hospital.do">동물병원</a></li>
 						<li class="nav-item">고양이<ul class="submenu">
-								<li><a href="#">묘종</a></li>
-								<li><a href="#">어린 고양이</a></li>
-								<li><a href="#">고양이를 기를까 생각 중이신가요</a></li>
-								<li><a href="#">고양이에 대한 모든 것</a></li>
+								<li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
+								<li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
+								<li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 생각 중이신가요</a></li>
+								<li><a href="${contextPath }/cat/cat_all.do">고양이에 대한 모든 것</a></li>
 							</ul>
 						</li>
-						<li class="nav-item">강아지<ul class="submenu">
-								<li><a href="#">품종</a></li>
-								<li><a href="#">어린 강아지</a></li>
-								<li><a href="#">강아지를 기를까 생각 중이신가요</a></li>
-								<li><a href="#">강아지에 대한 모든 것</a></li>
+						<li class="nav-item">강아지
+							<ul class="submenu">
+								<li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
+								<li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
+								<li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 생각 중이신가요</a></li>
+								<li><a href="${contextPath }/dog/dog_all.do">강아지에 대한 모든 것</a></li>
 							</ul>
 						</li>
 						<li class="nav-item">게시판<ul class="submenu">

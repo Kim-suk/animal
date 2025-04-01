@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고양이를 기를까 생각 중이신가요</title>
+<title></title>
 </head>
 <body>
-
+	고양이를 기를까 생각 중이신가요
 </body>
 </html>

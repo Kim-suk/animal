@@ -7,6 +7,6 @@
 <title>어린 강아지</title>
 </head>
 <body>
-
+	어린 강아지
 </body>
 </html>

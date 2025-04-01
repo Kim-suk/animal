@@ -33,13 +33,14 @@
 	
 	<insert id="addMember" parameterType="memberDTO">
 		<![CDATA[
-			insert into animal_member values(#{id},#{pwd},#{name},#{age},${name}, ${gender},${email},sysdate)
+			insert into animal_member (id, pwd, age, name, gender, email, joindate)
+						values (#{id}, #{pwd}, #{name}, #{age}, #{gender}, #{email}, sysdate)
 		]]>
 	</insert>
 	
 	<update id="modMember" parameterType="memberDTO">
 		<![CDATA[
-			update animal_member set #{pwd},#{name},#{age},${name}, ${gender},${email}
+			update animal_member set #{pwd},#{name},#{age},#{name},#{gender},#{email}
 				where id=#{id}
 		]]>
 	</update>

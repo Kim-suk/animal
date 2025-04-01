@@ -25,16 +25,16 @@
 			</tr>
 			<tr>
 				<td width='200'><p align='right'>나이</p></td>
-				<td width='400'><input type='text' name='age'></td>
+				<td width='400'><input type='number' name='age'></td>
 			</tr>
 			<tr>
 				<td width='200'><p align='right'>이름</p></td>
 				<td width='400'><input type='text' name='name'></td>
 			</tr>
 			<tr>
-				<td width='50'><p align='right'>성별</td></p>
-				<td width='50'><input type='checkbox' name='man'>남자</td>
-				<td width='50'><input type='checkbox' name='woman'>여자</td>
+				<td width='50'><p align='right'>성별</p></td>
+				<td width='50'><input type='radio' name='gender' value="m">남자</td>
+				<td width='50'><input type='radio' name='gender' value="w">여자</td>
 			
 			</tr>
 			<tr>

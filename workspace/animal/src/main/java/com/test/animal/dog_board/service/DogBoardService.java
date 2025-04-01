@@ -15,3 +15,4 @@ public interface DogBoardService {
 	int dog_deleteImage(int imageFileNo);
 
 }
+	

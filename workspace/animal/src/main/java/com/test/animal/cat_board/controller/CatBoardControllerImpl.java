@@ -32,7 +32,7 @@ import com.test.animal.cat_board.dto.CatImageDTO;
 import com.test.animal.cat_board.service.CatBoardService;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/cat_board")
 @EnableTransactionManagement
 public class CatBoardControllerImpl implements CatBoardController {
 	private static final String BOARD_REPO = "C:\\image";

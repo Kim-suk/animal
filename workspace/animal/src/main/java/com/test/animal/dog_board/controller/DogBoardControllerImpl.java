@@ -32,7 +32,7 @@ import com.test.animal.dog_board.dto.DogImageDTO;
 import com.test.animal.dog_board.service.DogBoardService;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/dog_board")
 @EnableTransactionManagement
 public class DogBoardControllerImpl implements DogBoardController {
 	private static final String BOARD_REPO = "C:\\image";

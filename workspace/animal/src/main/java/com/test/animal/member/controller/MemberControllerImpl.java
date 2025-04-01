@@ -102,9 +102,9 @@ public class MemberControllerImpl implements MemberController{
 			throws Exception {
 		// TODO Auto-generated method stub
 		int result = service.addMember(member);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
-		mav.addObject("msg", "addMember");
-		mav.addObject("id", member.getId());
+		ModelAndView mav = new ModelAndView("redirect:/main.do");
+		//mav.addObject("msg", "addMember");
+		//mav.addObject("id", member.getId());
 		
 		return mav;
 	}

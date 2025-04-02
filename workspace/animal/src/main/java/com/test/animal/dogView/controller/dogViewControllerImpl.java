@@ -15,24 +15,10 @@ public class dogViewControllerImpl implements dogViewController{
 	}
 
 	@Override
-	@RequestMapping("/dog_feed.do")
-	public String showDogFeed() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	@RequestMapping("/dog_puppy.do")
 	public String showDogPuppy() {
 		// TODO Auto-generated method stub
 		return "/dog/dog_puppy";
-	}
-
-	@Override
-	@RequestMapping("/dog_supplies.do")
-	public String showDogSupplies() {
-		// TODO Auto-generated method stub
-		return "/dog/dog_supplies";
 	}
 
 	@Override

@@ -18,14 +18,14 @@
 	}
 	
 	function backToList(obj) {
-		obj.action = "${contextPath}/board/dog_listArticles.do";
+		obj.action = "${contextPath}/dog_board/dog_listArticles.do";
 		obj.submit();
 	}
 </script>
 <body>
 	<h1 style="text-align:center;">답글쓰기</h1>
 	<form name="articleForm" method='post' 
-		action="${contextPath }/board/dog_addNewArticle.do"
+		action="${contextPath }/dog_board/dog_addNewArticle.do"
 			encType="multipart/form-data">
 		<table border="0" align="center">
 			<tr>

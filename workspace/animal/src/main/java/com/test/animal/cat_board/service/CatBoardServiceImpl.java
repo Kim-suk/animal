@@ -28,21 +28,31 @@ package com.test.animal.cat_board.service;
  
  	@Override
  	public int cat_addNewArticle(Map<String, Object> articleMap) {
- 		// TODO Auto-generated method stub
- 		int articleNo = dao.cat_selectNewArticleNo();
- 		articleMap.put("articleNo", articleNo);
- 		int result = dao.cat_insertNewArticle(articleMap);
- 		
- 		List<CatImageDTO> imageFileList = (List<CatImageDTO>) articleMap.get("imageFileList");
- 		int imageFileNo = dao.cat_selectNewImageFileNo();
- 		
- 		for(CatImageDTO imageDTO : imageFileList) {
- 			imageDTO.setImageFileNo(++imageFileNo);
- 			imageDTO.setArticleNo(articleNo);
- 		}
- 		
- 		dao.cat_insertNewImage(imageFileList);
- 		return result;
+ 	    // 새로운 글 번호 가져오기
+ 	    Integer articleNo = dao.cat_selectNewArticleNo();
+ 	    if (articleNo == null) {
+ 	        articleNo = 1;  // 기본값 설정
+ 	    }
+
+ 	    articleMap.put("articleNo", articleNo);
+ 	    
+ 	    // 글 등록
+ 	    int result = dao.cat_insertNewArticle(articleMap);
+
+ 	    // 이미지 리스트 가져오기
+ 	    List<CatImageDTO> imageFileList = (List<CatImageDTO>) articleMap.get("imageFileList");
+ 	    if (imageFileList != null && !imageFileList.isEmpty()) {
+ 	        int imageFileNo = dao.cat_selectNewImageFileNo();
+ 	        
+ 	        for (CatImageDTO imageDTO : imageFileList) {
+ 	            imageDTO.setImageFileNo(++imageFileNo);
+ 	            imageDTO.setArticleNo(articleNo);
+ 	        }
+
+ 	        dao.cat_insertNewImage(imageFileList);
+ 	    }
+
+ 	    return result;
  	}
  
  	@Override

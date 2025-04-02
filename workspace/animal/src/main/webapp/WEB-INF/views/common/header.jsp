@@ -39,15 +39,15 @@
 							</ul>
 						</li>
 						<li class="nav-item">게시판<ul class="submenu">
-								<li><a href="#">고양이</a></li>
-								<li><a href="#">강아지</a></li>
-								<li><a href="#">자유게시판</a></li>
+								<li><a href="${contextPath }/cat_board/cat_listArticles.do">고양이</a></li>
+								<li><a href="${contextPath }/dog_board/dog_listArticles.do">강아지</a></li>
+								<li><a href="${contextPath }/board/listArticles.do">자유게시판</a></li>
 							</ul>
 						</li>
 						<li class="nav-item">용품<ul class="submenu">
 								<li><a href="#">고양이</a></li>
-								<li><a href="#">사료</a></li>
-								<li><a href="#">용품</a></li>
+								<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
+								<li><a href="${contextPath }/cat_product/cat_.do">간식</a></li>
 		
 								<li><a href="#">강아지</a></li>
 								<li><a href="#">사료</a></li>

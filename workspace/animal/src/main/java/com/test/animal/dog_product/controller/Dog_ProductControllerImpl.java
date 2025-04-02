@@ -1,0 +1,12 @@
+package com.test.animal.dog_product.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.test.animal.cat_product.service.Cat_ProductService;
+
+@Controller
+public class Dog_ProductControllerImpl implements Dog_ProductController{
+	@Autowired
+	private Cat_ProductService service;
+}

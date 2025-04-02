@@ -13,7 +13,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	function backToList(obj) {
-		obj.action = '${contextPath}/board/cat_listArticles.do';
+		obj.action = '${contextPath}/cat_board/cat_listArticles.do';
 		obj.submit();
 	}
 	
@@ -41,7 +41,7 @@
 	}
 	
 	function fn_modify_article(obj) {
-		obj.action = '${contextPath}/board/cat_modArticle.do';
+		obj.action = '${contextPath}/cat_board/cat_modArticle.do';
 		obj.method = 'post';
 		obj.submit();
 	}
@@ -59,13 +59,6 @@
 		form.appendChild(articleNoInput);
 		document.body.appendChild(form);
 		form.submit();
-		/*
-			<form method="post" action="/por11/board/removeArticle.do">
-				<input type="hidden" name="articleNo" value="${articleNo}">
-				<input type="submit" value="전송">
-			</form>
-			
-		*/
 	}
 	
 	function fn_reply_form(url, parentNo) {
@@ -84,7 +77,7 @@
 	}
 	
 	function fn_deleteImage(imageFileNo, imageFileName) {
-		location.href="/animal/board/cat_deleteImage.do?imageFileNo="+imageFileNo+
+		location.href="/animal/cat_board/cat_deleteImage.do?imageFileNo="+imageFileNo+
 				"&imageFileName="+imageFileName;
 	}
 	
@@ -128,7 +121,7 @@
 								이미지${status.count }</td>
 							<td><input type="hidden" name="originalFileName"
 								value="${item.imageFileName }"> <img
-								src="${contextPath }/cat_download.do?imageFileName=
+								src="${contextPath }/download.do?imageFileName=
 							${item.imageFileName}&articleNo=${article.articleNo}"
 								id="preview"></td>
 						</tr>
@@ -164,11 +157,11 @@
 						<input type="button" value="수정하기" onclick="fn_enable(this.form)">
 						<input type="button" value="삭제하기"
 							onclick="fn_remove_article
-						('${contextPath}/board/cat_removeArticle.do', ${article.articleNo })">
+						('${contextPath}/cat_board/cat_removeArticle.do', ${article.articleNo })">
 					</c:if> <input type="button" value="리스트로 돌아가기"
 					onclick="backToList(this.form)"> <input type="button"
 					value="답글쓰기"
-					onclick="fn_reply_form('${contextPath}/board/cat_replyForm.do', 
+					onclick="fn_reply_form('${contextPath}/cat_board/cat_replyForm.do', 
 						${article.articleNo })">
 			</tr>
 		</table>

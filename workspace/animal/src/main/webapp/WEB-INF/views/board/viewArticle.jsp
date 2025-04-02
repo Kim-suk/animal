@@ -84,7 +84,7 @@
 	}
 	
 	function fn_deleteImage(imageFileNo, imageFileName) {
-		location.href="/pro13/board/deleteImage.do?imageFileNo="+imageFileNo+
+		location.href="/animal/board/deleteImage.do?imageFileNo="+imageFileNo+
 				"&imageFileName="+imageFileName;
 	}
 	

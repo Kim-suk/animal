@@ -122,21 +122,20 @@ package com.test.animal.cat_board.controller;
  			}
  			message = "<script>";
  			message += "alert('새글을 추가했습니다.');";
- 			message += "location.href='/animal/board/cat_listArticles.do';";
+ 			message += "location.href='/animal/cat_board/cat_listArticles.do';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
  		} catch (Exception e) {
  			if(imageFileList != null && imageFileList.size() != 0) {
  				for(CatImageDTO imageDTO : imageFileList) {
  					File srcFile = 
- 							new File(BOARD_REPO + "\\" + "temp" + "\\" 
- 									+ imageDTO.getImageFileName());
+ 							new File(BOARD_REPO + "\\" + "temp" + "\\" + imageDTO.getImageFileName());
  					srcFile.delete();
  				}
  			}
  			message = "<script>";
  			message += "alert('오류가 발생했습니다. 다시 시도해 주세요');";
- 			message += "location.href='/animal/board/cat_articleForm.do';";
+ 			message += "location.href='/animal/cat_board/cat_articleForm.do';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
  			e.printStackTrace();
@@ -164,8 +163,7 @@ package com.test.animal.cat_board.controller;
  						file.createNewFile();
  					}
  				}
- 				mFile.transferTo(new File(BOARD_REPO + "\\" + "temp" 
- 						+ "\\" + originalFileName));
+ 				mFile.transferTo(new File(BOARD_REPO + "\\" + "temp" + "\\" + originalFileName));
  			}
  		}
  		return fileList;
@@ -238,7 +236,7 @@ package com.test.animal.cat_board.controller;
  			}
  			message = "<script>";
  			message += "alert('글이 수정 되었습니다.');";
- 			message += "location.href='/animal/board/cat_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/cat_board/cat_viewArticle.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
@@ -253,7 +251,7 @@ package com.test.animal.cat_board.controller;
  			}
  			message = "<script>";
  			message += "alert('수정 중 오류가 발생했습니다. 다시 시도해 주세요');";
- 			message += "location.href='/animal/board/cat_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/cat_board/cat_viewArticle.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -280,13 +278,13 @@ package com.test.animal.cat_board.controller;
  			
  			message = "<script>";
  			message += "alert('삭제가 완료되었습니다.');";
- 			message += "location.href='/animal/board/cat_listArticles.do;";
+ 			message += "location.href='/animal/cat_board/cat_listArticles.do;";
  			message += "</script>";
  			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.OK);
  		} catch(Exception e) {
  			message = "<script>";
  			message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
- 			message += "location.href='/animal/board/cat_listArticles.do;";
+ 			message += "location.href='/animal/cat_board/cat_listArticles.do;";
  			message += "</script>";
  			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
  			e.printStackTrace();
@@ -313,14 +311,14 @@ package com.test.animal.cat_board.controller;
  			
  			message = "<script>";
  			message += "alert('삭제가 완료되었습니다.');";
- 			message += "location.href='/animal/board/cat_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/cat_board/cat_viewArticle.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.OK);
  		} catch(Exception e) {
  			message = "<script>";
  			message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
- 			message += "location.href='/animal/board/cat_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/cat_board/cat_viewArticle.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

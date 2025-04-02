@@ -9,9 +9,10 @@ package com.test.animal.dog_board.service;
  import org.springframework.transaction.annotation.Propagation;
  import org.springframework.transaction.annotation.Transactional;
  
- import com.test.animal.dog_board.dao.DogBoardDAO;
+ 
  import com.test.animal.dog_board.dto.DogArticleDTO;
  import com.test.animal.dog_board.dto.DogImageDTO;
+ import com.test.animal.dog_board.dao.DogBoardDAO;
  
  @Service
  @Transactional(propagation = Propagation.REQUIRED)
@@ -27,21 +28,31 @@ package com.test.animal.dog_board.service;
  
  	@Override
  	public int dog_addNewArticle(Map<String, Object> articleMap) {
- 		// TODO Auto-generated method stub
- 		int articleNo = dao.dog_selectNewArticleNo();
- 		articleMap.put("articleNo", articleNo);
- 		int result = dao.dog_insertNewArticle(articleMap);
- 		
- 		List<DogImageDTO> imageFileList = (List<DogImageDTO>) articleMap.get("imageFileList");
- 		int imageFileNo = dao.dog_selectNewImageFileNo();
- 		
- 		for(DogImageDTO imageDTO : imageFileList) {
- 			imageDTO.setImageFileNo(++imageFileNo);
- 			imageDTO.setArticleNo(articleNo);
- 		}
- 		
- 		dao.dog_insertNewImage(imageFileList);
- 		return result;
+ 	    // 새로운 글 번호 가져오기
+ 	    Integer articleNo = dao.dog_selectNewArticleNo();
+ 	    if (articleNo == null) {
+ 	        articleNo = 1;  // 기본값 설정
+ 	    }
+
+ 	    articleMap.put("articleNo", articleNo);
+ 	    
+ 	    // 글 등록
+ 	    int result = dao.dog_insertNewArticle(articleMap);
+
+ 	    // 이미지 리스트 가져오기
+ 	    List<DogImageDTO> imageFileList = (List<DogImageDTO>) articleMap.get("imageFileList");
+ 	    if (imageFileList != null && !imageFileList.isEmpty()) {
+ 	        int imageFileNo = dao.dog_selectNewImageFileNo();
+ 	        
+ 	        for (DogImageDTO imageDTO : imageFileList) {
+ 	            imageDTO.setImageFileNo(++imageFileNo);
+ 	            imageDTO.setArticleNo(articleNo);
+ 	        }
+
+ 	        dao.dog_insertNewArticle(imageFileList);
+ 	    }
+
+ 	    return result;
  	}
  
  	@Override
@@ -65,7 +76,7 @@ package com.test.animal.dog_board.service;
  		for(DogImageDTO imageDTO : imageFileList) {
  			imageDTO.setImageFileNo(++imageFileNo);
  		}
- 		dao.dog_insertNewImage(imageFileList);
+ 		dao.insertNewImage(imageFileList);
  	}
  
  	@Override
@@ -83,3 +94,4 @@ package com.test.animal.dog_board.service;
  	}
  
  }
+ 

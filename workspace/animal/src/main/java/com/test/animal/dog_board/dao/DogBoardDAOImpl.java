@@ -81,6 +81,21 @@ package com.test.animal.dog_board.dao;
  		// TODO Auto-generated method stub
  		return sqlSession.selectOne("mapper.dog_board.dog_selectArticleNo", imageFileNo);
  	}
+
+	@Override
+	public void insertNewImage(List<DogImageDTO> imageFileList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dog_insertNewArticle(List<DogImageDTO> imageFileList) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.dog_board.dog_insertNewArticle", imageFileList);
+		
+	}
+
+
  
  }
  

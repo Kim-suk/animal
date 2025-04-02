@@ -19,64 +19,77 @@
 	<table border="0" width="100%">
 		<tr>
 			<nav class="navbar navbar-expand-sm bg-light navbar-light">
-				<div class="container-fluid">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active"	
-							href="hospital.do">동물병원</a></li>
-						<li class="nav-item">고양이<ul class="submenu">
-								<li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
-								<li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
-								<li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 생각 중이신가요</a></li>
-								<li><a href="${contextPath }/cat/cat_all.do">고양이에 대한 모든 것</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">강아지
-							<ul class="submenu">
-								<li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
-								<li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
-								<li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 생각 중이신가요</a></li>
-								<li><a href="${contextPath }/dog/dog_all.do">강아지에 대한 모든 것</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">게시판<ul class="submenu">
-								<li><a href="${contextPath }/cat_board/cat_listArticles.do">고양이</a></li>
-								<li><a href="${contextPath }/dog_board/dog_listArticles.do">강아지</a></li>
-								<li><a href="${contextPath }/board/listArticles.do">자유게시판</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">용품<ul class="submenu">
-								<li><a href="#">고양이</a></li>
-								<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
-								<li><a href="${contextPath }/cat_product/cat_.do">간식</a></li>
-		
-								<li><a href="#">강아지</a></li>
-								<li><a href="#">사료</a></li>
-								<li><a href="#">용품</a></li>
-								
-							</ul>
-						</li>
-						<li class="nav-item"><a class="nav-link" href='${contextPath }/main.do'>홈</a>
-						</li>
+				  <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="hospital.do">동물병원</a></li>
+            
+            <li class="nav-item">고양이 <ul class="submenu">
+                    <li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
+                    <li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
+                    <li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 생각 중이신가요</a></li>
+                </ul>
+            </li>
 
-						</li>
-					</ul>
-				</div>
-			</nav>
-			<c:choose>
-				<c:when test="${isLogin == true }">
-					<td>
-						<h3>${loginId }</h3>
-						<h3>
-							<a href="/animal/member/logout.do">로그아웃</a>
-						</h3>
-					</td>
-				</c:when>
-				<c:otherwise>
-					<td><a href="/animal/member/loginForm.do"><h3>로그인</h3></a></td>
-					<td><a href="/animal/member/joinMember.do"><p class="cls2">회원가입</p></a></td>
-				</c:otherwise>
-			</c:choose>
-		</tr>
-	</table>
+            <li class="nav-item">강아지
+                <ul class="submenu">
+                    <li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
+                    <li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
+                    <li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 생각 중이신가요</a></li>
+                 
+                </ul>
+            </li>
+
+            <li class="nav-item">게시판<ul class="submenu">
+                    <li><a href="${contextPath }/cat_board/cat_listArticles.do">고양이</a></li>
+                    <li><a href="${contextPath }/dog_board/dog_listArticles.do">강아지</a></li>
+                    <li><a href="${contextPath }/board/listArticles.do">자유게시판</a></li>
+                </ul>
+            </li>
+
+ 			<!-- 고양이 제품 목록 -->
+           <li class="nav-item">제품<ul class="submenu">
+           <li><a href="#">고양이 제품</a></li>
+            <li><a href="${contextPath }/cat_product/all.do">전체</a></li>
+            <li><a href="${contextPath }/cat_product/feed.do">사료</a></li>
+            <li><a href="${contextPath }/cat_product/treat.do">간식</a></li>
+            <li><a href="${contextPath }/cat_product/sand.do">모래</a></li>
+            <li><a href="${contextPath }/cat_product/carrier.do">이동장</a></li>
+            <li><a href="${contextPath }/cat_product/toy.do">장난감</a></li>
+            <li><a href="${contextPath }/cat_product/bath.do">목욕용품</a></li>
+            <li><a href="${contextPath }/cat_product/house.do">하우스</a></li>
+            <li><a href="${contextPath }/cat_product/dish.do">식기</a></li>
+            
+            <!-- 강아지 제품 목록 -->
+     	    <li><a href="#">강아지 제품</a></li>
+            <li><a href="${contextPath }/dog_product/all.do">전체</a></li>
+            <li><a href="${contextPath }/dog_product/feed.do">사료</a></li>
+            <li><a href="${contextPath }/dog_product/treat.do">간식</a></li>
+            <li><a href="${contextPath }/dog_product/poop.do">배변용품</a></li>
+            <li><a href="${contextPath }/dog_product/carrier.do">이동장</a></li>
+            <li><a href="${contextPath }/dog_product/toy.do">장난감</a></li>
+            <li><a href="${contextPath }/dog_product/bath.do">목욕용품</a></li>
+            <li><a href="${contextPath }/dog_product/house.do">하우스</a></li>
+            <li><a href="${contextPath }/dog_product/dish.do">식기</a></li>
+        </ul>
+        <li class="nav-item"><a class="nav-link" href="${contextPath }/main.do">홈</a></li>
+    </div>
+</nav>
+
+<table border="0" width="100%">
+    <tr>
+        <c:choose>
+            <c:when test="${isLogin == true }">
+                <td>
+                    <h3>${loginId }</h3>
+                    <h3><a href="${contextPath }/member/logout.do">로그아웃</a></h3>
+                </td>
+            </c:when>
+            <c:otherwise>
+                <td><a href="${contextPath }/member/loginForm.do"><h3>로그인</h3></a></td>
+                <td><a href="${contextPath }/member/joinMember.do"><p class="cls2">회원가입</p></a></td>
+            </c:otherwise>
+        </c:choose>
+    </tr>
+</table>
 </body>
 </html>

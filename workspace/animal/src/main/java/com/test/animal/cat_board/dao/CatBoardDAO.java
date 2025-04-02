@@ -16,9 +16,9 @@ package com.test.animal.cat_board.dao;
  	void cat_updateArticle(Map<String, Object> articleMap);
  	void cat_deleteArticle(int articleNo);
  	int cat_selectNewImageFileNo();
+ 	void cat_insertNewImage(List<CatImageDTO> imageFileList);
  	List<CatImageDTO> cat_selectImageFileList(int articleNo);
  	int cat_deleteImage(int imageFileNo);
  	int cat_selectArticleNo(int imageFileNo);
- 	void cat_insertNewImage(List<CatImageDTO> imageFileList);
  
  }

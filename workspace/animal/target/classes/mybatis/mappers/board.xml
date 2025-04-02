@@ -4,16 +4,15 @@
 
 <mapper namespace="mapper.board">
 	<resultMap type="articleDTO" id="artResult">
-		<result property="level" column="level" />
 		<result property="articleNo" column="articleNo" />
 		<result property="parentNo" column="parentNo" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<result property="writeDate" column="writeDate" />
 		<result property="imageFileName" column="imageFileName" />
+		<result property="writeDate" column="writeDate" />
 		<result property="id" column="id" />
 	</resultMap>
-	
+		
 	<resultMap type="imageDTO" id="imgResult">
 		<result property="imageFileNo" column="imageFileNo"/>
 		<result property="imageFileName" column="imageFileName" />
@@ -23,7 +22,7 @@
 	
 	<select id="selectAllArticlesList" resultMap="artResult">
 		<![CDATA[
-			select level, articleNo, parentNo, title, content, writeDate, 
+			select articleNo, parentNo, title, content, writeDate, 
 			imageFileName, id from board 
 			start with parentNo = 0
 			connect by prior articleNo=parentNo

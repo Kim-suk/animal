@@ -122,7 +122,7 @@ package com.test.animal.dog_board.controller;
  			}
  			message = "<script>";
  			message += "alert('새글을 추가했습니다.');";
- 			message += "lodogion.href='/animal/dog_board/dog_listArticles.do';";
+ 			message += "location.href='/animal/dog_board/dog_listArticles.do';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
  		} catch (Exception e) {
@@ -136,7 +136,7 @@ package com.test.animal.dog_board.controller;
  			}
  			message = "<script>";
  			message += "alert('오류가 발생했습니다. 다시 시도해 주세요');";
- 			message += "lodogion.href='/animal/dog_board/dog_articleForm.do';";
+ 			message += "location.href='/animal/dog_board/dog_articleForm.do';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
  			e.printStackTrace();

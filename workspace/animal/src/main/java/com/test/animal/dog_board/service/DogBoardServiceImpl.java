@@ -49,7 +49,7 @@ package com.test.animal.dog_board.service;
  	            imageDTO.setArticleNo(articleNo);
  	        }
 
- 	        dao.dog_insertNewArticle(imageFileList);
+ 	        dao.dog_insertNewImage(imageFileList);
  	    }
 
  	    return result;
@@ -76,7 +76,7 @@ package com.test.animal.dog_board.service;
  		for(DogImageDTO imageDTO : imageFileList) {
  			imageDTO.setImageFileNo(++imageFileNo);
  		}
- 		dao.insertNewImage(imageFileList);
+ 		dao.dog_insertNewImage(imageFileList);
  	}
  
  	@Override

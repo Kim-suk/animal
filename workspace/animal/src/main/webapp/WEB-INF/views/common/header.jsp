@@ -125,10 +125,16 @@
                 box-shadow: none;
             }
         }
+        
     </style>
 </head>
 
 <body>
+	<div border="1">
+		<h1>계란 고냥이</h1>
+	</div>
+	<a href="/animal/member/loginForm.do">로그인</a>
+	<a href="/animal/member/joinMember.do">회원가입</a>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <ul class="navbar-nav">
@@ -170,11 +176,9 @@
                     </ul>
                 </li>
 
-               
+				<!--  <li class="nav-item"><a class="nav-link" href="/animal/member/loginForm.do">로그인</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="/animal/member/loginForm.do">로그인</a></li>
-
-                <li class="nav-item"><a class="nav-link" href="/animal/member/joinMember.do">회원가입</a></li>
+                <li class="nav-item"><a class="nav-link" href="/animal/member/joinMember.do">회원가입</a></li> -->
             </ul>
         </div>
     </nav>

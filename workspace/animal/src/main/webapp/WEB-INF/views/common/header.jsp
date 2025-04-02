@@ -21,9 +21,14 @@
 			<nav class="navbar navbar-expand-sm bg-light navbar-light">
 				<div class="container-fluid">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active"	
-							href="hospital.do">동물병원</a></li>
-						<li class="nav-item">고양이<ul class="submenu">
+						<li class="nav-item">동물병원
+							<ul class="submenu">
+								<li><a href="${contextPath }/hospital/map.do">동물병원 찾기</a></li>
+								<li><a href="${contextPath }/hospital/review.do">동물병원 후기</a></li>
+							</ul>						
+						</li>
+						<li class="nav-item">고양이
+							<ul class="submenu">
 								<li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
 								<li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
 								<li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 생각 중이신가요</a></li>

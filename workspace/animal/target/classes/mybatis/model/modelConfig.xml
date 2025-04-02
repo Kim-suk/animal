@@ -11,6 +11,7 @@
 		<typeAlias type="com.test.animal.dog_board.dto.DogImageDTO" alias="dogimageDTO" />
 		<typeAlias type="com.test.animal.cat_board.dto.CatArticleDTO" alias="catarticleDTO"/>
 		<typeAlias type="com.test.animal.cat_board.dto.CatImageDTO" alias="catimageDTO" />
+		<typeAlias type="com.test.animal.animal_hospital.dto.AnimalHospitalDTO" alias="animalHospitalDTO" />
 		<!-- alias 는 간단히 말해 하나의 변수명 -->
 	</typeAliases>
 </configuration>	

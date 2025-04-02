@@ -10,50 +10,82 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<style>
+    .signup-box {
+        margin-top: 75px;
+        padding: 40px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        border-radius: 10px;
+        background: #ffffff;
+    }
+    .signup-title {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    .btn-custom {
+        width: 100%;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+    .gender-group {
+        display: flex;
+        gap: 10px;
+    }
+</style>
 </head>
 <body>
-	<form method='post' action='${contextPath }/member/addMember.do'>
-		<h1 style='text-align:center'>회원 가입</h1>
-		<table align='center'>
-			<tr>
-				<td width='200'><p align='right'>아이디</p></td>
-				<td width='400'><input type='text' name='id'></td>
-			</tr>
-			<tr>
-				<td width='200'><p align='right'>암호</p></td>
-				<td width='400'><input type='password' name='pwd'></td>
-			</tr>
-			<tr>
-				<td width='200'><p align='right'>나이</p></td>
-				<td width='400'><input type='number' name='age'></td>
-			</tr>
-			<tr>
-				<td width='200'><p align='right'>이름</p></td>
-				<td width='400'><input type='text' name='name'></td>
-			</tr>
-			<tr>
-				<td width='50'><p align='right'>성별</p></td>
-				<td width='50'><input type='radio' name='gender' value="m">남자</td>
-				<td width='50'><input type='radio' name='gender' value="w">여자</td>
-			
-			</tr>
-			<tr>
-				<td width='200'><p align='right'>이메일</p></td>
-				<td width='400'><input type='email' name='email'></td>
-			</tr>
-			<tr>
-				<td width='200'><p>&nbsp;</p></td>
-				<td>
-					<input type='submit' value='가입하기'>
-					<input type='reset' value='다시입력'>
-				</td>	
-			</tr>
-		</table>
-	</form>
+<div class="container d-flex justify-content-center">
+    <div class="col-lg-6 signup-box">
+        <div class="signup-title">SIGN UP</div>
+        <form method='post' action='${contextPath }/member/addMember.do'>
+            <div class="mb-3">
+                <label class="form-label">ID</label>
+                <input type="text" name="id" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PASSWORD</label>
+                <input type="password" name="pwd" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">AGE</label>
+                <input type="number" name="age" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">NAME</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">GENDER</label>
+                <div class="gender-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" value="m" required>
+                        <label class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" value="w" required>
+                        <label class="form-check-label">Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">EMAIL</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-custom">SIGN UP</button>
+                <button type="reset" class="btn btn-secondary btn-custom">RESET</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
-

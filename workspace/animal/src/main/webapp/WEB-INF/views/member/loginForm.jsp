@@ -38,7 +38,7 @@
                 alert('아이디나 비밀번호가 틀립니다. 다시 로그인 하세요.');
             </c:when>
             <c:when test='${param.result == "logout"}'>
-                alert('로그아웃 되었습니다. 다시 로그인 하세요.');
+                alert('로그아웃 되었습니다.');
             </c:when>
             <c:when test='${param.result == "notLogin"}'>
                 alert('로그인이 되어 있지 않습니다. 로그인 하세요.');

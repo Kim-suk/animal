@@ -93,6 +93,21 @@
 		$("#d_file").append("<br><input type='file' name='file"+cnt+"'>");
 		cnt++;
 	}
+	
+	function fn_listArticles_form(url, articleNo) {
+        let form = document.createElement("form");
+        form.method = "post";
+        form.action = url;
+
+        let input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "articleNo";
+        input.value = articleNo;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
 </script>
 <c:set var="article" value="${articleMap.article }" />
 <c:set var="imageFileList" value="${articleMap.imageFileList }" />
@@ -169,6 +184,8 @@
 					onclick="backToList(this.form)"> <input type="button"
 					value="답글쓰기"
 					onclick="fn_reply_form('${contextPath}/board/replyForm.do', 
+						${article.articleNo })">
+						 <input type="button" value="저장" onclick="fn_listArticles_form('${contextPath}/board/listArticles.do', 
 						${article.articleNo })">
 			</tr>
 		</table>

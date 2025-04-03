@@ -237,7 +237,7 @@ package com.test.animal.dog_board.controller;
  			}
  			message = "<script>";
  			message += "alert('글이 수정 되었습니다.');";
- 			message += "location.href='/animal/dog_board/dog_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/dog_board/dog_listArticles.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
@@ -285,7 +285,7 @@ package com.test.animal.dog_board.controller;
  		} catch(Exception e) {
  			message = "<script>";
  			message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
- 			message += "location.href='/animal/dog_board/dog_listArticles.do;";
+ 			message += "location.href='/animal/dog_board/dog_viewArticle.do;";
  			message += "</script>";
  			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
  			e.printStackTrace();
@@ -314,7 +314,7 @@ package com.test.animal.dog_board.controller;
  			
  			message = "<script>";
  			message += "alert('삭제가 완료되었습니다.');";
- 			message += "location.href='/animal/dog_board/dog_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/dog_board/dog_listArticles.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.OK);

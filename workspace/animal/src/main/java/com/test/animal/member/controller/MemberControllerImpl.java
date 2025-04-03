@@ -149,7 +149,7 @@ public class MemberControllerImpl implements MemberController{
 		HttpSession session = request.getSession();
 		
 		if(member != null) {
-			mav.setViewName("redirect:/member/listMembers.do");
+			mav.setViewName("redirect:/main.do");
 			session.setAttribute("member", member);
 			session.setAttribute("loginId", member.getId());
 			session.setAttribute("isLogin", true);

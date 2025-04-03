@@ -236,7 +236,7 @@ package com.test.animal.cat_board.controller;
  			}
  			message = "<script>";
  			message += "alert('글이 수정 되었습니다.');";
- 			message += "location.href='/animal/cat_board/cat_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/cat_board/cat_listArticles.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
@@ -262,35 +262,44 @@ package com.test.animal.cat_board.controller;
  	}
  
  	@Override
- 	@RequestMapping(value="/cat_removeArticle.do", method=RequestMethod.POST)
- 	public ResponseEntity cat_removeArticle(int articleNo, HttpServletRequest Request, HttpServletResponse response)
- 			throws Exception {
- 		// TODO Auto-generated method stub
- 		String message = null;
- 		ResponseEntity resEnt = null;
- 		HttpHeaders responseHeaders = new HttpHeaders();
- 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
- 		
- 		try {
- 			service.cat_removeArticle(articleNo);
- 			File destDir = new File(BOARD_REPO + "\\" + articleNo);
- 			FileUtils.deleteDirectory(destDir);
- 			
- 			message = "<script>";
- 			message += "alert('삭제가 완료되었습니다.');";
- 			message += "location.href='/animal/cat_board/cat_listArticles.do;";
- 			message += "</script>";
- 			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.OK);
- 		} catch(Exception e) {
- 			message = "<script>";
- 			message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
- 			message += "location.href='/animal/cat_board/cat_listArticles.do;";
- 			message += "</script>";
- 			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
- 			e.printStackTrace();
- 		}
- 		
- 		return resEnt;
+ 	@RequestMapping(value = "/cat_removeArticle.do", method = RequestMethod.POST)
+ 	public ResponseEntity<String> cat_removeArticle(@RequestParam("articleNo") int articleNo, 
+ 	                                                HttpServletRequest request, 
+ 	                                                HttpServletResponse response) throws Exception {
+ 	    String message;
+ 	    ResponseEntity<String> resEnt;
+ 	    HttpHeaders responseHeaders = new HttpHeaders();
+ 	    responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+
+ 	    try {
+ 	        // 게시글 삭제
+ 	        service.cat_removeArticle(articleNo);
+
+ 	        // 게시글 폴더 삭제 (파일 존재 여부 확인 후 실행)
+ 	        File destDir = new File(BOARD_REPO + File.separator + articleNo);
+ 	        if (destDir.exists()) {
+ 	            FileUtils.deleteDirectory(destDir);
+ 	        }
+
+ 	        // 성공 메시지 및 페이지 이동
+ 	        message = "<script>";
+ 	        message += "alert('삭제가 완료되었습니다.');";
+ 	        message += "location.href='/animal/cat_board/cat_listArticles.do';"; // 문자열 오류 수정
+ 	        message += "</script>";
+
+ 	        resEnt = new ResponseEntity<>(message, responseHeaders, HttpStatus.OK);
+ 	    } catch (Exception e) {
+ 	        // 삭제 실패 시 메시지
+ 	        message = "<script>";
+ 	        message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
+ 	        message += "location.href='/animal/cat_board/cat_viewArticle.do';"; // 문자열 오류 수정
+ 	        message += "</script>";
+
+ 	        resEnt = new ResponseEntity<>(message, responseHeaders, HttpStatus.INTERNAL_SERVER_ERROR);
+ 	        e.printStackTrace();
+ 	    }
+
+ 	    return resEnt;
  	}
  
  	@Override
@@ -311,7 +320,7 @@ package com.test.animal.cat_board.controller;
  			
  			message = "<script>";
  			message += "alert('삭제가 완료되었습니다.');";
- 			message += "location.href='/animal/cat_board/cat_viewArticle.do?articleNo="
+ 			message += "location.href='/animal/cat_board/cat_listArticles.do?articleNo="
  					+articleNo+"';";
  			message += "</script>";
  			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.OK);

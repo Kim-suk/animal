@@ -54,8 +54,8 @@
 			<tr>
 
 				<td align="right">이미지파일 첨부</td>
-				<td align="left"><input type="button" value="파일추가"
-					onClick="fn_addFile()"></td>
+				<td align="left"><input type="button" value="파일추가" onClick="fn_addFile()">
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3"><div id="d_file"></div></td>
@@ -63,7 +63,7 @@
 			<tr>
 				<td align="right"></td>
 				<td colspan="2">
-					<input type="submit" value="글쓰기">
+					<input type="submit" value="저장">
 					<input type="button" value="목록보기" onclick="backToList(this.form)">
 				</td>
 			</tr>		

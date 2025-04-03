@@ -6,7 +6,6 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>쿠팡 스타일 필터</title>
     
     <!-- jQuery 및 Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -31,6 +31,7 @@
 </style>
 
 <script>
+
     window.onload = function() {
         <c:choose>
             <c:when test='${param.result == "loginFailed"}'>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	request.setCharacterEncoding("utf-8");
+    request.setCharacterEncoding("utf-8");
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
@@ -10,6 +10,78 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
+<script>
+/**
+ * 회원가입 유효성 검사
+ */
+function join() {
+    var form = document.forms['joinForm']; 
+
+    if (!form.id.value.trim()) {
+        alert("아이디를 입력해주세요.");
+        form.id.focus();
+        return false;
+    }
+    if (form.id.value.length < 4 || form.id.value.length > 16) {
+        alert("아이디는 4자 이상, 16자 이하로 입력해주세요.");
+        form.id.focus();
+        return false;
+    }
+    if (!form.name.value.trim()) {
+        alert("이름을 입력해주세요.");
+        form.name.focus();
+        return false;
+    }
+    if (!form.pwd.value.trim()) {
+        alert("비밀번호를 입력해주세요.");
+        form.pwd.focus();
+        return false;
+    }
+
+    let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    let hangleCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+
+    if (!reg.test(form.pwd.value)) {
+        alert("비밀번호는 8자리 이상이며, 대문자/소문자/숫자/특수문자를 모두 포함해야 합니다.");
+        form.pwd.focus();
+        return false;
+    }
+
+    if (/(\w)\1\1\1/.test(form.pwd.value)) {
+        alert("같은 문자를 4번 이상 사용할 수 없습니다.");
+        form.pwd.focus();
+        return false;
+    }
+
+    if (hangleCheck.test(form.pwd.value)) {
+        alert("비밀번호에 한글을 사용할 수 없습니다.");
+        form.pwd.focus();
+        return false;
+    }
+
+    if (form.pwd.value.search(/\s/) !== -1) {
+        alert("비밀번호는 공백 없이 입력해주세요.");
+        form.pwd.focus();
+        return false;
+    }
+
+    if (form.pwd.value !== form.password_re.value) {
+        alert("비밀번호가 일치하지 않습니다.");
+        form.password_re.focus();
+        return false;
+    }
+
+    alert("회원가입이 완료되었습니다!");
+
+    // 폼 제출 후 로그인 페이지로 이동
+    setTimeout(function () {
+        form.submit();
+        window.location.href = "/animal/member/loginForm.do"; 
+    }, 1000);
+
+    return false; // 폼이 즉시 제출되는 것을 방지하고 setTimeout을 기다리도록 함
+}
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <style>
     .signup-box {
@@ -45,7 +117,7 @@
 <div class="container d-flex justify-content-center">
     <div class="col-lg-6 signup-box">
         <div class="signup-title">SIGN UP</div>
-        <form method='post' action='${contextPath }/member/addMember.do'>
+        <form name="joinForm" method="post" action="${contextPath }/member/addMember.do" onsubmit="return join();">
             <div class="mb-3">
                 <label class="form-label">ID</label>
                 <input type="text" name="id" class="form-control" required>
@@ -55,8 +127,12 @@
                 <input type="password" name="pwd" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">AGE</label>
-                <input type="number" name="age" class="form-control" required>
+                <label class="form-label">CONFIRM PASSWORD</label>
+                <input type="password" name="password_re" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="birthdate">AGE</label>
+                <input type="date" id="age" name="birthdate" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">NAME</label>

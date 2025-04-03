@@ -220,11 +220,16 @@ body {
          <ul class="navbar-nav">
             <li class="nav-item">
             <a class="nav-link" href="${contextPath }/main.do">홈</a></li>
+<<<<<<< HEAD
             		  <li class="nav-item">동물병원
                 <ul class="submenu">
             		<li><a href="${contextPath }/hospital/map.do">지도</a></li>
                     <li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
  </ul>
+=======
+            <li class="nav-item"><a class="nav-link" href="hospital.do">동물병원</a></li>
+
+>>>>>>> branch 'master' of https://github.com/Kim-suk/animal.git
                <li class="nav-item">고양이
                 <ul class="submenu">
                     <li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
@@ -253,6 +258,7 @@ body {
 
             <li class="nav-item">강아지 용품
                <ul class="submenu">
+<<<<<<< HEAD
                   <li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
                   <li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
                   <li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
@@ -262,11 +268,23 @@ body {
                   <li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>
                   <li><a href="${contextPath }/dog_product/dog_house.do">하우스</a></li>
                   <li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
+=======
+                  <li><a href="${contextPath }/dog_product/all.do">전체</a></li>
+                  <li><a href="${contextPath }/dog_product/feed.do">사료</a></li>
+                  <li><a href="${contextPath }/dog_product/treat.do">간식</a></li>
+                  <li><a href="${contextPath }/dog_product/poop.do">배변용품</a></li>
+                  <li><a href="${contextPath }/dog_product/carrier.do">이동장</a></li>
+                  <li><a href="${contextPath }/dog_product/toy.do">장난감</a></li>
+                  <li><a href="${contextPath }/dog_product/bath.do">목욕용품</a></li>
+                  <li><a href="${contextPath }/dog_product/house.do">하우스</a></li>
+                  <li><a href="${contextPath }/dog_product/dish.do">식기</a></li>
+>>>>>>> branch 'master' of https://github.com/Kim-suk/animal.git
                </ul>
             </li>
 
             <li class="nav-item">고양이 용품
                <ul class="submenu">
+<<<<<<< HEAD
                   <li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
                   <li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
                   <li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
@@ -276,6 +294,17 @@ body {
                   <li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
                   <li><a href="${contextPath }/cat_product/cat_house.do">캣타워</a></li>
                   <li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
+=======
+                  <li><a href="${contextPath }/cat_product/all.do">전체</a></li>
+                  <li><a href="${contextPath }/cat_product/feed.do">사료</a></li>
+                  <li><a href="${contextPath }/cat_product/treat.do">간식</a></li>
+                  <li><a href="${contextPath }/cat_product/sand.do">모래</a></li>
+                  <li><a href="${contextPath }/cat_product/carrier.do">이동장</a></li>
+                  <li><a href="${contextPath }/cat_product/toy.do">장난감</a></li>
+                  <li><a href="${contextPath }/cat_product/bath.do">목욕용품</a></li>
+                  <li><a href="${contextPath }/cat_product/house.do">하우스</a></li>
+                  <li><a href="${contextPath }/cat_product/dish.do">식기</a></li>
+>>>>>>> branch 'master' of https://github.com/Kim-suk/animal.git
                </ul>
             </li>
          </ul>

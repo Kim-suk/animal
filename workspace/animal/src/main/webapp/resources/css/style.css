@@ -18,24 +18,24 @@
 	padding-top: 10px;
 }
 
-/* #sidebar-left {
-	width:15%;
-	height:630px;
-	padding:5px;
-	margin-right:5px;
-	margin-bottom:5px;
-	float:left;
-	background-color:yellow;
-	border:0px solid #bcbcbc;
-	font-size:10px;
-} */
+#sidebar-left {
+    width: 250px; /* 사이드바 너비 */
+    height: 100vh; /* 화면 전체 높이 */
+    position: fixed; /* 스크롤해도 고정 */
+    top: 0;
+    left: 0;
+    background-color: yellow;
+    border-right: 1px solid #bcbcbc; /* 우측 경계선 */
+    padding: 10px;
+    font-size: 14px;
+    overflow-y: auto; /* 내용 많으면 스크롤 가능 */
+}
 
 #content {
-	width:75%;
-	padding:5px;
-	margin-right:5px;
-	float:left;
-	border:0px solid #bcbcbc;
+    width: calc(100% - 250px); /* 사이드바 제외한 너비 */
+    margin-left: 250px; /* 사이드바만큼 왼쪽 여백 */
+    padding: 10px;
+    border: 0px solid #bcbcbc;
 }
 
 #footer {
@@ -44,9 +44,4 @@
 	border:0px solid #bcbcbc;
 	background-color:black;
 	width: 100%;
-	
 }
-
-
-
-

@@ -62,7 +62,7 @@
 			<tr>
 				<td align="right"></td>
 				<td colspan="2">
-					<input type="submit" value="글쓰기">
+					<input type="submit" value="저장">
 					<input type="button" value="목록보기" onclick="backToList(this.form)">
 				</td>
 			</tr>		

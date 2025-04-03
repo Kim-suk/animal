@@ -59,13 +59,7 @@
 		form.appendChild(articleNoInput);
 		document.body.appendChild(form);
 		form.submit();
-		/*
-			<form method="post" action="/por11/board/removeArticle.do">
-				<input type="hidden" name="articleNo" value="${articleNo}">
-				<input type="submit" value="전송">
-			</form>
-			
-		*/
+
 	}
 	
 	function fn_reply_form(url, parentNo) {
@@ -93,6 +87,21 @@
 		$("#d_file").append("<br><input type='file' name='file"+cnt+"'>");
 		cnt++;
 	}
+	
+	function fn_listArticles_form(url, articleNo) {
+        let form = document.createElement("form");
+        form.method = "post";
+        form.action = url;
+
+        let input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "articleNo";
+        input.value = articleNo;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
 </script>
 <c:set var="article" value="${articleMap.article }" />
 <c:set var="imageFileList" value="${articleMap.imageFileList }" />
@@ -164,10 +173,10 @@
 						<input type="button" value="삭제하기"
 							onclick="fn_remove_article
 						('${contextPath}/dog_board/dog_removeArticle.do', ${article.articleNo })">
-					</c:if> <input type="button" value="리스트로 돌아가기"
-					onclick="backToList(this.form)"> <input type="button"
-					value="답글쓰기"
-					onclick="fn_reply_form('${contextPath}/dog_board/dog_replyForm.do', 
+					</c:if> <input type="button" value="리스트로 돌아가기" onclick="backToList(this.form)">
+					 <input type="button" value="답글쓰기" onclick="fn_reply_form('${contextPath}/dog_board/dog_replyForm.do', 
+						${article.articleNo })">
+						 <input type="button" value="저장" onclick="fn_listArticles_form('${contextPath}/dog_board/dog_listArticles.do', 
 						${article.articleNo })">
 			</tr>
 		</table>

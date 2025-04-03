@@ -238,7 +238,7 @@ public class BoardControllerImpl implements BoardController {
 			}
 			message = "<script>";
 			message += "alert('글이 수정 되었습니다.');";
-			message += "location.href='/animal/board/viewArticle.do?articleNo="
+			message += "location.href='/animal/board/listArticles.do?articleNo="
 					+articleNo+"';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
@@ -286,7 +286,7 @@ public class BoardControllerImpl implements BoardController {
 		} catch(Exception e) {
 			message = "<script>";
 			message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
-			message += "location.href='/animal/board/listArticles.do;";
+			message += "location.href='/animal/board/viewArticle.do;";
 			message += "</script>";
 			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();

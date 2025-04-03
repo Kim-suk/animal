@@ -35,7 +35,7 @@ package com.test.animal.dog_board.controller;
  @RequestMapping("/dog_board")
  @EnableTransactionManagement
  public class DogBoardControllerImpl implements DogBoardController {
- 	private static final String BOARD_REPO = "C:\\image";
+ 	private static final String BOARD_REPO = "C:\\springframework\\workspace\\animal\\workspace\\animal\\src\\main\\webapp\\resources";
  	@Autowired
  	private DogBoardService service;
  	

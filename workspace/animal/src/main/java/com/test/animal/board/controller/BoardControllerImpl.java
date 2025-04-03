@@ -35,7 +35,7 @@ import com.test.animal.board.service.BoardService;
 @RequestMapping("/board")
 @EnableTransactionManagement
 public class BoardControllerImpl implements BoardController {
-	private static final String BOARD_REPO = "C:\\image";
+	private static final String BOARD_REPO = "C:\\springframework\\workspace\\animal\\workspace\\animal\\src\\main\\webapp\\resources";
 	@Autowired
 	private BoardService service;
 	

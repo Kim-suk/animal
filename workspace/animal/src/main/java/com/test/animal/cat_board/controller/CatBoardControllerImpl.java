@@ -35,7 +35,7 @@ package com.test.animal.cat_board.controller;
  @RequestMapping("/cat_board")
  @EnableTransactionManagement
  public class CatBoardControllerImpl implements CatBoardController {
- 	private static final String BOARD_REPO = "C:\\image";
+ 	private static final String BOARD_REPO = "C:\\springframework\\workspace\\animal\\workspace\\animal\\src\\main\\webapp\\resources";
  	@Autowired
  	private CatBoardService service;
  	

@@ -8,7 +8,7 @@
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="side" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
@@ -30,7 +30,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_think.jsp" />
 	</definition>
 	
-		
+		<definition name="/dog/dog_all" extends="baseLayout">
+		<put-attribute name="title" value="강아지의 모든것!"/>
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_all.jsp" />
+	</definition>
 	
 
 	

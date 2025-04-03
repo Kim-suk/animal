@@ -8,7 +8,7 @@
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="side" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
@@ -28,6 +28,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_think.jsp" />
 	</definition>
 	
-	
+	<definition name="/cat/cat_all" extends="baseLayout">
+		<put-attribute name="title" value="고양이에 대한 모든 것"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat/cat_all.jsp" />
+	</definition>
 	
 </tiles-definitions>

@@ -34,7 +34,7 @@ img {
 
 .caption {
 	font-size: 1.125rem;
-	text-align: center;
+	text	-align: center;
 	line-height: 2em;
 }
 
@@ -158,7 +158,7 @@ img {
 			<div class="polaroid">
 				<img
 					src="${pageContext.request.contextPath}/resources/image/cat1.jpg">
-				<div class="caption">By 젤리</div>
+				<div class="caption">By 너리</div>
 			</div>
 		</div>
 
@@ -166,7 +166,7 @@ img {
 			<div class="polaroid">
 				<img
 					src="${pageContext.request.contextPath}/resources/image/cat2.jpg">
-				<div class="caption">By 모모</div>
+				<div class="caption">By 젤리</div>
 			</div>
 		</div>
 

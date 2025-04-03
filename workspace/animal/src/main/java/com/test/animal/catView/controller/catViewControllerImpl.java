@@ -13,7 +13,6 @@ public class catViewControllerImpl implements catViewController{
 	    return "/cat/cat_all";  // Tiles���� ������ �� �̸�
 	}
 
-
 	@Override
 	@RequestMapping("/cat_kitten.do")
 	public String showCatKitten() {

@@ -59,25 +59,41 @@ package com.test.animal.dog_board.service;
  	public Map dog_viewArticle(int articleNo) {
  		// TODO Auto-generated method stub
  		Map articleMap = new HashMap();
- 		DogArticleDTO articleDTO = dao.dog_viewArticle(articleNo);
+ 		DogArticleDTO dogarticleDTO = dao.dog_viewArticle(articleNo);
  		List<DogImageDTO> imageFileList = dao.dog_selectImageFileList(articleNo);
  		
- 		articleMap.put("article", articleDTO);
+ 		articleMap.put("article", dogarticleDTO);
  		articleMap.put("imageFileList", imageFileList);
  		return articleMap;
  	}
  
  	@Override
  	public void dog_modArticle(Map<String, Object> articleMap) {
- 		// TODO Auto-generated method stub
- 		List<DogImageDTO> imageFileList = (List<DogImageDTO>) articleMap.get("imageFileList");
- 		int imageFileNo = dao.dog_selectNewImageFileNo();
- 		dao.dog_updateArticle(articleMap);
- 		for(DogImageDTO imageDTO : imageFileList) {
- 			imageDTO.setImageFileNo(++imageFileNo);
- 		}
- 		dao.dog_insertNewImage(imageFileList);
+ 	    // 1️⃣ articleNo가 있는지 확인
+ 	    if (!articleMap.containsKey("articleNo") || articleMap.get("articleNo") == null) {
+ 	        return; // articleNo 없으면 업데이트 중단
+ 	    }
+
+ 	    // 2️⃣ 게시글 업데이트 실행
+ 	    int updateCount = dao.dog_updateArticle(articleMap);
+ 	    if (updateCount == 0) {
+ 	        return; // 업데이트 실패 시 중단
+ 	    }
+
+ 	    // 3️⃣ 이미지 리스트 확인
+ 	    List<DogImageDTO> imageFileList = (List<DogImageDTO>) articleMap.get("imageFileList");
+ 	    if (imageFileList == null || imageFileList.isEmpty()) {
+ 	        return; // 이미지가 없으면 추가 작업 없이 종료
+ 	    }
+
+ 	    // 4️⃣ 새로운 이미지 파일 번호 설정 후 삽입
+ 	    int imageFileNo = dao.dog_selectNewImageFileNo();
+ 	    for (DogImageDTO imageDTO : imageFileList) {
+ 	        imageDTO.setImageFileNo(++imageFileNo);
+ 	    }
+ 	    dao.dog_insertNewImage(imageFileList);
  	}
+
  
  	@Override
  	public void dog_removeArticle(int articleNo) {

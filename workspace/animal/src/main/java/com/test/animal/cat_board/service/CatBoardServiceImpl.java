@@ -59,24 +59,39 @@ package com.test.animal.cat_board.service;
  	public Map cat_viewArticle(int articleNo) {
  		// TODO Auto-generated method stub
  		Map articleMap = new HashMap();
- 		CatArticleDTO articleDTO = dao.cat_viewArticle(articleNo);
+ 		CatArticleDTO catarticleDTO = dao.cat_viewArticle(articleNo);
  		List<CatImageDTO> imageFileList = dao.cat_selectImageFileList(articleNo);
  		
- 		articleMap.put("article", articleDTO);
+ 		articleMap.put("article", catarticleDTO);
  		articleMap.put("imageFileList", imageFileList);
  		return articleMap;
  	}
  
  	@Override
  	public void cat_modArticle(Map<String, Object> articleMap) {
- 		// TODO Auto-generated method stub
- 		List<CatImageDTO> imageFileList = (List<CatImageDTO>) articleMap.get("imageFileList");
- 		int imageFileNo = dao.cat_selectNewImageFileNo();
- 		dao.cat_updateArticle(articleMap);
- 		for(CatImageDTO imageDTO : imageFileList) {
- 			imageDTO.setImageFileNo(++imageFileNo);
- 		}
- 		dao.cat_insertNewImage(imageFileList);
+ 	    // 1️⃣ articleNo가 있는지 확인
+ 	    if (!articleMap.containsKey("articleNo") || articleMap.get("articleNo") == null) {
+ 	        return; // articleNo 없으면 업데이트 중단
+ 	    }
+
+ 	    // 2️⃣ 게시글 업데이트 실행
+ 	    int updateCount = dao.cat_updateArticle(articleMap);
+ 	    if (updateCount == 0) {
+ 	        return; // 업데이트 실패 시 중단
+ 	    }
+
+ 	    // 3️⃣ 이미지 리스트 확인
+ 	    List<CatImageDTO> imageFileList = (List<CatImageDTO>) articleMap.get("imageFileList");
+ 	    if (imageFileList == null || imageFileList.isEmpty()) {
+ 	        return; // 이미지가 없으면 추가 작업 없이 종료
+ 	    }
+
+ 	    // 4️⃣ 새로운 이미지 파일 번호 설정 후 삽입
+ 	    int imageFileNo = dao.cat_selectNewImageFileNo();
+ 	    for (CatImageDTO imageDTO : imageFileList) {
+ 	        imageDTO.setImageFileNo(++imageFileNo);
+ 	    }
+ 	    dao.cat_insertNewImage(imageFileList);
  	}
  
  	@Override

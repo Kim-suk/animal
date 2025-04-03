@@ -12,7 +12,7 @@ public interface BoardDAO {
 	int selectNewArticleNo();
 	int insertNewArticle(Map<String, Object> articleMap);
 	ArticleDTO viewArticle(int articleNo);
-	void updateArticle(Map<String, Object> articleMap);
+	int updateArticle(Map<String, Object> articleMap);
 	void deleteArticle(int articleNo);
 	int selectNewImageFileNo();
 	void insertNewImage(List<ImageDTO> imageFileList);

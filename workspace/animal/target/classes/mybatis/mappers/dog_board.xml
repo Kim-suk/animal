@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.dog_board">
-	<resultMap type="articleDTO" id="artResult">
+	<resultMap type="dogarticleDTO" id="artResult">
 		<result property="articleNo" column="articleNo" />
 		<result property="parentNo" column="parentNo" />
 		<result property="title" column="title" />
@@ -30,7 +30,7 @@
 		]]>
 	</select>
 	
-	<insert id="dog_insertNewArticle" parameterType="articleDTO">
+	<insert id="dog_insertNewArticle" parameterType="dogarticleDTO">
 		<![CDATA[
 			insert into dog_board values(#{articleNo}, #{parentNo}, 
 			#{title}, #{content}, null, #{id}, sysdate)
@@ -43,7 +43,7 @@
 		]]>
 	</select>
 	
-	<select id="dog_selectArticle" resultType="articleDTO" parameterType="int">
+	<select id="dog_selectArticle" resultType="dogarticleDTO" parameterType="int">
 		<![CDATA[
 			select * from dog_board where articleNo=#{articleNo}
 		]]>

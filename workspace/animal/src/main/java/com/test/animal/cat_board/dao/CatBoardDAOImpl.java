@@ -42,9 +42,8 @@ package com.test.animal.cat_board.dao;
  	}
  
  	@Override
- 	public void cat_updateArticle(Map<String, Object> articleMap) {
- 		// TODO Auto-generated method stub
- 		sqlSession.update("mapper.cat_board.cat_updateArticle", articleMap);
+ 	public int cat_updateArticle(Map<String, Object> articleMap) {
+ 		return sqlSession.update("mapper.cat_board.cat_updateArticle", articleMap);
  	}
  
  	@Override

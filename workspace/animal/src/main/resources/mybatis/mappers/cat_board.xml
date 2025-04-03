@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.cat_board">
-	<resultMap type="articleDTO" id="artResult">
+	<resultMap type="catarticleDTO" id="artResult">
 		<result property="articleNo" column="articleNo" />
 		<result property="parentNo" column="parentNo" />
 		<result property="title" column="title" />
@@ -30,7 +30,7 @@
 		]]>
 	</select>
 	
-	<insert id="cat_insertNewArticle" parameterType="articleDTO">
+	<insert id="cat_insertNewArticle" parameterType="catarticleDTO">
 		<![CDATA[
 			insert into cat_board values(#{articleNo}, #{parentNo}, 
 			#{title}, #{content}, null, #{id}, sysdate )
@@ -43,7 +43,7 @@
 		]]>
 	</select>
 	
-	<select id="cat_selectArticle" resultType="articleDTO" parameterType="int">
+	<select id="cat_selectArticle" resultType="catarticleDTO" parameterType="int">
 		<![CDATA[
 			select * from cat_board where articleNo=#{articleNo}
 		]]>

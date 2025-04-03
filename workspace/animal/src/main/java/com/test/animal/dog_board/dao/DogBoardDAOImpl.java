@@ -41,9 +41,8 @@ package com.test.animal.dog_board.dao;
  	}
  
  	@Override
- 	public void dog_updateArticle(Map<String, Object> articleMap) {
- 		// TODO Auto-generated method stub
- 		sqlSession.update("mapper.dog_board.dog_updateArticle", articleMap);
+ 	public int dog_updateArticle(Map<String, Object> articleMap) {
+ 		return sqlSession.update("mapper.dog_board.dog_updateArticle", articleMap);
  	}
  
  	@Override

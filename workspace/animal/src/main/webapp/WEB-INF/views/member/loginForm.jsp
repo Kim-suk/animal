@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />  
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -50,7 +51,9 @@
 <div class="container">
     <div class="login-container">
         <h2 class="login-title">LOGIN</h2>
-        <form method="post" action="/animal/member/login.do">
+
+        <!-- 로그인 폼 -->
+        <form method="post" action="${contextPath }/member/login.do">
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control" id="id" name="id" required>
@@ -61,8 +64,14 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">LOGIN</button>
         </form>
+
+        <!-- 회원가입 폼 -->
+        <form method="post" action="${contextPath }/member/joinMember.do">
+            <button type="submit" class="btn btn-secondary w-100 mt-2">SIGN UP</button>
+        </form>
     </div>
 </div>
+
 
 </body>
 </html>

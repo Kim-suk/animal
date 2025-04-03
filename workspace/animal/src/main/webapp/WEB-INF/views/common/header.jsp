@@ -168,52 +168,76 @@
 
 /* 본문이 네비게이션에 가려지지 않도록 여백 추가 */
 body {
-	margin-top: 140px; /* 배너(80px) + 네비게이션(60px) 높이만큼 공간 확보 */
+	margin-top: 140px;
+}
+
+/* 로그인 버튼 스타일 */
+.nav-login {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.login-user {
+	font-weight: bold;
+	margin-right: 10px;
 }
 </style>
 </head>
 
 <body>
 	<div class="banner">
-		<img
-			src="${pageContext.request.contextPath}/resources/image/banner.png">
+		<img src="${contextPath}/resources/image/banner.png">
+		
+		<!-- 로그인/로그아웃 버튼 -->
+		<div class="nav-login">
+			<c:choose>
+				<c:when test="${isLogin == true}">
+					<span class="login-user">${loginId}님</span>
+					<a href="${contextPath}/member/logout.do" class="btn btn-outline-dark">로그아웃</a>
+				</c:when>
+				<c:otherwise>
+					<a href="${contextPath}/member/loginForm.do" class="btn btn-outline">로그인</a>
+					<a href="${contextPath}/member/joinMember.do" class="btn btn-outline-second">회원가입	</a>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	</div>
-	<div class="top-links">
-		<a href="/animal/member/loginForm.do" class="common">로그인</a> <a
-			href="/animal/member/joinMember.do" class="common">회원가입</a>
-	</div>
+	 
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link"
-					href="${contextPath }/main.do">홈</a></li>
+				<li class="nav-item">
+				<a class="nav-link" href="${contextPath }/main.do">홈</a></li>
 				<li class="nav-item"><a class="nav-link" href="hospital.do">동물병원</a></li>
 
-				<li class="nav-item">고양이
-					<ul class="submenu">
-						<li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
-						<li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
-						<li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까
-								고민 중이신가요?</a></li>
-						<li><a href="${contextPath }/cat/cat_all.do">고양이에 대한 모든 것</a></li>
-					</ul>
-				</li>
+					<li class="nav-item">고양이
+                <ul class="submenu">
+                    <li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
+                    <li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
+                    <li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 고민 중이신가요?</a></li>
+                    <li><a href="${contextPath }/cat/cat_all.do">고양이에 대한 모든 것</a></li>
+                </ul>
+            </li>
 
-				<li class="nav-item">강아지
-					<ul class="submenu">
-						<li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
-						<li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
-						<li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까
-								고민 중이신가요?</a></li>
-						<li><a href="${contextPath }/dog/dog_all.do">강아지에 대한 모든 것</a></li>
-					</ul>
-				</li>
+            <li class="nav-item">강아지
+                <ul class="submenu">
+                    <li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
+                    <li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
+                    <li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 고민 중이신가요?</a></li>
+                    <li><a href="${contextPath }/dog/dog_all.do">강아지에 대한 모든 것</a></li>
+                </ul>
+            </li>
 
 				<li class="nav-item">게시판
 					<ul class="submenu">
-						<li><a href="#">고양이</a></li>
-						<li><a href="#">강아지</a></li>
-						<li><a href="#">자유게시판</a></li>
+						<li><a href="${contextPath }/cat_board/cat_listArticles.do">고양이</a></li>
+						<li><a href="${contextPath }/dog_board/dog_listArticles.do">강아지</a></li>
+						<li><a href="${contextPath }/board/listArticles.do">자유게시판</a></li>
 					</ul>
 				</li>
 
@@ -244,10 +268,6 @@ body {
 						<li><a href="${contextPath }/cat_product/dish.do">식기</a></li>
 					</ul>
 				</li>
-
-				<!--  <li class="nav-item"><a class="nav-link" href="/animal/member/loginForm.do">로그인</a></li>
-
-                <li class="nav-item"><a class="nav-link" href="/animal/member/joinMember.do">회원가입</a></li> -->
 			</ul>
 		</div>
 	</nav>

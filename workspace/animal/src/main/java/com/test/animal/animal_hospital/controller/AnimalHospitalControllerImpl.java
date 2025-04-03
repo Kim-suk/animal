@@ -13,5 +13,4 @@ public class AnimalHospitalControllerImpl implements AnimalHospitalController {
 		// TODO Auto-generated method stub
 		return "/hospital/map";
 	}
-
 }

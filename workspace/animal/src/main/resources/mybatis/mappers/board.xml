@@ -3,6 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.board">
+
 	<resultMap type="articleDTO" id="artResult">
 		<result property="level" column="level" />
 		<result property="articleNo" column="articleNo" />

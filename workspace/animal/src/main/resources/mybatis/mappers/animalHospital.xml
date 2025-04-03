@@ -4,12 +4,44 @@
 
 <mapper namespace="mapper.animalHospital">
 
-		<insert id="batchInsertHospitals">
-			<foreach collection="list" item="hospital" open="insert all" separator=" " close="select * from dual">
-				into animal_hospital (id, name, address, phone, latitude, longitude)
-				values (#{hospital.id}, #{hospital.name},#{hospital.address},#{hospital.phone}, #{hospital.latitude}, #{hospital.longitude}) 
-			</foreach>
-		</insert>
+	<resultMap type="animalHospitalDTO" id="hospitalResultMap" >
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+		<result property="phone" column="phone" />
+		<result property="latitude" column="latitude" />
+		<result property="longitude" column="longitude" />
+	</resultMap>
+
+	<insert id="batchInsertHospitals">
+		<foreach collection="list" item="hospital" open="insert all"
+			separator=" " close="select * from dual">
+			into animal_hospital (id, name, address, phone,
+			latitude, longitude)
+			values (#{hospital.id},
+			#{hospital.name},#{hospital.address},#{hospital.phone},
+			#{hospital.latitude}, #{hospital.longitude})
+		</foreach>
+	</insert>
+
+<select id="findHospitalsWithin5km" parameterType="map" resultType="animalHospitalDTO">
+    <![CDATA[
+    SELECT id, name, address, phone, 
+        (38.0 + (latitude - 200000) / 6367000) AS conv_latitude,
+        (127.0 + (longitude - 600000) / 6367000) AS conv_longitude
+    FROM animal_hospital
+    WHERE (6371 * ACOS(LEAST(1, GREATEST(-1,
+        COS(RADIANS(38.0 + (#{lat} - 200000) / 6367000)) 
+        * COS(RADIANS(38.0 + (latitude - 200000) / 6367000))
+        * COS(RADIANS(127.0 + (longitude - 600000) / 6367000) - 
+              RADIANS(127.0 + (#{lng} - 600000) / 6367000)) 
+        + SIN(RADIANS(38.0 + (#{lat} - 200000) / 6367000)) 
+        * SIN(RADIANS(38.0 + (latitude - 200000) / 6367000))
+    )))) <= 5
+    ]]>
+</select>
+
+
 
 
 

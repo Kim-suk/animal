@@ -7,6 +7,7 @@ package com.test.animal.dog_board.dto;
  	private String imageFileName;
  	private Date regDate;
  	private int articleNo;
+ 	
  	public int getImageFileNo() {
  		return imageFileNo;
  	}

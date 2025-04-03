@@ -11,6 +11,9 @@
 		<result property="gender" column="gender" />
 		<result property="email" column="email" />
 		<result property="joinDate" column="joinDate" />
+
+		<result property="joinDate" column="joinDate" />
+
 	</resultMap>
 	
 	<select id="listMembers" resultMap="memResult">
@@ -33,16 +36,20 @@
 	
 	<insert id="addMember" parameterType="memberDTO">
 		<![CDATA[
-			insert into animal_member (id, pwd, age, name, gender, email, joinDate)
-						values (#{id}, #{pwd}, #{name}, #{age}, #{gender}, #{email}, sysdate)
+
+			 insert into animal_member (id, pwd, age, name, gender, email, joinDate)
+            values (#{id}, #{pwd}, #{age, jdbcType=INTEGER}, #{name}, #{gender}, #{email}, 
+            SYSDATE)
+
 		]]>
 	</insert>
 	
 	<update id="modMember" parameterType="memberDTO">
 		<![CDATA[
-			update animal_member set #{pwd},#{name},#{age},#{name},#{gender},#{email}
-				where id=#{id}
-		]]>
+		update animal_member 
+            set pwd=#{pwd}, age=#{age, jdbcType=INTEGER}, name=#{name}, gender=#{gender}, email=#{email}
+            where id=#{id}	
+	]]>
 	</update>
 	
 	<select id="login" parameterType="memberDTO" resultType="memberDTO">

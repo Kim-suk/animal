@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.dog_board">
+	<resultMap type="dogarticleDTO" id="artResult">
+		<result property="articleNo" column="articleNo" />
+		<result property="parentNo" column="parentNo" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="writeDate" column="writeDate" />
+		<result property="imageFileName" column="imageFileName" />
+		<result property="id" column="id" />
+	</resultMap>
+	
+	<resultMap type="imageDTO" id="imgResult">
+		<result property="imageFileNo" column="imageFileNo"/>
+		<result property="imageFileName" column="imageFileName" />
+		<result property="regDate" column="regDate" />
+		<result property="articleNo" column="articleNo" />
+	</resultMap>
+	
+	<select id="dog_selectAllArticlesList" resultMap="artResult">
+		<![CDATA[
+			select articleNo, parentNo, title, content, writeDate, 
+			imageFileName, id from dog_board 
+			start with parentNo = 0
+			connect by prior articleNo=parentNo
+			order siblings by articleNo desc
+		]]>
+	</select>
+	
+	<insert id="dog_insertNewArticle" parameterType="dogarticleDTO">
+		<![CDATA[
+			insert into dog_board values(#{articleNo}, #{parentNo}, 
+			#{title}, #{content}, null, #{id}, sysdate)
+		]]>
+	</insert>
+	
+	<select id="dog_selectNewArticleNo" resultType="int">
+		<![CDATA[
+			select NVL(max(articleNo), 0) + 1 from dog_board
+		]]>
+	</select>
+	
+	<select id="dog_selectArticle" resultType="dogarticleDTO" parameterType="int">
+		<![CDATA[
+			select * from dog_board where articleNo=#{articleNo}
+		]]>
+	</select>
+	
+	<update id="dog_updateArticle" parameterType="java.util.Map">
+		update dog_board set title=#{title}, content=#{content}
+		<if test="imageFileName != '' and imageFileName != null">
+			, imageFileName=#{imageFileName}
+		</if>
+		where articleNo=#{articleNo}
+	</update>
+	
+	<delete id="dog_deleteArticle" parameterType="int">
+		<![CDATA[
+			delete from dog_board where articleNo in 
+			(select articleNo from dog_board start with articleNo=#{articleNo}
+			connect by prior articleNo=parentNo)
+		]]>
+	</delete>
+	
+	<insert id="dog_insertNewImage" parameterType="java.util.Map">
+		<foreach item="item" collection="list" open="insert all"
+			separator=" " close="select * from dual">
+			into image(imageFileNo, imageFileName, articleNo, regDate)
+			values (#{item.imageFileNo}, #{item.imageFileName}, #{item.articleNo},
+			sysdate)	
+		</foreach>
+	</insert>
+	
+	<select id="dog_selectNewImageFileNo" resultType="int">
+		<![CDATA[
+			select nvl(max(imageFileNo), 0) from image
+		]]>
+	</select>
+	
+	<select id="dog_selectImageFileList" resultMap="imgResult">
+		<![CDATA[
+			select * from image where articleNo=#{articleNo}
+		]]>
+	</select>
+	
+	<delete id="dog_deleteImage" parameterType="int">
+		<![CDATA[
+			delete from image where imageFileNo=#{imageFileNo}
+		]]>	
+	</delete>
+	
+	<select id="dog_selectArticleNo" parameterType="int" resultType="int">
+		<![CDATA[
+			select articleNo from image where imageFileNo=#{imageFileNo}
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+

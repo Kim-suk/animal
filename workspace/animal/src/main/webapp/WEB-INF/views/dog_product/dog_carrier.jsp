@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고양이에 대한 모든 것</title>
+<title>Insert title here</title>
 </head>
 <body>
-	
+	강아지 이동장
 </body>
 </html>

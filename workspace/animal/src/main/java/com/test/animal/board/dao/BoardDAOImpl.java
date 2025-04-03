@@ -41,9 +41,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void updateArticle(Map<String, Object> articleMap) {
-		// TODO Auto-generated method stub
-		sqlSession.update("mapper.board.updateArticle", articleMap);
+	public int updateArticle(Map<String, Object> articleMap) {
+		return sqlSession.update("mapper.board.updateArticle", articleMap);
 	}
 
 	@Override

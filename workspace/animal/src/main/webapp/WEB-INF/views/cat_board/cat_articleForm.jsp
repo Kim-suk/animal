@@ -18,7 +18,7 @@
 	}
 	
 	function backToList(obj) {
-		obj.action = "${contextPath}/board/cat_listArticles.do";
+		obj.action = "${contextPath}/cat_board/cat_listArticles.do";
 		obj.submit();
 	}
 	
@@ -30,8 +30,8 @@
 </script>
 <body>
 	<h1 style="text-align:center;">새 글쓰기</h1>
-	<form name="articleForm" method='post' 
-		action="${contextPath }/board/cat_addNewArticle.do"
+	<form name="cat_articleForm" method='post' 
+		action="${contextPath }/cat_board/cat_addNewArticle.do"
 			encType="multipart/form-data">
 		<table border="0" align="center">
 			<tr>
@@ -52,9 +52,7 @@
 				maxlength="4000"></textarea></td>
 			</tr>	
 			<tr>
-<!-- 				<td align="right">이미지파일 첨부</td>
-				<td><input type="file" name="imageFileName" onchange="readURL(this);"></td>
-				<td><img id="preview" src="#" width="200" height="200"></td> -->
+
 				<td align="right">이미지파일 첨부</td>
 				<td align="left"><input type="button" value="파일추가"
 					onClick="fn_addFile()"></td>

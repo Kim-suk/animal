@@ -19,67 +19,66 @@ package com.test.animal.cat_board.dao;
  	@Override
  	public List<CatArticleDTO> cat_listArticles() {
  		// TODO Auto-generated method stub
- 		return sqlSession.selectList("mapper.board.cat_selectAllArticlesList");
+ 		return sqlSession.selectList("mapper.cat_board.cat_selectAllArticlesList");
  	}
  
  	@Override
  	public int cat_selectNewArticleNo() {
  		// TODO Auto-generated method stub
- 		return sqlSession.selectOne("mapper.board.cat_selectNewArticleNo");
+ 		return sqlSession.selectOne("mapper.cat_board.cat_selectNewArticleNo");
  	}
  
  	@Override
  	public int cat_insertNewArticle(Map<String, Object> articleMap) {
  		// TODO Auto-generated method stub
- 		sqlSession.insert("mapper.board.cat_insertNewArticle", articleMap);
+ 		sqlSession.insert("mapper.cat_board.cat_insertNewArticle", articleMap);
  		return (Integer) articleMap.get("articleNo");
  	}
  
  	@Override
  	public CatArticleDTO cat_viewArticle(int articleNo) {
  		// TODO Auto-generated method stub
- 		return sqlSession.selectOne("mapper.board.cat_cat_selectArticle", articleNo);
+ 		return sqlSession.selectOne("mapper.cat_board.cat_selectArticle", articleNo);
  	}
  
  	@Override
- 	public void cat_updateArticle(Map<String, Object> articleMap) {
- 		// TODO Auto-generated method stub
- 		sqlSession.update("mapper.board.cat_updateArticle", articleMap);
+ 	public int cat_updateArticle(Map<String, Object> articleMap) {
+ 		return sqlSession.update("mapper.cat_board.cat_updateArticle", articleMap);
  	}
  
  	@Override
  	public void cat_deleteArticle(int articleNo) {
  		// TODO Auto-generated method stub
- 		sqlSession.delete("mapper.board.deleteArticle", articleNo);
+ 		sqlSession.delete("mapper.cat_board.cat_deleteArticle", articleNo);
  	}
  
  	@Override
  	public int cat_selectNewImageFileNo() {
  		// TODO Auto-generated method stub
- 		return sqlSession.selectOne("mapper.board.selectNewImageFileNo");
+ 		return sqlSession.selectOne("mapper.cat_board.cat_selectNewImageFileNo");
  	}
  
  	public void cat_insertNewImage(List<CatImageDTO> imageFileList) {
  		// TODO Auto-generated method stub
- 		sqlSession.insert("mapper.board.insertNewImage", imageFileList);
+ 		sqlSession.insert("mapper.cat_board.cat_insertNewImage", imageFileList);
  	}
  
  	@Override
  	public List<CatImageDTO> cat_selectImageFileList(int articleNo) {
  		
- 		return sqlSession.selectList("mapper.board.cat_selectImageFileList", articleNo);
+ 		return sqlSession.selectList("mapper.cat_board.cat_selectImageFileList", articleNo);
  	}
  
  	@Override
  	public int cat_deleteImage(int imageFileNo) {
  		// TODO Auto-generated method stub
- 		return sqlSession.delete("mapper.board.cat_deleteImage", imageFileNo);
+ 		return sqlSession.delete("mapper.cat_board.cat_deleteImage", imageFileNo);
  	}
  
  	@Override
  	public int cat_selectArticleNo(int imageFileNo) {
  		// TODO Auto-generated method stub
- 		return sqlSession.selectOne("mapper.board.cat_selectArticleNo", imageFileNo);
+ 		return sqlSession.selectOne("mapper.cat_board.cat_selectArticleNo", imageFileNo);
  	}
  
  

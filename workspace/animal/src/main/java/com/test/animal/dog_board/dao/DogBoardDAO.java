@@ -3,6 +3,7 @@ package com.test.animal.dog_board.dao;
  import java.util.List;
  import java.util.Map;
  
+ 
  import com.test.animal.dog_board.dto.DogArticleDTO;
  import com.test.animal.dog_board.dto.DogImageDTO;
  
@@ -12,7 +13,7 @@ package com.test.animal.dog_board.dao;
  	int dog_selectNewArticleNo();
  	int dog_insertNewArticle(Map<String, Object> articleMap);
  	DogArticleDTO dog_viewArticle(int articleNo);
- 	void dog_updateArticle(Map<String, Object> articleMap);
+ 	int dog_updateArticle(Map<String, Object> articleMap);
  	void dog_deleteArticle(int articleNo);
  	int dog_selectNewImageFileNo();
  	void dog_insertNewImage(List<DogImageDTO> imageFileList);

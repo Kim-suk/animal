@@ -13,7 +13,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	function backToList(obj) {
-		obj.action = '${contextPath}/board/dog_listArticles.do';
+		obj.action = '${contextPath}/dog_board/dog_listArticles.do';
 		obj.submit();
 	}
 	
@@ -41,7 +41,7 @@
 	}
 	
 	function fn_modify_article(obj) {
-		obj.action = '${contextPath}/board/dog_modArticle.do';
+		obj.action = '${contextPath}/dog_board/dog_modArticle.do';
 		obj.method = 'post';
 		obj.submit();
 	}
@@ -84,7 +84,7 @@
 	}
 	
 	function fn_deleteImage(imageFileNo, imageFileName) {
-		location.href="/pro13/board/dog_deleteImage.do?imageFileNo="+imageFileNo+
+		location.href="/animal/dog_board/dog_deleteImage.do?imageFileNo="+imageFileNo+
 				"&imageFileName="+imageFileName;
 	}
 	
@@ -128,7 +128,7 @@
 								이미지${status.count }</td>
 							<td><input type="hidden" name="originalFileName"
 								value="${item.imageFileName }"> <img
-								src="${contextPath }/dog_download.do?imageFileName=
+								src="${contextPath }/download.do?imageFileName=
 							${item.imageFileName}&articleNo=${article.articleNo}" id="preview"></td>
 						</tr>
 						<tr>
@@ -163,11 +163,11 @@
 						<input type="button" value="수정하기" onclick="fn_enable(this.form)">
 						<input type="button" value="삭제하기"
 							onclick="fn_remove_article
-						('${contextPath}/board/dog_removeArticle.do', ${article.articleNo })">
+						('${contextPath}/dog_board/dog_removeArticle.do', ${article.articleNo })">
 					</c:if> <input type="button" value="리스트로 돌아가기"
 					onclick="backToList(this.form)"> <input type="button"
 					value="답글쓰기"
-					onclick="fn_reply_form('${contextPath}/board/dog_replyForm.do', 
+					onclick="fn_reply_form('${contextPath}/dog_board/dog_replyForm.do', 
 						${article.articleNo })">
 			</tr>
 		</table>

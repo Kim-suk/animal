@@ -10,7 +10,7 @@ public class catViewControllerImpl implements catViewController{
 	@Override
 	@RequestMapping("/cat_all.do")
 	public String showCatAll() {
-	    return "/cat/cat_all";  // Tiles¿¡¼­ Á¤ÀÇÇÑ ºä ÀÌ¸§
+	    return "/cat/cat_all";  // Tilesï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½
 	}
 
 	@Override

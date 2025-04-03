@@ -14,24 +14,10 @@ public class catViewControllerImpl implements catViewController{
 	}
 
 	@Override
-	@RequestMapping("/cat_feed.do")
-	public String showCatFeed() {
-		// TODO Auto-generated method stub
-		return "/cat/cat_feed";
-	}
-
-	@Override
 	@RequestMapping("/cat_kitten.do")
 	public String showCatKitten() {
 		// TODO Auto-generated method stub
 		return "/cat/cat_kitten";
-	}
-
-	@Override
-	@RequestMapping("/cat_supplies.do")
-	public String showCatSupplies() {
-		// TODO Auto-generated method stub
-		return "/cat/cat_supplies";
 	}
 
 	@Override

@@ -10,7 +10,7 @@
 		<result property="name" column="name" />
 		<result property="gender" column="gender" />
 		<result property="email" column="email" />
-			<result property="joindate" column="joindate" />
+		<result property="joinDate" column="joinDate" />
 	</resultMap>
 	
 	<select id="listMembers" resultMap="memResult">
@@ -33,7 +33,7 @@
 	
 	<insert id="addMember" parameterType="memberDTO">
 		<![CDATA[
-			insert into animal_member (id, pwd, age, name, gender, email, joindate)
+			insert into animal_member (id, pwd, age, name, gender, email, joinDate)
 						values (#{id}, #{pwd}, #{name}, #{age}, #{gender}, #{email}, sysdate)
 		]]>
 	</insert>

@@ -248,29 +248,29 @@ body {
 
             <li class="nav-item">강아지 용품
                <ul class="submenu">
-                  <li><a href="${contextPath }/dog_product/all.do">전체</a></li>
-                  <li><a href="${contextPath }/dog_product/feed.do">사료</a></li>
-                  <li><a href="${contextPath }/dog_product/treat.do">간식</a></li>
-                  <li><a href="${contextPath }/dog_product/poop.do">배변용품</a></li>
-                  <li><a href="${contextPath }/dog_product/carrier.do">이동장</a></li>
-                  <li><a href="${contextPath }/dog_product/toy.do">장난감</a></li>
-                  <li><a href="${contextPath }/dog_product/bath.do">목욕용품</a></li>
-                  <li><a href="${contextPath }/dog_product/house.do">하우스</a></li>
-                  <li><a href="${contextPath }/dog_product/dish.do">식기</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_poop.do">배변용품</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_carrier.do">이동장</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_toy.do">장난감</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_house.do">하우스</a></li>
+                  <li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
                </ul>
             </li>
 
             <li class="nav-item">고양이 용품
                <ul class="submenu">
-                  <li><a href="${contextPath }/cat_product/all.do">전체</a></li>
-                  <li><a href="${contextPath }/cat_product/feed.do">사료</a></li>
-                  <li><a href="${contextPath }/cat_product/treat.do">간식</a></li>
-                  <li><a href="${contextPath }/cat_product/sand.do">모래</a></li>
-                  <li><a href="${contextPath }/cat_product/carrier.do">이동장</a></li>
-                  <li><a href="${contextPath }/cat_product/toy.do">장난감</a></li>
-                  <li><a href="${contextPath }/cat_product/bath.do">목욕용품</a></li>
-                  <li><a href="${contextPath }/cat_product/house.do">하우스</a></li>
-                  <li><a href="${contextPath }/cat_product/dish.do">식기</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
                </ul>
             </li>
          </ul>

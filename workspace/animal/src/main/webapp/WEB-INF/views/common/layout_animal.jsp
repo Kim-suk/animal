@@ -17,6 +17,9 @@
 		<div id="header">
 			<tiles:insertAttribute name="header" /> 
 		</div>
+		<div id="sidebar-animal">
+			<tiles:insertAttribute name="side" />
+		</div>
 		<div id="content">
 			<tiles:insertAttribute name="body" />
 		</div>

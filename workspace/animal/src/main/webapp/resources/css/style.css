@@ -10,7 +10,7 @@ body, html {
 /* 헤더 수정 */
 #header {
     width: 100%;
-    height: 60px;
+    height: 140px;
     background-color: white;
     border-bottom: 1px solid #bcbcbc;
     position: fixed;
@@ -32,18 +32,33 @@ body, html {
     margin-top: 60px;
 }
 
-/* 사이드바 수정 */
-/* #sidebar-left {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    top: 60px;
+/* 동물 사이드바 */
+#sidebar-animal {
+    
+    top: 140px; /* 헤더 높이만큼 내림 */
     left: 0;
-    background-color: #f8f9fa;
-    border-right: 1px solid #ccc;
-    padding: 20px;
+    width: 250px;
+    height: 900px;
+    margin-top: 50px;
+    padding-top: 20px;
+    bottom: 0;
+    background-color: yellow;
     overflow-y: auto;
-} */
+}
+
+/* 상점 사이드바 */
+#sidebar-product {
+    
+    top: 140px; /* 헤더 높이만큼 내림 */
+    left: 0;
+    width: 250px;
+    height: 900px;
+    margin-top: 50px;
+    padding-top: 20px;
+    bottom: 0;
+    background-color: yellow;
+    overflow-y: auto;
+}
 
 /* 메인 콘텐츠 영역 수정 */
 #content {

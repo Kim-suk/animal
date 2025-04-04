@@ -9,9 +9,11 @@
 <body>
 <div>
  	<input type="text" name="">검색창 <br>
- 	<input type="checkbox" name="">소형견 <br>
- 	<input type="checkbox" name="">중형견 <br>
-  	<input type="checkbox" name="">대형견 <br>
+ 	<input type="checkbox" name="">기초지식 <br>
+ 	<input type="checkbox" name="">성장과정 <br>
+  	<input type="checkbox" name="">준비 <br>
+  	<input type="checkbox" name="">급여방법 <br>
+  	<input type="checkbox" name="">케어방법 <br>
 </div>
 </body>
 </html>

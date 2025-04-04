@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 	강아지 목욕
+ 	고양이 전체
 </body>
 </html>

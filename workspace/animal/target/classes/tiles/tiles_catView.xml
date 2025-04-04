@@ -5,7 +5,7 @@
 	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 	
 <tiles-definitions>
-	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+	<definition name="animalLayout" template="/WEB-INF/views/common/layout_animal.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
 		<put-attribute name="side" value="" />
@@ -13,17 +13,19 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	<definition name="/cat/cat_type" extends="baseLayout">
+	<definition name="/cat/cat_type" extends="animalLayout">
 		<put-attribute name="title" value="묘종"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_cat.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_type.jsp" />
 	</definition>
 	
-	<definition name="/cat/cat_kitten" extends="baseLayout">
+	<definition name="/cat/cat_kitten" extends="animalLayout">
 		<put-attribute name="title" value="어린 고양이"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_baby.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_kitten.jsp" />
 	</definition>
 	
-	<definition name="/cat/cat_think" extends="baseLayout">
+	<definition name="/cat/cat_think" extends="animalLayout">
 		<put-attribute name="title" value="고양이를 기를까 말까"/>
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_think.jsp" />
 	</definition>

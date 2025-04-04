@@ -7,6 +7,10 @@
 <title>묘종</title>
 </head>
 <body>
-
+고얌미(정보)
+견종
+성격
+특징
+주의사항
 </body>
 </html>

@@ -13,8 +13,6 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	
-	
 	<definition name="/dog/dog_type" extends="baseLayout">
 		<put-attribute name="title" value="품종"/>
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_type.jsp" />
@@ -29,12 +27,5 @@
 		<put-attribute name="title" value="강아지를 기를까 생각중이신가요?"/>
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_think.jsp" />
 	</definition>
-	
-		<definition name="/dog/dog_all" extends="baseLayout">
-		<put-attribute name="title" value="강아지의 모든것!"/>
-		<put-attribute name="body" value="/WEB-INF/views/dog/dog_all.jsp" />
-	</definition>
-	
-
 	
 </tiles-definitions>

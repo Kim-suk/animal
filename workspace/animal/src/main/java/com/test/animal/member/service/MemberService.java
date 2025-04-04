@@ -11,4 +11,6 @@ public interface MemberService {
 	int addMember(MemberDTO member);
 	int modMember(MemberDTO member);
 	MemberDTO login(MemberDTO member);
+	void registerNaverUser(MemberDTO member);
+	MemberDTO findByNaverId(String id);
 }

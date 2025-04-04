@@ -14,11 +14,7 @@
 	<!-- "/resources/"아래의 모든 파일을 직접적으로 요청 가능 -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-<!-- 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
-<!-- InternalResourceViewResolver : 컨트롤러에서 반환한 뷰 이름을 가지고 JSP 파일을 찾아 실행하는 역할 --> 
-	<!-- 	<property name="prefix" value="/WEB-INF/views/" /> prefix:  JSP 파일이 위치한 경로 지정 (/WEB-INF/views/)
-		<property name="suffix" value=".jsp" /> suffix : JSP 파일의 확장자 지정 (.jsp)
-	</bean> -->
+ 	
 	
 		<!-- Tiles를 사용하면 JSP의 공통 레이아웃을 효율적으로 관리 -->
 		<!--  Tiles를 사용하기 위한 설정 객체 생성 -->
@@ -33,6 +29,11 @@
 		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
 		<!-- SpringBeanPreparerFactory : Tiles에서 Spring의 Bean을 활용 가능 -->
 	</bean>	
+	
+
+<!-- JSP를 위한 ViewResolver (Tiles에서 찾지 못할 경우 사용) -->
+
+
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 	<!-- UrlBasedViewResolver :  JSP 파일이 아닌 Tiles 템플릿(XML 설정 파일)을 기반으로 뷰를 찾음. -->

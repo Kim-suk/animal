@@ -54,4 +54,5 @@ public interface MemberController {
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Exception;
 
+	
 }

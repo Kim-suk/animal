@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 	강아지 목욕
+ 	강아지 용품 전체
 </body>
 </html>

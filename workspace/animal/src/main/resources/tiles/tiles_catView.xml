@@ -27,10 +27,4 @@
 		<put-attribute name="title" value="고양이를 기를까 말까"/>
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_think.jsp" />
 	</definition>
-	
-	<definition name="/cat/cat_all" extends="baseLayout">
-		<put-attribute name="title" value="고양이에 대한 모든 것"/>
-		<put-attribute name="body" value="/WEB-INF/views/cat/cat_all.jsp" />
-	</definition>
-	
 </tiles-definitions>

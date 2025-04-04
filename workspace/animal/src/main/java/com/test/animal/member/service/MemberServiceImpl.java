@@ -10,9 +10,10 @@ import com.test.animal.member.dao.MemberDAO;
 import com.test.animal.member.dto.MemberDTO;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl<UserMaper> implements MemberService {
 	@Autowired
 	private MemberDAO dao;
+	private UserMaper userMapper;
 	
 	@Override
 	public List<MemberDTO> listMembers() {
@@ -49,6 +50,18 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.login(member);
 	}
+
+	@Override
+	public void registerNaverUser(MemberDTO member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public MemberDTO findByNaverId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
 

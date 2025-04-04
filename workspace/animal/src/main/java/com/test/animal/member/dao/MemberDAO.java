@@ -11,4 +11,6 @@ public interface MemberDAO {
 	int addMember(MemberDTO member);
 	int modMember(MemberDTO member);
 	MemberDTO login(MemberDTO member);
+	MemberDTO selectByNaverId(String naverId);
+	void insertNaverUser(MemberDTO member);
 }

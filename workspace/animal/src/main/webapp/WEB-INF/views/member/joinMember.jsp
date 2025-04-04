@@ -81,6 +81,32 @@ function join() {
 
     return false; // 폼이 즉시 제출되는 것을 방지하고 setTimeout을 기다리도록 함
 }
+
+ // ID 중복 검사
+function checkDuplicate() {
+            var userId = $("#userId").val();
+
+            if (userId.trim() === "") {
+                $("#result").css("color", "red").text("아이디를 입력하세요.");
+                return;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/user/checkId",
+                data: { userId: userId },
+                success: function(response) {
+                    if (response === "available") {
+                        $("#result").css("color", "green").text("사용 가능한 아이디입니다.");
+                    } else {
+                        $("#result").css("color", "red").text("이미 사용 중인 아이디입니다.");
+                    }
+                },
+                error: function() {
+                    $("#result").css("color", "red").text("서버 오류가 발생했습니다.");
+                }
+            });
+}
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <style>
@@ -121,10 +147,12 @@ function join() {
             <div class="mb-3">
                 <label class="form-label">ID</label>
                 <input type="text" name="id" class="form-control" required>
+                <button type="button" onclick="checkDuplicate()">중복 검사</button>
             </div>
             <div class="mb-3">
                 <label class="form-label">PASSWORD</label>
                 <input type="password" name="pwd" class="form-control" required>
+        		<p id="result"></p>
             </div>
             <div class="mb-3">
                 <label class="form-label">CONFIRM PASSWORD</label>

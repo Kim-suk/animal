@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.test.animal.member.service.MemberService;
-
+import com.test.animal.member.service.MemberServiceImpl;
 import com.test.animal.member.dto.MemberDTO;
 
 @Controller
@@ -187,8 +187,13 @@ public class MemberControllerImpl implements MemberController{
 		mav.setViewName("redirect:/member/loginForm.do");
 		return mav;
 	}
+	
+
+	/*
+	 * @RequestMapping("/checkId") public String checkId(@RequestParam("userId")
+	 * String userId) { Object memberService; boolean isDuplicate =
+	 * (memberService).isUserIdExists(userId); return isDuplicate ? "duplicate" :
+	 * "available"; }
+	 */
 }
-
-
-
 

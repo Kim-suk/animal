@@ -10,7 +10,11 @@ public class MemberDTO {
 	private String gender;
 	private String email;
 	private Date joinDate;
-	
+	private String naverId;   // 네이버 ID
+	private String kakaoId;   // 네이버 ID
+	private String googleId;   // 네이버 ID
+	private String joinType;  // NAVER / EMAIL
+
 	public String getId() {
 		return id;
 	}
@@ -51,13 +55,61 @@ public class MemberDTO {
 	public Date getJoinDate() {
 		return joinDate;
 	}
-	
+
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
-	
+	/**
+	 * @return the naverId
+	 */
+	public String getNaverId() {
+		return naverId;
+	}
+	/**
+	 * @param naverId the naverId to set
+	 */
+	public void setNaverId(String naverId) {
+		this.naverId = naverId;
+	}
+	/**
+	 * @return the joinType
+	 */
+	public String getJoinType() {
+		return joinType;
+	}
+	/**
+	 * @param joinType the joinType to set
+	 */
+	public void setJoinType(String joinType) {
+		this.joinType = joinType;
+	}
+	/**
+	 * @return the kakaoId
+	 */
+	public String getKakaoId() {
+		return kakaoId;
+	}
+	/**
+	 * @param kakaoId the kakaoId to set
+	 */
+	public void setKakaoId(String kakaoId) {
+		this.kakaoId = kakaoId;
+	}
+	/**
+	 * @return the googleId
+	 */
+	public String getGoogleId() {
+		return googleId;
+	}
+	/**
+	 * @param googleId the googleId to set
+	 */
+	public void setGoogleId(String googleId) {
+		this.googleId = googleId;
+	}
 
 
-	
+
+
 
 }

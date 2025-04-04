@@ -11,11 +11,20 @@
 		<result property="gender" column="gender" />
 		<result property="email" column="email" />
 		<result property="joinDate" column="joinDate" />
-
-		<result property="joinDate" column="joinDate" />
+		<result property="naverId" column="naverId" />
+		<result property="googleId" column="googleId" />
+		<result property="kakaoId" column="kakaoId" />
+		<result property="joinType" column="joinType" />
 
 	</resultMap>
 	
+	<!-- 아이디 중복 체크 쿼리 추가 -->
+    <select id="checkUserId" parameterType="String" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) FROM animal_member WHERE id = #{id}
+        ]]>
+    </select>
+    
 	<select id="listMembers" resultMap="memResult">
 		<![CDATA[
 			select * from animal_member order by joinDate desc
@@ -57,4 +66,36 @@
 			select * from animal_member where id=#{id} and pwd=#{pwd}
 		]]>	
 	</select>
+	
+	
+     <!-- 네이버 -->
+    <select id="selectByNaverId" resultType="memberDTO">
+        <![CDATA[
+        SELECT * FROM ANIMAL_MEMBER WHERE NAVER_ID = #{naverId}
+        ]]>
+    </select>
+
+    <!-- 구글 -->
+    <select id="selectByGoogleId" resultType="memberDTO">
+        <![CDATA[
+        SELECT * FROM ANIMAL_MEMBER WHERE GOOGLE_ID = #{googleId}
+        ]]>
+    </select>
+
+    <!-- 카카오 -->
+    <select id="selectByKakaoId" resultType="memberDTO">
+        <![CDATA[
+        SELECT * FROM ANIMAL_MEMBER WHERE KAKAO_ID = #{kakaoId}
+        ]]>
+    </select>
+
+    <!-- 소셜 사용자 삽입 -->
+    <insert id="insertSocialUser" parameterType="memberDTO">
+        <![CDATA[
+        INSERT INTO ANIMAL_MEMBER
+            (ID, NAME, EMAIL, NAVER_ID, GOOGLE_ID, KAKAO_ID, JOIN_TYPE)
+        VALUES
+            (#{id}, #{name}, #{email}, #{naverId}, #{googleId}, #{kakaoId}, #{joinType})
+        ]]>
+    </insert>
 </mapper>

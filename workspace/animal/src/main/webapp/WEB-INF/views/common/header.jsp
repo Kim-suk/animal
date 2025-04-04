@@ -197,7 +197,7 @@ body {
 
 <body>
    <div class="banner">
-   	<a href="${contextPath }/main.do" class="banner-link">
+      <a href="${contextPath }/main.do" class="banner-link">
       <img src="${contextPath}/resources/image/banner.png">
       </a>
       <!-- 로그인/로그아웃 버튼 -->
@@ -220,12 +220,13 @@ body {
          <ul class="navbar-nav">
             <li class="nav-item">
             <a class="nav-link" href="${contextPath }/main.do">홈</a></li>
-
-            		  <li class="nav-item">동물병원
+           <li class="nav-item">동물병원
                 <ul class="submenu">
             		<li><a href="${contextPath }/hospital/map.do">지도</a></li>
                     <li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
  </ul>
+
+
                <li class="nav-item">고양이
                 <ul class="submenu">
                     <li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
@@ -252,7 +253,6 @@ body {
 
             <li class="nav-item">강아지 용품
                <ul class="submenu">
-
                   <li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
                   <li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
                   <li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
@@ -264,16 +264,17 @@ body {
                   <li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
                </ul>
             </li>
+
             <li class="nav-item">고양이 용품
                <ul class="submenu">
                   <li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
                   <li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
                   <li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
-                  <li><a href="${contextPath }/cat_product/cat_sand.do">배변용품</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
                   <li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
                   <li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
                   <li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
-                  <li><a href="${contextPath }/cat_product/cat_house.do">캣타워</a></li>
+                  <li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
                   <li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
                </ul>
             </li>

@@ -50,6 +50,19 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectOne("mapper.member.login", member);
 	}
 
+	@Override
+	public MemberDTO selectByNaverId(String naverId) {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertNaverUser(MemberDTO member) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 
 

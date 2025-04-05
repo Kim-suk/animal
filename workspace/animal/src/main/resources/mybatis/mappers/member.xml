@@ -20,85 +20,91 @@
 
     <!-- 아이디 중복 체크 -->
     <select id="checkUserId" parameterType="String" resultType="int">
-        SELECT COUNT(*) FROM animal_member WHERE id = #{id}
+       <![CDATA[ SELECT COUNT(*) FROM animal_member WHERE id = #{id} ]]>
     </select>
 
     <!-- 전체 회원 리스트 -->
     <select id="listMembers" resultMap="memResult">
-        SELECT * FROM animal_member ORDER BY joinDate DESC
+      <![CDATA[  SELECT * FROM animal_member ORDER BY joinDate DESC ]]>
     </select>
 
     <!-- 회원 상세 -->
     <select id="memberDetail" parameterType="String" resultType="memberDTO">
-        SELECT * FROM animal_member WHERE id = #{id}
+      <![CDATA[  SELECT * FROM animal_member WHERE id = #{id} ]]>
     </select>
 
     <!-- 회원 삭제 -->
     <delete id="delMember" parameterType="String">
-        DELETE FROM animal_member WHERE id = #{id}
+      <![CDATA[  DELETE FROM animal_member WHERE id = #{id} ]]>
     </delete>
 
     <!-- 일반 회원 가입 -->
     <insert id="addMember" parameterType="memberDTO">
-        INSERT INTO animal_member
+       <![CDATA[ INSERT INTO animal_member
             (id, pwd, age, name, gender, email, joinDate)
         VALUES
-            (#{id}, #{pwd}, #{age, jdbcType=INTEGER}, #{name}, #{gender}, #{email}, SYSDATE)
+            (#{id}, #{pwd}, #{age, jdbcType=INTEGER}, #{name}, #{gender}, #{email}, SYSDATE) ]]>
     </insert>
 
     <!-- 회원 수정 -->
     <update id="modMember" parameterType="memberDTO">
-        UPDATE animal_member
+      <![CDATA[  UPDATE animal_member
         SET pwd = #{pwd},
             age = #{age, jdbcType=INTEGER},
             name = #{name},
             gender = #{gender},
             email = #{email}
-        WHERE id = #{id}
+        WHERE id = #{id} ]]>
     </update>
 
     <!-- 로그인 -->
     <select id="login" parameterType="memberDTO" resultType="memberDTO">
-        SELECT * FROM animal_member WHERE id = #{id} AND pwd = #{pwd}
+       <![CDATA[ SELECT id, pwd, name, age, gender, joinDate
+    FROM animal_member
+    WHERE id = #{id} AND pwd = #{pwd}]]>
     </select>
 
     <!-- 네이버 사용자 조회 -->
     <select id="selectByNaverId" resultType="memberDTO">
-        SELECT * FROM animal_member WHERE naver_id = #{naverId}
+      <![CDATA[  SELECT * FROM animal_member WHERE naver_id = #{naverId} ]]>
     </select>
 
     <!-- 구글 사용자 조회 -->
     <select id="selectByGoogleId" resultType="memberDTO">
-        SELECT * FROM animal_member WHERE google_id = #{googleId}
+      <![CDATA[  SELECT * FROM animal_member WHERE google_id = #{googleId} ]]>
     </select>
 
     <!-- 카카오 사용자 조회 -->
     <select id="selectByKakaoId" resultType="memberDTO">
-        SELECT * FROM animal_member WHERE kakao_id = #{kakaoId}
+       <![CDATA[ SELECT * FROM animal_member WHERE kakao_id = #{kakaoId} ]]>
     </select>
+
+<select id="findByEmail" parameterType="string" resultType="memberDTO">
+   <![CDATA[  SELECT * FROM animal_member WHERE email = #{email}]]>
+</select>
 
     <!-- 네이버 사용자 삽입 -->
     <insert id="insertNaverUser" parameterType="memberDTO">
-        INSERT INTO animal_member
+       <![CDATA[  INSERT INTO animal_member
             (id, pwd, name, email, naver_id, join_type, age, gender, joinDate)
         VALUES
-             (#{id}, #{pwd}, #{name}, #{email}, #{naverId}, #{joinType}, 0, 'U', SYSDATE)
+             (#{id}, #{pwd}, #{name}, #{email}, #{naverId, jdbcType=VARCHAR}, #{joinType}, 0, 'U', SYSDATE) ]]>
     </insert>
 
     <!-- 구글 사용자 삽입 -->
     <insert id="insertGoogleUser" parameterType="memberDTO">
-        INSERT INTO animal_member
+        <![CDATA[ INSERT INTO animal_member
             (id, pwd, name, email, google_id, join_type, age, gender, joinDate)
         VALUES
-            (#{id},#{pwd}, #{name}, #{email}, #{joinType}, 'SOCIAL', 0, 'U', SYSDATE)
+            (#{id},#{pwd}, #{name}, #{email}, #{googleId, jdbcType=VARCHAR}, #{joinType}, 'SOCIAL', 0, 'U', SYSDATE) ]]>
     </insert>
 
     <!-- 카카오 사용자 삽입 -->
-    <insert id="insertKakaoUser" parameterType="memberDTO">
-        INSERT INTO animal_member
+     <insert id="insertKakaoUser" parameterType="memberDTO">
+       <![CDATA[ INSERT INTO animal_member
             (id, pwd, name, email, kakao_id, join_type, age, gender, joinDate)
         VALUES
-            (#{id},#{pwd}, #{name}, #{email}, #{joinType}, 'SOCIAL', 0, 'U', SYSDATE)
+            (#{id},#{pwd}, #{name}, #{email},  #kakaoId, jdbcType=VARCHAR}, #{joinType}, 'SOCIAL', 0, 'U', SYSDATE) ]]>
     </insert>
 
 </mapper>

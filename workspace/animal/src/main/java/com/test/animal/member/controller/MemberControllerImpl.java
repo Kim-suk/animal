@@ -139,61 +139,63 @@ public class MemberControllerImpl implements MemberController{
 	@Override
 	@RequestMapping(value="/member/login.do", method=RequestMethod.POST)
 	public ModelAndView login(MemberDTO member, 
-			RedirectAttributes rAttr,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
-		member = service.login(member);
-		
-		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession();
-		
-		if(member != null) {
-			mav.setViewName("redirect:/main.do");
-			session.setAttribute("member", member);
-			session.setAttribute("loginId", member.getId());
-			session.setAttribute("isLogin", true);
-			
-			String action = (String) session.getAttribute("action");
-			session.removeAttribute("action");
-			if(action != null) {
-				mav.setViewName("redirect:"+action);
-			} 
-		} else {
-			mav.setViewName("redirect:/member/loginForm.do");
-			rAttr.addAttribute("result", "loginFailed");
-		}
-		
-		return mav;
+	        RedirectAttributes rAttr,
+	        HttpServletRequest request, HttpServletResponse response)
+	        throws Exception {
+
+	    member = service.login(member); // 로그인 시도
+	    ModelAndView mav = new ModelAndView();
+	    HttpSession session = request.getSession();
+
+	    if (member != null) {
+	        // 로그인 성공 시 세션 설정
+	        session.setAttribute("member", member);
+	        session.setAttribute("loginId", member.getId());
+	        session.setAttribute("loginName", member.getName());
+	        session.setAttribute("isLogin", true);
+	       
+	        String action = (String) session.getAttribute("action");
+	        session.removeAttribute("action");
+
+	        if (action != null) {
+	            mav.setViewName("redirect:" + action);
+	        } else {
+	            mav.setViewName("redirect:/main.do");
+	        }
+	    } else {
+	        mav.setViewName("redirect:/member/loginForm.do");
+	        rAttr.addAttribute("result", "loginFailed");
+	    }
+
+	    return mav;
 	}
+
 
 	@Override
 	@RequestMapping("/member/logout.do")
 	public ModelAndView logout(
-			RedirectAttributes rAttr,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		
-		ModelAndView mav = new ModelAndView();
-		Boolean isLogin = (Boolean) session.getAttribute("isLogin");
-		
-		if(session != null && isLogin != null) {
-			session.invalidate();
-			rAttr.addAttribute("result", "logout");
-		} else {
-			rAttr.addAttribute("result", "notLogin");
-		}
-		mav.setViewName("redirect:/member/loginForm.do");
-		return mav;
-	}
-	
+	        RedirectAttributes rAttr,
+	        HttpServletRequest request,
+	        HttpServletResponse response) throws Exception {
 
-	/*
-	 * @RequestMapping("/checkId") public String checkId(@RequestParam("userId")
-	 * String userId) { Object memberService; boolean isDuplicate =
-	 * (memberService).isUserIdExists(userId); return isDuplicate ? "duplicate" :
-	 * "available"; }
-	 */
+	    HttpSession session = request.getSession(false);
+	    ModelAndView mav = new ModelAndView();
+
+	    if (session != null) {
+	        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+	        if (isLogin != null && isLogin) {
+	            session.invalidate();
+	            rAttr.addAttribute("result", "logout");
+	        } else {
+	            rAttr.addAttribute("result", "notLogin");
+	        }
+	    } else {
+	        rAttr.addAttribute("result", "notLogin");
+	    }
+
+	    mav.setViewName("redirect:/member/loginForm.do");
+	    return mav;
+	}
+
 }
 

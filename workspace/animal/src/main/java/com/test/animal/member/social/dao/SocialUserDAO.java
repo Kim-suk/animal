@@ -9,4 +9,5 @@ public interface SocialUserDAO {
 	MemberDTO selectByNaverId(String naverId);
 	MemberDTO selectByKakaoId(String kakaoId);
 	void insertKakaoUser(MemberDTO member);
+	MemberDTO findByEmail(String email);
 }

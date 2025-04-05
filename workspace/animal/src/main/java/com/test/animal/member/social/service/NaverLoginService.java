@@ -8,4 +8,5 @@ public interface NaverLoginService {
     MemberDTO findByNaverId(String naverId);
     void registerNaverUser(MemberDTO member);
 	String getAccessToken(String code, String state);
+	MemberDTO findByEmail(String email);
 }

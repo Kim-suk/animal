@@ -42,4 +42,10 @@ public class SocialUserDAOImpl implements SocialUserDAO {
     public void insertKakaoUser(MemberDTO member) {
         sqlSession.insert(NAMESPACE + ".insertKakaoUser", member);
     }
+
+	@Override
+	public MemberDTO findByEmail(String email) {
+		// TODO Auto-generated method stub
+	    return sqlSession.selectOne(NAMESPACE + ".findByEmail", email);
+	}
 }

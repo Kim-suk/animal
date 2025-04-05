@@ -37,6 +37,7 @@ public class NaverLoginController {
     }
 
     // 🔹 Step 2: 콜백 처리
+ // 🔹 Step 2: 콜백 처리
     @RequestMapping("/naverLogin")
     public String naverCallback(@RequestParam("code") String code,
                                 @RequestParam("state") String state,
@@ -55,28 +56,53 @@ public class NaverLoginController {
         // 3. 사용자 정보 요청
         NaverUserDTO naverUser = naverService.getUserInfo(accessToken);
 
-        // 4. 기존 회원 여부 확인
+        if (naverUser == null || naverUser.getId() == null) {
+            System.out.println("⚠️ 네이버 사용자 정보 조회 실패");
+            return "redirect:/member/login.jsp?result=loginFailed";
+        }
+
+        // 4. naver_id 기준 회원 조회
         MemberDTO member = naverService.findByNaverId(naverUser.getId());
 
-        // 5. 신규 회원이면 등록
+        // 5. 회원이 없으면 새로 등록
         if (member == null) {
+            // 5-1. 이메일 중복 여부 확인
+            MemberDTO existingByEmail = naverService.findByEmail(naverUser.getEmail());
+            if (existingByEmail != null) {
+                // 기존 이메일 회원이 있으면 해당 회원으로 로그인 처리
+                session.setAttribute("loginMember", existingByEmail);
+                return "redirect:/main.do";
+            }
+
+            // 5-2. 신규 회원 등록
             member = new MemberDTO();
-            member.setId(naverUser.getId());
+            member.setId("naver_" + naverUser.getId()); // 💡 DB id는 UNIQUE 해야 함
             member.setEmail(naverUser.getEmail());
-            member.setName(naverUser.getName());
-            member.setJoinType("NAVER");
+
+            // 이름 처리
+            if (naverUser.getName() == null || naverUser.getName().trim().isEmpty()) {
+                member.setName("네이버사용자");
+            } else {
+                member.setName(naverUser.getName());
+            }
 
             // 기본값 설정
+            member.setJoinType("NAVER");
             member.setPwd("SOCIAL");
             member.setAge(0);
             member.setGender("U");
 
-            naverService.registerNaverUser(member);
+            // 회원 등록 시도
+            try {
+                naverService.registerNaverUser(member);
+            } catch (Exception e) {
+                System.out.println("❌ 회원 등록 중 오류 발생: " + e.getMessage());
+                return "redirect:/member/login.jsp?result=joinFailed";
+            }
         }
 
-        // 6. 세션 저장
+        // 6. 세션 저장 후 로그인 완료
         session.setAttribute("loginMember", member);
-
         return "redirect:/main.do";
     }
 }

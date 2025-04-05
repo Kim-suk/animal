@@ -205,16 +205,16 @@ body {
       <!-- 로그인/로그아웃 버튼 -->
       <div class="nav-login">
          <c:choose>
-            <c:when test="${isLogin == true}">
-               <span class="login-user">${loginId}님</span>
+            <c:when test="${sessionScope.isLogin == true}">
+               <span class="login-user">${sessionScope.loginName}님</span>
                <a href="${contextPath}/member/logout.do" class="btn btn-outline-dark">로그아웃</a>
             </c:when>
             <c:otherwise>
                <a href="${contextPath}/member/loginForm.do" class="btn btn-outline">로그인</a>
-               <a href="${contextPath}/member/joinMember.do" class="btn btn-outline-second">회원가입   </a>
+               <a href="${contextPath}/member/joinMember.do" class="btn btn-outline-second">회원가입</a>
             </c:otherwise>
          </c:choose>
-      </div>
+   	   </div>
    </div>
     
    <nav class="navbar navbar-expand-lg">

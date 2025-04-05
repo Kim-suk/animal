@@ -22,9 +22,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
     private final String CLIENT_SECRET = "1Uc0p97bSO";
     private final String REDIRECT_URI = "http://localhost:8080/animal/member/naverLogin";
 
-    /**
-     * 로그인 시작 시 호출하여 로그인 URL 반환
-     */
+    
     public String getLoginUrl(HttpSession session) {
         String state = UUID.randomUUID().toString(); // 무작위 state 생성
         session.setAttribute("naverState", state);   // 세션에 저장
@@ -35,7 +33,6 @@ public class NaverLoginServiceImpl implements NaverLoginService {
                 + "&redirect_uri=" + REDIRECT_URI
                 + "&state=" + state;
 
-        System.out.println("🔗 생성된 네이버 로그인 URL: " + loginUrl);
         return loginUrl;
     }
 
@@ -48,12 +45,9 @@ public class NaverLoginServiceImpl implements NaverLoginService {
                 + "&code=" + code
                 + "&state=" + state;
 
-        System.out.println("🔥 요청할 토큰 URL: " + url);
+       
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-
-        System.out.println("🔥 응답 상태 코드: " + response.getStatusCode());
-        System.out.println("🔥 응답 바디: " + response.getBody());
 
         JSONObject json = new JSONObject(response.getBody());
         return json.getString("access_token");
@@ -75,8 +69,18 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 
         NaverUserDTO user = new NaverUserDTO();
         user.setId(responseObj.getString("id"));
-        user.setEmail(responseObj.optString("email"));
-        user.setName(responseObj.optString("name"));
+
+        // ⭐ 이메일 길이 예외 처리 추가
+        String email = responseObj.optString("email");
+        if (email == null || email.isEmpty()) {
+            email = user.getId() + "@naver.com"; // 이메일 없으면 기본값
+        }
+        if (email.length() > 50) {
+            email = email.substring(0, 50); // 너무 길면 자르기
+        }
+        user.setEmail(email); // 수정된 이메일 적용
+
+        user.setName(responseObj.optString("name")); // 이름도 필요시 자를 수 있음
 
         return user;
     }
@@ -90,4 +94,10 @@ public class NaverLoginServiceImpl implements NaverLoginService {
     public void registerNaverUser(MemberDTO member) {
         socialUserDAO.insertNaverUser(member);
     }
+
+	@Override
+	public MemberDTO findByEmail(String email) {
+		  return socialUserDAO.findByEmail(email);
+	}
+
 }

@@ -16,7 +16,7 @@ public class KakaoLoginController {
     @Autowired
     private KakaoLoginService KakaoService;
 
-    @RequestMapping("/animal/member/KakaoLogin")
+    @RequestMapping("/member/KakaoLogin")
     public String KakaoCallback(@RequestParam("code") String code, HttpSession session) {
         String accessToken = KakaoService.getAccessToken(code);
         KakaoUserDTO KakaoUser = KakaoService.getUserInfo(accessToken);

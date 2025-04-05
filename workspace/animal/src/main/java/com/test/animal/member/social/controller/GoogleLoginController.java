@@ -16,7 +16,7 @@ public class GoogleLoginController {
     @Autowired
     private GoogleLoginService googleService;
 
-    @RequestMapping("/animal/member/googleLogin")
+    @RequestMapping("/member/googleLogin")
     public String googleCallback(@RequestParam("code") String code, HttpSession session) {
         String accessToken = googleService.getAccessToken(code);
         GoogleUserDTO googleUser = googleService.getUserInfo(accessToken);

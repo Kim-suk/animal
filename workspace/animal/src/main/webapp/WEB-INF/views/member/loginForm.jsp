@@ -11,7 +11,6 @@
 <!-- Bootstrap 5 CDN 추가 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"></script>
 
 <style>
     .login-container {
@@ -171,7 +170,7 @@ s
 
   <!-- 네이버, 구글, 카카오 버튼 -->
 <div class="social-login">
-  <a id="naverLoginBtn" class="social-btn naver" href="${contextPath}/member/naverLogin" title="네이버 로그인" alt="네이버 로그인">N</a>
+  <a class="social-btn naver" href="${contextPath}/member/naverLoginStart" title="네이버 로그인" alt="네이버 로그인">N</a>
   <a class="social-btn google" href="${contextPath}/member/googleLogin" title="구글 로그인" alt="구글 로그인">G</a>
 <a class="social-btn kakao" href="${contextPath}/member/kakaoLogin" title="카카오 로그인" alt="카카오 로그인">K</a>
 </div>

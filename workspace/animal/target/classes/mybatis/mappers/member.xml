@@ -59,9 +59,9 @@
 
     <!-- 로그인 -->
     <select id="login" parameterType="memberDTO" resultType="memberDTO">
-       <![CDATA[ SELECT id, pwd, name, age, gender, joinDate
-    FROM animal_member
-    WHERE id = #{id} AND pwd = #{pwd}]]>
+      <![CDATA[
+			select * from animal_member where id=#{id} and pwd=#{pwd}
+		]]>	
     </select>
 
     <!-- 네이버 사용자 조회 -->
@@ -101,10 +101,12 @@
 
     <!-- 카카오 사용자 삽입 -->
      <insert id="insertKakaoUser" parameterType="memberDTO">
-       <![CDATA[ INSERT INTO animal_member
-            (id, pwd, name, email, kakao_id, join_type, age, gender, joinDate)
-        VALUES
-            (#{id},#{pwd}, #{name}, #{email},  #kakaoId, jdbcType=VARCHAR}, #{joinType}, 'SOCIAL', 0, 'U', SYSDATE) ]]>
+        <![CDATA[
+       INSERT INTO animal_member
+           (id, pwd, name, email, kakao_id, join_type, age, gender, joinDate)
+       VALUES
+           (#{id}, #{pwd}, #{name}, #{email}, #{kakaoId, jdbcType=VARCHAR}, #{joinType}, 0, 'U', SYSDATE)
+   ]]>
     </insert>
 
 </mapper>

@@ -50,16 +50,17 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectOne("mapper.member.login", member);
 	}
 
+	  // Naver ID로 회원 조회
 	@Override
 	public MemberDTO selectByNaverId(String naverId) {
-		return null;
-		// TODO Auto-generated method stub
+		  return sqlSession.selectOne("mapper.member.selectByNaverId", naverId);
 		
 	}
 
+	// Naver 로그인 신규 가입자 삽입
 	@Override
 	public void insertNaverUser(MemberDTO member) {
-		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.member.insertNaverUser", member);
 		
 	}
 

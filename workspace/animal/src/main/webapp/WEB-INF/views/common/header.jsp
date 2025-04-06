@@ -204,18 +204,22 @@ body {
       
       <!-- 로그인/로그아웃 버튼 -->
       <div class="nav-login">
-         <c:choose>
-            <c:when test="${sessionScope.isLogin == true}">
-               <span class="login-user">${sessionScope.loginName}님</span>
-               <a href="${contextPath}/member/logout.do" class="btn btn-outline-dark">로그아웃</a>
-            </c:when>
-            <c:otherwise>
-               <a href="${contextPath}/member/loginForm.do" class="btn btn-outline">로그인</a>
-               <a href="${contextPath}/member/joinMember.do" class="btn btn-outline-second">회원가입</a>
-            </c:otherwise>
-         </c:choose>
+        <c:choose>
+    <c:when test="${not empty sessionScope.loginId}">
+        <!-- 로그인 상태일 때 -->
+        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">${sessionScope.loginId}님 환영합니다</a></li>
+    </c:when>
+    <c:otherwise>
+        <!-- 비로그인 상태일 때 -->
+        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a></li>
+        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/joinMember.do">회원가입</a></li>
+    </c:otherwise>
+</c:choose>
+
    	   </div>
    </div>
+
     
    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -227,6 +231,7 @@ body {
             		<li><a href="${contextPath }/hospital/map.do">지도</a></li>
                     <li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
  </ul>
+ </li>
 
 
                <li class="nav-item">고양이

@@ -171,8 +171,8 @@ s
   <!-- 네이버, 구글, 카카오 버튼 -->
 <div class="social-login">
   <a class="social-btn naver" href="${contextPath}/member/naverLoginStart" title="네이버 로그인" alt="네이버 로그인">N</a>
-  <a class="social-btn google" href="${contextPath}/member/googleLogin" title="구글 로그인" alt="구글 로그인">G</a>
-<a class="social-btn kakao" href="${contextPath}/member/kakaoLogin" title="카카오 로그인" alt="카카오 로그인">K</a>
+  <a class="social-btn google" href="${contextPath}/member/googleLoginStart" title="구글 로그인" alt="구글 로그인">G</a>
+<a class="social-btn kakao" href="${contextPath}/member/kakaoLoginStart" title="카카오 로그인" alt="카카오 로그인">K</a>
 </div>
 
   </div>

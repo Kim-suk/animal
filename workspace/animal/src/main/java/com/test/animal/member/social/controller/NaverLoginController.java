@@ -37,7 +37,6 @@ public class NaverLoginController {
     }
 
     // 🔹 Step 2: 콜백 처리
- // 🔹 Step 2: 콜백 처리
     @RequestMapping("/naverLogin")
     public String naverCallback(@RequestParam("code") String code,
                                 @RequestParam("state") String state,

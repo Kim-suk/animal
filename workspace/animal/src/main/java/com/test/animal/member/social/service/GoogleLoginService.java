@@ -7,5 +7,7 @@ public interface GoogleLoginService {
     String getAccessToken(String code);
     GoogleUserDTO getUserInfo(String accessToken);
     MemberDTO findByGoogleId(String googleId);
+    MemberDTO findByEmail(String email);
+    MemberDTO findByUserId(String id);
     void registerGoogleUser(MemberDTO member);
 }

@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
- 	고양이 용품 전체
-=======
- 	고양이 전체
->>>>>>> refs/remotes/happy/happy
+<div>
+ 	<input type="text" name="">검색창 <br>
+ 	<input type="checkbox" name="">소형견 <br>
+ 	<input type="checkbox" name="">중형견 <br>
+  	<input type="checkbox" name="">대형견 <br>
+</div>
 </body>
 </html>

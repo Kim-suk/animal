@@ -107,6 +107,14 @@ public class MemberDTO {
 	public void setGoogleId(String googleId) {
 		this.googleId = googleId;
 	}
+	public void setAge(String ageStr) {
+	    try {
+	        this.age = Integer.parseInt(ageStr);
+	    } catch (NumberFormatException e) {
+	        this.age = 0;
+	    }
+	}
+
 
 
 

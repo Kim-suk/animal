@@ -4,10 +4,10 @@
 	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 	
 <tiles-definitions>
-	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+	<definition name="catProductLayout" template="/WEB-INF/views/common/layout_catProduct.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct.jsp" /> 
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
@@ -32,6 +32,50 @@
 		<put-attribute name="body" value="/WEB-INF/views/cat_board/cat_replyForm.jsp" />
 	</definition>
 
+	<definition name="/cat_product/cat_all" extends="catProductLayout">
+		<put-attribute name="title" value="고양이용품전체"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_all.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_feed" extends="catProductLayout">
+		<put-attribute name="title" value="고양이사료"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_feed.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_treat" extends="catProductLayout">
+		<put-attribute name="title" value="고양이간식"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_treat.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_sand" extends="catProductLayout">
+		<put-attribute name="title" value="고양이모래"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_sand.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_carrier" extends="catProductLayout">
+		<put-attribute name="title" value="고양이이동장"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_carrier.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_toy" extends="catProductLayout">
+		<put-attribute name="title" value="고양이장난감"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_toy.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_bath" extends="catProductLayout">
+		<put-attribute name="title" value="고양이목욕용품"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_bath.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_house" extends="catProductLayout">
+		<put-attribute name="title" value="고양이하우스"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_house.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_dish" extends="catProductLayout">
+		<put-attribute name="title" value="고양이식기"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat_product/cat_dish.jsp" />
+	</definition>
 
 </tiles-definitions>
 

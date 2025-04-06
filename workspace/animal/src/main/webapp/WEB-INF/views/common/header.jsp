@@ -219,20 +219,18 @@ body {
 
    	   </div>
    </div>
-
-    
    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
          <ul class="navbar-nav">
             <li class="nav-item">
             <a class="nav-link" href="${contextPath }/main.do">홈</a></li>
+
            <li class="nav-item">동물병원
                 <ul class="submenu">
             		<li><a href="${contextPath }/hospital/map.do">지도</a></li>
                     <li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
  </ul>
  </li>
-
 
                <li class="nav-item">고양이
                 <ul class="submenu">

@@ -64,6 +64,56 @@ public class MemberDAOImpl implements MemberDAO{
 		
 	}
 
+	@Override
+	public MemberDTO selectByKakaoId(String kakaoId) {
+		// TODO Auto-generated method stub
+		  return sqlSession.selectOne("mapper.member.selectByKakaoId", kakaoId);
+	}
+
+	@Override
+	public MemberDTO selectByEmail(String email) {
+		// TODO Auto-generated method stub
+		 return sqlSession.selectOne("mapper.member.selectByEmail", email);
+	}
+
+	@Override
+	public MemberDTO findByUserId(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.member.findByUserId", id);
+	}
+
+	@Override
+	public MemberDTO selectByUserId(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.member.selectByUserId", id);
+	}
+
+	@Override
+	public int checkUserId(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.member.checkUserId", id);
+	}
+
+	@Override
+	public void insertKakaoUser(MemberDTO member) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.member.insertKakaoUser", member);
+		
+	}
+
+	@Override
+	public MemberDTO selectByGoogleId(String id) {
+		// TODO Auto-generated method stub
+		  return sqlSession.selectOne("mapper.member.selectByGoogleId", id);
+	}
+
+	@Override
+	public void insertGoogleUser(MemberDTO member) {
+		// TODO Auto-generated method stub
+		 sqlSession.insert("mapper.member.insertGoogleUser", member);
+		
+	}
+
 }
 
 

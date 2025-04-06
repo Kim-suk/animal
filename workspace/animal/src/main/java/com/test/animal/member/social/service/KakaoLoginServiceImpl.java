@@ -1,67 +1,98 @@
 package com.test.animal.member.social.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.animal.member.dao.MemberDAO;
 import com.test.animal.member.dto.MemberDTO;
-import com.test.animal.member.social.dao.SocialUserDAO;
 import com.test.animal.member.social.dto.KakaoUserDTO;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 @Service
 public class KakaoLoginServiceImpl implements KakaoLoginService {
 
     @Autowired
-    private SocialUserDAO socialUserDAO;
-
-    private final String CLIENT_ID = "fb8d53bac50cea415232bb28a3120465"; // 너의 REST API 키
-    private final String CLIENT_SECRET = ""; // 선택 사항
-    private final String REDIRECT_URI = "http://localhost:8080/animal/member/kakaoLogin";
+    private MemberDAO memberDAO;
 
     @Override
     public String getAccessToken(String code) {
-        String url = "https://kauth.kakao.com/oauth/token";
+        String accessToken = "";
+        String reqURL = "https://kauth.kakao.com/oauth/token";
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-        String body = "grant_type=authorization_code" +
-                      "&client_id=" + CLIENT_ID +
-                      "&redirect_uri=" + REDIRECT_URI +
-                      "&code=" + code +
-                      (CLIENT_SECRET.isEmpty() ? "" : "&client_secret=" + CLIENT_SECRET);
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
 
-        HttpEntity<String> request = new HttpEntity<>(body, headers);
+            String data = "grant_type=authorization_code"
+                    + "&client_id=fb8d53bac50cea415232bb28a3120465"
+                    + "&redirect_uri=http://localhost:8080/animal/member/kakaoLogin"
+                    + "&code=" + code;
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+            try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()))) {
+                bw.write(data);
+                bw.flush();
+            }
 
-        JSONObject json = new JSONObject(response.getBody());
-        return json.getString("access_token");
+            StringBuilder sb = new StringBuilder();
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                String line;
+                while ((line = br.readLine()) != null) sb.append(line);
+            }
+
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode json = mapper.readTree(sb.toString());
+            accessToken = json.get("access_token").asText();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return accessToken;
     }
 
     @Override
     public KakaoUserDTO getUserInfo(String accessToken) {
-        String url = "https://kapi.kakao.com/v2/user/me";
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + accessToken);
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-
-        JSONObject json = new JSONObject(response.getBody());
-
         KakaoUserDTO user = new KakaoUserDTO();
-        user.setId(String.valueOf(json.getLong("id"))); // Kakao ID는 Long 타입
-        JSONObject kakaoAccount = json.getJSONObject("kakao_account");
+        String reqURL = "https://kapi.kakao.com/v2/user/me";
 
-        user.setEmail(kakaoAccount.optString("email", ""));
-        JSONObject profile = kakaoAccount.optJSONObject("profile");
-        if (profile != null) {
-            user.setName(profile.optString("nickname", ""));
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+            StringBuilder result = new StringBuilder();
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                String line;
+                while ((line = br.readLine()) != null) result.append(line);
+            }
+
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode json = mapper.readTree(result.toString());
+
+            user.setId(json.get("id").asText());
+
+            JsonNode kakaoAccount = json.get("kakao_account");
+            if (kakaoAccount != null) {
+                if (kakaoAccount.has("email")) {
+                    user.setEmail(kakaoAccount.get("email").asText());
+                }
+
+                JsonNode profile = kakaoAccount.get("profile");
+                if (profile != null && profile.has("name")) {
+                    user.setName(profile.get("name").asText());
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return user;
@@ -69,11 +100,69 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
 
     @Override
     public MemberDTO findByKakaoId(String kakaoId) {
-        return socialUserDAO.selectByKakaoId(kakaoId);
+        return memberDAO.selectByKakaoId("kakao_" + kakaoId);
+    }
+
+    @Override
+    public MemberDTO findByEmail(String email) {
+        return memberDAO.selectByEmail(email);
     }
 
     @Override
     public void registerKakaoUser(MemberDTO member) {
-        socialUserDAO.insertKakaoUser(member);
+        int count = memberDAO.checkUserId(member.getId());
+        if (count > 0) {
+            throw new IllegalStateException("EXISTING_USER:" + member.getId());
+        }
+
+        memberDAO.insertKakaoUser(member);
+    }
+
+    @Override
+    public MemberDTO findByUserId(String id) {
+        return memberDAO.selectByUserId(id);
+    }
+
+    /**
+     * ✅ 카카오 로그인 통합 처리
+     */
+    @Override
+    public MemberDTO handleKakaoLogin(KakaoUserDTO kakaoUser) {
+        String kakaoId = "kakao_" + kakaoUser.getId();
+
+        // 1. kakao_id로 사용자 확인
+        MemberDTO existing = memberDAO.selectByKakaoId(kakaoId);
+        if (existing != null) return existing;
+
+        // 2. 이메일로 기존 사용자 연동
+        MemberDTO byEmail = memberDAO.selectByEmail(kakaoUser.getEmail());
+        if (byEmail != null) {
+            byEmail.setKakaoId(kakaoId);
+            byEmail.setJoinType("KAKAO");
+            memberDAO.modMember(byEmail);
+            return byEmail;
+        }
+
+        // 3. 새 사용자 등록
+        MemberDTO newMember = new MemberDTO();
+        newMember.setId(kakaoId);
+        newMember.setPwd("SOCIAL");
+
+        String email = (kakaoUser.getEmail() == null || kakaoUser.getEmail().trim().isEmpty())
+                ? "noemail_" + kakaoUser.getId() + "@kakao.com"
+                : kakaoUser.getEmail();
+        newMember.setEmail(email);
+
+        String name = (kakaoUser.getName() == null || kakaoUser.getName().trim().isEmpty())
+                ? "카카오사용자" : kakaoUser.getName();
+        newMember.setName(name);
+
+        newMember.setKakaoId(kakaoId);
+        newMember.setJoinType("KAKAO");
+        newMember.setAge("0");
+        newMember.setGender("U");
+
+        registerKakaoUser(newMember);
+        return newMember;
     }
 }

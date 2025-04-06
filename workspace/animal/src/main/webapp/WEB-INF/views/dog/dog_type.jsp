@@ -7,6 +7,10 @@
 <title>품종</title>
 </head>
 <body>
-	강아지 품종
+	강쥐(정보)
+견종
+성격
+특징
+주의사항
 </body>
 </html>

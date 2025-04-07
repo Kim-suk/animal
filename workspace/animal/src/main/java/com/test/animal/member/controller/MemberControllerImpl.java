@@ -137,7 +137,7 @@ public class MemberControllerImpl implements MemberController{
 	}
 
 	@Override
-	@RequestMapping(value="/member/login.do", method=RequestMethod.POST)
+	@RequestMapping(value="/main.do", method=RequestMethod.POST)
 	public ModelAndView login(MemberDTO member, 
 	        RedirectAttributes rAttr,
 	        HttpServletRequest request, HttpServletResponse response)

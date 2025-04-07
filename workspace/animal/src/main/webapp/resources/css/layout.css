@@ -1,0 +1,1387 @@
+@charset "utf-8"; /* skip */
+#skip {
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    z-index: 999999;
+}
+
+#skip a {
+    margin-top: -100px;
+    padding: 10px 25px;
+    background-color: #0F3C3C;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    line-height: 1;
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#skip a:focus {
+    margin-top: 0;
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 1);
+}
+
+/* header */
+.header {
+    width: 100%;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+}
+
+.header .top-utile {
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.header .top-utile .container {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .top-utile ul li {
+    display: inline-block;
+}
+
+.header .top-utile ul li + li {
+    margin-left: 25px;
+}
+
+.header .top-utile ul li a {
+    color: #797676;
+    font-size: .938rem;
+}
+
+.header .top-utile ul li a:hover {
+    outline: 2px dashed black;
+    outline-offset: 3px;
+    transition: none;
+}
+
+.header .top-utile ul li a:focus {
+    outline: 2px solid black;
+    outline-offset: 3px;
+    transition: none;
+}
+
+/*웹접근성 추가 조치*/
+.header .top-utile .utile-menu a:before, .header .top-utile .site-link a:after {
+    width: 13px;
+    height: 13px;
+    content: "";
+    background: url("../images/common/base_sprite.png") no-repeat 0 0;
+    display: inline-block;
+}
+
+.header .top-utile .site-link {
+    margin-right: auto;
+}
+
+.header .top-utile .site-link a:after {
+    margin-left: 7px;
+}
+
+.header .top-utile .site-link .icon-link:after {
+    background-position: 0 -45px;
+}
+
+.header .top-utile .utile-menu {
+    margin-left: auto;
+}
+
+.header .top-utile .utile-menu a:before {
+    margin-right: 7px;
+}
+
+.header .top-utile .utile-menu .icon-signup:before {
+    background-position: -16px -45px;
+}
+
+.header .top-utile .utile-menu .icon-signin:before {
+    background-position: -32px -45px;
+}
+
+.header .top-utile .utile-menu .icon-signout:before {
+    background-position: -48px -45px;
+}
+
+.header .top-utile .utile-menu .icon-useredit:before {
+    background-position: -64px -45px;
+}
+
+.header .top-utile .utile-menu .icon-remote:before {
+    background-position: -80px -45px;
+}
+
+.header .logo {
+    margin-right: .8rem;
+}
+
+.header .logo a {
+    width: 243px;
+    height: 34px;
+    background: url("../images/common/logo.png") no-repeat 0 0;
+    background-size: cover;
+    display: block;
+}
+
+.header .logo a:focus {
+    outline: 2px solid black;
+    outline-offset: 2px;
+}
+
+.header .logo a span {
+    display: none;
+}
+
+/* GNB navigation (pc) */
+.header .gnb .nav {
+    width: 100%;
+}
+
+.header .gnb .nav > ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.header .gnb .nav .nav-link {
+    height: 90px;
+    padding: 0 21px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/*웹접근성 추가 & 추가수정- !!포커싱 스타일 변경!!*/
+.header .gnb .nav .nav-link:hover, .header .gnb .nav .nav-link:focus {
+    outline: 2px solid black;
+    outline-offset: -10px;
+    transition: none;
+}
+
+/*웹접근성 추가*/
+.header .gnb .nav .nav-item + .nav-item .nav-link:before {
+    width: 7px;
+    height: 7px;
+    margin-left: -4px;
+    content: "";
+    border-radius: 50px;
+    background-color: #ccc;
+    display: block;
+    position: absolute;
+    left: 0;
+}
+
+.header .gnb .nav .nav-item.active {
+    outline: 2px solid black;
+    outline-offset: -10px;
+    transition: none;
+}
+
+/*웹접근성 추가 & 추가수정*/
+.header .gnb .nav .nav-item.active .nav-link, .header .gnb .nav .nav-item:focus-within .nav-link {
+    color: #00823E;
+}
+
+.header .gnb .nav .nav-item.active .sub-menu, .header .gnb .nav .nav-item:focus-within .sub-menu {
+    clip-path: none;
+    z-index: 56;
+}
+
+.header .gnb .nav .nav-item .sub-menu {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #26816E;
+    box-shadow: 18px 20px 20px rgba(0,0,0,.05);
+    clip-path: inset(50%);
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 48;
+    display: none;
+}
+
+.header .gnb .nav .nav-item .sub-menu .container {
+    height: 100%;
+    min-height: 212px;
+    align-items: flex-start;
+    position: relative;
+}
+
+.header .gnb .nav .nav-item .sub-menu .container:before {
+    width: 100vw;
+    height: 100%;
+    margin-right: -300px;
+    content: "";
+    background: #26816E url("../images/common/subnav_bg1.png") no-repeat top right;
+    border-radius: 0 50px 0 0;
+    position: absolute;
+    right: 100%;
+}
+
+.header .gnb .nav .nav-item .sub-menu .sub-title {
+    width: 300px;
+    height: 100%;
+    min-height: 212px;
+    border-radius: 0 50px 0 0;
+    position: relative;
+    z-index: 70;
+}
+
+.header .gnb .nav .nav-item .sub-menu .sub-title:after {
+    width: 150px;
+    height: 99px;
+    content: "";
+    background: url("../images/common/subnav_bg2.png") no-repeat top left;
+    background-size: 100% 100%;
+    display: block;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+
+.header .gnb .nav .nav-item .sub-menu .sub-title span {
+    margin-top: 60px;
+    font-family: "OneMobile";
+    font-size: 1.875rem;
+    color: #fff;
+    display: block;
+}
+
+.header .gnb .nav .nav-item .sub-menu .sub-title span:before {
+    width: 33px;
+    height: 33px;
+    margin-right: 15px;
+    content: "";
+    background: url("../images/common/base_sprite.png") no-repeat 0 0;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+}
+
+.header .gnb .nav .nav-item:nth-child(1) .sub-menu .sub-title span:before {
+    background-position: -90px 0;
+}
+
+.header .gnb .nav .nav-item:nth-child(2) .sub-menu .sub-title span:before {
+    background-position: -127px 0;
+}
+
+.header .gnb .nav .nav-item:nth-child(3) .sub-menu .sub-title span:before {
+    background-position: -164px 0;
+}
+
+.header .gnb .nav .nav-item:nth-child(4) .sub-menu .sub-title span:before {
+    background-position: -201px 0;
+}
+
+.header .gnb .nav .nav-item:nth-child(5) .sub-menu .sub-title span:before {
+    background-position: -238px 0;
+}
+
+.header .gnb .nav .nav-item:nth-child(6) .sub-menu .sub-title span:before {
+    background-position: -275px 0;
+}
+
+.header .gnb .nav .nav-item:nth-child(7) .sub-menu .sub-title span:before {
+    background-position: -312px 0;
+}
+
+.header .gnb .nav .nav-item .sub-menu ul {
+    width: calc(100% - 300px);
+    padding: 15px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.header .gnb .nav .nav-item .sub-menu ul li {
+    width: calc(100% / 4 - 20px);
+    margin: 8px 10px;
+    display: flex;
+}
+
+.header .gnb .nav .nav-item .sub-menu ul li a {
+    width: 100%;
+    padding: 10px 13px;
+    background-color: #fff;
+    border: 1px solid #E2E2E2;
+    border-radius: 10px;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.header .gnb .nav .nav-item .sub-menu ul li a:hover {
+    border-color: #00823E;
+    color: #00823E;
+    text-decoration: none;
+    outline: 2px dashed black;
+    outline-offset: 2px;
+    transition: none;
+}
+
+.header .gnb .nav .nav-item .sub-menu ul li a:focus {
+    border-color: #00823E;
+    color: #00823E;
+    text-decoration: none;
+    outline: 2px solid black;
+    transition: none;
+}
+
+/*웹접근성 추가 조치*/
+.header .gnb .nav .nav-item .sub-menu ul li a[target="_blank"]:after {
+    width: 13px;
+    height: 13px;
+    margin-left: auto;
+    content: "";
+    background: url("../images/common/base_sprite.png") no-repeat 0 0;
+    background-position: 0 -45px;
+    display: inline-block;
+    position: relative;
+    top: -3px;
+}
+
+.header .icon-menu {
+    margin-left: auto;
+    display: flex;
+}
+
+.header .icon-menu .btn-total-search, .header .icon-menu .btn-sitemap {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*!!웹접근성 수정 조치!! 테두리 추가*/
+.header .icon-menu a.btn-total-search:hover, .header .icon-menu a.btn-sitemap:hover {
+    text-decoration: none;
+    outline: 2px dashed black;
+    outline-offset: -4px;
+    transition: none;
+}
+
+.header .icon-menu a.btn-total-search:focus, .header .icon-menu a.btn-sitemap:focus {
+    text-decoration: none;
+    outline: 2px solid black;
+    outline-offset: -4px;
+    transition: none;
+}
+
+.header .icon-menu .btn-total-search:before, .header .icon-menu .btn-sitemap:before {
+    width: 20px;
+    height: 20px;
+    content: "";
+    background: url("../images/common/base_sprite.png") no-repeat 0 0;
+    background-size: 250px auto;
+    display: inline-block;
+}
+
+.header .icon-menu .btn-total-search:before {
+    background-position: 0 0;
+}
+
+.header .icon-menu .btn-sitemap:before {
+    background-position: -220px 0;
+}
+
+/* GNB navigation (mobile) */
+.m-gnb {
+    display: none;
+}
+
+@media all and (max-width: 1200px) {
+    .m-gnb {
+        width: 60%;
+        max-width: 400px;
+        height: 100%;
+        background-color: #F8F8F8;
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        transition: right 0.25s ease-in-out;
+        display: none;
+    }
+
+    .m-gnb .m-head {
+        height: 105px;
+        background-color: #00823E;
+        position: relative;
+    }
+
+    .m-gnb .m-head .top-wrap {
+        height: 62px;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .m-gnb .m-head .top-wrap .logo {
+        width: 40px;
+        height: 29px;
+    }
+
+    /*로그인 시 사용자 이름 및 아이디가 밀려나는 문제로 로고 너비를 수정&로그인 후 이름 아이디를 위로 올림( 디자인상 제안드리는 부분입니다. 허PL님과 협의하여 사용 가능)*/
+    /*기존:*/
+    .m-gnb .m-head .top-wrap .logo:before {
+        width: 210px;
+        height: 29px;
+        content: "";
+        background: url("../images/common/logo_w.png") no-repeat 0 0;
+        background-size: 210px auto;
+        display: inline-block;
+    }
+
+    /*  .m-gnb .m-head .top-wrap .logo:before { width: 40px; height: 29px; content: ""; background: url("../images/common/logo_w.png") no-repeat 0 0; background-size: cover; display: inline-block; } */
+    .m-gnb .m-head .top-wrap ul {
+        display: flex;
+    }
+
+    .m-gnb .m-head .top-wrap ul > li span {
+        color: #FFF;
+    }
+
+    /*여기까지*/
+    .m-gnb .m-head .utile {
+        width: 100%;
+        height: 45px;
+        padding: 0 1rem;
+        background-color: #006832;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .m-gnb .m-head .utile ul {
+        display: flex;
+    }
+
+    .m-gnb .m-head .utile ul > li + li {
+        margin-left: 25px;
+    }
+
+    .m-gnb .m-head .utile a {
+        font-size: .875rem;
+        color: #fff;
+    }
+
+    .m-gnb .m-head .utile ul > li a:before, .m-gnb .m-head .utile ol > li a:after {
+        width: 13px;
+        height: 13px;
+        content: "";
+        background: url("../images/common/base_sprite.png") no-repeat 0 0;
+        display: inline-block;
+    }
+
+    .m-gnb .m-head .utile ul > li a:before {
+        margin-right: 7px;
+    }
+
+    .m-gnb .m-head .utile .icon-signup:before {
+        background-position: -16px -62px;
+    }
+
+    .m-gnb .m-head .utile .icon-signin:before {
+        background-position: -32px -62px;
+    }
+
+    .m-gnb .m-head .utile .icon-signout:before {
+        background-position: -48px -62px;
+    }
+
+    .m-gnb .m-head .utile .icon-useredit:before {
+        background-position: -64px -62px;
+    }
+
+    .m-gnb .m-head .utile .icon-sitemap:before {
+        background-position: -112px -62px;
+    }
+
+    .m-gnb .m-head .btn-close {
+        width: 45px;
+        height: 45px;
+        background-color: transparent;
+        border: none;
+        text-indent: -9999em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .m-gnb .m-head .btn-close:before {
+        width: 20px;
+        height: 20px;
+        content: "";
+        background: url("../images/common/base_sprite.png") no-repeat 0 0;
+        background-size: 250px auto;
+        background-position: -197px 0;
+        display: inline-block;
+    }
+
+    .m-gnb .m-head a .btn-close span {
+        width: 1px;
+        height: 1px;
+        line-height: 1px;
+        text-indent: -9999em;
+        overflow: hidden;
+        position: absolute;
+        top: -9999em;
+        left: -9999em;
+    }
+
+    .m-gnb.show {
+        right: 0;
+    }
+
+    .m-gnb > ul {
+        width: 100%;
+        height: calc(var(--vh, 1vh) * 100 - 150px);
+        box-sizing: border-box;
+    }
+
+    .m-gnb > ul a {
+        color: #000;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+    }
+
+    .m-gnb > ul > li {
+        width: 35%;
+    }
+
+    .m-gnb > ul > li > a {
+        height: 55px;
+        padding: 0 0 0 1rem;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .m-gnb > ul > li > a > span {
+        position: relative;
+        z-index: 50;
+    }
+
+    .m-gnb > ul > li.on > a:before, .m-gnb > ul > li > .active:before {
+        width: 105%;
+        height: 55px;
+        content: "";
+        background-color: #00823E;
+        border-radius: 0 20px 20px 0;
+        box-shadow: 5px 5px 7px rgba(0,0,0,.1);
+        display: block;
+        position: absolute;
+        left: 0;
+        z-index: 50;
+    }
+
+    .m-gnb > ul > li.on > a span, .m-gnb > ul > li > .active span {
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .m-gnb > ul > li > .sub-menu {
+        width: 65%;
+        height: calc(var(--vh, 1vh) * 100 - 150px);
+        padding: 10px 20px;
+        background-color: #fff;
+        box-sizing: border-box;
+        overflow-y: auto;
+        display: none;
+        position: absolute;
+        top: 110px;
+        left: 35%;
+    }
+
+    .m-gnb > ul > li.on .sub-menu, .m-gnb > ul > li .active + .sub-menu {
+        display: block !important;
+    }
+
+    .m-gnb > ul > li > .sub-menu > ul > li {
+        margin: 0 0 2px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    .m-gnb > ul > li > .sub-menu > ul > li > a {
+        padding: 13px 0;
+        font-size: .938rem;
+        position: relative;
+    }
+
+    .m-gnb > ul > li > .sub-menu > ul > li > a:hover {
+        color: #00823E;
+    }
+
+    .m-gnb > ul > li > .sub-menu > ul > li > a[target="_blank"]:after {
+        width: 13px;
+        height: 13px;
+        margin-left: 7px;
+        content: "";
+        background: url("../images/common/base_sprite.png") no-repeat 0 0;
+        background-position: 0 -45px;
+        display: inline-block;
+        position: relative;
+    }
+
+    .m-gnb .m-footer {
+        width: 100%;
+        padding: 10px 0;
+        background-color: #fff;
+        border-top: 1px solid #E6E6E6;
+        position: absolute;
+    }
+
+    .m-gnb .site-link {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .m-gnb .site-link li + li {
+        margin-left: 20px;
+    }
+
+    .m-gnb .site-link li a {
+        color: #797676;
+        font-size: .875rem;
+    }
+
+    .m-gnb .site-link a:after {
+        width: 13px;
+        height: 13px;
+        margin-left: 7px;
+        content: "";
+        background: url("../images/common/base_sprite.png") no-repeat 0 0;
+        display: inline-block;
+    }
+
+    .m-gnb .site-link .icon-link:after {
+        background-position: 0 -45px;
+    }
+
+    .m-backdrop {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 65;
+        cursor: pointer;
+    }
+
+    .m-backdrop.show {
+        display: block;
+    }
+}
+
+@media all and (max-width: 640px) {
+    .m-gnb {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+
+/* 통합검색 */
+.total-search {
+    margin: 0;
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    right: 0;
+    z-index: 61;
+}
+
+.total-search form {
+    width: 400px;
+    padding: 30px 25px;
+    background-color: #0F3C3C;
+    border-radius: 0;
+    border: none;
+    box-sizing: border-box;
+    transition: 0.25s ease-in-out;
+    clip-path: inset(50%);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    display: none;
+}
+
+.total-search.show form {
+    clip-path: none;
+    display: block;
+}
+
+.total-search .tit {
+    padding: 0 0 12px;
+    font-family: "OneMobile";
+    font-size: 1.625rem;
+    color: #fff;
+    font-weight: normal;
+}
+
+.total-search .form-wrap {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.total-search .btn-close, .total-search .btn-submit {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-size: 0;
+    text-indent: -9999px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.total-search .btn-close {
+    width: 45px;
+    height: 45px;
+    border: none;
+    text-indent: -9999em;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.total-search .btn-close:before {
+    width: 20px;
+    height: 20px;
+    content: "";
+    background: url("../images/common/base_sprite.png") no-repeat 0 0;
+    background-size: 250px auto;
+    background-position: -197px 0;
+    display: inline-block;
+}
+
+.total-search .btn-close:hover {
+    outline: 2px solid white;
+    transition: none;
+}
+
+.total-search .btn-close:focus {
+    outline: 2px solid white;
+    transition: none;
+}
+
+.total-search .input-wrap {
+    position: relative;
+}
+
+.total-search input[type="text"] {
+    padding: 15px 55px 15px 10px;
+    border-radius: .4rem;
+    box-sizing: border-box;
+}
+
+.total-search .input-wrap .btn-submit {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+}
+
+.total-search .input-wrap .btn-submit:before {
+    width: 24px;
+    height: 24px;
+    content: "";
+    background: url("../images/common/base_sprite.png") no-repeat 0 0;
+    background-size: 300px auto;
+    background-position: -209px 0;
+    display: block;
+}
+
+.total-search .input-wrap .btn-submit:focus {
+    outline: 2px solid black;
+    transition: none;
+}
+
+/* footer */
+.footer {
+    border-top: 1px solid #D9D9D9;
+}
+
+.footer ul {
+    padding: 17px 0;
+    border-bottom: 1px solid #EFEFEF;
+}
+
+.footer ul li {
+    display: inline-block;
+}
+
+.footer ul li + li {
+    margin-left: 40px;
+}
+
+.footer ul li a {
+    color: #797676;
+    font-size: .938rem;
+}
+
+.footer ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer ul li a:focus {
+    outline: 2px solid black;
+    outline-offset: 2px;
+}
+
+/*웹접근성 추가 조치*/
+.footer .copyright {
+    padding: 30px 0;
+    color: #797676;
+    font-size: .938rem;
+    line-height: 1.45;
+    display: flex;
+}
+
+.footer .copyright .logo {
+    width: 152px;
+    height: 33px;
+    margin-right: 40px;
+    background: url("../images/common/footer_logo.png") no-repeat 0 0;
+    background-size: cover;
+    text-indent: -9999px;
+    display: block;
+}
+
+.footer .copyright .wamark {
+    width: 80px;
+    height: 57px;
+    margin-left: auto;
+    display: flex;
+}
+
+.footer .copyright .wamark img {
+    width: 100%;
+}
+
+/* error page */
+.error-page {
+    height: 100vh;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-page .wrap {
+    width: 100%;
+    max-width: 430px;
+    min-width: 350px;
+    text-align: center;
+}
+
+.error-page .wrap img {
+    width: 230px;
+    margin-bottom: 2rem;
+}
+
+.error-page .wrap .h4 {
+    margin-bottom: 25px;
+}
+
+.error-page .wrap p {
+    line-height: 1.5;
+}
+
+.error-page .wrap .btn-primary {
+    margin-top: 3rem;
+}
+
+/* subpage header */
+.page-head .page-tit {
+    width: 100%;
+    height: 200px;
+    background-color: #F4F2EE;
+    position: relative;
+    z-index: 53;
+}
+
+.page-head .page-tit .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.page-head .page-tit h3 {
+    font-family: "OneMobile";
+    font-size: 2.125rem;
+    color: #0F3C3C;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.page-head .page-tit .container:before {
+    width: 293px;
+    height: 200px;
+    content: "";
+    background: url("../images/common/bg_linecat.png") no-repeat 0 0;
+    background-size: 100% auto;
+    display: block;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+}
+
+.page-head .page-tit .container:after {
+    width: 212px;
+    height: 327px;
+    content: "";
+    background: url("../images/common/bg_linedog.png") no-repeat 0 0;
+    background-size: 100% auto;
+    display: block;
+    position: absolute;
+    bottom: -167px;
+    right: -20px;
+}
+
+/* sub location */
+.page-location {
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.page-location:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.page-location .drop-box {
+    position: relative;
+}
+
+.page-location .menu-list {
+    clip-path: inset(50%);
+}
+
+.page-location .wrap {
+    display: flex;
+}
+
+.page-location .wrap a {
+    display: flex;
+    align-items: center;
+}
+
+.page-location .wrap .home {
+    width: 50px;
+    height: 50px;
+    border-left: 1px solid #E6E6E6;
+    border-right: 1px solid #E6E6E6;
+    text-indent: -9999em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-location .wrap .home:hover {
+    background-color: #FBFBFB;
+}
+
+.page-location .wrap .home:focus {
+    outline: 2px solid black;
+    outline-offset: -2px;
+}
+
+.page-location .wrap .home:before {
+    width: 16px;
+    height: 16px;
+    content: "";
+    background: url("../images/common/base_sprite.png") no-repeat 0 0;
+    background-position: -60px -80px;
+}
+
+.page-location .wrap .home span {
+    width: 1px;
+    height: 1px;
+    line-height: 1px;
+    text-indent: -9999em;
+    overflow: hidden;
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+}
+
+.page-location .wrap > .drop-box {
+    min-width: 250px;
+    border-right: 1px solid #E6E6E6;
+    position: relative;
+}
+
+.page-location .wrap > .drop-box > a {
+    height: 50px;
+    padding: 0 45px 0 13px;
+    color: #000;
+    line-height: 1.3;
+    position: relative;
+}
+
+.page-location .wrap > .drop-box > a:hover {
+    text-decoration: none;
+}
+
+.page-location .wrap > .drop-box > a:focus {
+    outline: 2px solid black;
+    outline-offset: -2px;
+}
+
+/*웹접근성 추가 조치*/
+.page-location .wrap > .drop-box > a:after {
+    width: 14px;
+    height: 8px;
+    margin: -4px 0;
+    content: "";
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAICAYAAADJEc7MAAAAcklEQVR42mMoKyubzEACAKrPAWJ1htDQUObS0tI/xGgCqtsJxG5wgYaGBjagKT8J2LStvLzcE0OisLCQE2jaNxyatgA1eeM0NSsriweo6DOapo1A7EfQHwUFBQJAm99DNa0H4gBSQo4XqPk80HlWDNQGAMl9L5RuMd/fAAAAAElFTkSuQmCC') no-repeat 0 0;
+    display: block;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    right: 15px;
+}
+
+.page-location .wrap > .drop-box:last-child > a {
+    color: #00813e;
+    font-weight: 500;
+}
+
+.page-location .wrap > .drop-box > a.active {
+    background-color: #F0F8F4;
+    color: #00813e;
+}
+
+.page-location .wrap > .drop-box > a.active:after {
+    border-color: #fff;
+    transform: rotate( 180deg );
+}
+
+.page-location .wrap > .drop-box > a.active + .menu-list {
+    clip-path: none;
+    display: block;
+}
+
+.page-location .wrap > .drop-box .menu-list {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #E6E6E6;
+    position: absolute;
+    top: 50px;
+    left: -1px;
+    z-index: 3;
+    display: none;
+}
+
+.page-location .wrap > .drop-box .menu-list li {
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.page-location .wrap > .drop-box .menu-list li:last-of-type {
+    border-bottom: 0;
+}
+
+.page-location .wrap > .drop-box .menu-list li a {
+    padding: 10px 13px;
+    background-color: #fff;
+    color: #000;
+    font-size: .938rem;
+    display: block;
+}
+
+.page-location .wrap > .drop-box .menu-list li a:hover, .page-location .wrap > .drop-box .menu-list li a:focus-within {
+    background-color: #FBFBFB;
+    color: #00813e;
+    text-decoration: none;
+}
+
+.page-location .wrap > .drop-box .menu-list li a:focus {
+    outline: 2px solid black;
+}
+
+#contents {
+    position: relative;
+}
+
+.sub-contents {
+    padding: 60px 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* layer popup */
+.layer-popup {
+    width: 500px;
+    box-shadow: rgba(0,0,0,.1) 10px 20px 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 59;
+}
+
+.layer-popup .pop-body {
+    background-color: #fff;
+}
+
+.layer-popup .pop-body img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.layer-popup .pop-body .text-wrap {
+    padding: 20px;
+    border: 2px solid #D5D5D5;
+    box-sizing: border-box;
+}
+
+.layer-popup .pop-body .text-wrap .tit {
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #E6E6E6;
+    font-size: 1.25rem;
+    letter-spacing: -.3px;
+    line-height: 1.35;
+    font-weight: 500;
+    display: block;
+}
+
+.layer-popup .pop-body .text-wrap * + .tit {
+    margin-top: 20px;
+}
+
+.layer-popup .pop-body .text-wrap p {
+    line-height: 1.45;
+}
+
+.layer-popup .pop-footer {
+    width: 100%;
+    height: 40px;
+    background-color: #444;
+    display: flex;
+}
+
+.layer-popup .pop-footer .today-close {
+    margin-right: auto;
+    padding: 10px;
+    color: #fff;
+    font-size: .875rem;
+    display: inline-block;
+}
+
+.layer-popup .pop-footer .close {
+    margin-left: auto;
+    padding: 10px;
+    color: #fff;
+    font-size: .875rem;
+    display: inline-block;
+}
+
+/* responsive */
+@media screen and (max-width: 1270px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .header .container {
+        height: 60px;
+    }
+
+    /*.header .top-utile { display: none; } */
+    /*     .header .top-utile .site-link li:nth-child(-n+2){display: none;} 업무시스템 상단 보여주기 위해 추가1 */
+    .header .top-utile ul li:last-child {
+        margin-left: 0px;
+    }
+
+    /* 업무시스템 상단 보여주기 위해 추가2 */
+    .header .top-utile .utile-menu {
+        display: none;
+    }
+
+    .header .gnb .nav {
+        display: none;
+    }
+
+    .total-search form {
+        top: 50px;
+    }
+
+    .container {
+        max-width: 1000px;
+    }
+
+    .member-type li + li {
+        margin-left: 80px;
+    }
+
+    .member-type li .box {
+        width: 340px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .header .logo a {
+        width: 200px;
+        height: 27px;
+    }
+
+    .footer .copyright {
+        padding: 15px 0;
+        font-size: .875rem;
+        flex-direction: column;
+    }
+
+    .footer .copyright .logo {
+        margin-right: 40px;
+        margin-bottom: 15px;
+    }
+
+    .footer .copyright .wamark {
+        margin-top: 15px;
+        margin-left: 0;
+    }
+
+    .page-head .page-tit {
+        height: 130px;
+    }
+
+    .page-head .page-tit h3 {
+        font-size: 1.5rem;
+        position: relative;
+        z-index: 32;
+    }
+
+    .page-head .page-tit .container:before {
+        width: 196px;
+        height: 127px;
+        bottom: -30px;
+        left: -40px;
+    }
+
+    .page-head .page-tit .container:after {
+        width: 149px;
+        height: 232px;
+        bottom: -127px;
+        right: -20px;
+    }
+
+    .page-location .container {
+        padding: 0;
+    }
+
+    .page-location .wrap > .drop-box {
+        width: 50%;
+        min-width: auto;
+    }
+
+    .page-location .wrap > .drop-box:last-child {
+        border-color: transparent;
+    }
+
+    .container {
+        max-width: 1000px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .total-search form {
+        width: calc(100vw - 15px);
+        max-width: 100vw;
+        padding: 25px 15px;
+        right: -65px;
+    }
+
+    .footer ul {
+        padding: 8px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer ul li {
+        padding: 3px 0;
+        text-align: center;
+    }
+
+    .footer ul li + li {
+        margin-left: 20px;
+    }
+
+    .error-page .wrap {
+        min-width: auto;
+    }
+
+    .error-page .wrap p br {
+        display: none;
+    }
+
+    .page-head .page-tit .container:before {
+        left: -60px;
+    }
+
+    .page-head .page-tit .container:after {
+        right: -40px;
+    }
+
+    .sub-contents {
+        padding: 40px 0 60px 0;
+    }
+
+    .container {
+        max-width: 640px;
+    }
+
+    .layer-popup {
+        width: 100%;
+    }
+}

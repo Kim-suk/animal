@@ -31,7 +31,7 @@ public class catViewControllerImpl implements catViewController{
 	@RequestMapping("/cat_type.do")
 	public String showCatType() {
 		// TODO Auto-generated method stub
-		return "/cat/cat_type";
+		return "/cat/cat_type";  //tiles ¹ÝÈ¯?mapping?
 	}
 	
 	

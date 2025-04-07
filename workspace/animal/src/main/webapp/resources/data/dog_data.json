@@ -1,0 +1,17 @@
+{
+  "chihuahua": {
+    "name": "치와와",
+    "description": "치와와는 귀엽당",
+    "image": "https://cdn.royalcanin-weshare-online.io/WT8irnUBRYZmsWpcF5lV/v17/chihuahua"
+  },
+  "poodle": {
+    "name": "푸들",
+    "description": "푸들은 귀엽당.",
+    "image": "https://example.com/images/poodle.jpg"
+  },
+  "pomeranian": {
+  	"name": "포메라니안",
+  	"description": "포메라니안은 귀엽다",
+  	"image": "https://cdn.royalcanin-weshare-online.io/Qj87rnUBRYZmsWpcGJq3/v17/pomenarian"
+  }
+}

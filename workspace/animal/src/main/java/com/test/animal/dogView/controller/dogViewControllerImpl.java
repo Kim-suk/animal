@@ -1,6 +1,8 @@
 package com.test.animal.dogView.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -33,6 +35,19 @@ public class dogViewControllerImpl implements dogViewController{
 	public String showDogType() {
 		// TODO Auto-generated method stub
 		return "/dog/dog_type";
+	}
+
+	@Override
+	@RequestMapping("/dog_type/{breed}.do")
+	public String showDogDetail(
+			@PathVariable("breed") String breed, 
+			Model model) {
+		// .do Á¦°Å
+	    if (breed.endsWith(".do")) {
+	        breed = breed.replace(".do", "");
+	    }
+		model.addAttribute("breed",breed);
+		return "/dog/dog_detail";
 	}
 
 }

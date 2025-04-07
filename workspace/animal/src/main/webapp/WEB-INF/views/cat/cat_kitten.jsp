@@ -11,8 +11,12 @@
 <title>어린 고양이</title>
 
 <!-- CSS / 스타일 -->
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
+<script src="https://cdn.jsdelivr.net/npm/@google/model-viewer@1.0.0/dist/model-viewer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 
@@ -42,16 +46,7 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       max-width: 1200px;
       margin: 60px auto;
-    }
-
-    /* 버튼 위치가 위로 가도록 스타일 수정 */
-    .text-center {
-      position: absolute; 
-      top: 20px; 
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-    }
+    }	
 
     .tab-button {
       font-size: 16px;
@@ -111,6 +106,55 @@
       max-width: 900px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
+    
+      .tab-button {
+        font-size: 16px;
+    }
+
+    .tab-button.active {
+        background-color: #ff4b5c;
+        color: white;
+        border-color: #ff4b5c;
+    }
+
+    .tab-panel {
+        display: none;
+    }
+
+    .tab-panel:not(.hidden) {
+        display: block;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .tab-content {
+        margin-top: 20px;
+    }
+        .apple{
+            appearance: none;
+    background: rgb(226, 0, 26);
+    border-color: rgb(226, 0, 26);
+    border-width: 2px;
+    border-radius: 2em;
+    border-style: solid;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: "Nanum Gothic", Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.625rem;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0.5625rem 2rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+}
+}
 </style>
 </head>
 
@@ -122,13 +166,6 @@
   <button class="tab-button btn btn-outline-secondary me-2" data-tab="weight">체중</button>
   <button class="tab-button btn btn-outline-secondary me-2" data-tab="bone">뼈</button>
   <button class="tab-button btn btn-outline-secondary" data-tab="growth">성장</button>
-</div>
-
- <div class="sc-ba075b6d-3 gWMDxG">
-        <p data-qa="quick-tip-title" class="sc-ba075b6d-4 bEVMql">시각</p>
-        <p data-qa="quick-tip-text" class="sc-ba075b6d-5 egJAAA">
-            새끼 고양이의 시력 및 시각과 관련된 공간 지각력이 완전히 발달하려면 최대 4주가 걸립니다.
-        </p>
     </div>
 	<!-- 3D 모델과 소개 영역 -->
 	<div class="cat-container">
@@ -178,68 +215,71 @@
 		</div>
 	</section>
 
-<section>
-	<!-- 설명 패널 영역 -->
-	<div class="tab-content bg-white shadow-md rounded-xl p-6 text-center">
-		<div id="vision" class="tab-panel">
-			<h3 class="text-lg font-bold text-red-500 mb-2">시각</h3>
-			<p class="text-gray-600">새끼 고양이의 시력 및 시각과 관련된 공간 지각력이 완전히 발달하려면
-				최대 4주가 걸립니다.</p>
-		</div>
-		<div id="immunity" class="tab-panel hidden">
-			<h3 class="text-lg font-bold text-red-500 mb-2">면역력</h3>
-			<p class="text-gray-600">생후 6개월 동안 새끼 고양이는 미성숙한 면역 체계로 수많은 세균으로부터
-				자신을 보호해야 합니다.</p>
-		</div>
-		<div id="weight" class="tab-panel hidden">
-			<h3 class="text-lg font-bold text-red-500 mb-2">3배로 늘어나는 체중</h3>
-			<p class="text-gray-600">고양이는 태어나서 일주일 만에 체중이 2배, 3주 만에 3배로 늘어나는
-				급격한 성장을 보입니다.</p>
-		</div>
-		<div id="bone" class="tab-panel hidden">
-			<h3 class="text-lg font-bold text-red-500 mb-2">튼튼한 뼈</h3>
-			<p class="text-gray-600">생후 첫해 동안 새끼 고양이의 뼈는 콘크리트보다 네 배 강해질 정도로
-				빠르게 자랍니다.</p>
-		</div>
-		<div id="growth" class="tab-panel hidden">
-			<h3 class="text-lg font-bold text-red-500 mb-2">놀라운 성장</h3>
-			<p class="text-gray-600">새끼 고양이는 생후 6개월 동안 10세 어린이만큼 성장하는 경이로운
-				속도를 보여줍니다.</p>
-		</div>
-	</div>
+	<section>
+    
+
+    <div class="tab-content bg-white shadow-md rounded-xl p-6 text-center">
+        <div id="vision" class="tab-panel">
+            <h3 class="text-lg font-bold text-red-500 mb-2">시각</h3>
+            <p class="text-gray-600">새끼 고양이의 시력 및 시각과 관련된 공간 
+                지각력이 완전히 발달하려면 최대 4주가 걸립니다.</p>
+        </div>
+        <div id="immunity" class="tab-panel hidden">
+            <h3 class="text-lg font-bold text-red-500 mb-2">면역력</h3>
+            <p class="text-gray-600">생후 6개월 동안 새끼 고양이는 미성숙한 
+                면역 체계로 수많은 세균으로부터 자신을 보호해야 합니다.</p>
+        </div>
+        <div id="weight" class="tab-panel hidden">
+            <h3 class="text-lg font-bold text-red-500 mb-2">3배로 늘어나는 체중</h3>
+            <p class="text-gray-600">고양이는 태어나서 일주일 만에 체중이 2배,
+              3주 만에 3배로 늘어나는 급격한 성장을 보입니다.</p>
+        </div>
+        <div id="bone" class="tab-panel hidden">
+            <h3 class="text-lg font-bold text-red-500 mb-2">튼튼한 뼈</h3>
+            <p class="text-gray-600">생후 첫해 동안 새끼 고양이의 뼈는 
+                콘크리트보다 네 배 강해질 정도로 빠르게 자랍니다.</p>
+        </div>
+        <div id="growth" class="tab-panel hidden">
+            <h3 class="text-lg font-bold text-red-500 mb-2">놀라운 성장</h3>
+            <p class="text-gray-600">새끼 고양이는 생후 6개월 동안 10세 
+                어린이만큼 성장하는 경이로운 속도를 보여줍니다.</p>
+        </div>
+    </div>
 </section>
-	<script>
-  const tabButtons = document.querySelectorAll(".tab-button");
-  const tabPanels = document.querySelectorAll(".tab-panel");
 
-  tabButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const targetId = button.getAttribute("data-tab");
+<script>
+    // 탭 버튼 클릭 이벤트 처리
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabPanels = document.querySelectorAll(".tab-panel");
 
-      // 버튼 스타일 초기화
-      tabButtons.forEach(btn => {
-        btn.classList.remove("text-red-500", "border-red-500", "border-b-2");
-        btn.classList.add("text-gray-600");
-      });
+    tabButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-tab");
 
-      // 클릭한 버튼 활성화
-      button.classList.remove("text-gray-600");
-      button.classList.add("text-red-500", "border-red-500", "border-b-2");
+            // 버튼 스타일 초기화
+            tabButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
 
-      // 패널 전환
-      tabPanels.forEach(panel => {
-        panel.classList.add("hidden");
-      });
-      document.getElementById(targetId).classList.remove("hidden");
+            // 클릭한 버튼 활성화
+            button.classList.add("active");
+
+            // 모든 패널 숨기기
+            tabPanels.forEach(panel => {
+                panel.classList.add("hidden");
+            });
+
+            // 클릭한 탭 패널 보여주기
+            document.getElementById(targetId).classList.remove("hidden");
+        });
     });
-  });
 </script>
 	<section>
 		<h3>출생부터 성묘가 되기까지 새끼 고양이의 발달</h3>
 		 <a href="https://www.royalcanin.com/kr/cats/kitten/kitten-development-from-birth-to-adulthood">
       <img src="https://cdn.royalcanin-weshare-online.io/jldh6IwBBKJuub5qARjz/v3/sacred-birman-kitten-birth-growth-brand-emblematic-1-1" width="200px">
-      <p>자세히 알아보기</p></a>
-	</section>
+      <p class="apple">자세히 알아보기</p></a></section>
+	
 
 	<section id="second">
 		<h2>2. 새끼 고양이를 맞이하기 위한 준비</h2>
@@ -308,27 +348,6 @@
 		</div>
 	</div>
 	</section>
-	<script>
-    // 탭 버튼 클릭 시 콘텐츠 변경
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const targetTab = button.dataset.tab;
-
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        tabPanels.forEach(panel => {
-          if (panel.id === targetTab) {
-            panel.classList.remove('hidden');
-          } else {
-            panel.classList.add('hidden');
-          }
-        });
-      });
-    });
-  </script>
+  
 </body>
 </html>

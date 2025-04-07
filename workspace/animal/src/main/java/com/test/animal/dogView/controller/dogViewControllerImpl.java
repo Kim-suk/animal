@@ -42,7 +42,7 @@ public class dogViewControllerImpl implements dogViewController{
 	public String showDogDetail(
 			@PathVariable("breed") String breed, 
 			Model model) {
-		// .do Á¦°Å
+		// .do ï¿½ï¿½ï¿½ï¿½
 	    if (breed.endsWith(".do")) {
 	        breed = breed.replace(".do", "");
 	    }

@@ -201,7 +201,7 @@ body {
       <img src="${contextPath}/resources/image/banner.png">
       </a>
       
-      
+    
       <!-- 로그인/로그아웃 버튼 -->
       <div class="nav-login">
         <c:choose>

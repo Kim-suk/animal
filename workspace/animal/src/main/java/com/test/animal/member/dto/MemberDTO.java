@@ -5,7 +5,7 @@ import java.sql.Date;
 public class MemberDTO {
 	private String id;
 	private String pwd;
-	private int age;
+	private String age;
 	private String name;
 	private String gender;
 	private String email;
@@ -27,10 +27,10 @@ public class MemberDTO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	public String getName() {
@@ -107,7 +107,7 @@ public class MemberDTO {
 	public void setGoogleId(String googleId) {
 		this.googleId = googleId;
 	}
-	public void setAge(String ageStr) {
+	/*public void setAge(String ageStr) {
 	    try {
 	        this.age = Integer.parseInt(ageStr);
 	    } catch (NumberFormatException e) {
@@ -118,6 +118,10 @@ public class MemberDTO {
 
 
 
-
+*/
+	public void setAge(int i) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

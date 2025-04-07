@@ -43,7 +43,7 @@
        <![CDATA[ INSERT INTO animal_member
             (id, pwd, age, name, gender, email, joinDate)
         VALUES
-            (#{id}, #{pwd}, #{age, jdbcType=INTEGER}, #{name}, #{gender}, #{email}, SYSDATE) ]]>
+            (#{id}, #{pwd}, #{age}, #{name}, #{gender}, #{email}, SYSDATE) ]]>
     </insert>
 
     <!-- 회원 수정 -->
@@ -97,6 +97,7 @@
         VALUES
              (#{id}, #{pwd}, #{name}, #{email}, #{naverId, jdbcType=VARCHAR}, #{joinType}, 0, 'U', SYSDATE) ]]>
     </insert>
+    
 
     <!-- 구글 사용자 삽입 -->
     <insert id="insertGoogleUser" parameterType="memberDTO">
@@ -115,5 +116,25 @@
         VALUES
              (#{id}, #{pwd}, #{name}, #{email, jdbcType=VARCHAR}, #{kakaoId, jdbcType=VARCHAR}, #{joinType}, 0, 'U', SYSDATE) ]]>
     </insert>
+    
+      <select id="findByGoogleId" resultType="memberDTO">
+    <![CDATA[SELECT id, google_id, email, name, pwd, age, gender, join_type
+    FROM animal_member
+    WHERE google_id = #{googleId} ]]>
+</select>
+
+<!-- 네이버 사용자 조회 -->
+<select id="findByNaverId" resultType="memberDTO">
+   <![CDATA[ SELECT id, naver_id, email, name, pwd, age, gender, join_type
+    FROM animal_member
+    WHERE naver_id = #{naverId} ]]>
+</select>
+
+<!-- 카카오 사용자 조회 -->
+<select id="findByKakaoId" resultType="memberDTO">
+    <![CDATA[ SELECT id, kakao_id, email, name, pwd, age, gender, join_type
+    FROM animal_member
+    WHERE kakao_id = #{kakaoId} ]]>
+</select>
 
 </mapper>

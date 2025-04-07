@@ -1,6 +1,8 @@
 package com.test.animal.catView.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -31,7 +33,14 @@ public class catViewControllerImpl implements catViewController{
 	@RequestMapping("/cat_type.do")
 	public String showCatType() {
 		// TODO Auto-generated method stub
-		return "/cat/cat_type";  //tiles ¹ÝÈ¯?mapping?
+		return "/cat/cat_type";  //tiles ï¿½ï¿½È¯?mapping?
+	}
+	
+	@Override
+	@RequestMapping("/cat_type/{breed}")
+	public String showCatDetail(@PathVariable("breed") String breed, Model model) {
+	    model.addAttribute("breed", breed);
+	    return "/cat/cat_detail";
 	}
 	
 	

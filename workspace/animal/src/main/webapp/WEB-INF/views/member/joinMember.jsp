@@ -160,7 +160,7 @@ function checkDuplicate() {
             </div>
             <div class="mb-3">
                 <label for="birthdate">AGE</label>
-                <input type="date" id="age" name="birthdate" class="form-control" required>
+                <input type="date" id="birthdate" name="age" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">NAME</label>

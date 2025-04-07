@@ -1,0 +1,294 @@
+{
+  "devonrex": {
+    "name": "데본렉스",
+    "description": "애정이 넘치고 똑똑한 데본렉스는 보호자에게 헌신적이며 학습능력도 뛰어납니다.",
+    "image": "https://cdn.royalcanin-weshare-online.io/hz-_zoEBRYZmsWpcx97y/v13/devon-rex"
+  },
+  "donsphynx": {
+    "name": "돈스코이",
+    "description": "돈스코이라고도 하는 돈 스핑크스는 매력적이고, 우아하며, 독특하고, 호기심이 많은 고양이입니다.",
+    "image": "https://cdn.royalcanin-weshare-online.io/iD-_zoEBRYZmsWpc097M/v13/don-sphynx"
+  },
+  "russian": {
+  	"name": "러시안 블루",
+  	"description": "러시안 블루는 낯선 상대를 충분히 인식하기 전 까지 매우 조심스러운 태도를 보입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/QlbBzoEBBKJuub5q1OIx/v13/russian"
+  },
+  "manx": {
+  	"name": "맹크스",
+  	"description": "맹크스 고양이는 독특한 몸체와 강력한 뒷다리로 인해 점프 기술이 뛰어난 것으로 알려져 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/jj_AzoEBRYZmsWpcfN6t/v13/920233"
+  },
+  "munchkin": {
+  	"name": "먼치킨",
+  	"description": "먼치킨은 짧은 다리와 독특하고 귀여운 외모로 널리 알려져 있으며, 장난을 좋아하고 쉽게 적응하는 성격으로 많은 사람들의 사랑을 받고 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/NlbAzoEBBKJuub5qg-J4/v13/munchkin"
+  },
+  "burmese": {
+  	"name": "버마고양이",
+  	"description": "장난을 좋아하고 짓궂기도 한 버마고양이는 매우 다정하여 자신이 매우 의지하는 보호자와 끈끈한 유대 관계를 맺습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/8-fQzoEBaPOZra8qy9-u/v11/burmese"
+  },
+   
+  "burmilla": {
+  	"name": "버밀라",
+  	"description": "충성스럽고 헌신적이며 다정하기 때문에 항상 보호자 곁에 머물면서 함께합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/9OfQzoEBaPOZra8q5t_t/v11/burmilla"
+  },
+  
+  "bengale": {
+  	"name": "벵갈",
+  	"description": "야생과 같은 무늬와 벵갈의 놀라운 색깔들은 고양이 무리 중에서 이 반려묘를 돋보이게 합니다. 독특한 장미빛 또는 얼룩 무늬의 털은 자신감과 큰 호기심, 그리고 멈추지 않는 에너지와 함께 흥미로운 특징들 중 하나일 뿐입니다. 독립적인 것처럼 보일지 모르지만, 벵갈 품종은 보호자에게 매우 애착을 가지는 경향이 있습니다. 그러니 많은 애정을 기대해도 좋습니다. 1960년대 초 브리더가 야생의 아시아 삵과 집에서 키우는 얼룩 고양이를 교배함으로써 벵갈은 야생의 외모와 흥미로운 성격을 가지고 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/7-fQzoEBaPOZra8qR99K/v11/bengale"
+  },
+  "bombay": {
+  	"name": "봄베이",
+  	"description": "봄베이는 사랑스럽고 귀엽고 외향적이며 총명하고 다정한 반려묘입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/8OfQzoEBaPOZra8qYd_-/v11/bombay"
+  },
+  "british-shorthair": {
+  	"name": "브리티시 숏헤어",
+  	"description": "어떻게 브리티시 숏헤어에게 빠지지 않을 수 있을까요? 통통한 얼굴과 실크처럼 부드러운 털은 보호자를 끌어당기지만 보호자가 더 많은 것을 위해 돌아오게 하는 것은 그들의 매력적인 행동입니다. 거의 들리지 않는 소리이면서도 거대한 그르렁거리는 소리가 이 귀여운 품종의 특징입니다. 이들은 안기고 싶어하지만 자신만의 시간을 갖는 것을 좋아합니다. 그렇지 않으면 브리티시 숏헤어 고양이는 변함없는 관찰자이자 조용한 친구로 남습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/8ufQzoEBaPOZra8qqN-1/v13/british-shorthair"
+  },
+  "seychellois": {
+  	"name": "세이셸루아",
+  	"description": "세이셸루아는 매우 사교적인 동물입니다. 충분한 관심을 줄 수 없다면 세이셸루아를 키우지 않는 것이 좋습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/SlbCzoEBBKJuub5qp-Jk/v13/seychellois"
+  },
+  "sokoke": {
+  	"name": "소코케",
+  	"description": "소코케는 세계에서 가장 희귀한 고양이 품종 중 하나로 여겨집니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/T1bDzoEBBKJuub5qMOJy/v13/sokoke"
+  },
+  "snowshoe": {
+  	"name": "스노우슈",
+  	"description": "각 스노우슈 고양이는 고유하며 각각 다른 반점을 가지고 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/TlbDzoEBBKJuub5qIOJj/v13/snowshoe"
+  },
+  "sphynx": {
+  	"name": "스핑크스",
+  	"description": "스핑크스 고양이를 혼동할 일은 없습니다. 다양한 묘종 중에서도 털이 없는 이 독특한 품종은 솜털로 덮인 주름진 피부가 특징입니다. 성격이 매우 좋고 보호자와 안기는 것을 좋아하는 스핑크스 고양이의 애호가들은 이 고양이의 세심한 특성에 눈을 떼지 못합니다. 스핑크스는 혼자 남겨져도 괜찮지만 인간과 함께 있는 것을 매우 좋아하며 더 많은 관심이 필요할 때에는 이를 사람에게 확실히 알려줍니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/iD-_zoEBRYZmsWpc097M/v13/don-sphynx"
+  },
+  "siamese": {
+  	"name": "시암고양이",
+  	"description": "날렵하고 늠름한 외모와 제왕과 같은 태도를 지닌 시암고양이는 종종 가장 전형적이고 아름다운 묘종 중 하나로 여겨집니다. 그러나 기질 면에서 시암고양이는 거의 반려견과 같습니다. 다정하고 사교적이며 장난을 좋아하는 시암고양이는 보호자와 강한 애착 관계를 형성하며, 어린이나 다른 반려동물과 함께 있는 것을 좋아합니다. 좋아하는 장난감만 있으면 지치지 않고 놀 수 있습니다. 심지어 물어오기도 하죠!",
+  	"image": "https://cdn.royalcanin-weshare-online.io/S1bCzoEBBKJuub5qyuKe/v13/siamese"
+  },
+  "singapura": {
+  	"name": "싱가푸라",
+  	"description": "다 자라면 3.75kg이 되는 싱가푸라는 공인된 가장 작은 고양이 품종입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/TVbCzoEBBKJuub5q_eKx/v13/singapura"
+  },
+  "american-bobtail": {
+  	"name": "아메리칸 밥테일",
+  	"description": "장난을 좋아하는 아메리칸 밥테일은 물어오기 놀이, 숨바꼭질, 기타 여러 놀이를 배울 수 있는 영리한 고양이입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/4-fOzoEBaPOZra8qy9_O/v11/american-bobtail"
+  },
+  "american-shorthair": {
+  	"name": "아메리칸 숏헤어",
+  	"description": "아메리칸 숏헤어는 느긋한 성격의 고양이지만 나이가 들어도 장난을 좋아할만큼 에너지가 넘칩니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/lGno1WoBG95Xk-RBn_eJ/v9/bc1h-hub-american-shorthair-adult-black-and-white"
+  },
+  "wirehair": {
+  	"name": "아메리칸 와이어 헤어",
+  	"description": "아메리칸 와이어헤어는 느긋하고 행복한 천성 덕분에 반려 동물로 인기를 누리고 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/6-fPzoEBaPOZra8qwd_r/v11/american-wirehair"
+  },
+  "curl": {
+  	"name": "아메리칸 컬",
+  	"description": "아메리칸 컬은 온화하고, 순하며, 애정이 넘쳐 가정에 잘 적응합니다. 집안의 다른 반려 동물이나 아이들에게도 쉽게 적응합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/6OfPzoEBaPOZra8qXN_c/v13/american-curl-longhair"
+  },
+  "asian": {
+  	"name": "아시안",
+  	"description": "놀이를 좋아하고 매우 다정한 성격으로 보호자의 삶의 모든 순간에 함께하기를 원합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/7OfPzoEBaPOZra8q5d8F/v11/asian"
+  },
+  "oriental": {
+  	"name": "오리엔탈",
+  	"description": "공인된 품종만도 수백 가지에 이르는 오리엔탈은 털 패턴과 색상 측면에서 가장 다양한 품종으로 꼽힙니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/PFbBzoEBBKJuub5qMOIf/v13/oriental"
+  },
+  "australian": {
+  	"name": "오스트레일리안 미스트",
+  	"description": "오스트레일리안 미스트는 어느 가정에서든 잘 어울리는 유일한 고양이 품종입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/7efQzoEBaPOZra8qCN8N/v11/australian-mist"
+  },
+  "ocicat": {
+  	"name": "오시캣",
+  	"description": "오시캣은 들고양이처럼 보이지만 실제로는 헌신적인 집고양이입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/O1bBzoEBBKJuub5qFOLG/v13/ocicat"
+  },
+  "egyptian": {
+  	"name": "이집션 마우",
+  	"description": "애호가들은 이집션 마우는 모든 고양이의 가장 좋은 특성이 발현되어 있다고 합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/L1a_zoEBBKJuub5q1-Ks/v15/egyptian-mau"
+  },
+  "german": {
+  	"name": "저먼 렉스",
+  	"description": "저먼 렉스는 독립적이면서도 성질이 다정합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/ij_AzoEBRYZmsWpcA959/v13/german-rex"
+  },
+  "khao": {
+  	"name": "카오 마니",
+  	"description": "카오 마니라는 이름은 태국어로 '흰 보석'을 의미합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/MlbAzoEBBKJuub5qJuJm/v13/khao-mannee"
+  },
+  "cornish": {
+  	"name": "코니시 렉스",
+  	"description": "애정이 넘치고 사교적인 코니시 렉스는 나이가 먹어도 장난을 좋아하는 것으로 유명합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/hj-_zoEBRYZmsWpcqd4j/v13/cornish-rex"
+  },
+  "korat": {
+  	"name": "코랏",
+  	"description": "에너지가 넘치고 똑똑하며 다정하고 배타적인 코랏은 다른 고양이를 받아들이지만 지배적인 성격을 지니고 있어 통제하려 합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/jD_AzoEBRYZmsWpcPd6p/v13/korat"
+  },
+  "bobtail": {
+  	"name": "쿠리리안 밥테일",
+  	"description": "쿠리리안 밥테일은 사람 및 다른 동물들과 똑같이 사교적입니다. 따라서 이 편안하고 쾌활한 고양이는 모든 가정 환경에 쉽게 정착하여 가족과 강한 유대 관계를 형성합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/jT_AzoEBRYZmsWpcXN7d/v13/kurilean-shorthair-bobtail"
+  },
+  "thai": {
+  	"name": "타이",
+  	"description": "타이 고양이는 매우 활동적이며 장난을 좋아하지만 시암고양이보다 더 침착합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/5udrpH0BaPOZra8qMcuu/v9/bp-lot-8-thai-davinci"
+  },
+  "tonkinese": {
+  	"name": "톤키니즈",
+  	"description": "톤키니즈는 자기 주장이 강하며 큰소리로 요구 사항을 표현합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/5OfOzoEBaPOZra8q4N-s/v13/tonkinese"
+  },
+  "peterbald": {
+  	"name": "피터볼드",
+  	"description": "피터볼드는 매우 영리하고, 활발하며, 장난을 좋아합니다. 이 고양이는 평생 동안 활발하게 잘 놉니다..",
+  	"image": "https://cdn.royalcanin-weshare-online.io/PlbBzoEBBKJuub5qa-Ib/v15/peterbald"
+  },
+  "pixiebob": {
+  	"name": "픽시 밥",
+  	"description": "픽시 밥 고양이는 다지증을 허용하는 유일한 품종이며 각 발에 최대 7개의 발가락을 가질 수 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/P1bBzoEBBKJuub5qieL6/v13/pixie-bob"
+  },
+  "havana": {
+  	"name": "하바나",
+  	"description": "하바나는 멋진 반려묘입니다. 똑똑하고 사교적이며 호기심이 강한 특성상 집에서 일어나는 모든 활동에 참여하기를 좋아합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/MVbAzoEBBKJuub5qC-Je/v13/havana"
+  },
+  "neva": {
+  	"name": "네바 마스커레이드",
+  	"description": "네바 마스커레이드는 놀기를 좋아하는 활발하고 총명한 고양이지만, 매우 다정하기도 합니다..",
+  	"image": "https://cdn.royalcanin-weshare-online.io/OVbAzoEBBKJuub5q3eLn/v13/neva-masquerade"
+  },
+  "norwegian": {
+  	"name": "노르웨이 숲",
+  	"description": "고양이 세계의 온순한 거인인 노르웨이 숲은 우호적이고 느긋하며 종종 장난을 좋아합니다. 때문에 아이들과 함께 키우기에 이상적인 품종입니다. 몇몇 반려묘와는 달리 노르웨이 숲은 인간 가족과 강한 유대감을 형성하며 매우 다정한 것으로도 잘 알려져 있습니다. 그리고 노르웨이 숲은 인상적인 체고, 풍성한 털, 그리고 털이 촘촘한 귀 덕분에 거의 스라소니와 같은 외모입니다. 북유럽이 원산지로, 이름에서 알 수 있듯 추운 기후에 잘 맞습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/OlbAzoEBBKJuub5q9eKh/v13/norwegian"
+  },
+  "ragamuffin": {
+  	"name": "라가머핀",
+  	"description": "라가머핀은 집 밖에서도 잘 따르는 사랑스럽고 듬직한 고양이입니다. 따라서 실내 생활에 잘 맞습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/QFbBzoEBBKJuub5qmeLQ/v13/ragamuffin"
+  },
+  "laperm": {
+  	"name": "라팜",
+  	"description": "라팜은 가족 구성원 모두에 대한 인내심이 많은 사랑스럽고 사교적인 고양이입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/NFbAzoEBBKJuub5qZOKB/v15/laperm"
+  },
+  "ragdoll": {
+  	"name": "랙돌",
+  	"description": "종종 세계에서 가장 인기 있는 고양이라고도 하는 랙돌은 장점이 많은 품종입니다. 커다란 베이비 블루색의 눈과 부드러운 털, 벨벳 같은 발이 뛰어난 아름다움을 자랑하는 품종이기도 하지만 대형묘 중 하나로서 시선을 사로잡기도 합니다. 매우 총명한 동물인 랙돌은 또한 느긋하고, 유순하고, 사교적인데다 다정하기도 합니다. 이름조차 안았을 때 부드럽고 늘어져 있는 모습에서 유래했습니다",
+  	"image": "https://cdn.royalcanin-weshare-online.io/QVbBzoEBBKJuub5quOLG/v13/ragdoll"
+  },
+  "maine": {
+  	"name": "메인쿤",
+  	"description": "메인쿤은 세계에서 가장 큰 가정묘 품종 중 하나입니다. 메인쿤은 대부분의 다른 품종보다 늦고 오래 성장합니다. 아마도 메인쿤의 인상적인 크기도 이것 때문일 것입니다. 성격도 인상적입니다. 영리함과 상냥함, 온화함은 메인쿤 품종을 얘기할 때 빠지지 않는 표현입니다. 메인쿤은 우호적이며, 사람이나 다른 반려동물과 잘 지냅니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/_ejlJpABaPOZra8qKTAm/v3/maine-coon-cover"
+  },
+  "birman": {
+  	"name": "버만",
+  	"description": "고양이는 독립적이라는 고정관념과는 전혀 다른 버만은, 가족 구성원으로 이상적인 묘종입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/Q1bBzoEBBKJuub5q8-KK/v13/sacred-birman"
+  },
+  "chartreux": {
+  	"name": "샤르트뢰",
+  	"description": "러샤르트뢰는 매우 균형 잡힌 성격을 가지고 있습니다. 그들은 상냥하고 침착하며 조용하지만 언제나 존재감이 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/9efRzoEBaPOZra8qBt98/v11/chartreux"
+  },
+  "selkirk": {
+  	"name": "셀커크 렉스",
+  	"description": "이 근사한 셀커크 렉스의 기원은 1987년으로 거슬러 올라갑니다. 당시 독특하게 주름진 털과 동그랗게 말린 수염을 가진 키튼 미스 데페스토라는 새끼 고양이가 태어났습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/1eeYUX0BaPOZra8qc8iQ/v7/bp-lot-6-selkirk-rex-longhair-davinci"
+  },
+  "somali": {
+  	"name": "소말리",
+  	"description": "소말리는 놀기를 좋아하는 매우 영리한 고양이입니다. 대부분은 장난감을 물어오고, 찬장을 열고, 물을 가지고 놉니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/UFbDzoEBBKJuub5qP-Ld/v13/somali"
+  },
+  "scottish": {
+  	"name": "스코티시 스트레이트",
+  	"description": "형제 관계인 스코티시 폴드와 마찬가지로 스코티시 스트레이트 역시 편안하고 사교적인 성격을 보이므로 다양한 가정 환경에 쉽게 적응할 수 있습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/RlbCzoEBBKJuub5qSeI1/v13/scottish-straight"
+  },
+  "fold": {
+  	"name": "스코티시 폴드",
+  	"description": "스코티시 폴드는 조용하고 사교적이며, 하루 일과 중 대부분 동안 잠을 자기는 하지만 보호자와 노는 것도 즐깁니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/RVbCzoEBBKJuub5qKeLx/v13/scottish-fold"
+  },
+  "abyssinian": {
+  	"name": "아비시니안",
+  	"description": "모든 가정 활동에 함께하기를 원하는 고양이",
+  	"image": "https://cdn.royalcanin-weshare-online.io/OFbAzoEBBKJuub5qvOKw/v11/abyssinian"
+  },
+  "exotic": {
+  	"name": "엑조틱 숏헤어",
+  	"description": "엑조틱 숏헤어는 온순하고 조용해서 함께 살기 좋습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/MFa_zoEBBKJuub5q8uLz/v13/exotic-shorthair"
+  },
+  "japanese": {
+  	"name": "재패니즈 밥테일",
+  	"description": "재패니즈 밥테일은 활기가 넘쳐 장난을 좋아하고 애정이 넘치며 매우 상냥하고 사교적입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/iz_AzoEBRYZmsWpcHd74/v13/japanese-bobtail"
+  },
+  "savannah": {
+  	"name": "코니시 렉스",
+  	"description": "애정이 넘치고 사교적인 코니시 렉스는 나이가 먹어도 장난을 좋아하는 것으로 유명합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/RFbCzoEBBKJuub5qEuLc/v13/savannah"
+  },
+  "cymric": {
+  	"name": "킴릭",
+  	"description": "킴릭은 독특한 몸집과 강한 뒷다리를 이용하여 놀라울 정도의 점프 능력을 보여줍니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/Lla_zoEBBKJuub5quOJq/v13/cymric"
+  },
+  "turkish": {
+  	"name": "터키쉬 반",
+  	"description": "터키쉬 반은 주인과의 상호작용을 좋아합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/8edzpH0BaPOZra8qe8te/v9/bp-lot-8-turkish-van-davinci"
+  },
+  "angora": {
+  	"name": "터키쉬 앙고라",
+  	"description": "단호하고 자신감이 있는 터키쉬 앙고라는 다른 반려 동물이 있어도 본인이 대장이라는 확신만 들면 쉽게 적응합니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/7OdvpH0BaPOZra8qlssp/v7/bp-lot-8-turkish-angora-davinci"
+  },
+  "balinese": {
+  	"name": "발리니즈",
+  	"description": "발리니즈는 매우 다정하고 유쾌하며 두드러진 특징을 가진 반려묘입니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/7ufQzoEBaPOZra8qMN9M/v13/balinese"
+  },
+  "longhair": {
+  	"name": "브리티쉬 롱헤어",
+  	"description": "이 고양이는 친근하고, 안정적이며, 평화로운 성질을 갖고 있기 때문에 전체 가족과 잘 어울립니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/8efQzoEBaPOZra8qid-q/v11/british-longhair"
+  },
+  "siberian": {
+  	"name": "시베리안",
+  	"description": "시베리안 반려묘의 풍성하고 매끄러운 털은 멋지지만 보여주기 위한 것만은 아닙니다. 오래된 품종인 시베리안은 수 세기에 걸쳐 단열 및 방수가 되는 3중의 털이 발달해 고향인 시베리아의 혹한을 견딜 수 있게 되었습니다. 조상들은 강건하고 야생에서 활동하도록 진화했지만 최근의 시베리안은 확실히 조금 더 편안한 환경을 즐깁니다. 다정한 시베리안 반려묘는 장난을 좋아하지만 언제든 안길 수 있도록 보호자 근처의 따뜻한 곳에서 몸을 말고 조용히 있는 시간이 많습니다.",
+  	"image": "https://cdn.royalcanin-weshare-online.io/TFbCzoEBBKJuub5q3eLL/v13/siberian"
+  },
+  "persian": {
+  	"name": "페르시안",
+  	"description": "귀여운 얼굴에 보송보송하고 윤기 나는 털을 가진 페르시안은  점잖으면서도 고상하고 세련된 성격으로 많은 사람의 마음을 사로잡았습니다. 페르시안은 조용한 분위기 속에서 보호자의 무릎 위에 앉아 있는 것을 좋아합니다. 가만히 앉아만 있어도 존재감이 빛나는 페르시안은 전 세계적으로 가장 인기가 높은 묘종에 속합니다.  ",
+  	"image": "https://cdn.royalcanin-weshare-online.io/PVbBzoEBBKJuub5qS-L1/v13/persian"
+  }
+}

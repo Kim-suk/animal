@@ -103,6 +103,8 @@ public class NaverLoginController {
         // 6. 세션 저장 후 로그인 완료
         session.setAttribute("loginMember", member);
         session.setAttribute("loginId", member.getId());
+        
+     
         return "redirect:/main.do";
     }
 }

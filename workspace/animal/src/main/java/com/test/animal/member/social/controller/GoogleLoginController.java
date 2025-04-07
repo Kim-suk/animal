@@ -103,6 +103,8 @@ public class GoogleLoginController {
         // 4. 로그인 처리
         session.setAttribute("loginMember", member);
         session.setAttribute("loginId", member.getId());
+        
+     
         return "redirect:/main.do";
     }
 }

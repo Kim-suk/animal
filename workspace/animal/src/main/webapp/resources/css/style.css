@@ -57,7 +57,6 @@ body, html {
     padding-top: 20px;
     bottom: 0;
     background-color: yellow;
-    overflow-y: auto;
 }
 
 /* 메인 콘텐츠 영역 수정 */

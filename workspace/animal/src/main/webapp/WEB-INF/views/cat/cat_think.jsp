@@ -9,9 +9,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>고양이를 기를까 생각중이신가요?</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- CSS / 스타일 -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.0/dist/umd/popper.min.js"></script>
 <script
@@ -19,24 +18,12 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
 <script
 	src="https://cdn.jsdelivr.net/npm/@google/model-viewer@1.0.0/dist/model-viewer.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 
 <!-- 3D 모델뷰어 -->
 <script type="module"
 	src="https://cdn.royalcanin-weshare-online.io/XEAlJ4oBRYZmsWpctAuD/v5/maine-coon-kittens"></script>
-<body>
-	<!-- 페이지 전용 스타일 -->
+<!-- 페이지 전용 스타일 -->
 	<style>
-body {
-	font-family: 'Arial', sans-serif;
-	
-	line-height: 1.6;
-	background-color: #f0f0f0;
-	margin: 0;
-}
 
 .cat-container {
 	display: flex;
@@ -45,24 +32,29 @@ body {
 	align-items: center;
 	gap: 40px;
 	padding: 50px;
+	padding-top: 50px;
+	margin-top: 120px; /* 추가: 헤더 높이만큼 공간 확보 */
 	background-color: #f8f8f8;
 	border-radius: 20px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 	max-width: 1200px;
-	margin: 60px auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
+
 .tab-button {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 .cat-model {
 	flex-shrink: 0;
 }
 
-model-viewer {
-	width: 400px;
-	height: 400px;
+	model-viewer {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
 	background: white;
 	border-radius: 20px;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -111,30 +103,66 @@ section {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+.tabs {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
+
 .tab-button {
-	font-size: 16px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  color: #333;
+  transition: color 0.3s ease;
 }
 
 .tab-button.active {
-	background-color: #ff4b5c;
-	color: white;
-	border-color: #ff4b5c;
+  color: #ff4b5c;
+  font-weight: bold;
+}
+
+.tab-button.active::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #ff4b5c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .tab-panel {
-	display: none;
+  display: none;
 }
 
 .tab-panel:not(.hidden) {
-	display: block;
+  display: block;
 }
 
-.hidden {
-	display: none;
+.panel-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.tab-content {
-	margin-top: 20px;
+.icon {
+  font-size: 40px;
+  color: #ff4b5c;
+  margin-bottom: 15px;
 }
 
 .apple {
@@ -203,10 +231,6 @@ section {
             text-align: center;
             line-height: 1.6;
         }
-
-        body {
-            background-color: #f8f9fa;
-        }
         .breadcrumb {
             font-size: 14px;
             color: #999;
@@ -235,11 +259,17 @@ section {
         .breadcrumb span {
             margin: 0 5px;
         }
-}
+
 </style>
+
+
+
 </head>
 
+
 <body>
+
+	
 	<div class="breadcrumb">
         <a href="/animal/main.do">홈페이지</a>
         <span>›</span>
@@ -247,18 +277,6 @@ section {
         <span>›</span>
         <span class="/animal/cat_think.jsp">고양이를 키울지 고민 중이신가요?</span>
     </div>
-    
-	<div class="text-center mb-4">
-		<button class="tab-button btn btn-outline-secondary me-2"
-			data-tab="vision">장점1</button>
-		<button class="tab-button btn btn-outline-secondary me-2"
-			data-tab="immunity">장점2</button>
-		<button class="tab-button btn btn-outline-secondary me-2"
-			data-tab="weight">장점3</button>
-		<button class="tab-button btn btn-outline-secondary me-2"
-			data-tab="bone">장점4</button>
-
-	</div>
 	<!-- 3D 모델과 소개 영역 -->
 	<div class="cat-container">
 		<div class="cat-model">
@@ -290,64 +308,71 @@ section {
 
 	<!-- SECTION 1 -->
 	<section id="first">
-		<div>
-			<h2>1. 책임감 있는 보호자가 되려면?</h2>
+		<div class="p-4 border rounded shadow-sm bg-white mb-4">
+  <h2 class="mb-3">1. 책임감 있는 보호자가 되려면?</h2>
+  <a href="${contextPath}/cat/cat_responsible.do" class="btn btn-outline-danger">자세히 알아보기</a>
+</div>
 
-			<p>책임감 있는 고양이 보호자가 되는 것은 결코 쉬운 일이 아닙니다.</p>
-		</div>
 	</section>
-
-	<section>
+	
 		<h3>고양이를 키울 때의 장점</h3>
 		<p>고양이를 키울 때 따르는 책임에 대해서 알아보았다면 이제는 그 장점에 대해 알아볼 차례입니다.</p>
-		<div class="tab-content bg-white shadow-md rounded-xl p-6 text-center">
-			<div id="vision" class="tab-panel">
-				<h3 class="text-lg font-bold text-red-500 mb-2">장점1</h3>
-				<p class="text-gray-600">훌륭한 동반자 역할을 하는 고양이는 1인 가구에 더욱 적합합니다.</p>
-			</div>
-			<div id="immunity" class="tab-panel hidden">
-				<h3 class="text-lg font-bold text-red-500 mb-2">장점2</h3>
-				<p class="text-gray-600">애정 가득한 고양이는 우리의 불안감을 낮추는 데 도움을 줍니다. 흔히
-					말하는 고양이의 '골골송'은 사람에게 치유 효과도 있다고 알려져 있습니다.</p>
-			</div>
-			<div id="weight" class="tab-panel hidden">
-				<h3 class="text-lg font-bold text-red-500 mb-2">장점3</h3>
-				<p class="text-gray-600">털 뭉치 친구들을 보살피는 것은 목적의식을 갖게 합니다.</p>
-			</div>
-			<div id="bone" class="tab-panel hidden">
-				<h3 class="text-lg font-bold text-red-500 mb-2">장점4</h3>
-				<p class="text-gray-600">반려동물을 키우는 일은 일상에 틀을 잡아주기도 합니다. 또한 고양이와
-					장난을 치면 궂은 하루도 기분 좋게 마무리 할 수 있답니다.</p>
-			</div>
-		</div>
-	</section>
+		<div class="tabs">
+  <div class="tab-buttons">
+    <button class="tab-button active" data-tab="tab1">장점 1</button>
+    <button class="tab-button" data-tab="tab2">장점 2</button>
+    <button class="tab-button" data-tab="tab3">장점 3</button>
+    <button class="tab-button" data-tab="tab4">장점 4</button>
+  </div>
+
+  <div class="tab-content">
+    <div id="tab1" class="tab-panel">
+      <div class="panel-card">
+        <div class="icon">😺</div>
+        <p>훌륭한 동반자 역할을 하는 고양이는 1인 가구에 더욱 적합합니다.</p>
+      </div>
+    </div>
+    <div id="tab2" class="tab-panel hidden">
+      <div class="panel-card">
+        <div class="icon">🐾</div>
+        <p>고양이는 조용하고 깨끗하여 아파트에서도 키우기 좋아요.</p>
+      </div>
+    </div>
+    <div id="tab3" class="tab-panel hidden">
+      <div class="panel-card">
+        <div class="icon">🧹</div>
+        <p>스스로 그루밍을 하므로 손이 덜 갑니다.</p>
+      </div>
+    </div>
+    <div id="tab4" class="tab-panel hidden">
+      <div class="panel-card">
+        <div class="icon">🧘</div>
+        <p>혼자 있어도 외로움을 잘 타지 않아 직장인에게도 안성맞춤입니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 	<script>
-    // 탭 버튼 클릭 이벤트 처리
-    const tabButtons = document.querySelectorAll(".tab-button");
-    const tabPanels = document.querySelectorAll(".tab-panel");
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabPanels = document.querySelectorAll('.tab-panel');
 
-    tabButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const targetId = button.getAttribute("data-tab");
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // 버튼 active 클래스 처리
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
 
-            // 버튼 스타일 초기화
-            tabButtons.forEach(btn => {
-                btn.classList.remove("active");
-            });
-
-            // 클릭한 버튼 활성화
-            button.classList.add("active");
-
-            // 모든 패널 숨기기
-            tabPanels.forEach(panel => {
-                panel.classList.add("hidden");
-            });
-
-            // 클릭한 탭 패널 보여주기
-            document.getElementById(targetId).classList.remove("hidden");
-        });
+      // 패널 표시 처리
+      const target = button.dataset.tab;
+      tabPanels.forEach(panel => {
+        panel.classList.add('hidden');
+        if (panel.id === target) {
+          panel.classList.remove('hidden');
+        }
+      });
     });
+  });
 </script>
 	<section>
 		<h3>고양이를 키울 때의 장점</h3>
@@ -388,7 +413,6 @@ section {
 			위해 신나는 놀이 시간을 만들어 주세요.
 		</p>
 	</section>
-
 	<section id="third">
 		<h2>3. 나에게 맞는 묘종은?</h2>
 		<img

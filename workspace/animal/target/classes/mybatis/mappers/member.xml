@@ -39,12 +39,15 @@
     </delete>
 
     <!-- 일반 회원 가입 -->
-    <insert id="addMember" parameterType="memberDTO">
-       <![CDATA[ INSERT INTO animal_member
-            (id, pwd, age, name, gender, email, joinDate)
-        VALUES
-            (#{id}, #{pwd}, #{age}, #{name}, #{gender}, #{email}, SYSDATE) ]]>
-    </insert>
+   	<insert id="addMember" parameterType="memberDTO">
+			<![CDATA[
+		INSERT INTO animal_member (
+			id, pwd, age, name, gender, email, joinDate
+		)
+		VALUES (
+			#{id}, #{pwd}, #{age}, #{name}, #{gender}, #{email}, SYSDATE )]]>
+		
+	</insert>
 
     <!-- 회원 수정 -->
     <update id="modMember" parameterType="memberDTO">

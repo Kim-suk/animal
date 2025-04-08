@@ -7,18 +7,36 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap 5 CDN 추가 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+<c:choose>
+	<c:when test='${param.result == "loginFailed"}'>
+		<script>
+			alert('아이디나 비밀번호가 틀립니다. 다시 로그인 하세요.');
+		</script>
+	</c:when>
+	<c:when test="${param.result == 'logout' }">
+		<script>
+			alert('로그아웃 되었습니다. 다시 로그인 하세요.');
+		</script>
+	</c:when>
+	<c:when test="${param.result == 'notLogin' }">
+		<script>
+			alert('로그인이 되어 있지 않습니다. 로그인 하세요.');
+		</script>
+	</c:when>
+</c:choose>
 <style>
     .login-container {
         max-width: 500px;
         margin: 90px auto;
+       	margin-top:300px;
         padding: 20px;
         background: white;
         border-radius: 10px;
+        border : center;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
     .login-title {
@@ -66,19 +84,6 @@ s
 </style>
 
 <script>
-  window.onload = function () {
-    // 로그인 실패/로그아웃/비로그인 알림 처리
-    <c:choose>
-      <c:when test='${param.result == "loginFailed"}'>
-        alert('아이디나 비밀번호가 틀립니다. 다시 로그인 하세요.');
-      </c:when>
-      <c:when test='${param.result == "logout"}'>
-        alert('로그아웃 되었습니다.');
-      </c:when>
-      <c:when test='${param.result == "notLogin"}'>
-        alert('로그인이 되어 있지 않습니다. 로그인 하세요.');
-      </c:when>
-    </c:choose>
 
     // 아이디 저장 쿠키 처리
     const savedId = getCookie("savedId");

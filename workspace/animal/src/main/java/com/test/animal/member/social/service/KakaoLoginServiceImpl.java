@@ -57,7 +57,8 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
         return accessToken;
     }
 
-    @Override
+    @SuppressWarnings("unused")
+	@Override
     public KakaoUserDTO getUserInfo(String accessToken) {
         KakaoUserDTO user = new KakaoUserDTO();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -77,7 +78,10 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode json = mapper.readTree(result.toString());
 
-            user.setId(json.get("id").asText());
+            String kakaoId = json.get("id").asText(); // 여기선 순수 ID만
+            user.setId(kakaoId);
+            
+            String dbId = "kakao_" + user.getId(); // 이때 통일된 ID 사용
 
             JsonNode kakaoAccount = json.get("kakao_account");
             if (kakaoAccount != null) {
@@ -86,12 +90,18 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
                 }
 
                 JsonNode profile = kakaoAccount.get("profile");
-                if (profile != null && profile.has("name")) {
-                    user.setName(profile.get("name").asText());
+                if (profile != null) {
+                    if (profile.has("nickname") && !profile.get("nickname").isNull()) {
+                        user.setName(profile.get("nickname").asText());
+                    } else {
+                        user.setName("카카오사용자");
+                    }
                 }
             }
+        }
+                
 
-        } catch (Exception e) {
+         catch (Exception e) {
             e.printStackTrace();
         }
 

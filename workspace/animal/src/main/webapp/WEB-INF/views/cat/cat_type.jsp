@@ -31,7 +31,7 @@
 
 </head>
 
-<body>
+
 
 <style>
 
@@ -60,6 +60,14 @@
 	padding: 10px;
 	background-color: #f9f9f9;
 	border-radius: 10px;
+}
+.cat-grid li:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.cat-grid p {
+  font-weight: bold;
 }
 
 .cat-grid img {
@@ -145,25 +153,34 @@
     </script>
     
 
-<div class="cat-container">
-  <!-- 3D 고양이 모델 -->
- <model-viewer
-      src="${pageContext.request.contextPath}/resources/model/model.glb"
-      alt="3D 고양이" auto-rotate camera-controls ar autoplay exposure="1"
-      shadow-intensity="1">
-   </model-viewer>
+<body>
+  <!-- Header 영역 -->
+  <header style="padding: 30px 0; background-color: #fff;">
+    <h1 style="text-align: center;">고양이 품종 백과</h1>
+  </header>
 
+  <!-- Main 컨텐츠 영역 -->
+  <main>
+    <div class="cat-container">
+      <!-- 3D 모델뷰어 -->
+      <model-viewer
+        src="${pageContext.request.contextPath}/resources/model/model.glb"
+        alt="3D 고양이" auto-rotate camera-controls ar autoplay exposure="1"
+        shadow-intensity="1" class="cat-model">
+      </model-viewer>
 
-  <!-- 설명 텍스트 -->
-  <div class="cat-text">
-    <h1>묘종에 대해<br>찾아보세요.</h1>
-    <p>
-      50여 종이 넘는 고양이 품종의 특징과 요구사항에 대한<br>
-      전문적인 정보를 확인하세요. 고양이 품종에 따라<br>
-      필요로 하는 환경과 케어가 다를 수 있습니다.
-    </p>
-  </div>
-</div>
+      <!-- 설명 텍스트 -->
+      <div class="cat-text">
+        <h1>묘종에 대해<br>찾아보세요.</h1>
+        <p>
+          50여 종이 넘는 고양이 품종의 특징과 요구사항에 대한<br>
+          전문적인 정보를 확인하세요. 고양이 품종에 따라<br>
+          필요로 하는 환경과 케어가 다를 수 있습니다.
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
 <div id="textsetting">
   <h2 id="category1">단모종</h2>
   <input type="text" id="search-box" placeholder="품종 이름을 입력하세요">

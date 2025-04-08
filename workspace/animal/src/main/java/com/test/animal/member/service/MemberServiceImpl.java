@@ -62,6 +62,20 @@ public class MemberServiceImpl<UserMaper> implements MemberService {
 		return null;
 	}
 
+	/**
+	 * @return the userMapper
+	 */
+	public UserMaper getUserMapper() {
+		return userMapper;
+	}
+
+	/**
+	 * @param userMapper the userMapper to set
+	 */
+	public void setUserMapper(UserMaper userMapper) {
+		this.userMapper = userMapper;
+	}
+
 
 }
 

@@ -13,7 +13,7 @@
 <script>
 /**
  * 회원가입 유효성 검사
- */
+ 
 function join() {
     var form = document.forms['joinForm']; 
 
@@ -72,7 +72,7 @@ function join() {
     }
 
     alert("회원가입이 완료되었습니다!");
-
+    */
     // 폼 제출 후 로그인 페이지로 이동
     setTimeout(function () {
         form.submit();

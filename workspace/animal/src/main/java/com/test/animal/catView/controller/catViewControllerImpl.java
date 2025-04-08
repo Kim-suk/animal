@@ -42,6 +42,11 @@ public class catViewControllerImpl implements catViewController{
 	    model.addAttribute("breed", breed);
 	    return "/cat/cat_detail";
 	}
+
+	@RequestMapping("/cat_responsible.do")
+	public String showCatResponsible() {
+		return "/cat/cat_responsible";
+	}
 	
 	
 }

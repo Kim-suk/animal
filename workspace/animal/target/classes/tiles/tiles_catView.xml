@@ -5,7 +5,7 @@
 	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 	
 <tiles-definitions>
-	<definition name="animalLayout" template="/WEB-INF/views/common/layout.jsp">
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
 		<put-attribute name="side" value="" />
@@ -21,7 +21,7 @@
 	
 	<definition name="/cat/cat_kitten" extends="baseLayout">
 		<put-attribute name="title" value="어린 고양이"/>
-		<put-attribute name="side" value="/WEB-INF/views/common/side_baby.jsp" />
+		<put-attribute name="side" value="/WEB-INF/views/common/side_cat.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_kitten.jsp" />
 	</definition>
 	
@@ -33,6 +33,11 @@
 	<definition name="/cat/cat_detail" extends="baseLayout">
 		<put-attribute name="title" value=""/>
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_detail.jsp" />
+	</definition>
+	
+	<definition name="/cat/cat_responsible" extends="baseLayout">
+		<put-attribute name="title" value="🐾 고양이를 위한 책임감 있는 보호자 되기"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat/cat_responsible.jsp" />
 	</definition>
 
 </tiles-definitions>

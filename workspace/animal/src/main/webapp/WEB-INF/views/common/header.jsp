@@ -18,7 +18,7 @@
    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-        $(document).ready(function(){
+        $(document). ready(function(){
             $(".nav-item").hover(
                 function(){ 
                     $(this).find(".submenu").stop(true, true).slideDown(200); 
@@ -205,7 +205,7 @@ body {
       <!-- 로그인/로그아웃 버튼 -->
       <div class="nav-login">
         <c:choose>
-    <c:when test="${not empty sessionScope.loginId}">
+    <c:when test="${not empty sessionScope.loginMember}">
         <!-- 로그인 상태일 때 -->
         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
         <li class="nav-item"><a class="nav-link" href="#">${sessionScope.loginId}님 환영합니다</a></li>

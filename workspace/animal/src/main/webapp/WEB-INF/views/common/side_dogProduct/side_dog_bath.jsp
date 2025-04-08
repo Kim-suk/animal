@@ -72,7 +72,6 @@
             </div>
             <div class="filter-options">
                 <label class="block"><input type="checkbox" class="mr-2">무향</label>
-                <label class="block"><input type="checkbox" class="mr-2">머스크향</label>
                 <label class="block"><input type="checkbox" class="mr-2">베이비파우더향</label>
                 <label class="block"><input type="checkbox" class="mr-2">과일향</label>
             </div>

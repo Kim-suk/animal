@@ -37,20 +37,7 @@
 </head>
 <body>
     <aside class="w-64 p-4 border-r bg-white rounded-lg shadow-sm">
-        <h2 class="text-xl font-semibold mb-4">이동장</h2>
-
-        <!-- 허용 무게 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>허용 무게</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">1.5kg 이하</label>
-                <label class="block"><input type="checkbox" class="mr-2">3~5kg</label>
-                <label class="block"><input type="checkbox" class="mr-2">10kg 이상</label>
-            </div>
-        </div>
+        <h2 class="text-xl font-semibold mb-4">목욕용품</h2>
 
         <!-- 종류 -->
         <div class="filter-group">
@@ -59,22 +46,34 @@
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">케리어/이동가방</label>
-                <label class="block"><input type="checkbox" class="mr-2">백팩</label>
-                <label class="block"><input type="checkbox" class="mr-2">켄넬/이동장</label>
+                <label class="block"><input type="checkbox" class="mr-2">샴푸</label>
+                <label class="block"><input type="checkbox" class="mr-2">빗</label>
+                <label class="block"><input type="checkbox" class="mr-2">타월</label>
+                <label class="block"><input type="checkbox" class="mr-2">가위</label>
             </div>
         </div>
 
-        <!-- 실내/실외용 -->
+        <!-- 비듬관리 여부 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
-                <span>실내 실외용</span>
+                <span>비듬관리 여부</span>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">실외용</label>
-                <label class="block"><input type="checkbox" class="mr-2">실내외겸용</label>
-                <label class="block"><input type="checkbox" class="mr-2">실내용</label>
+                <label class="block"><input type="checkbox" class="mr-2">비듬관리</label>
+            </div>
+        </div>
+
+        <!-- 향 -->
+        <div class="filter-group">
+            <div class="section-toggle" onclick="toggleSection(this)">
+                <span>향</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="filter-options">
+                <label class="block"><input type="checkbox" class="mr-2">무향</label>
+                <label class="block"><input type="checkbox" class="mr-2">베이비파우더향</label>
+                <label class="block"><input type="checkbox" class="mr-2">과일향</label>
             </div>
         </div>
 

@@ -29,42 +29,28 @@ body, html {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 /* 동물 사이드바 */
 #sidebar-animal {
     
-    top: 140px; /* 헤더 높이만큼 내림 */
-    left: 0;
     width: 250px;
-    height: 900px;
-    margin-top: 50px;
     padding-top: 20px;
-    bottom: 0;
-    background-color: yellow;
-    overflow-y: auto;
+    height: auto; /* 혹시 너무 길게 고정돼 있다면 제거 */
 }
 
 /* 상점 사이드바 */
 #sidebar-product {
-    
-    top: 140px; /* 헤더 높이만큼 내림 */
-    left: 0;
     width: 250px;
-    height: 900px;
-    margin-top: 50px;
     padding-top: 20px;
-    bottom: 0;
-    background-color: yellow;
+    height: auto; /* 혹시 너무 길게 고정돼 있다면 제거 */
 }
 
 /* 메인 콘텐츠 영역 수정 */
 #content {
     flex: 1;
-    width: calc(100% - 250px);
-    margin-left: 250px;
-    padding: 20px;
+    
 }
 
 /* 푸터 수정 - 콘텐츠 아래에 고정되도록 설정 */

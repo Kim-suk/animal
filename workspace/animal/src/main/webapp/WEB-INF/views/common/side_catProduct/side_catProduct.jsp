@@ -22,10 +22,6 @@
   		  padding-bottom: 8px;
   		  border-bottom: 1px solid #ddd;
 		}
-
-        .filter-group {
-            margin-bottom: 20px;
-        }
 	
 		.custom-link {
             text-decoration: none;
@@ -78,7 +74,7 @@
         <!-- 장난감 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
-                 <a href="cat_dish.do" class="custom-link">장난감</a>
+                 <a href="cat_toy.do" class="custom-link">장난감</a>
             </div>
            
         </div>

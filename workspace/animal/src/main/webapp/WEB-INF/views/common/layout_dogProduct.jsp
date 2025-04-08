@@ -17,15 +17,18 @@
 		<div id="header">
 			<tiles:insertAttribute name="header" /> 
 		</div>
-		<div id="sidebar-product">
-			<tiles:insertAttribute name="side" />
-		</div>
-		<div id="content">
-			<tiles:insertAttribute name="body" />
-		</div>
-		<div id="footer">
-			<tiles:insertAttribute name="footer" />
-		</div>
+		 <div style="display: flex; flex: 1;">
+        <div id="sidebar-product">
+            <tiles:insertAttribute name="side" />
+        </div>
+        <div id="content">
+            <tiles:insertAttribute name="body" />
+        </div>
+    </div>
+
+    <div id="footer">
+        <tiles:insertAttribute name="footer" />
+    </div>
 	</div>
 </body>
 </html>

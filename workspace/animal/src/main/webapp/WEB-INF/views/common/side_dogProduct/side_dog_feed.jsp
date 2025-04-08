@@ -37,43 +37,61 @@
 </head>
 <body>
     <aside class="w-64 p-4 border-r bg-white rounded-lg shadow-sm">
-        <h2 class="text-xl font-semibold mb-4">목욕용품</h2>
+        <h2 class="text-xl font-semibold mb-4">사료</h2>
 
-        <!-- 소재 -->
+        <!-- 연령 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
-                <span>소재</span>
+                <span>연령</span>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">플라스틱</label>
-                <label class="block"><input type="checkbox" class="mr-2">스테인리스</label>
-                <label class="block"><input type="checkbox" class="mr-2">도자기/유리</label>
-                <label class="block"><input type="checkbox" class="mr-2">고무/실리콘</label>
+                <label class="block"><input type="checkbox" class="mr-2">전영령</label>
+                <label class="block"><input type="checkbox" class="mr-2">퍼피 (0-1세)</label>
+                <label class="block"><input type="checkbox" class="mr-2">어덜트 (1-7세)</label>
+               <!--  <hr style="margin: 10px 0; border: none; border-top: 1px solid #ccc;"> -->
+           
             </div>
         </div>
 
-        <!-- 대상크기 -->
+        <!-- 무게 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
-                <span>대상크기</span>
+                <span>무게</span>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">소형</label>
-                <label class="block"><input type="checkbox" class="mr-2">중형</label>
-                <label class="block"><input type="checkbox" class="mr-2">대형</label>
+                <label class="block"><input type="checkbox" class="mr-2">2KG 이하</label>
+                <label class="block"><input type="checkbox" class="mr-2">2이상 ~ 10KG 이하</label>
+                <label class="block"><input type="checkbox" class="mr-2">10KG이상</label>
             </div>
         </div>
 
-        <!-- 자동급식기능 -->
+        <!-- 주원료 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
-                <span>자동급식기능</span>
+                <span>주원료</span>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">자동급식기능</label>
+                <label class="block"><input type="checkbox" class="mr-2">소</label>
+                <label class="block"><input type="checkbox" class="mr-2">돼지</label>
+                <label class="block"><input type="checkbox" class="mr-2">닭</label>
+                <label class="block"><input type="checkbox" class="mr-2">오리</label>
+            </div>
+        </div>
+
+
+        <!-- 알갱이 크기 -->
+        <div class="filter-group">
+            <div class="section-toggle" onclick="toggleSection(this)">
+                <span>알갱이크기</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="filter-options">
+                <label class="block"><input type="checkbox" class="mr-2">작은알갱이 (8mm미만)</label>
+                <label class="block"><input type="checkbox" class="mr-2">보통알갱이(8~13mm)</label>
+                <label class="block"><input type="checkbox" class="mr-2">큰알갱이(13mm이상)</label>
             </div>
         </div>
 

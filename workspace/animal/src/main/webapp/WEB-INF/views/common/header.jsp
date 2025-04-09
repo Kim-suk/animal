@@ -168,6 +168,18 @@
       }
     });
   });
+
+  // 로그아웃 버튼 클릭 → 모달 실행 (닫힘 방지 설정 포함)
+  function logout(event) {
+    event.preventDefault();
+    const modalElement = document.getElementById('logoutModal');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement, {
+        backdrop: false // 배경 클릭 방지
+      });
+      modal.show();
+    }
+  }
 </script>
 	
 </head>

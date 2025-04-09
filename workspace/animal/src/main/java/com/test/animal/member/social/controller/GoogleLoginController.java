@@ -53,11 +53,11 @@ public class GoogleLoginController {
         }
 
         // 3. 기존 구글 ID로 회원 조회
-        MemberDTO member = googleService.findByGoogleId(googleUser.getId());
+        MemberDTO member = googleService.selectByGoogleId(googleUser.getId());
 
         if (member == null) {
             // 3-1. 이메일 중복 여부 확인
-            MemberDTO existingByEmail = googleService.findByEmail(googleUser.getEmail());
+            MemberDTO existingByEmail = googleService.selectByEmail(googleUser.getEmail());
             if (existingByEmail != null) {
                 session.setAttribute("loginMember", existingByEmail);
                 return "redirect:/main.do";
@@ -89,7 +89,7 @@ public class GoogleLoginController {
                 if (e.getMessage().startsWith("EXISTING_USER:")) {
                     String existingId = e.getMessage().split(":")[1];
                     System.out.println("⚠️ 이미 등록된 ID로 로그인 처리: " + existingId);
-                    member = googleService.findByUserId(existingId);
+                    member = googleService.selectByUserId(existingId);
                 } else {
                     System.out.println("❌ 회원 등록 중 오류: " + e.getMessage());
                     return "redirect:/member/login.jsp?result=joinFailed";
@@ -104,6 +104,7 @@ public class GoogleLoginController {
         session.setAttribute("loginMember", member);
         session.setAttribute("loginName", member.getName());
         session.setAttribute("loginId", member.getId());
+        session.setAttribute("isLogin", true);
         
      
         return "redirect:/main.do";

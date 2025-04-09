@@ -107,21 +107,19 @@ public class MemberDTO {
 	public void setGoogleId(String googleId) {
 		this.googleId = googleId;
 	}
-	/*public void setAge(String ageStr) {
-	    try {
-	        this.age = Integer.parseInt(ageStr);
-	    } catch (NumberFormatException e) {
-	        this.age = 0;
-	    }
-	}
 
-
-
-
-*/
 	public void setAge(int i) {
 		// TODO Auto-generated method stub
-		
+		this.age = String.valueOf(i);
 	}
+	private String nickname;  // ✅ 추가됨
+
+	public String getNickname() {
+	    return nickname;
+	}
+	public void setNickname(String nickname) {
+	    this.nickname = nickname;
+	}
+
 
 }

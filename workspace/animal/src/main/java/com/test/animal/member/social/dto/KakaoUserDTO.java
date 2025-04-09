@@ -3,7 +3,7 @@ package com.test.animal.member.social.dto;
 public class KakaoUserDTO {
     private String id;
     private String email;
-    private String name;
+    private String nickname;
     // getters, setters
     // Getters and Setters
     public String getId() { return id; }
@@ -12,7 +12,8 @@ public class KakaoUserDTO {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getNickname() { return nickname; }
+    
+    public void setNickname(String nickname) { this.nickname = nickname; }
     
 }

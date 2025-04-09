@@ -2,8 +2,8 @@ package com.test.animal.member.social.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.test.animal.member.dao.MemberDAO;
 import com.test.animal.member.dto.MemberDTO;
+import com.test.animal.member.social.dao.SocialUserDAO;
 import com.test.animal.member.social.dto.KakaoUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.net.URL;
 public class KakaoLoginServiceImpl implements KakaoLoginService {
 
     @Autowired
-    private MemberDAO memberDAO;
+    private SocialUserDAO socialUserDAO;
 
     @Override
     public String getAccessToken(String code) {
@@ -26,7 +26,6 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
         try {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
 
@@ -57,8 +56,7 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
         return accessToken;
     }
 
-    @SuppressWarnings("unused")
-	@Override
+    @Override
     public KakaoUserDTO getUserInfo(String accessToken) {
         KakaoUserDTO user = new KakaoUserDTO();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -75,33 +73,52 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
                 while ((line = br.readLine()) != null) result.append(line);
             }
 
+            // 응답 JSON 확인용 출력
+            System.out.println("카카오 응답 JSON: " + result.toString());
+
             ObjectMapper mapper = new ObjectMapper();
             JsonNode json = mapper.readTree(result.toString());
 
-            String kakaoId = json.get("id").asText(); // 여기선 순수 ID만
+            String kakaoId = json.get("id").asText();
             user.setId(kakaoId);
-            
-            String dbId = "kakao_" + user.getId(); // 이때 통일된 ID 사용
 
             JsonNode kakaoAccount = json.get("kakao_account");
             if (kakaoAccount != null) {
+                // 이메일
                 if (kakaoAccount.has("email")) {
                     user.setEmail(kakaoAccount.get("email").asText());
                 }
 
+                // 닉네임 처리 (fallback 포함)
+                String nickname = null;
                 JsonNode profile = kakaoAccount.get("profile");
-                if (profile != null) {
-                    if (profile.has("nickname") && !profile.get("nickname").isNull()) {
-                        user.setName(profile.get("nickname").asText());
-                    } else {
-                        user.setName("카카오사용자");
+
+                // 우선 profile.nickname 확인
+                if (profile != null && profile.has("nickname") && !profile.get("nickname").isNull()) {
+                    nickname = profile.get("nickname").asText();
+                }
+
+                // profile.nickname이 없을 경우 properties.nickname 확인
+                if ((nickname == null || nickname.trim().isEmpty()) && json.has("properties")) {
+                    JsonNode properties = json.get("properties");
+                    if (properties.has("nickname")) {
+                        nickname = properties.get("nickname").asText();
                     }
                 }
-            }
-        }
-                
 
-         catch (Exception e) {
+                // 그래도 없으면 fallback 처리
+                if (nickname == null || nickname.trim().isEmpty()) {
+                    String email = user.getEmail();
+                    if (email != null && email.contains("@")) {
+                        nickname = email.substring(0, email.indexOf("@"));
+                    } else {
+                        nickname = "카카오사용자" + kakaoId.substring(0, 5);
+                    }
+                }
+                System.out.println("닉네임 최종 파싱 결과: " + nickname);
+                user.setNickname(nickname);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -109,63 +126,53 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
     }
 
     @Override
-    public MemberDTO findByKakaoId(String kakaoId) {
-        return memberDAO.selectByKakaoId("kakao_" + kakaoId);
-    }
-
-    @Override
-    public MemberDTO findByEmail(String email) {
-        return memberDAO.selectByEmail(email);
-    }
-
-    @Override
     public void registerKakaoUser(MemberDTO member) {
-        int count = memberDAO.checkUserId(member.getId());
+        int count = socialUserDAO.checkUserId(member.getId());
         if (count > 0) {
             throw new IllegalStateException("EXISTING_USER:" + member.getId());
         }
 
-        memberDAO.insertKakaoUser(member);
+        socialUserDAO.insertKakaoUser(member);
     }
 
     @Override
-    public MemberDTO findByUserId(String id) {
-        return memberDAO.selectByUserId(id);
-    }
+    public MemberDTO handleKakaoLogin(KakaoUserDTO KakaoUser) {
+        String kakaoId = "kakao_" + KakaoUser.getId();
 
-    /**
-     * ✅ 카카오 로그인 통합 처리
-     */
-    @Override
-    public MemberDTO handleKakaoLogin(KakaoUserDTO kakaoUser) {
-        String kakaoId = "kakao_" + kakaoUser.getId();
-
-        // 1. kakao_id로 사용자 확인
-        MemberDTO existing = memberDAO.selectByKakaoId(kakaoId);
+        // 1. selectByKakaoId
+        MemberDTO existing = socialUserDAO.selectByKakaoId(kakaoId);
         if (existing != null) return existing;
 
-        // 2. 이메일로 기존 사용자 연동
-        MemberDTO byEmail = memberDAO.selectByEmail(kakaoUser.getEmail());
+        // 2. selectByEmail
+        MemberDTO byEmail = socialUserDAO.selectByEmail(KakaoUser.getEmail());
         if (byEmail != null) {
             byEmail.setKakaoId(kakaoId);
             byEmail.setJoinType("KAKAO");
-            memberDAO.modMember(byEmail);
+            socialUserDAO.modMember(byEmail);
             return byEmail;
         }
 
-        // 3. 새 사용자 등록
+        // 3. 신규 등록
         MemberDTO newMember = new MemberDTO();
         newMember.setId(kakaoId);
         newMember.setPwd("SOCIAL");
 
-        String email = (kakaoUser.getEmail() == null || kakaoUser.getEmail().trim().isEmpty())
-                ? "noemail_" + kakaoUser.getId() + "@kakao.com"
-                : kakaoUser.getEmail();
+        String email = (KakaoUser.getEmail() == null || KakaoUser.getEmail().trim().isEmpty())
+                ? "noemail_" + KakaoUser.getId() + "@kakao.com"
+                : KakaoUser.getEmail();
         newMember.setEmail(email);
 
-        String name = (kakaoUser.getName() == null || kakaoUser.getName().trim().isEmpty())
-                ? "카카오사용자" : kakaoUser.getName();
-        newMember.setName(name);
+        
+     // Kakao API로부터 받은 닉네임
+        String kakaoNickname = KakaoUser.getNickname(); // 예: "고양이사랑123"
+
+        // nickname 저장
+        newMember.setNickname(kakaoNickname);
+
+        // 2. name 필드에도 nickname 넣기 (JSP에서 ${loginName} 출력용)
+        newMember.setName(kakaoNickname != null && !kakaoNickname.trim().isEmpty()
+                ? kakaoNickname
+                : "카카오사용자" + KakaoUser.getId().substring(0, 5));
 
         newMember.setKakaoId(kakaoId);
         newMember.setJoinType("KAKAO");
@@ -174,5 +181,20 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
 
         registerKakaoUser(newMember);
         return newMember;
+    }
+
+    @Override
+    public MemberDTO selectByKakaoId(String kakaoId) {
+        return socialUserDAO.selectByKakaoId(kakaoId);
+    }
+
+    @Override
+    public MemberDTO selectByEmail(String email) {
+        return socialUserDAO.selectByEmail(email);
+    }
+
+    @Override
+    public MemberDTO selectByUserId(String id) {
+        return socialUserDAO.selectByUserId(id);
     }
 }

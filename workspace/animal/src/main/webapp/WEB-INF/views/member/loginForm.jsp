@@ -17,16 +17,12 @@
 			alert('아이디나 비밀번호가 틀립니다. 다시 로그인 하세요.');
 		</script>
 	</c:when>
-	<c:when test="${param.result == 'logout' }">
-		<script>
-			alert('로그아웃 되었습니다. 다시 로그인 하세요.');
-		</script>
-	</c:when>
-	<c:when test="${param.result == 'notLogin' }">
-		<script>
-			alert('로그인이 되어 있지 않습니다. 로그인 하세요.');
-		</script>
-	</c:when>
+	<c:when test='${param.result == "joinSuccess"}'>
+    <script>alert('회원가입이 완료되었습니다. 로그인 해 주세요.');</script>
+</c:when>
+<c:when test='${param.result == "joinFailed"}'>
+    <script>alert('회원가입에 실패했습니다. 다시 시도해 주세요.');</script>
+</c:when>
 </c:choose>
 <style>
     .login-container {
@@ -153,7 +149,7 @@ s
     <h2 class="login-title">LOGIN</h2>
 
     <!-- 로그인 폼 -->
-    <form action="${contextPath }/main.do" method="post" onsubmit="return saveId()">
+    <form action="${contextPath }/member/login.do" method="post" onsubmit="return saveId()">
       <div class="mb-3">
         <label for="id" class="form-label">ID</label>
         <input type="text" class="form-control" id="id" name="id" required>

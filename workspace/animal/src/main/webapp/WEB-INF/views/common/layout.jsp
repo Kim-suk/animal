@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css">
 </head>
 <body>
+
 	<div id="container">
 		<div id="header">
 			<tiles:insertAttribute name="header" /> 

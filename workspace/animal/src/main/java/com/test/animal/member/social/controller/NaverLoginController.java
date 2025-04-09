@@ -30,7 +30,8 @@ public class NaverLoginController {
                 + "?response_type=code"
                 + "&client_id=" + clientId
                 + "&redirect_uri=" + redirectUri
-                + "&state=" + state;
+                + "&state=" + state
+        		+ "&scope=nickname,name,email"; 
 
         response.sendRedirect(naverAuthUrl);
     }

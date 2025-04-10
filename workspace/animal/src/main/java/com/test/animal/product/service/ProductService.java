@@ -9,5 +9,20 @@ public interface ProductService {
 	ProductDTO productDetail(String id);
 
 	List<ProductDTO> getCatTop10();
+	
+	List<ProductDTO> catFeedProducts();
 
+	List<ProductDTO> catTreatProducts();
+
+	List<ProductDTO> catSandProducts();
+
+	List<ProductDTO> catCarrierProducts();
+
+	List<ProductDTO> catToyProducts();
+
+	List<ProductDTO> catBathProducts();
+
+	List<ProductDTO> catHouseProducts();
+
+	List<ProductDTO> catDishProducts();
 }

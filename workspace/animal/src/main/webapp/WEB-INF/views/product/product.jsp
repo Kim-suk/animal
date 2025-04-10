@@ -58,7 +58,7 @@ isELIgnored="false" %>
             padding: 20px;
         }
 
-        .cat-photo {
+        .animal-photo {
             grid-column: 3 / 4;
             grid-row: 3 / 4;
             background-color: #f0f0f0;
@@ -88,10 +88,16 @@ isELIgnored="false" %>
         <div class="description">
             <h3>${product.description}</h3>
         </div>
-        <div class="cat-photo">
-            <p>고양이 사진</p>
-            <img src="" alt="고양이 이미지">
-        </div>
+        <div class="animal-photo">
+    <c:choose>
+        <c:when test="${product.animal_type == '강아지'}">
+            <img src="https://image.store.bemypet.kr/content/uploads/2021/05/03104401/%EC%8D%B8%EB%84%A4%EC%9D%BC-%EB%A6%AC%EB%A6%AC-2.png" alt="강아지 이미지">
+        </c:when>
+        <c:when test="${product.animal_type == '고양이'}">
+            <img src="https://image.store.bemypet.kr/content/uploads/2021/05/03104459/%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%82%BC%EC%83%89-2-600x600.png" alt="고양이 이미지">
+        </c:when>
+    </c:choose>
+</div>
     </div>
 </body>
 </html>

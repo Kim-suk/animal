@@ -22,6 +22,7 @@
 			<main
 				class="flex-1 p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 				<!-- 상품 카드 반복 예시 -->
+				
 				<c:forEach var="product" items="${productList}">
 					<div class="bg-white p-4 rounded-xl shadow text-center">
 						<img src="${product.image_url}" alt="제품 이미지">

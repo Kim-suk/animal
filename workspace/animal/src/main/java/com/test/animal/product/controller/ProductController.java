@@ -11,20 +11,42 @@ public interface ProductController {
 
 	ModelAndView productDetail(ProductDTO product, HttpServletRequest request, HttpServletResponse response);
 
-	String productCatFeed();
+	ModelAndView productList();
+	
+	ModelAndView productCatFeed();
 
-	String productCatTreat();
+	ModelAndView productCatTreat();
 
-	String productCatSand();
+	ModelAndView productCatSand();
 
-	String productCatCarrier();
+	ModelAndView productCatCarrier();
 
-	String productCatToy();
+	ModelAndView productCatToy();
 
-	String productCatBath();
+	ModelAndView productCatBath();
 
-	String productCatHouse();
+	ModelAndView productCatHouse();
 
-	String productCatDish();
+	ModelAndView productCatDish();
+	////////////////////////////////////////////////////////
+	String productDogAll();
+
+	String productDogFeed();
+
+	String productDogTreat();
+
+	String productDogPoop();
+
+	String productDogCarrier();
+
+	String productDogToy();
+
+	String productDogBath();
+
+	String productDogHouse();
+
+	String productDogDish();
+
+	
 
 }

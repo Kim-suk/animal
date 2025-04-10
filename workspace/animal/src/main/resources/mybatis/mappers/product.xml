@@ -4,40 +4,106 @@
 
 <mapper namespace="mapper.product">
 
-    <resultMap type="productDTO" id="proResult">
-        <result property="id" column="id" />
-        <result property="name" column="name" />
-        <result property="category" column="category" />
-        <result property="description" column="description" />
-        <result property="price" column="price" />
-        <result property="image_url" column="image_url" />
-    </resultMap>
+	<resultMap type="productDTO" id="proResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="category" column="category" />
+		<result property="description" column="description" />
+		<result property="price" column="price" />
+		<result property="image_url" column="image_url" />
+	</resultMap>
 
-    <!-- 제품 설명 -->
-    <select id="productDetail" parameterType="String" resultType="productDTO">
+	<!-- 제품 설명 -->
+	<select id="productDetail" parameterType="String"
+		resultType="productDTO">
       <![CDATA[
-			SELECT name, category, description, price, image_url
+			SELECT animal_type, name, category, description, price, image_url
 				FROM product WHERE id = #{id}
-		]]>	
-    </select>
-    
-    <!-- 제품 전체 목록 불러오기 -->
+		]]>
+	</select>
+
+	<!-- 제품 전체 목록 불러오기 -->
 	<select id="productList" resultMap="proResult">
-   	 SELECT id, animal_type, name, category, description, price, image_url
-   			 FROM product ORDER BY id ASC
+		SELECT id, animal_type, name, category, description, price, image_url
+		FROM product ORDER BY id ASC
+	</select>
+
+	<!-- 고양이 상점 메인이고 가격순으로 10개 출력 -->
+	<select id="getCatTop10" resultType="productDTO">
+  		<![CDATA[
+    SELECT * FROM (
+     		 SELECT * FROM product
+     		 WHERE animal_type = '고양이'
+      		 ORDER BY price DESC
+   			 )
+   		 WHERE ROWNUM <= 10
+ 		 ]]>
+	</select>
+
+	<!-- 고양이 사료 -->
+	<select id="catFeedProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '사료'
+  		]]>
 	</select>
 	
-	<select id="getCatTop10" resultType="productDTO">
-  <![CDATA[
-    SELECT *
-    FROM (
-      SELECT *
-      FROM product
-      WHERE animal_type = '고양이'
-      ORDER BY price DESC
-    )
-    WHERE ROWNUM <= 10
-  ]]>
-</select>
+	<!-- 고양이 간식 -->
+	<select id="catTreatProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '간식'
+  		]]>
+	</select>
+	
+	<!-- 고양이 모래 -->
+	<select id="catSandProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '모래'
+  		]]>
+	</select>
+	
+	<!-- 고양이 이동장 -->
+	<select id="catCarrierProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '이동장'
+  		]]>
+	</select>
+	
+	<!-- 고양이 장난감 -->
+	<select id="catToyProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '장난감'
+  		]]>
+	</select>
+	
+	<!-- 고양이 목욕용품 -->
+	<select id="catBathProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '목욕용품'
+  		]]>
+	</select>
+	
+	<!-- 고양이 하우스 -->
+	<select id="catHouseProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '하우스'
+  		]]>
+	</select>
+	
+	<!-- 고양이 식기 -->
+	<select id="catDishProducts" resultType="productDTO">
+  		<![CDATA[
+    		SELECT * FROM product 
+				WHERE animal_type = '고양이' AND category = '식기'
+  		]]>
+	</select>
+	
+	
 
 </mapper>

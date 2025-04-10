@@ -26,4 +26,52 @@ public class ProductDAOImpl implements ProductDAO{
 	    return session.selectList("mapper.product.getCatTop10");
 	}
 
+	@Override
+	public List<ProductDTO> catFeedProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catFeedProducts");
+	}
+
+	@Override
+	public List<ProductDTO> catTreatProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catTreatProducts");
+	}
+
+	@Override
+	public List<ProductDTO> catSandProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catSandProducts");
+	}
+
+	@Override
+	public List<ProductDTO> catCarrierProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catCarrierProducts");
+	}
+
+	@Override
+	public List<ProductDTO> catToyProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catToyProducts");
+	}
+	
+	@Override
+	public List<ProductDTO> catBathProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catBathProducts");
+	}
+
+	@Override
+	public List<ProductDTO> catHouseProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catHouseProducts");
+	}
+
+	@Override
+	public List<ProductDTO> catDishProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.catDishProducts");
+	}
+
 }

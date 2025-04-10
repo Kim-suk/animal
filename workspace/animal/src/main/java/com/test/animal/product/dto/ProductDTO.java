@@ -9,7 +9,6 @@ public class ProductDTO {
 	private int price;				// 제품 가격
 	private String image_url;		// 제품 사진 url
 	
-	
 	public String getId() {
 		return id;
 	}

@@ -50,11 +50,11 @@
 	</select>
 	
 	<update id="dog_updateArticle" parameterType="java.util.Map">
-		update dog_board set title=#{title}, content=#{content}
+	<![CDATA[	update dog_board set title=#{title}, content=#{content}
 		<if test="imageFileName != '' and imageFileName != null">
 			, imageFileName=#{imageFileName}
 		</if>
-		where articleNo=#{articleNo}
+		where articleNo=#{articleNo}]]>
 	</update>
 	
 	<delete id="dog_deleteArticle" parameterType="int">
@@ -66,11 +66,10 @@
 	</delete>
 	
 	<insert id="dog_insertNewImage" parameterType="java.util.Map">
-		<foreach item="item" collection="list" open="insert all"
-			separator=" " close="select * from dual">
-			into image(imageFileNo, imageFileName, articleNo, regDate)
+		<foreach item="item" collection="list" open="insert all" separator=" " close="select * from dual">
+		<![CDATA[	into image(imageFileNo, imageFileName, articleNo, regDate)
 			values (#{item.imageFileNo}, #{item.imageFileName}, #{item.articleNo},
-			sysdate)	
+			sysdate)	]]>
 		</foreach>
 	</insert>
 	

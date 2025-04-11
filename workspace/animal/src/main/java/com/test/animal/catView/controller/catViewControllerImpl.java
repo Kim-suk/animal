@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class catViewControllerImpl implements catViewController{
 	
 	@Override
-	@RequestMapping("/cat_all.do")
-	public String showCatAll() {
-	    return "/cat/cat_all";  // Tiles���� ������ �� �̸�
+	@RequestMapping("/cat_about.do")
+	public String showCatAbout() {
+	    return "/cat/cat_about";  // Tiles���� ������ �� �̸�
 	}
 
 	@Override

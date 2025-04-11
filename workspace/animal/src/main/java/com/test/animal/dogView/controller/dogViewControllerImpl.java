@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class dogViewControllerImpl implements dogViewController{
 	// animal/dog/dog_all.do
 	@Override
-	@RequestMapping("/dog_all.do")
-	public String showDogAll() {
+	@RequestMapping("/dog_about.do")
+	public String showDogAbout() {
 		// TODO Auto-generated method stub
-		return "/dog/dog_all";
+		return "/dog/dog_about";
 	}
 
 	@Override

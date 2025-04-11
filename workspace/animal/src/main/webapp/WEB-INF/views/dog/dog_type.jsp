@@ -24,11 +24,10 @@
     </script>
 
 <script>
-   $(document).ready(function() {
+       $(document).ready(function() {
       $('.smart-banner-bxslider').bxSlider({
          mode : 'fade', // 전환 방식: 'horizontal', 'vertical', 'fade'
          auto : true, // 자동 슬라이드 여부
-         
          pause : 2000, // 각 슬라이드 정지 시간 (ms 단위, 2초)
          speed : 500, // 슬라이드 전환 속도 (0.5초)
          controls : true, // 이전/다음 버튼 표시 여부
@@ -36,9 +35,25 @@
          adaptiveHeight : true
       // 이미지 높이에 맞게 자동 조정
       });
-   });
-   
-   
+   }); 
+       
+   document.addEventListener("DOMContentLoaded",function(){
+      const searchBox = document.getElementById('search-box');
+      const dogItems = document.querySelectorAll('.dog-grid li');
+      
+      searchBox.addEventListener("keyup", function(){
+         const keyword = searchBox.value.toLowerCase();
+         
+         dogItems.forEach(function(item) {
+            const dogName = item.querySelector('h3').textContent.toLowerCase();
+            if (dogName.includes(keyword)) {
+               item.style.display = "block";
+            } else {
+               item.style.display = "none";
+            }
+         });
+      });
+   });   
 </script>
 
 <style>
@@ -180,28 +195,6 @@ nav {
 }
 </style>
 
-<script>
-        function filterBreeds() {
-            const keyword1 = document.getElementById('search-box').value.toLowerCase();
-            const keyword2 = document.getElementById('keyword-search').value.toLowerCase();
-
-            const keyword = keyword1 || keyword2;
-
-            const items = document.querySelectorAll('.breed-item');
-
-            items.forEach(item => {
-                const title = item.querySelector('h3').innerText.toLowerCase();
-                if (title.includes(keyword)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        document.getElementById('search-box').addEventListener('input', filterBreeds);
-        document.getElementById('keyword-search').addEventListener('input', filterBreeds);
-    </script>
 
 <body>
    <div data-qa="breadcrumbs" class="sc-58202797-0 iJqTVc">

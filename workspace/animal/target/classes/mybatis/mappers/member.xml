@@ -89,7 +89,7 @@
     <!-- 이메일로 회원 조회 -->
 <select id="selectByEmail" parameterType="java.lang.String" resultMap="memResult">
     <![CDATA[
-        SELECT * FROM animal_member WHERE email = #{email}
+        SELECT * FROM animal_member WHERE email = #{email, jdbcType=VARCHAR}
     ]]>
 </select>
 
@@ -137,7 +137,7 @@
        
             <![CDATA[
         INSERT INTO ANIMAL_MEMBER
-        (id, pwd, age, name, gender, email, joinType, kakao_id, nickname)
+        (id, pwd, age, name, gender, email, join_Type, kakao_id, nickname)
         VALUES
         (#{id}, #{pwd}, #{age}, #{name}, #{gender}, #{email}, #{joinType}, #{kakaoId, jdbcType=VARCHAR}, #{nickname})
     ]]>

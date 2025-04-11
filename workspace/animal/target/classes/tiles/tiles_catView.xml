@@ -39,5 +39,10 @@
 		<put-attribute name="title" value="🐾 고양이를 위한 책임감 있는 보호자 되기"/>
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_responsible.jsp" />
 	</definition>
+	
+	<definition name="/cat/cat_about" extends="baseLayout">
+		<put-attribute name="title" value="고양이"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat/cat_about.jsp" />
+	</definition>
 
 </tiles-definitions>

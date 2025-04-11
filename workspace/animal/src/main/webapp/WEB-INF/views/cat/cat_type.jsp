@@ -1,164 +1,254 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-	
 <!DOCTYPE html>
-
-
 <html>
 <head>
+<meta charset="UTF-8">
+
+<title>품종</title>
+
+</head>
+<!-- jQuery 라이브러리 로드 (필수) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- bxSlider 플러그인 로드 (필수) -->
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+
+<!-- bxSlider CSS (필수) -->
+<link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
 <script type="module"
    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
     </script>
-<meta charset="UTF-8">
-<title>묘종</title><script>
 
-  document.getElementById("search-box").addEventListener("input", function() {
-    const keyword = this.value.toLowerCase();
-    const cats = document.querySelectorAll(".cat-grid li");
-
-    cats.forEach(cat => {
-      const text = cat.textContent.toLowerCase();
-      if (text.includes(keyword)) {
-        cat.style.display = "block";
-      } else {
-        cat.style.display = "none";
-      }
-    });
-  });
+<script>
+   $(document).ready(function() {
+      $('.smart-banner-bxslider').bxSlider({
+         mode : 'fade', // 전환 방식: 'horizontal', 'vertical', 'fade'
+         auto : true, // 자동 슬라이드 여부
+         
+         pause : 2000, // 각 슬라이드 정지 시간 (ms 단위, 2초)
+         speed : 500, // 슬라이드 전환 속도 (0.5초)
+         controls : true, // 이전/다음 버튼 표시 여부
+         pager : true, // 페이지 네이션(1,2,3 버튼) 활성화
+         adaptiveHeight : true
+      // 이미지 높이에 맞게 자동 조정
+      });
+   });
+   
 </script>
 
-</head>
-
-
-
 <style>
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background-color: #f9f9f9;
+}
+
+model-viewer {
+   width: 500px;
+   height: 500px;
+   background: #fff;
+}
 
 #textsetting {
-	text-align: left;
+   text-align: left;
 }
 
 #category1 {
-	margin-bottom: 25px; /* h2 아래쪽 여백 */
+   margin-bottom: 25px; /* h2 아래쪽 여백 */
+}
+
+.cat-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 40px;
+   padding: 30px;
+   background-color: #f8f8f8;
+   border-radius: 20px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   max-width: 1000px;
+   margin: 50px auto;
+}
+
+.cat-container .cat-model {
+   width: 400px;
+   height: 400px;
+   flex-shrink: 0;
+}
+
+.cat-container .cat-text {
+   max-width: 500px;
+   font-family: 'Arial', sans-serif;
+}
+
+.cat-container .cat-text h1 {
+   font-size: 32px;
+   margin-bottom: 20px;
+}
+
+.cat-container .cat-text p {
+   font-size: 18px;
+   line-height: 1.6;
+   color: #333;
 }
 
 .cat-grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
-	gap: 20px; /* 항목 사이 간격 */
-	list-style: none;
-	padding: 0;
-	width: 1200px;
-	margin-top: 30px;
-	margin-left: 50px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr); /* 3열 그리드 */
+   gap: 20px; /* 항목 사이 간격 */
+   list-style: none;
+   padding: 0;
+   width: 1200px;
+   margin-top: 30px;
+   margin-left: 100px;
+}
+
+.cat:hover {
+   transform: scale(1.03);
+}
+
+.name {
+   color: rgb(204, 0, 204);
 }
 
 .cat-grid li {
-	text-align: center;
-	border: 1px solid #ddd;
-	padding: 10px;
-	background-color: #f9f9f9;
-	border-radius: 10px;
-}
-.cat-grid li:hover {
-  transform: scale(1.05);
-  transition: 0.3s ease;
-}
-
-.cat-grid p {
-  font-weight: bold;
+   text-align: center;
+   border: 1px solid #ddd;
+   padding: 10px;
+   background-color: #f9f9f9;
+   border-radius: 10px;
 }
 
 .cat-grid img {
-	width: 100%;
-	height: auto;
-	border-radius: 5px;
+   width: 100%;
+   height: auto;
+   border-radius: 5px;
 }
 
- .cat-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 30px;
-    background-color: #f8f8f8;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    margin: 50px auto;
-  }
+.smart-banner-bxslider img {
+   width: 100%; /* 부모 요소 크기에 맞춤 */
+   height: auto; /* 비율 유지 */
+   object-fit: contain; /* 이미지가 잘리지 않도록 설정 */
+   max-width: 100%;
+}
 
-  .cat-container .cat-model {
-    width: 400px;
-    height: 400px;
-    flex-shrink: 0;
-  }
+nav {
+   display: block;
+   unicode-bidi: isolate;
+}
 
-  .cat-container .cat-text {
-    max-width: 500px;
-    font-family: 'Arial', sans-serif;
-  }
+.iJqTVc {
+   width: 100%;
+   max-width: 1346px;
+   padding: 1.25rem;
+   margin: 0px auto;
+}
 
-  .cat-container .cat-text h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
+.hmSxNI {
+   display: flex;
+   width: 100%;
+   white-space: nowrap;
+   overflow-x: auto;
+   height: 1.875rem;
+}
+.gBDxJK:first-child {
+   padding-left: 0px;
+}
 
-  .cat-container .cat-text p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #333;
-  }
+.gBDxJK {
+   position: relative;
+   display: flex;
+   flex-direction: row;
+   -webkit-box-align: center;
+   align-items: center;
+   margin: 0px 0.3125rem 0px 0px;
+}
 
-  body {
-        font-family: sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #f0f0f0;
-      }
-      model-viewer {
-        width: 500px;
-        height: 500px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      }
+.ghsRDc {
+   display: block;
+   fill: rgb(102, 102, 102);
+   margin: 0px 0px 0px 0.3125rem;
+   min-width: 0.75rem;
+}
+
 </style>
 
-    <script>
-        function filterBreeds() {
-            const keyword1 = document.getElementById('search-box').value.toLowerCase();
-            const keyword2 = document.getElementById('keyword-search').value.toLowerCase();
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	  const searchBox = document.getElementById("search-box");
+	  const catItems = document.querySelectorAll(".cat-grid li");
+	  const noResultsMessage = document.getElementById("no-results-message"); // "검색 결과 없음" 메시지
 
-            const keyword = keyword1 || keyword2;
+	  searchBox.addEventListener("keyup", function() { // 실시간 검색
+	    const keyword = searchBox.value.toLowerCase(); // 대소문자 구분 없이 처리
+	    let hasResults = false; // 결과가 있는지 확인할 변수
 
-            const items = document.querySelectorAll('.breed-item');
+	    catItems.forEach(function(item) {
+	      const catNameElement = item.querySelector("p");
+	      const catName = catNameElement.textContent.toLowerCase();
 
-            items.forEach(item => {
-                const title = item.querySelector('h3').innerText.toLowerCase();
-                if (title.includes(keyword)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
+	      if (catName.includes(keyword)) {
+	        item.style.display = "block";  // 검색어가 포함된 항목은 표시
+	        hasResults = true;  // 결과 있음
+	      } else {
+	        item.style.display = "none";  // 검색어가 포함되지 않은 항목은 숨김
+	      }
+	    });
 
-        document.getElementById('search-box').addEventListener('input', filterBreeds);
-        document.getElementById('keyword-search').addEventListener('input', filterBreeds);
-    </script>
+	    // 검색 결과가 없으면 "검색 결과 없음" 메시지 표시
+	    if (!hasResults && keyword !== "") {
+	      noResultsMessage.style.display = "block";
+	    } else {
+	      noResultsMessage.style.display = "none";
+	    }
+	  });
+	});
+    
+</script>
+
+
     
 
 <body>
-  <!-- Header 영역 -->
-  <header style="padding: 30px 0; background-color: #fff;">
-    <h1 style="text-align: center;">고양이 품종 백과</h1>
-  </header>
-
+  <div data-qa="breadcrumbs" class="sc-58202797-0 iJqTVc">
+      <nav>
+         <ol class="sc-58202797-1 hmSxNI">
+            <li data-qa="breadcrumb-item" class="sc-58202797-2 gBDxJK"><a
+               href="${contextPath }/" class="sc-58202797-4 isfXxF"
+               data-qa="breadcrumb-item-text">홈페이지</a> <svg
+                  preserveAspectRatio="xMidYMid meet" focusable="false"
+                  aria-hidden="true" viewBox="0 0 32 32"
+                  class="sc-a22c687d-0 efaSlz sc-58202797-3 ghsRDc">
+                  <path
+                     d="M12.59 27a1 1 0 01-.66-.25 1 1 0 01-.1-1.41l7.49-8.58a1.23 1.23 0 000-1.52l-7.49-8.58a1 1 0 011.51-1.32l7.49 8.59a3.21 3.21 0 010 4.14l-7.49 8.59a1 1 0 01-.75.34z"
+                     data-name="Arrow Right"></path></svg></li>
+            <li data-qa="breadcrumb-item" class="sc-58202797-2 gBDxJK"><a
+               href="${contextPath }/cat/cat_about.do" class="sc-58202797-4 isfXxF"
+               data-qa="breadcrumb-item-text">반려묘에 대한 모든 것</a> <svg
+                  preserveAspectRatio="xMidYMid meet" focusable="false"
+                  aria-hidden="true" viewBox="0 0 32 32"
+                  class="sc-a22c687d-0 efaSlz sc-58202797-3 ghsRDc">
+                  <path
+                     d="M12.59 27a1 1 0 01-.66-.25 1 1 0 01-.1-1.41l7.49-8.58a1.23 1.23 0 000-1.52l-7.49-8.58a1 1 0 011.51-1.32l7.49 8.59a3.21 3.21 0 010 4.14l-7.49 8.59a1 1 0 01-.75.34z"
+                     data-name="Arrow Right"></path></svg></li>
+            <li data-qa="breadcrumb-item" class="sc-58202797-2 gBDxJK"><a
+               href="${contextPath }/cat/cat_type.do" class="sc-58202797-4 isfXxF"
+               data-qa="breadcrumb-item-text">품종 라이브러리</a> <svg
+                  preserveAspectRatio="xMidYMid meet" focusable="false"
+                  aria-hidden="true" viewBox="0 0 32 32"
+                  class="sc-a22c687d-0 efaSlz sc-58202797-3 ghsRDc">
+                  <path
+                     d="M12.59 27a1 1 0 01-.66-.25 1 1 0 01-.1-1.41l7.49-8.58a1.23 1.23 0 000-1.52l-7.49-8.58a1 1 0 011.51-1.32l7.49 8.59a3.21 3.21 0 010 4.14l-7.49 8.59a1 1 0 01-.75.34z"
+                     data-name="Arrow Right"></path></svg></li>
+         </ol>
+      </nav>
+   </div>
   <!-- Main 컨텐츠 영역 -->
   <main>
     <div class="cat-container">
@@ -171,19 +261,21 @@
 
       <!-- 설명 텍스트 -->
       <div class="cat-text">
-        <h1>묘종에 대해<br>찾아보세요.</h1>
-        <p>
-          50여 종이 넘는 고양이 품종의 특징과 요구사항에 대한<br>
-          전문적인 정보를 확인하세요. 고양이 품종에 따라<br>
-          필요로 하는 환경과 케어가 다를 수 있습니다.
-        </p>
-      </div>
-    </div>
+  <h1>묘종에 대해<br>찾아보세요.</h1>
+  <p>
+    50여 종이 넘는 고양이 품종의 특징과 요구사항에 대한<br>
+    전문적인 정보를 확인하세요. 고양이 품종에 따라<br>
+    필요로 하는 환경과 케어가 다를 수 있습니다.
+  </p>
+
+  <!-- 검색박스 위치 이동 -->
+  <input type="text" id="search-box" placeholder="품종 이름을 입력하세요">
+</div>
   </main>
 </body>
+
 <div id="textsetting">
   <h2 id="category1">단모종</h2>
-  <input type="text" id="search-box" placeholder="품종 이름을 입력하세요">
 		<ul class="cat-grid">
 			<li><a href="${contextPath}/cat/cat_type/devonrex">
 			<img alt="Devon Rex adult in black and white" loading="lazy"
@@ -409,8 +501,6 @@
 	
 	<div id="textsetting">
 		<h2 id=category1>중모종</h2>
-		<input type="text" name="search" id="search-box" placeholder="품종이름">
-
 		<ul class="cat-grid">
 			<li><a href="${contextPath}/cat/cat_type/neva">
 			<img alt="Neva masquerade adult black and white" loading="lazy"
@@ -529,8 +619,6 @@
 	</div>
 	<div id="textsetting">
 		<h2 id=category1>장모종</h2>
-		<input type="text" name="search" id="search-box" placeholder="품종이름">
-
 		<ul class="cat-grid">
 			<li><a href="${contextPath}/cat/cat_type/balinese">
 			<img alt="Balinese adult black and white" loading="lazy"
@@ -557,7 +645,7 @@
 				<p>페르시안</p></a></li>
 		</ul>
 	</div>
-
+ <p id="no-results-message" style="display: none;">검색 결과가 없습니다.</p>
 
 </body>
 </html>

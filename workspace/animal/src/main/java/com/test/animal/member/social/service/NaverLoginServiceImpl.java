@@ -62,7 +62,12 @@ public class NaverLoginServiceImpl implements NaverLoginService {
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
         JSONObject json = new JSONObject(response.getBody());
+        
+        System.out.println("네이버 응답 JSON: " + json.toString());
+        
         JSONObject responseObj = json.getJSONObject("response");
+        System.out.println("네이버 응답: " + responseObj.toString()); // 응답 구조를 전체적으로 확인
+
 
         NaverUserDTO user = new NaverUserDTO();
         user.setId(responseObj.getString("id"));
@@ -79,6 +84,8 @@ public class NaverLoginServiceImpl implements NaverLoginService {
         // ✅ name, nickname 모두 저장
         user.setName(responseObj.optString("name"));
         user.setNickname(responseObj.optString("nickname"));
+
+        System.out.println("DTO에 넣은 name: " + user.getName());
 
         return user;
     }

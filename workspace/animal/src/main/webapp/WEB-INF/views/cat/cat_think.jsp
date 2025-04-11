@@ -277,12 +277,10 @@ section {
         <span>›</span>
         <span class="/animal/cat_think.jsp">고양이를 키울지 고민 중이신가요?</span>
     </div>
-	<!-- 3D 모델과 소개 영역 -->
+
 	<div class="cat-container">
 		<div class="cat-model">
-			<model-viewer src="${contextPath}/resources/model/model.glb"
-				alt="3D 고양이" auto-rotate camera-controls ar autoplay exposure="1"
-				shadow-intensity="1"> </model-viewer>
+			<a href="https://i.namu.wiki/i/sLuB1ME5-6ccGUkcrOBSHdYfreDnesqN3cXQ-3idUTyDAH80qZrPW__8FBeeKRb6oRU28rP9QgNm8kt-yKpNUsqAjKXoJyt8aAbRKYIQo-7hf5RwV5Pvo31jnmgz_wWEmMMmz7_7etHWGhBE1xOX2Q.webp"> </a>
 		</div>
 		<div class="cat-text">
 			<h1>
@@ -439,7 +437,8 @@ section {
 		<p>어떤 고양이를 입양할지 고민 중이시라면 고양이와 보호자와의 관계는 상호적인 것이라는 점을 꼭 기억하세요. 미래의 고양이에게<br>
 		여러분이 제공하는 환경과 애정은 고양이가 여러분의 삶을 풍요롭게 만들어 주는 것만큼 중요하답니다.</p>
 		
-		<p class="apple" href="/animal/cat/cat_type.jsp">묘종 알아보기</p>
+		<a class="apple" href="/animal/cat/cat_type.do">묘종 알아보기</a>
+
 	</section>
 
 	<section id="fourth">

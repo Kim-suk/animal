@@ -49,6 +49,9 @@ public class NaverLoginController {
 
         String accessToken = naverService.getAccessToken(code, state);
         NaverUserDTO naverUser = naverService.getUserInfo(accessToken);
+        
+        System.out.println("네이버 사용자 이름: " + naverUser.getName());
+
 
         if (naverUser == null || naverUser.getId() == null) {
             System.out.println("⚠️ 네이버 사용자 정보 조회 실패");
@@ -72,11 +75,22 @@ public class NaverLoginController {
                     ? "noemail_" + naverUser.getId() + "@naver.com"
                     : naverUser.getEmail();
             member.setEmail(email);
-            String userName = (naverUser.getName() == null || naverUser.getName().trim().isEmpty())
-                    ? "네이버사용자" + naverUser.getId().substring(0, 5)
-                    : naverUser.getName(); // 진짜 이름 저장
-            member.setName(userName);
-
+            
+		
+			String userName = (naverUser.getName() == null ||
+			naverUser.getName().trim().isEmpty()) ? "네이버사용자" +
+			naverUser.getId().substring(0, 5) : naverUser.getName(); // 진짜 이름 저장
+			member.setName(userName);
+			 
+			  
+			  /*String userName = naverUser.getName();
+			  if (userName == null || userName.trim().isEmpty()) {
+                // 네이버에서 제공한 이름이 없을 경우 기본값을 설정
+                userName = "네이버사용자" + naverUser.getId().substring(0, 5);
+			  }
+			  member.setName(userName);*/
+            
+            
             String nickname = (naverUser.getNickname() == null || naverUser.getNickname().trim().isEmpty())
                     ? userName
                     : naverUser.getNickname();
@@ -111,7 +125,10 @@ public class NaverLoginController {
         session.setAttribute("loginId", member.getId());
         session.setAttribute("loginType", member.getJoinType());
         session.setAttribute("isLogin", true);
-
+        
+        System.out.println("네이버 로그인 처리됨: " + member.getId());
+        System.out.println("세션 저장됨: " + member.getName());
+        
         return "redirect:/main.do";
     }
 }

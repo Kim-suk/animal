@@ -249,6 +249,16 @@ document.addEventListener("DOMContentLoaded", function() {
          </ol>
       </nav>
    </div>
+   <div class="page-wrapper">
+  <aside class="sidebar">
+    <!-- 여기에 필터 버튼들 -->
+    <h3>모질 선택</h3>
+    <button onclick="filterCats('short')">단모종</button>
+    <button onclick="filterCats('medium')">중모종</button>
+    <button onclick="filterCats('long')">장모종</button>
+    <button onclick="filterCats('all')">전체 보기</button>
+  </aside>
+  <div>
   <!-- Main 컨텐츠 영역 -->
   <main>
     <div class="cat-container">

@@ -1,5 +1,7 @@
 package com.test.animal.animal_hospital.controller;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,21 +10,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.test.animal.animal_hospital.service.CsvParserService;
 
 @Controller
-public class CsvParserControllerImpl implements CsvParserController{
-	
-	@Autowired
-	private CsvParserService cps;
-	
-	@Override
-	@RequestMapping("/import-csv.do")
-	@ResponseBody
-	public String importCsv() {
-		try {
-            cps.importCsvToDatabase("C:\\spring_project\\data\\fulldata_02_03_01_P_animal_hospital.csv");
-            return "CSV µ¥ÀÌÅÍ°¡ ¼º°øÀûÀ¸·Î DB¿¡ ÀúÀåµÇ¾ú½À´Ï´Ù!";
-        } catch (Exception e) {
-            return "CSV µ¥ÀÌÅÍ ÀúÀå Áß ¿À·ù ¹ß»ı: " + e.getMessage();
-        }
-	}
+public class CsvParserControllerImpl implements CsvParserController {
 
+    @Autowired
+    private CsvParserService cps;
+
+    @Autowired
+    private ServletContext servletContext; // âœ… ServletContext ì£¼ì…
+
+    @Override
+    @RequestMapping("/import-csv.do")
+    @ResponseBody
+    public String importCsv() {
+        try {
+            // âœ… ì›¹ ë£¨íŠ¸ ê¸°ì¤€ì˜ ì‹¤ì œ ê²½ë¡œ ê°€ì ¸ì˜¤ê¸°
+            String realPath = servletContext.getRealPath("/resources/data/fulldata_02_03_01_P_animal_hospital.csv");
+            cps.importCsvToDatabase(realPath);
+
+            return "CSV ë°ì´í„°ê°€ ì„±ê³µì ìœ¼ë¡œ DBì— ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤!";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "CSV ë°ì´í„° ì €ì¥ ì¤‘ ì˜¤ë¥˜ ë°œìƒ: " + e.getMessage();
+        }
+    }
 }

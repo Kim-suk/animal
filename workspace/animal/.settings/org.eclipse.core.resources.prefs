@@ -1,6 +1,12 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/test/animal/animal_hospital/controller/AnimalHospitalRestControllerImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/animal_hospital/service/CsvParserServiceImpl.java=UTF-8
+encoding//src/main/java/com/test/animal/member/controller/MemberControllerImpl.java=UTF-8
+encoding//src/main/java/com/test/animal/member/dao/MemberDAOImpl.java=UTF-8
+encoding//src/main/java/com/test/animal/member/dto/MemberDTO.java=UTF-8
+encoding//src/main/java/com/test/animal/member/social/controller/GoogleLoginController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/side_catProduct/side_catProduct.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/hospital/map.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main.jsp=UTF-8
 encoding//src/main/webapp/resources/data/dog_data.json=UTF-8

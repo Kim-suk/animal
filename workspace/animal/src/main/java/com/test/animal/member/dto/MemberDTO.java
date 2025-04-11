@@ -10,9 +10,9 @@ public class MemberDTO {
 	private String gender;
 	private String email;
 	private Date joinDate;
-	private String naverId;   // 네이버 ID
-	private String kakaoId;   // 네이버 ID
-	private String googleId;   // 네이버 ID
+	private String naverId;   // �꽕�씠踰� ID
+	private String kakaoId;   // �꽕�씠踰� ID
+	private String googleId;   // �꽕�씠踰� ID
 	private String joinType;  // NAVER / EMAIL
 
 	public String getId() {

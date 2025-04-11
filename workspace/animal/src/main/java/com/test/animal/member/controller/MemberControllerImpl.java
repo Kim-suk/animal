@@ -100,14 +100,25 @@ public class MemberControllerImpl implements MemberController{
 	@RequestMapping("/member/addMember.do")
 	public ModelAndView addMember(MemberDTO member, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// TODO Auto-generated method stub
+		System.out.println("회원가입 요청: " + member);
+
 		int result = service.addMember(member);
-		ModelAndView mav = new ModelAndView("redirect:/main.do");
-		//mav.addObject("msg", "addMember");
-		//mav.addObject("id", member.getId());
-		
+		System.out.println("insert 결과: " + result);
+
+		ModelAndView mav = new ModelAndView();
+		if (result > 0) {
+		    HttpSession session = request.getSession();	
+		    session.setAttribute("member", member);
+		    session.setAttribute("loginId", member.getId());
+		    session.setAttribute("loginName", member.getName());
+		    session.setAttribute("isLogin", true);
+		    mav.setViewName("redirect:/main.do");
+		} else {
+		    mav.setViewName("redirect:/member/joinMember.do");
+		}
 		return mav;
 	}
+
 	
 	@Override
 	@RequestMapping("/member/modMember.do")
@@ -137,19 +148,27 @@ public class MemberControllerImpl implements MemberController{
 	}
 
 	@Override
-	@RequestMapping(value="/main.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/login.do", method=RequestMethod.POST)
 	public ModelAndView login(MemberDTO member, 
 	        RedirectAttributes rAttr,
 	        HttpServletRequest request, HttpServletResponse response)
 	        throws Exception {
+		
+	    System.out.println("폼에서 전달된 ID: " + member.getId());
+	    System.out.println("폼에서 전달된 PWD: " + member.getPwd());
+	    
+	    member = service.login(member); // 濡쒓렇�씤 �떆�룄
+	    
+	    System.out.println(member);
+	    System.out.println("로그인 결과: " + (member != null ? "성공 - " + member.getName() : "실패"));
 
-	    member = service.login(member); // 로그인 시도
+	    
 	    ModelAndView mav = new ModelAndView();
 	    HttpSession session = request.getSession();
-
+	    
 	    if (member != null) {
-	        // 로그인 성공 시 세션 설정
-	        session.setAttribute("member", member);
+	        // 濡쒓렇�씤 �꽦怨� �떆 �꽭�뀡 �꽕�젙
+	        session.setAttribute("loginMember", member);
 	        session.setAttribute("loginId", member.getId());
 	        session.setAttribute("loginName", member.getName());
 	        session.setAttribute("isLogin", true);

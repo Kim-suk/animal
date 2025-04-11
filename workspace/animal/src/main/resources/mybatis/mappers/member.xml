@@ -58,11 +58,11 @@
     </update>
 
     <!-- 로그인 -->
-    <select id="login" parameterType="memberDTO" resultType="memberDTO">
-      <![CDATA[
-			select * from animal_member where id=#{id} and pwd=#{pwd}
+   <select id="login" parameterType="memberDTO" resultType="memberDTO">
+		<![CDATA[
+			select * from member where id=#{id} and pwd=#{pwd}
 		]]>	
-    </select>
+	</select>
 
     <!-- 네이버 사용자 조회 -->
     <select id="selectByNaverId" resultType="memberDTO">

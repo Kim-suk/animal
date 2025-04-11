@@ -36,6 +36,13 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <property name="messageConverters">
+        <list>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+        </list>
+    </property>
+</bean>
 	
 </beans>
 

@@ -47,17 +47,18 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public MemberDTO login(MemberDTO member) {
 		// TODO Auto-generated method stub
+	    System.out.println("DAO login() 호출됨 - id: " + member.getId() + ", pwd: " + member.getPwd());
 		return sqlSession.selectOne("mapper.member.login", member);
 	}
 
-	  // Naver ID로 회원 조회
+	  // Naver ID濡� �쉶�썝 議고쉶
 	@Override
 	public MemberDTO selectByNaverId(String naverId) {
 		  return sqlSession.selectOne("mapper.member.selectByNaverId", naverId);
 		
 	}
 
-	// Naver 로그인 신규 가입자 삽입
+	// Naver 濡쒓렇�씤 �떊洹� 媛��엯�옄 �궫�엯
 	@Override
 	public void insertNaverUser(MemberDTO member) {
 		sqlSession.insert("mapper.member.insertNaverUser", member);

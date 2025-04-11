@@ -18,10 +18,10 @@ public class GoogleLoginController {
     @Autowired
     private GoogleLoginService googleService;
 
-    // 🔹 Step 1: 구글 로그인 URL로 리다이렉트 (필요 시 구현)
+    // �윍� Step 1: 援ш� 濡쒓렇�씤 URL濡� 由щ떎�씠�젆�듃 (�븘�슂 �떆 援ы쁽)
     @RequestMapping("/googleLoginStart")
     public void googleLoginStart(HttpServletResponse response) throws IOException {
-        String clientId = "1041374005294-sei4ka3orulnm41t7fjr6971tb2jt1ct.apps.googleusercontent.com"; // 실제 Google 클라이언트 ID
+        String clientId = "1041374005294-sei4ka3orulnm41t7fjr6971tb2jt1ct.apps.googleusercontent.com"; // �떎�젣 Google �겢�씪�씠�뼵�듃 ID
         String redirectUri = "http://localhost:8080/animal/member/googleLogin";
 
         String googleAuthUrl = "https://accounts.google.com/o/oauth2/v2/auth"
@@ -33,50 +33,50 @@ public class GoogleLoginController {
         response.sendRedirect(googleAuthUrl);
     }
 
-    // 🔹 Step 2: 콜백 처리
+    // �윍� Step 2: 肄쒕갚 泥섎━
     @RequestMapping("/googleLogin")
     public String googleCallback(@RequestParam("code") String code,
                                  HttpSession session) {
 
-        // 1. 액세스 토큰 발급 요청
+        // 1. �븸�꽭�뒪 �넗�겙 諛쒓툒 �슂泥�
         String accessToken = googleService.getAccessToken(code);
         if (accessToken == null) {
-            System.out.println("❌ 구글 토큰 발급 실패");
+            System.out.println("�쓬 援ш� �넗�겙 諛쒓툒 �떎�뙣");
             return "redirect:/member/login.jsp?result=loginFailed";
         }
 
-        // 2. 사용자 정보 조회
+        // 2. �궗�슜�옄 �젙蹂� 議고쉶
         GoogleUserDTO googleUser = googleService.getUserInfo(accessToken);
         if (googleUser == null || googleUser.getId() == null) {
-            System.out.println("❌ 구글 사용자 정보 조회 실패");
+            System.out.println("�쓬 援ш� �궗�슜�옄 �젙蹂� 議고쉶 �떎�뙣");
             return "redirect:/member/login.jsp?result=loginFailed";
         }
 
-        // 3. 기존 구글 ID로 회원 조회
+        // 3. 湲곗〈 援ш� ID濡� �쉶�썝 議고쉶
         MemberDTO member = googleService.findByGoogleId(googleUser.getId());
 
         if (member == null) {
-            // 3-1. 이메일 중복 여부 확인
+            // 3-1. �씠硫붿씪 以묐났 �뿬遺� �솗�씤
             MemberDTO existingByEmail = googleService.findByEmail(googleUser.getEmail());
             if (existingByEmail != null) {
                 session.setAttribute("loginMember", existingByEmail);
                 return "redirect:/main.do";
             }
 
-            // 3-2. 신규 회원 등록
+            // 3-2. �떊洹� �쉶�썝 �벑濡�
             member = new MemberDTO();
             member.setId("google_" + googleUser.getId());
             member.setGoogleId(googleUser.getId());
 
-            // 👉 이메일 처리
+            // �윉� �씠硫붿씪 泥섎━
             String email = (googleUser.getEmail() == null || googleUser.getEmail().trim().isEmpty())
                     ? "noemail_" + googleUser.getId() + "@google.com"
                     : googleUser.getEmail();
             member.setEmail(email);
 
-            // 👉 이름 처리
+            // �윉� �씠由� 泥섎━
             member.setName(googleUser.getName() == null || googleUser.getName().trim().isEmpty()
-                    ? "구글사용자" : googleUser.getName());
+                    ? "援ш��궗�슜�옄" : googleUser.getName());
 
             member.setJoinType("GOOGLE");
             member.setPwd("SOCIAL");
@@ -88,21 +88,22 @@ public class GoogleLoginController {
             } catch (IllegalStateException e) {
                 if (e.getMessage().startsWith("EXISTING_USER:")) {
                     String existingId = e.getMessage().split(":")[1];
-                    System.out.println("⚠️ 이미 등록된 ID로 로그인 처리: " + existingId);
+                    System.out.println("�슑截� �씠誘� �벑濡앸맂 ID濡� 濡쒓렇�씤 泥섎━: " + existingId);
                     member = googleService.findByUserId(existingId);
                 } else {
-                    System.out.println("❌ 회원 등록 중 오류: " + e.getMessage());
+                    System.out.println("�쓬 �쉶�썝 �벑濡� 以� �삤瑜�: " + e.getMessage());
                     return "redirect:/member/login.jsp?result=joinFailed";
                 }
             } catch (Exception ex) {
-                System.out.println("❌ 알 수 없는 오류: " + ex.getMessage());
+                System.out.println("�쓬 �븣 �닔 �뾾�뒗 �삤瑜�: " + ex.getMessage());
                 return "redirect:/member/login.jsp?result=joinFailed";
             }
         }
-
-        // 4. 로그인 처리
+        
+        // 4. 濡쒓렇�씤 泥섎━
         session.setAttribute("loginMember", member);
         session.setAttribute("loginId", member.getId());
+        session.setAttribute("loginName", member.getName());
         return "redirect:/main.do";
     }
 }

@@ -13,7 +13,7 @@
 		<result property="longitude" column="longitude" />
 	</resultMap>
 
-	<insert id="batchInsertHospitals">
+	<insert id="insertHospitals">
 		<foreach collection="list" item="hospital" open="insert all"
 			separator=" " close="select * from dual">
 			into animal_hospital (id, name, address, phone,
@@ -24,22 +24,21 @@
 		</foreach>
 	</insert>
 
-<select id="findHospitalsWithin5km" parameterType="map" resultType="animalHospitalDTO">
-    <![CDATA[
-    SELECT id, name, address, phone, 
-        (38.0 + (latitude - 200000) / 6367000) AS conv_latitude,
-        (127.0 + (longitude - 600000) / 6367000) AS conv_longitude
-    FROM animal_hospital
-    WHERE (6371 * ACOS(LEAST(1, GREATEST(-1,
-        COS(RADIANS(38.0 + (#{lat} - 200000) / 6367000)) 
-        * COS(RADIANS(38.0 + (latitude - 200000) / 6367000))
-        * COS(RADIANS(127.0 + (longitude - 600000) / 6367000) - 
-              RADIANS(127.0 + (#{lng} - 600000) / 6367000)) 
-        + SIN(RADIANS(38.0 + (#{lat} - 200000) / 6367000)) 
-        * SIN(RADIANS(38.0 + (latitude - 200000) / 6367000))
-    )))) <= 5
-    ]]>
+<select id="getAllHospitals" resultType="animalHospitalDTO">
+    SELECT 
+        id, name, address, phone, latitude, longitude
+    FROM 
+        animal_hospital
+    WHERE 
+        latitude IS NOT NULL AND longitude IS NOT NULL
 </select>
+    
+    
+    <select id="getHospitalById" parameterType="int" resultType="animalHospitalDTO">
+        SELECT id, name, address, phone, latitude, longitude
+        FROM animal_hospital
+        WHERE id = #{id}
+    </select>
 
 
 

@@ -5,7 +5,7 @@
 	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 	
 <tiles-definitions>
-	<definition name="animalLayout" template="/WEB-INF/views/common/layout_animal.jsp">
+	<definition name="animalLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
 		<put-attribute name="side" value="" />
@@ -30,14 +30,19 @@
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_think.jsp" />
 	</definition>
 	
-	<definition name="/dog/dog_all" extends="baseLayout">
+	<definition name="/dog/dog_about" extends="baseLayout">
 		<put-attribute name="title" value="강아지의 모든것!"/>
-		<put-attribute name="body" value="/WEB-INF/views/dog/dog_all.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_about.jsp" />
 	</definition>
 	
 	<definition name="/dog/dog_detail" extends="baseLayout">
 		<put-attribute name="title" value="치와왕"/>
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_detail.jsp" />
+	</definition>
+	
+	<definition name="/dog/dog_responsible" extends="baseLayout">
+		<put-attribute name="title" value="책임감 있는 보호자!!"/>
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_responsible.jsp" />
 	</definition>
 
 </tiles-definitions>

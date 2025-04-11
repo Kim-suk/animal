@@ -69,7 +69,7 @@ s
   window.onload = function () {
     // 로그인 실패/로그아웃/비로그인 알림 처리
     <c:choose>
-      <c:when test='${param.result == "loginFailed"}'>
+      <c:when test="${param.result == 'loginFailed'}">
         alert('아이디나 비밀번호가 틀립니다. 다시 로그인 하세요.');
       </c:when>
       <c:when test='${param.result == "logout"}'>
@@ -87,7 +87,7 @@ s
       document.getElementById("saveIdCheck").checked = true;
     }
     
-    script>
+   
     // 1. 네이버 로그인 객체 생성
     const naverLogin = new naver.LoginWithNaverId({
       clientId: "gvp5HrUQ4UssNFDKYTkF", // 실제 네이버 Client ID
@@ -148,7 +148,7 @@ s
     <h2 class="login-title">LOGIN</h2>
 
     <!-- 로그인 폼 -->
-    <form action="${contextPath }/main.do" method="post" onsubmit="return saveId()">
+    <form action="${contextPath }/member/login.do" method="post" onsubmit="return saveId()">
       <div class="mb-3">
         <label for="id" class="form-label">ID</label>
         <input type="text" class="form-control" id="id" name="id" required>
@@ -158,7 +158,7 @@ s
         <input type="password" class="form-control" id="pwd" name="pwd" required>
       </div>
       <label>
-        <input type="checkbox" id="saveIdCheck"> 아이디 저장
+        <input type="checkbox" id="saveIdCheck">아이디 저장
       </label>
       <button type="submit" class="btn btn-primary w-100">LOGIN</button>
     </form>

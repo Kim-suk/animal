@@ -21,8 +21,8 @@ public class CsvParserControllerImpl implements CsvParserController{
             cps.importCsvToDatabase("C:\\spring_project\\data\\fulldata_02_03_01_P_animal_hospital.csv");
             return "CSV 데이터가 성공적으로 DB에 저장되었습니다!";
         } catch (Exception e) {
+        	System.out.println(e.getMessage());
             return "CSV 데이터 저장 중 오류 발생: " + e.getMessage();
         }
 	}
-
 }

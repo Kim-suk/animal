@@ -20,8 +20,8 @@
 	<a href="https://www.mars.com/accessibility	-korean">접근성</a>
 	
 	
-	<a href="/animal/about/cat_about.do">고양이</a>
-	<a href="/animal/about/dog_about.do">강아지</a>
+	<a href="/animal/cat/cat_about.do">고양이</a>
+	<a href="/animal/dog/dog_about.do">강아지</a>
 	<p style="color: white;">월요일 - 금요일: 오전 9시 ~ 오후 6시 (점심시간 12시 ~ 1시)</p>
 	<p style="color: white;">© 2025 반려묘 사이트 | 모든 권리 보유</p>	
 	<p style="color: white;">☎️    문의하기 | 010 - 5619 - 9939</p>		

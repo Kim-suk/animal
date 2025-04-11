@@ -5,8 +5,8 @@ public class AnimalHospitalDTO {
 	private String name;
 	private String address;
 	private String phone;
-	private double latitude;
-	private double longitude;
+	private Double latitude;
+	private Double longitude;
 	
 	public AnimalHospitalDTO() {
 		// TODO Auto-generated constructor stub
@@ -20,6 +20,8 @@ public class AnimalHospitalDTO {
 	        this.latitude = latitude;
 	        this.longitude = longitude;
 	    }
+
+	
 
 	public int getId() {
 		return id;
@@ -53,21 +55,23 @@ public class AnimalHospitalDTO {
 		this.phone = phone;
 	}
 
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
+	
+	public Double getLatitude() {
+		return latitude;
+	}
+	
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
 
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
+	
 	 
 	 
 }

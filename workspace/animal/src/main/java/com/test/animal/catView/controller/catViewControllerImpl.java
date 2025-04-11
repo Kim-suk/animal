@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class catViewControllerImpl implements catViewController{
 	
 	@Override
-	@RequestMapping("/cat_all.do")
-	public String showCatAll() {
-	    return "/cat/cat_all";  // Tilesï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½
+	@RequestMapping("/cat_about.do")
+	public String showCatAbout() {
+	    return "/cat/cat_about"; 
 	}
 
 	@Override
@@ -31,7 +31,14 @@ public class catViewControllerImpl implements catViewController{
 	@RequestMapping("/cat_type.do")
 	public String showCatType() {
 		// TODO Auto-generated method stub
-		return "/cat/cat_type";  //tiles ¹ÝÈ¯?mapping?
+		return "/cat/cat_type";  //tiles ï¿½ï¿½È¯?mapping?
+	}
+
+	@Override
+	@RequestMapping("/cat_responsible.do")
+	public String showCatResponsible() {
+		// TODO Auto-generated method stub
+		return "/cat/cat_responsible";
 	}
 	
 	

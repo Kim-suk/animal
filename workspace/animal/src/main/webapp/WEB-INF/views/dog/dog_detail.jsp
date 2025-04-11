@@ -29,6 +29,12 @@
 <body>
 <input type="hidden" id="breedVal" value="${breed}">
 <div id="dog-info">로딩 중...</div>
+
+
+
+
+
+
 <script>
 
 const breed = document.getElementById("breedVal").value.trim().toLowerCase(); 	// 컨트롤러에서 받은 품종 이름
@@ -50,6 +56,7 @@ const breed = document.getElementById("breedVal").value.trim().toLowerCase(); 	/
             html += "<img src='" + dog.image + "' alt='" + dog.name + "'>";
 
             document.getElementById("dog-info").innerHTML = html;
+            
         })
         .catch(err => {
             document.getElementById("dog-info").innerHTML = "<p>정보를 불러오는 데 실패했습니다.</p>";

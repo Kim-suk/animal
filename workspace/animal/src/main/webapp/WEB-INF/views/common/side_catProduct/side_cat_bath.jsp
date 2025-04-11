@@ -64,19 +64,6 @@
             </div>
         </div>
 
-        <!-- 향 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>향</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">무향</label>
-                <label class="block"><input type="checkbox" class="mr-2">베이비파우더향</label>
-                <label class="block"><input type="checkbox" class="mr-2">과일향</label>
-            </div>
-        </div>
-
     </aside>
 
     <script>

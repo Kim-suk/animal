@@ -52,17 +52,6 @@
             </div>
         </div>
 
-        <!-- 소리유무 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>소리유무</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">소리있음</label>
-            </div>
-        </div>
-
         <!-- 형태 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
@@ -71,7 +60,6 @@
             </div>
             <div class="filter-options">
                 <label class="block"><input type="checkbox" class="mr-2">평판형</label>
-                <label class="block"><input type="checkbox" class="mr-2">하우스형</label>
                 <label class="block"><input type="checkbox" class="mr-2">기둥형</label>
             </div>
         </div>

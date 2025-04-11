@@ -24,7 +24,8 @@
 
 	<!-- 제품 전체 목록 불러오기 -->
 	<select id="productList" resultMap="proResult">
-		SELECT id, animal_type, name, category, description, price, image_url
+		SELECT id, animal_type, name,
+		category, description, price, image_url
 		FROM product ORDER BY id ASC
 	</select>
 
@@ -40,15 +41,39 @@
  		 ]]>
 	</select>
 
-	<!-- 고양이 사료 -->
+	<!-- 고양이 사료 페이지 -->
 	<select id="catFeedProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
 				WHERE animal_type = '고양이' AND category = '사료'
   		]]>
 	</select>
-	
-	<!-- 고양이 간식 -->
+
+	<!-- 고양이 사료 필터 -->
+	<select id="catFeedFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '사료' AND p.animal_type = '고양이'
+	</select>
+
+	<!-- 고양이 간식 페이지 -->
 	<select id="catTreatProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
@@ -56,7 +81,31 @@
   		]]>
 	</select>
 	
-	<!-- 고양이 모래 -->
+	<!-- 고양이 간식 필터 -->
+	<select id="catTreatFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '간식' AND p.animal_type = '고양이'
+	</select>
+
+	<!-- 고양이 모래 페이지 -->
 	<select id="catSandProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
@@ -64,7 +113,31 @@
   		]]>
 	</select>
 	
-	<!-- 고양이 이동장 -->
+	<!-- 고양이 모래 필터 -->
+	<select id="catSandFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '모래' AND p.animal_type = '고양이'
+	</select>
+
+	<!-- 고양이 이동장 페이지 -->
 	<select id="catCarrierProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
@@ -72,7 +145,31 @@
   		]]>
 	</select>
 	
-	<!-- 고양이 장난감 -->
+	<!-- 고양이 이동장 필터 -->
+	<select id="catCarrierFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '이동장' AND p.animal_type = '고양이'
+	</select>
+
+	<!-- 고양이 장난감 페이지 -->
 	<select id="catToyProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
@@ -80,7 +177,31 @@
   		]]>
 	</select>
 	
-	<!-- 고양이 목욕용품 -->
+	<!-- 고양이 장난감 필터 -->
+	<select id="catToyFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '장난감' AND p.animal_type = '고양이'
+	</select>
+
+	<!-- 고양이 목욕용품 페이지 -->
 	<select id="catBathProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
@@ -88,7 +209,31 @@
   		]]>
 	</select>
 	
-	<!-- 고양이 하우스 -->
+	<!-- 고양이 목욕용품 필터 -->
+	<select id="catBathFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '목욕용품' AND p.animal_type = '고양이'
+	</select>
+
+	<!-- 고양이 하우스 페이지 -->
 	<select id="catHouseProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
@@ -96,6 +241,30 @@
   		]]>
 	</select>
 	
+	<!-- 고양이 하우스 필터 -->
+	<select id="catHouseFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '하우스' AND p.animal_type = '고양이'
+	</select>
+
 	<!-- 고양이 식기 -->
 	<select id="catDishProducts" resultType="productDTO">
   		<![CDATA[
@@ -104,6 +273,28 @@
   		]]>
 	</select>
 	
-	
+	<!-- 고양이 식기 필터 -->
+	<select id="catDishFilter" parameterType="map"
+		resultType="productDTO">
+		SELECT p.* FROM product p
+		JOIN (
+		SELECT product_id FROM product_attribute
+		<where>
+			<foreach collection="filters" index="key" item="values"
+				separator="OR">
+				(
+				attribute_name = #{key} AND attribute_value IN
+				<foreach item="val" collection="values" open="("
+					separator="," close=")">
+					#{val}
+				</foreach>
+				)
+			</foreach>
+		</where>
+		GROUP BY product_id
+		HAVING COUNT(DISTINCT attribute_name) = #{conditionCount}
+		) f ON p.id = f.product_id
+		WHERE p.category = '식기' AND p.animal_type = '고양이'
+	</select>
 
 </mapper>

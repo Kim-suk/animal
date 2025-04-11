@@ -39,19 +39,6 @@
     <aside class="w-64 p-4 border-r bg-white rounded-lg shadow-sm">
         <h2 class="text-xl font-semibold mb-4">하우스</h2>
 
-        <!-- 용도 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>용도</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">의자/좌식용</label>
-                <label class="block"><input type="checkbox" class="mr-2">소파용</label>
-                <label class="block"><input type="checkbox" class="mr-2">차량용</label>
-            </div>
-        </div>
-
         <!-- 소재 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
@@ -61,7 +48,6 @@
             <div class="filter-options">
                 <label class="block"><input type="checkbox" class="mr-2">패브릭</label>
                 <label class="block"><input type="checkbox" class="mr-2">우드/원목</label>
-                <label class="block"><input type="checkbox" class="mr-2">플라스틱</label>
             </div>
         </div>
 
@@ -73,7 +59,7 @@
             </div>
             <div class="filter-options">
                 <label class="block"><input type="checkbox" class="mr-2">텐스형 하우스</label>
-                <label class="block"><input type="checkbox" class="mr-2">켓타워</label>
+                <label class="block"><input type="checkbox" class="mr-2">캣타워</label>
                 <label class="block"><input type="checkbox" class="mr-2">숨숨집 하우스</label>
             </div>
         </div>

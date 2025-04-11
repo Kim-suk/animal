@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />  
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,6 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+
     .login-container {
         max-width: 500px;
         margin: 90px auto;
@@ -61,7 +63,7 @@
   background-color: #FEE500;
   color: black;
 }
-s
+
     
 </style>
 
@@ -87,7 +89,7 @@ s
       document.getElementById("saveIdCheck").checked = true;
     }
     
-    script>
+    
     // 1. 네이버 로그인 객체 생성
     const naverLogin = new naver.LoginWithNaverId({
       clientId: "gvp5HrUQ4UssNFDKYTkF", // 실제 네이버 Client ID
@@ -141,7 +143,7 @@ s
 </script>
 
 </head>
-<body>
+<body  style="padding-top: 140px;">
 
 <div class="container">
   <div class="login-container">

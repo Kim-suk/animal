@@ -46,7 +46,7 @@
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">전영령</label>
+                <label class="block"><input type="checkbox" class="mr-2">전연령</label>
                 <label class="block"><input type="checkbox" class="mr-2">키튼 (0-1세)</label>
                 <label class="block"><input type="checkbox" class="mr-2">어덜트 (1-7세)</label>
             </div>
@@ -61,7 +61,7 @@
             <div class="filter-options">
                 <label class="block"><input type="checkbox" class="mr-2">캔</label>
                 <label class="block"><input type="checkbox" class="mr-2">짜먹는 간식/퓨레</label>
-                <label class="block"><input type="checkbox" class="mr-2">동결건조/건조간식</label>
+                <label class="block"><input type="checkbox" class="mr-2">동결건조</label>
             </div>
         </div>
 
@@ -75,7 +75,6 @@
                 <label class="block"><input type="checkbox" class="mr-2">소</label>
                 <label class="block"><input type="checkbox" class="mr-2">돼지</label>
                 <label class="block"><input type="checkbox" class="mr-2">닭</label>
-                <label class="block"><input type="checkbox" class="mr-2">오리</label>
             </div>
         </div>
 
@@ -87,8 +86,7 @@
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">귀건강</label>
-                <label class="block"><input type="checkbox" class="mr-2">눈물 개선/눈건강</label>
+                <label class="block"><input type="checkbox" class="mr-2">눈물개선/눈건강</label>
                 <label class="block"><input type="checkbox" class="mr-2">다이어트</label>
             </div>
         </div>

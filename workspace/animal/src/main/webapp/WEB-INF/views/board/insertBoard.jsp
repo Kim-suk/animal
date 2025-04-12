@@ -17,7 +17,7 @@
 </head>
 <body>
 <!-- 헤더 -->
-<br>
+<br><br><br><br>
 
 <center>
 	<h1>게시글 등록</h1>

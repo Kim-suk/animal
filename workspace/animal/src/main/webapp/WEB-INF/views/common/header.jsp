@@ -1,143 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    response.setHeader("Cache-Control", "no-store");
-    response.setHeader("Pragma", "no-cache");
-    response.setDateHeader("Expires", 0);
-%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>반려동물 페이지</title>
+<meta charset="UTF-8">
+<title>반려동물 페이지</title>
 
-  <!-- jQuery & Bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery 및 Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="${contextPath}/resources/css/style.css?v=1.0.3">
-
-  <style>
-    .modal-content, .modal-footer, .btn {
-      pointer-events: auto !important;
-    }
-   body > .modal-backdrop.show {
-  z-index: 1040 !important;
-}
-    .banner {
-      background-color: #fff;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 120px;
-      position: fixed;
-      width: 100%;
-      z-index: 999;
-      top: 0;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .banner img {
-      height: 100px;
-    }
-
-    .navbar {
-      background-color: #f8f9fa;
-      padding: 0 20px;
-      position: fixed;
-      top: 120px;
-      width: 100%;
-      z-index: 998;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .navbar-nav {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .nav-item {
-      position: relative;
-      padding: 15px 20px;
-      cursor: pointer;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: #333;
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      z-index: 1000;
-      padding: 10px 0;
-      width: 180px;
-    }
-
-    .submenu li {
-      padding: 8px 20px;
-    }
-
-    .submenu li a {
-      color: #333;
-      text-decoration: none;
-    }
-
-    .nav-item:hover .submenu {
-      display: block;
-    }
-
-    .top-links {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-    }
-
-    .nav-login {
-      display: flex;
-      gap: 10px;
-    }
-
-    body {
-      margin-top: 140px; /* 헤더 높이만큼 여백 */
-    }
-
-    @media (max-width: 1000px) {
-      .navbar-nav {
-        flex-direction: column;
-      }
-
-      .nav-item {
-        padding: 10px;
-      }
-
-      .banner {
-        flex-direction: column;
-        height: auto;
-      }
-
-      .banner img {
-        height: 80px;
-      }
-    }
-  </style>
-
+<script>
+        $(document).ready(function(){
+            $(".nav-item").hover(
+                function(){ 
+                    $(this).find(".submenu").stop(true, true).slideDown(200); 
+                }, 
+                function(){ 
+                    $(this).find(".submenu").stop(true, true).slideUp(0); 
+                }
+            );
+        });
+    </script>
 <script>
   var contextPath = "${pageContext.request.contextPath}";
   var logoutConfirmed = false;
@@ -181,115 +72,302 @@
     }
   }
 </script>
-	
+
+<style>
+/* 네비게이션 바 스타일 */
+/* 네비게이션 바 (배너 아래 고정) */
+.modal-content, .modal-footer, .btn {
+	pointer-events: auto !important;
+}
+
+body>.modal-backdrop.show {
+	z-index: 1040 !important;
+}
+
+.navbar {
+	position: fixed;
+	top: 80px; /* 배너 높이만큼 아래 */
+	left: 0;
+	width: 100%;
+	background-color: #f8f9fa;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	height: 60px;
+	display: flex;
+	align-items: center;
+	z-index: 999; /* 배너보다 아래에 배치 */
+}
+
+.navbar-nav {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+}
+
+.nav-item {
+	position: relative;
+	padding: 0 20px;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	height: 100%; /* 높이 통일 */
+	display: flex;
+	align-items: center; /* 중앙 정렬 */
+}
+
+.nav-link {
+	color: #333;
+	transition: color 0.3s ease-in-out;
+	text-decoration: none;
+	line-height: 60px; /* 높이 맞추기 */
+}
+
+.nav-link:hover {
+	color: #007bff;
+}
+
+/* 서브메뉴 스타일 */
+.submenu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	width: 180px;
+	border-radius: 5px;
+	padding: 0;
+	z-index: 1000;
+}
+
+.submenu li {
+	list-style: none;
+	padding: 12px 20px;
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+	text-align: left;
+}
+
+.submenu li:last-child {
+	border-bottom: none;
+}
+
+.submenu li a {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	transition: background 0.3s ease-in-out;
+}
+
+.submenu li a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+/* 반응형 스타일 */
+@media ( max-width : 768px) {
+	.navbar-nav {
+		flex-direction: column;
+		align-items: center;
+	}
+	.nav-item {
+		width: 100%;
+		text-align: center;
+	}
+	.submenu {
+		position: static;
+		width: 100%;
+		display: none;
+		box-shadow: none;
+	}
+}
+
+.top-links {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	display: flex;
+	flex-direction: row; /* 세로 정렬 */
+	gap: 10px; /* 요소 간격 */
+	z-index: 2000;
+	list-style: none;
+}
+
+.common {
+	text-decoration: none;
+	color: black;
+}
+
+.banner {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	background-color: white;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000; /* 최상단 배치 */
+}
+
+.banner-link {
+	display: flex; /* 링크 크기 조정 */
+	align-items: center;
+	height: 100%; /* 배너 높이에 맞춤 */
+}
+
+.banner img {
+	height: 100%; /* 기존처럼 배너 높이에 맞게 조정 */
+	width: auto; /* 비율 유지 */
+	object-fit: contain; /* 이미지가 넘치지 않도록 조정 */
+}
+
+/* 본문이 네비게이션에 가려지지 않도록 여백 추가 */
+body {
+	margin-top: 140px;
+}
+
+/* 로그인 버튼 스타일 */
+.nav-login {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.login-user {
+	font-weight: bold;
+	margin-right: 10px;
+}
+</style>
 </head>
 
 <body>
+	<div class="banner">
+		<a href="${contextPath }/main.do" class="banner-link"> <img
+			src="${contextPath}/resources/image/banner.png">
+		</a>
 
-  <!-- 상단 배너 -->
-  <div class="banner">
-    <a href="${contextPath}/main.do">
-      <img src="${contextPath}/resources/image/banner.png" alt="배너">
-    </a>
-    <ul class="top-links">
-      <c:choose>
-        <c:when test="${not empty sessionScope.loginMember}">
-          <li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
-          <li><a class="nav-link" href="#">${sessionScope.loginName}님 환영합니다</a></li>
-        </c:when>
-        <c:otherwise>
-          <li><a class="nav-link" href="${contextPath}/member/loginForm.do">로그인</a></li>
-          <li><a class="nav-link" href="${contextPath}/member/joinMember.do">회원가입</a></li>
-        </c:otherwise>
-      </c:choose>
-    </ul>
-  </div>
+		<!-- 상단 배너 -->
+		<div class="banner">
+			<a href="${contextPath}/main.do" class="banner-link"> <img
+				src="${contextPath}/resources/image/banner.png">
+			</a>
+			<ul class="top-links">
+				<c:choose>
+					<c:when test="${not empty sessionScope.loginMember}">
+						<li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
+						<li><a class="nav-link" href="#">${sessionScope.loginName}님
+								환영합니다</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a class="nav-link"
+							href="${contextPath}/member/loginForm.do"> 로그인 </a></li>
+						<li><a class="nav-link"
+							href="${contextPath}/member/joinMember.do"> 회원가입 </a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</div>
+	</div>
+	<!-- 로그아웃 모달 -->
+	<div class="modal fade" id="logoutModal" tabindex="-1"
+		aria-labelledby="logoutModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content bg-white text-center">
+				<div class="modal-header border-0">
+					<h5 class="modal-title" id="logoutModalLabel">알림</h5>
+				</div>
+				<div class="modal-body">${sessionScope.loginName}님, 로그아웃
+					하시겠습니까?</div>
+				<div class="modal-footer border-0 justify-content-center">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary" id="confirmLogout">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<!-- 로그아웃 모달 -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-white text-center">
-      <div class="modal-header border-0">
-        <h5 class="modal-title" id="logoutModalLabel">알림</h5>
-      </div>
-      <div class="modal-body">
-        ${sessionScope.loginName}님, 로그아웃 하시겠습니까?
-      </div>
-      <div class="modal-footer border-0 justify-content-center">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary" id="confirmLogout">확인</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<nav class="navbar navbar-expand-lg">
+		<div class="container-fluid">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					href="${contextPath }/main.do">홈</a></li>
 
-  <!-- 내비게이션 바 -->
-  <nav class="navbar navbar-expand-lg">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="${contextPath}/main.do">홈</a></li>
+				<li class="nav-item">동물병원
+					<ul class="submenu">
+						<li><a href="${contextPath }/hospital/map.do">지도</a></li>
+						<li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
+					</ul>
+				</li>
 
-      <li class="nav-item">동물병원
-        <ul class="submenu">
-          <li><a href="${contextPath}/hospital/map.do">지도</a></li>
-          <li><a href="${contextPath}/hospital/review.do">리뷰</a></li>
-        </ul>
-      </li>
+				<li class="nav-item">고양이
+					<ul class="submenu">
+						<li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
+						<li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
+						<li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까
+								고민 중이신가요?</a></li>
+					</ul>
+				</li>
 
-      <li class="nav-item">고양이
-        <ul class="submenu">
-          <li><a href="${contextPath}/cat/cat_type.do">묘종</a></li>
-          <li><a href="${contextPath}/cat/cat_kitten.do">어린 고양이</a></li>
-          <li><a href="${contextPath}/cat/cat_think.do">고민 중이신가요?</a></li>
-        </ul>
-      </li>
+				<li class="nav-item">강아지
+					<ul class="submenu">
+						<li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
+						<li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
+						<li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까
+								고민 중이신가요?</a></li>
+					</ul>
+				</li>
 
-      <li class="nav-item">강아지
-        <ul class="submenu">
-          <li><a href="${contextPath}/dog/dog_type.do">품종</a></li>
-          <li><a href="${contextPath}/dog/dog_puppy.do">어린 강아지</a></li>
-          <li><a href="${contextPath}/dog/dog_think.do">고민 중이신가요?</a></li>
-        </ul>
-      </li>
+				<li class="nav-item">게시판
+					<ul class="submenu">
+						<li><a
+							href="${contextPath}/board/getBoardList.do?category=cat">고양이
+								게시판</a></li>
+						<li><a
+							href="${contextPath}/board/getBoardList.do?category=dog">강아지
+								게시판</a></li>
+						<li><a
+							href="${contextPath}/board/getBoardList.do?category=free">자유게시판</a></li>
+					</ul>
+				</li>
 
-      <li class="nav-item">
-    게시판
-    <ul class="submenu">
-        <li><a href="${contextPath}/board/getBoardList.do?category=cat">고양이 게시판</a></li>
-        <li><a href="${contextPath}/board/getBoardList.do?category=dog">강아지 게시판</a></li>
-        <li><a href="${contextPath}/board/getBoardList.do?category=free">자유게시판</a></li>
-    </ul>
-</li>
+				<li class="nav-item">강아지 용품
+					<ul class="submenu">
+						<li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
+						<li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
+						<li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
+						<li><a href="${contextPath }/dog_product/dog_poop.do">배변용품</a></li>
+						<li><a href="${contextPath }/dog_product/dog_carrier.do">이동장</a></li>
+						<li><a href="${contextPath }/dog_product/dog_toy.do">장난감</a></li>
+						<li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>
+						<li><a href="${contextPath }/dog_product/dog_house.do">하우스</a></li>
+						<li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
+					</ul>
+				</li>
 
-      <li class="nav-item">강아지 용품
-        <ul class="submenu">
-          <li><a href="${contextPath}/dog_product/dog_all.do">전체</a></li>
-          <li><a href="${contextPath}/dog_product/dog_feed.do">사료</a></li>
-          <li><a href="${contextPath}/dog_product/dog_snack.do">간식</a></li>
-          <li><a href="${contextPath}/dog_product/dog_sanitation.do">위생</a></li>
-          <li><a href="${contextPath}/dog_product/dog_dish.do">식기</a></li>
-          <li><a href="${contextPath}/dog_product/dog_toy.do">장난감</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item">고양이 용품
-        <ul class="submenu">
-          <li><a href="${contextPath}/cat_product/cat_all.do">전체</a></li>
-          <li><a href="${contextPath}/cat_product/cat_feed.do">사료</a></li>
-          <li><a href="${contextPath}/cat_product/cat_snack.do">간식</a></li>
-          <li><a href="${contextPath}/cat_product/cat_sanitation.do">위생</a></li>
-          <li><a href="${contextPath}/cat_product/cat_dish.do">식기</a></li>
-          <li><a href="${contextPath}/cat_product/cat_toy.do">장난감</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- 푸터 링크 예시 -->
-  <footer>
-    <p class="footer_p">
-      <a id="footer_link" href="http://example.com">© 반려동물 케어</a>
-    </p>
-  </footer>
-
+				<li class="nav-item">고양이 용품
+					<ul class="submenu">
+						<li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
+						<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
+						<li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
+						<li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
+						<li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
+						<li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
+						<li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
+						<li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
+						<li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
 </body>
 </html>

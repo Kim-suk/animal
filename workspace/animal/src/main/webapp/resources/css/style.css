@@ -10,7 +10,6 @@ body, html {
 /* 헤더 수정 */
 #header {
     width: 100%;
-    height: 140px;
     background-color: white;
     border-bottom: 1px solid #bcbcbc;
     position: fixed;

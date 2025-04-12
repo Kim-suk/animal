@@ -5,16 +5,16 @@ import com.test.animal.member.dto.MemberDTO;
 
 public interface MemberService {
 
-    List<MemberDTO> listMembers();                // ì „ì²´ íšŒì› ëª©ë¡
-    MemberDTO memberDetail(String id);            // íšŒì› ìƒì„¸ ì •ë³´
-    int delMember(String id);                     // íšŒì› ì‚­ì œ
-    int addMember(MemberDTO member);              // íšŒì› ê°€ì…
-    int modMember(MemberDTO member);              // íšŒì› ì •ë³´ ìˆ˜ì •
-    MemberDTO login(MemberDTO member);            // ì¼ë°˜ ë¡œê·¸ì¸
-    int checkUserId(String id);                   // ID ì¤‘ë³µ ì²´í¬
+    List<MemberDTO> listMembers();                // ÀüÃ¼ È¸¿ø ¸ñ·Ï
+    MemberDTO memberDetail(String id);            // È¸¿ø »ó¼¼ Á¤º¸
+    int delMember(String id);                     // È¸¿ø »èÁ¦
+    int addMember(MemberDTO member);              // È¸¿ø °¡ÀÔ
+    int modMember(MemberDTO member);              // È¸¿ø Á¤º¸ ¼öÁ¤
+    MemberDTO login(MemberDTO member);            // ÀÏ¹İ ·Î±×ÀÎ
+    int checkUserId(String id);                   // ID Áßº¹ Ã¼Å©
 
-    MemberDTO selectByUserId(String id);          // IDë¡œ ì¡°íšŒ
-    MemberDTO selectByEmail(String email);       // ì´ë©”ì¼ë¡œ ì¡°íšŒ
+    MemberDTO selectByUserId(String id);          // ID·Î Á¶È¸
+    MemberDTO selectByEmail(String email);       // ÀÌ¸ŞÀÏ·Î Á¶È¸
     
-    int updateNaverId(MemberDTO member);          // ë„¤ì´ë²„ ID ì—°ë™ìš© ìˆ˜ì •
+    int updateNaverId(MemberDTO member);          // ³×ÀÌ¹ö ID ¿¬µ¿¿ë ¼öÁ¤
 }

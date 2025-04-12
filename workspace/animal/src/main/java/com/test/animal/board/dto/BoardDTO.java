@@ -2,25 +2,18 @@ package com.test.animal.board.dto;
 
 import java.sql.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
-
 public class BoardDTO {
 	private int bno;
+	private int category;
 	private String id;
 	private String title;
 	private String content;
 	private String hashtag;
 	private Date writedate;
 	private int readcount;
-	
 	private String img;
 	private int  comment_count;
 	private int like_it;
-
-	private String searchKeyword;
-	private MultipartFile uploadFile;
-	
 	
 	public int getBno() {
 		return bno;
@@ -83,26 +76,12 @@ public class BoardDTO {
 	public void setLike_it(int like_it) {
 		this.like_it = like_it;
 	}
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-	public MultipartFile getUploadFile() {
-		return uploadFile;
-	}
-	public void setUploadFile(MultipartFile uploadFile) {
-		this.uploadFile = uploadFile;
-	}
 
-
-	@Override
-	public String toString() {
-		return "BoardDTO [bno=" + bno + ", id=" + id + ", title=" + title + ", content="
-				+ content + ", hashtag=" + hashtag + ", writedate=" + writedate + ", readcount=" + readcount + ", img="
-				+ img + ", comment_count=" + comment_count + ", like_it=" + like_it + ", searchKeyword=" + searchKeyword
-				+ ", uploadFile=" + uploadFile + "]";
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
 	}
 	
 }

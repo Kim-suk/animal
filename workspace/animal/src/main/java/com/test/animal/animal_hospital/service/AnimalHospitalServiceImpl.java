@@ -19,7 +19,7 @@ public class AnimalHospitalServiceImpl implements AnimalHospitalService{
 	@Override
 	public List<AnimalHospitalDTO> findHospitalsWithinRadius(double lat, double lon, double radius) {
 		/*
-		 * List<AnimalHospitalDTO> all = dao.getAllHospitals(); // 전체 병원
+		 * List<AnimalHospitalDTO> all = dao.getAllHospitals(); // �쟾泥� 蹂묒썝
 		 * List<AnimalHospitalDTO> nearby = new ArrayList<>();
 		 * 
 		 * for (AnimalHospitalDTO dto : all) {
@@ -40,7 +40,7 @@ public class AnimalHospitalServiceImpl implements AnimalHospitalService{
 	}
 	 
 	private double haversine(double lat1, double lon1, double lat2, double lon2) {
-        double R = 6371000; // 지구 반지름(m)
+        double R = 6371000; // 吏�援� 諛섏�由�(m)
         double dLat = Math.toRadians(lat2 - lat1);
         double dLon = Math.toRadians(lon2 - lon1);
 
@@ -49,7 +49,7 @@ public class AnimalHospitalServiceImpl implements AnimalHospitalService{
                  * Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return R * c; // 거리 (m)
+        return R * c; // 嫄곕━ (m)
     }
 
 	@Override

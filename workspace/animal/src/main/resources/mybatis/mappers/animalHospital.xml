@@ -16,28 +16,25 @@
    <insert id="insertHospitals">
       <foreach collection="list" item="hospital" open="insert all"
          separator=" " close="select * from dual">
-         into animal_hospital (id, name, address, phone,
+       <![CDATA[  into animal_hospital (id, name, address, phone,
          latitude, longitude)
          values (#{hospital.id},
          #{hospital.name},#{hospital.address},#{hospital.phone},
-         #{hospital.latitude}, #{hospital.longitude})
+         #{hospital.latitude}, #{hospital.longitude}) ]]>
       </foreach>
    </insert>
 
 <select id="getAllHospitals" resultType="animalHospitalDTO">
-    SELECT 
-        id, name, address, phone, latitude, longitude
-    FROM 
+ <![CDATA[   SELECT id, name, address, phone, latitude, longitude FROM 
         animal_hospital
     WHERE 
-        latitude IS NOT NULL AND longitude IS NOT NULL
+        latitude IS NOT NULL AND longitude IS NOT NULL ]]>
 </select>
     
     
     <select id="getHospitalById" parameterType="int" resultType="animalHospitalDTO">
-        SELECT id, name, address, phone, latitude, longitude
-        FROM animal_hospital
-        WHERE id = #{id}
+      <![CDATA[  SELECT id, name, address, phone, latitude, longitude
+        FROM animal_hospital WHERE id = #{id} ]]>
     </select>
 
 

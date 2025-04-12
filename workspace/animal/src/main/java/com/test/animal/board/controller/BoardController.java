@@ -1,35 +1,22 @@
 package com.test.animal.board.controller;
 
-import java.util.List;
+import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.http.ResponseEntity;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.test.animal.board.dto.BoardDTO;
 import com.test.animal.board.dto.CommentDTO;
-import com.test.animal.board.dto.ImageDTO;
 
 public interface BoardController {
-	public ModelAndView getBoardList(HttpServletRequest request,
-			HttpServletResponse response) throws Exception;
-	ModelAndView getBoard(int bno, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	ResponseEntity insertBoard(MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception;
-	ResponseEntity updateBoard(MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception;
-	ResponseEntity deleteBoard(int bno, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ResponseEntity likeAction(
-			@RequestParam("bno") int bno,
-			HttpServletRequest Request,
-			HttpServletResponse response) throws Exception;
-	ResponseEntity<String> addComment(CommentDTO commentDTO, HttpServletRequest request) throws Exception;
-	ResponseEntity<List<CommentDTO>> listComments(int bno) throws Exception;
-	ResponseEntity<String> deleteComment(int cno) throws Exception;
-	
-
-	
-	
+	public String getBoardList(BoardDTO dto ,Model model);
+	public String getBoard(BoardDTO dto,Model model);
+	public String insertBoardForm(BoardDTO dto) throws IOException;
+	public String insertBoard(BoardDTO dto) throws IOException;
+	public String updateBoardForm(@ModelAttribute("board") BoardDTO dto);
+	public String updateBoard(@ModelAttribute("board") BoardDTO dto) throws IOException;
+	public String deleteBoard(BoardDTO dto);
+	public String insertComment(CommentDTO cdto) throws IOException;
+	public String likeAction(@RequestParam(value="bno") int bno) throws IOException;
 }

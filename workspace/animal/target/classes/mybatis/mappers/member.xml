@@ -108,7 +108,7 @@
     <!-- 네이버 ID로 회원 조회 -->
 <select id="selectByNaverId" parameterType="java.lang.String" resultMap="memResult">
     <![CDATA[
-        SELECT * FROM animal_member WHERE naver_id = #{naverId}
+        SELECT * FROM animal_member WHERE naver_id = #{naverId, jdbcType=VARCHAR}
     ]]>
 </select>
 

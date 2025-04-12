@@ -24,8 +24,8 @@
 
 	<!-- 제품 전체 목록 불러오기 -->
 	<select id="productList" resultMap="proResult">
-		SELECT id, animal_type, name, category, description, price, image_url
-		FROM product ORDER BY id ASC
+		<![CDATA[ SELECT id, animal_type, name, category, description, price, image_url
+		FROM product ORDER BY id ASC ]]>
 	</select>
 
 	<!-- 고양이 상점 메인이고 가격순으로 10개 출력 -->

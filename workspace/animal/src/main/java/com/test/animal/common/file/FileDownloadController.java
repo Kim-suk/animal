@@ -16,10 +16,10 @@ public class FileDownloadController {
 	
 	@RequestMapping("/download.do")
 	public void download(@RequestParam("imageFileName") String imageFileName,
-			@RequestParam("articleNo") String articleNo,
+			@RequestParam("bno") String bno,
 			HttpServletResponse response) throws Exception{
 		OutputStream out = response.getOutputStream();
-		String downFile = BOARD_REPO + "\\" + articleNo + "\\" + imageFileName;
+		String downFile = BOARD_REPO + "\\" + bno + "\\" + imageFileName;
 		File file = new File(downFile);
 		
 		response.setHeader("Cache-Control", "no-cache");

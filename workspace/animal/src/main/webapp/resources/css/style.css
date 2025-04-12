@@ -42,12 +42,6 @@ body, html {
 
 /* 상점 사이드바 */
 #sidebar-product {
-<<<<<<< HEAD
-  
-    top: 140px; /* 헤더 높이만큼 내림 */
-    left: 0;
-=======
->>>>>>> refs/heads/kk
     width: 250px;
     padding-top: 20px;
     height: auto; /* 혹시 너무 길게 고정돼 있다면 제거 */

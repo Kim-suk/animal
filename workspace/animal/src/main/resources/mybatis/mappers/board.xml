@@ -4,14 +4,20 @@
 
 <mapper namespace="mapper.board">
 
-	<resultMap type="articleDTO" id="artResult">
-		<result property="articleNo" column="articleNo" />
-		<result property="parentNo" column="parentNo" />
+	<resultMap type="boardDTO" id="boardResult">
+		<result property="num" column="num" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<result property="writeDate" column="writeDate" />
-		<result property="imageFileName" column="imageFileName" />
-		<result property="id" column="id" />
+		<result property="readcount" column="readcount" />
+		<result property="img" column="img" />
+		<result property="ref" column="ref" />
+		<result property="indent" column="indent" />
+		<result property="step" column="step" />
+		<result property="writedate" column="writedate" />
+		<result property="comment_count" column="comment_count" />
+		<result property="like_it" column="like_it" />
 	</resultMap>
 	
 	<resultMap type="imageDTO" id="imgResult">
@@ -21,85 +27,87 @@
 		<result property="articleNo" column="articleNo" />
 	</resultMap>
 	
-	<select id="selectAllArticlesList" resultMap="artResult">
-		<![CDATA[
-			select articleNo, parentNo, title, content, writeDate, 
-			imageFileName, id from board 
-			start with parentNo = 0
-			connect by prior articleNo=parentNo
-			order siblings by articleNo desc
-		]]>
-	</select>
-	
-	<insert id="insertNewArticle" parameterType="articleDTO">
-		<![CDATA[
-			insert into board values(#{articleNo}, #{parentNo}, 
-			#{title}, #{content}, null, sysdate, #{id})
-		]]>
-	</insert>
-	
-	<select id="selectNewArticleNo" resultType="int">
-		<![CDATA[
-			select max(articleNo)+1 from board
-		]]>
-	</select>
-	
-	<select id="selectArticle" resultType="articleDTO" parameterType="int">
-		<![CDATA[
-			select * from board where articleNo=#{articleNo}
-		]]>
-	</select>
-	
-	<update id="updateArticle" parameterType="java.util.Map">
-		update board 
-		set title=#{title}, content=#{content}
-		<if test="imageFileName != '' and imageFileName != null">
-			, imageFileName=#{imageFileName}
-		</if>
-		where articleNo=#{articleNo}
-	</update>
-	
-	<delete id="deleteArticle" parameterType="int">
-		<![CDATA[
-			delete from board where articleNo in 
-			(select articleNo from board start with articleNo=#{articleNo}
-			connect by prior articleNo=parentNo)
-		]]>
-	</delete>
-	
-	<insert id="insertNewImage" parameterType="java.util.Map">
-		<foreach item="item" collection="list" open="insert all"
-			separator=" " close="select * from dual">
-			into image(imageFileNo, imageFileName, articleNo, regDate)
-			values (#{item.imageFileNo}, #{item.imageFileName}, #{item.articleNo},
-			sysdate)	
-		</foreach>
-	</insert>
-	
-	<select id="selectNewImageFileNo" resultType="int">
-		<![CDATA[
-			select nvl(max(imageFileNo), 0) from image
-		]]>
-	</select>
-	
-	<select id="selectImageFileList" resultMap="imgResult">
-		<![CDATA[
-			select * from image where articleNo=#{articleNo}
-		]]>
-	</select>
-	
-	<delete id="deleteImage" parameterType="int">
-		<![CDATA[
-			delete from image where imageFileNo=#{imageFileNo}
-		]]>	
-	</delete>
-	
-	<select id="selectArticleNo" parameterType="int" resultType="int">
-		<![CDATA[
-			select articleNo from image where imageFileNo=#{imageFileNo}
-		]]>
-	</select>
+	<!-- <mapper namespace="com.test.animal.board.dao.BoardDAO"> -->	
+
+   <!-- 게시글 전체 개수 조회 -->
+<select id="selectTotalCount" resultType="int">
+  SELECT COUNT(*) FROM BOARD
+</select>
+
+<!-- 페이징된 게시글 목록 조회 -->
+<select id="selectAllArticlesWithPaging" resultType="BoardDTO" parameterType="map">
+  SELECT * FROM (
+    SELECT ROWNUM AS rnum, inner_query.*
+    FROM (
+      SELECT * FROM BOARD ORDER BY parentNO DESC, articleNO DESC
+    ) inner_query
+    WHERE ROWNUM &lt;= #{end}
+  )
+  WHERE rnum &gt;= #{start}
+</select>
+
+    <!-- 게시글 등록 -->
+    <insert id="writeBoard">
+        INSERT INTO board (title, content, author)
+        VALUES (#{title}, #{content}, #{author})
+    </insert>
+
+    <!-- 조회수 증가 -->
+    <update id="increaseReadCount">
+        UPDATE board SET readCount = readCount + 1 WHERE num = #{num}
+    </update>
+
+    <!-- 게시글 상세 조회 -->
+    <select id="getBoardByNum" resultType="com.test.pro13.board.dto.BoardDTO">
+        SELECT * FROM board WHERE num = #{num}
+    </select>
+
+    <!-- 게시글 수정 -->
+    <update id="editBoard">
+        UPDATE board
+        SET title = #{title}, content = #{content}, author = #{author}
+        WHERE num = #{num}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="removeBoard">
+        DELETE FROM board WHERE num = #{num}
+    </delete>
+
+    <!-- 답글 작성 -->
+    <insert id="writeReply">
+        INSERT INTO board (title, content, author, parentNum)
+        VALUES (#{title}, #{content}, #{author}, #{parentNum})
+    </insert>
+
+    <!-- 댓글 작성 -->
+    <insert id="writeComment">
+        INSERT INTO comment (articleNo, Id, content)
+        VALUES (#{articleNo}, #{Id}, #{content})
+    </insert>
+
+    <!-- 좋아요 등록 -->
+    <insert id="addLike">
+        INSERT INTO likes (articleNo, Id) VALUES (#{articleNo}, #{Id})
+    </insert>
+
+    <!-- 좋아요 삭제 -->
+    <delete id="removeLike">
+        DELETE FROM likes WHERE articleNo = #{articleNo} AND Id = #{Id}
+    </delete>
+
+    <!-- 사용자가 좋아요를 눌렀는지 확인 -->
+    <select id="hasUserLiked" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM likes WHERE articleNo = #{articleNo} AND Id = #{Id}
+    </select>
+
+    <!-- 게시글의 총 좋아요 수 가져오기 -->
+    <select id="getLikeCount" resultType="int">
+        SELECT COUNT(*) FROM likes WHERE articleNo = #{articleNo}
+    </select>
+
 </mapper>
+
 
 
 

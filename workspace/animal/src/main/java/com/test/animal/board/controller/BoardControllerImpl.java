@@ -1,343 +1,246 @@
 package com.test.animal.board.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import java.util.*;
+import javax.servlet.http.*;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.test.animal.board.dto.ArticleDTO;
-import com.test.animal.board.dto.ImageDTO;
 import com.test.animal.board.service.BoardService;
+import com.test.animal.board.dto.*;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("board")
 @EnableTransactionManagement
 public class BoardControllerImpl implements BoardController {
-	private static final String BOARD_REPO = "C:\\springframework\\workspace\\animal\\workspace\\animal\\src\\main\\webapp\\resources\\image";
+	private static final String BOARD_REPO = "C:\\board\\file_repo";
+
 	@Autowired
 	private BoardService service;
-	
+
+	// 게시글 목록
 	@Override
-	@RequestMapping("/listArticles.do")
-	public ModelAndView listArticles(HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+	@RequestMapping("/listboards.do")
+	public ModelAndView getBoardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
-		List<ArticleDTO> articlesList = service.listArticles();
+		List<BoardDTO> getBoardList = service.getBoardList();
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("articlesList", articlesList);
+		mav.addObject("getBoardList", getBoardList);
 		return mav;
 	}
 
+	// 게시글 보기 (조회수 증가 포함)
 	@Override
-	@RequestMapping("/*Form.do")
-	public ModelAndView form(
-			Integer parentNo,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+	@RequestMapping("/viewboard.do")
+	public ModelAndView getBoard(@RequestParam("bno") int bno, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
+		service.updateHitCount(bno); // 조회수 증가
+		Map boardMap = service.getBoard(bno);
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("parentNo", parentNo);
+		mav.addObject("boardMap", boardMap);
 		return mav;
 	}
 
+	// 게시글 등록
 	@Override
-	@RequestMapping(value="/addNewArticle", method=RequestMethod.POST)
-	public ResponseEntity addNewArticle(MultipartHttpServletRequest mRequest, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
+	@RequestMapping(value = "/addBoard.do", method = RequestMethod.POST)
+	public ResponseEntity insertBoard(MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
 		mRequest.setCharacterEncoding("utf-8");
-		Map<String, Object> articleMap = new HashMap<String, Object>();
+		Map<String, Object> boardMap = new HashMap<>();
 		Enumeration<String> enu = mRequest.getParameterNames();
-		
-		while(enu.hasMoreElements()) {
-			String name = (String) enu.nextElement();
-			String value = mRequest.getParameter(name);
-			articleMap.put(name, value);
+		while (enu.hasMoreElements()) {
+			String name = enu.nextElement();
+			boardMap.put(name, mRequest.getParameter(name));
 		}
-		
-		// String imageFileName = upload(mRequest);
+
 		List<String> fileList = upload(mRequest);
-		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
-		
-		if(fileList != null && fileList.size() != 0) {
-			for(String fileName : fileList) {
-				ImageDTO image = new ImageDTO();
-				image.setImageFileName(fileName);
-				imageFileList.add(image);
-			}
-		
-			articleMap.put("imageFileList", imageFileList);
+		List<ImageDTO> imageFileList = new ArrayList<>();
+		for (String fileName : fileList) {
+			ImageDTO image = new ImageDTO();
+			image.setImageFileName(fileName);
+			imageFileList.add(image);
 		}
-		
-		HttpSession session = mRequest.getSession();
-		String id = (String)session.getAttribute("loginId");
-		
-		if(articleMap.get("parentNo") == null) {
-			articleMap.put("parentNo", 0);
-		} else {
-			int parentNo = Integer.parseInt((String) articleMap.get("parentNo"));
-			articleMap.put("parentNo", parentNo);
-		}
-		
-		articleMap.put("id", id);
-		
-		String message;
-		ResponseEntity resEnt = null;
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
-		
+		boardMap.put("imageFileList", imageFileList);
+
+		String id = (String) mRequest.getSession().getAttribute("loginId");
+		boardMap.put("id", id);
+		boardMap.putIfAbsent("parentNo", 0);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html;charset=utf-8");
 		try {
-			int articleNo = service.addNewArticle(articleMap);
-			if(imageFileList != null && imageFileList.size() != 0) {
-				for(ImageDTO imageDTO : imageFileList) {
-					File srcFile = 
-							new File(BOARD_REPO + "\\" + "temp" + "\\" 
-									+ imageDTO.getImageFileName());
-					File destDir = new File(BOARD_REPO + "\\" + articleNo);
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-				}
+			int bno = service.addNewboard(boardMap);
+			for (ImageDTO imageDTO : imageFileList) {
+				File srcFile = new File(BOARD_REPO + "\\temp\\" + imageDTO.getImageFileName());
+				File destDir = new File(BOARD_REPO + "\\" + bno);
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
-			message = "<script>";
-			message += "alert('새글을 추가했습니다.');";
-			message += "location.href='/animal/board/listArticles.do';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
+			String msg = "<script>alert('게시글 등록 완료'); location.href='/animal/board/listboards.do';</script>";
+			return new ResponseEntity(msg, headers, HttpStatus.OK);
 		} catch (Exception e) {
-			if(imageFileList != null && imageFileList.size() != 0) {
-				for(ImageDTO imageDTO : imageFileList) {
-					File srcFile = 
-							new File(BOARD_REPO + "\\" + "temp" + "\\" 
-									+ imageDTO.getImageFileName());
-					srcFile.delete();
-				}
+			for (ImageDTO imageDTO : imageFileList) {
+				File file = new File(BOARD_REPO + "\\temp\\" + imageDTO.getImageFileName());
+				file.delete();
 			}
-			message = "<script>";
-			message += "alert('오류가 발생했습니다. 다시 시도해 주세요');";
-			message += "location.href='/animal/board/articleForm.do';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			e.printStackTrace();
+			String msg = "<script>alert('등록 실패'); location.href='/animal/board/boardForm.do';</script>";
+			return new ResponseEntity(msg, headers, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return resEnt;
 	}
 
-	private List<String> upload(MultipartHttpServletRequest mRequest) throws IOException {
-		// TODO Auto-generated method stub
-		// String imageFileName = null;
-		List<String> fileList = new ArrayList<String>();
+	// 게시글 수정
+	@Override
+	@RequestMapping(value = "/modBoard.do", method = RequestMethod.POST)
+	public ResponseEntity updateBoard(MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
+		Map<String, Object> boardMap = new HashMap<>();
+		Enumeration<String> enu = mRequest.getParameterNames();
+		while (enu.hasMoreElements()) {
+			String name = enu.nextElement();
+			boardMap.put(name, mRequest.getParameter(name));
+		}
+
+		List<String> fileList = upload(mRequest);
+		List<ImageDTO> imageFileList = new ArrayList<>();
+		for (String fileName : fileList) {
+			ImageDTO image = new ImageDTO();
+			image.setImageFileName(fileName);
+			imageFileList.add(image);
+		}
+		boardMap.put("imageFileList", imageFileList);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			service.modBoard(boardMap);
+			for (ImageDTO imageDTO : imageFileList) {
+				File srcFile = new File(BOARD_REPO + "\\temp\\" + imageDTO.getImageFileName());
+				File destDir = new File(BOARD_REPO + "\\" + boardMap.get("bno"));
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+			}
+			String msg = "<script>alert('수정 완료'); location.href='/animal/board/viewboard.do?bno=" + boardMap.get("bno") + "';</script>";
+			return new ResponseEntity(msg, headers, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msg = "<script>alert('수정 실패'); history.back();</script>";
+			return new ResponseEntity(msg, headers, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	// 답글 작성
+	@RequestMapping(value = "/replyBoard.do", method = RequestMethod.POST)
+	public ResponseEntity replyBoard(MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
+		mRequest.setCharacterEncoding("utf-8");
+		Map<String, Object> boardMap = new HashMap<>();
+		Enumeration<String> enu = mRequest.getParameterNames();
+		while (enu.hasMoreElements()) {
+			String name = enu.nextElement();
+			boardMap.put(name, mRequest.getParameter(name));
+		}
+		boardMap.put("id", mRequest.getSession().getAttribute("loginId"));
+
+		// 답글 등록은 service에서 계층 구조 처리
+		int result = service.replyBoard(boardMap);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html;charset=utf-8");
+		String msg = "<script>alert('답글 작성 완료'); location.href='/animal/board/listboards.do';</script>";
+		return new ResponseEntity(msg, headers, HttpStatus.OK);
+	}
+
+	// 게시글 삭제
+	@Override
+	@RequestMapping("/deleteBoard.do")
+	public ResponseEntity deleteBoard(@RequestParam("bno") int bno, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			service.deleteBoard(bno);
+			FileUtils.deleteDirectory(new File(BOARD_REPO + "\\" + bno));
+			String msg = "<script>alert('삭제 완료'); location.href='/animal/board/listboards.do';</script>";
+			return new ResponseEntity(msg, headers, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msg = "<script>alert('삭제 실패'); history.back();</script>";
+			return new ResponseEntity(msg, headers, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	// 좋아요 처리
+	@Override
+	@RequestMapping(value = "/like.do", method = RequestMethod.POST)
+	public ResponseEntity likeAction(@RequestParam("bno") int bno, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = (String) request.getSession().getAttribute("loginId");
+		int result = service.likeBoard(bno, id);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	// 댓글 등록
+	@RequestMapping(value = "/addComment.do", method = RequestMethod.POST)
+	public ResponseEntity addComment(@RequestParam Map<String, String> paramMap, HttpServletRequest request) throws Exception {
+		paramMap.put("id", (String) request.getSession().getAttribute("loginId"));
+		int result = service.addComment(paramMap);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	// 파일 업로드 메서드
+	private List<String> upload(MultipartHttpServletRequest mRequest) throws Exception {
+		List<String> fileList = new ArrayList<>();
 		Iterator<String> fileNames = mRequest.getFileNames();
-		
-		while(fileNames.hasNext()) {
+		while (fileNames.hasNext()) {
 			String fileName = fileNames.next();
 			MultipartFile mFile = mRequest.getFile(fileName);
 			String originalFileName = mFile.getOriginalFilename();
-			fileList.add(originalFileName);
-			
-			File file = new File(BOARD_REPO + "\\" + fileName);
-			
-			if(mFile.getSize() != 0) {
-				if(!file.exists()) {
-					if(file.getParentFile().mkdirs()) {
-						file.createNewFile();
-					}
-				}
-				mFile.transferTo(new File(BOARD_REPO + "\\" + "temp" 
-						+ "\\" + originalFileName));
+			if (mFile.getSize() != 0) {
+				File file = new File(BOARD_REPO + "\\temp\\" + originalFileName);
+				file.getParentFile().mkdirs();
+				mFile.transferTo(file);
+				fileList.add(originalFileName);
 			}
 		}
 		return fileList;
 	}
-
+	// 댓글 등록
 	@Override
-	@RequestMapping("/viewArticle.do")
-	public ModelAndView viewArticle(
-			@RequestParam("articleNo") int articleNo,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		String viewName = (String) request.getAttribute("viewName");
-		Map articleMap = service.viewArticle(articleNo);
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("articleMap", articleMap);
-		return mav;
+	@RequestMapping(value = "/addComment.do", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> addComment(@ModelAttribute CommentDTO commentDTO, HttpServletRequest request) throws Exception {
+	    String id = (String) request.getSession().getAttribute("loginId");
+	    commentDTO.setId(id);
+
+	    int result = service.insertComment(commentDTO);
+	    if (result > 0) {
+	        return new ResponseEntity<>("success", HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}
 
+	// 댓글 목록 조회
 	@Override
-	@RequestMapping(value="/modArticle.do", method=RequestMethod.POST)
-	public ResponseEntity modArticle(MultipartHttpServletRequest mRequest, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
-		mRequest.setCharacterEncoding("utf-8");
-		Map<String , Object> articleMap = new HashMap<String, Object>();
-		
-		String articleNo = mRequest.getParameter("articleNo");
-		articleMap.put("articleNo", articleNo);
-		
-		String title = mRequest.getParameter("title");
-		articleMap.put("title", title);
-		
-		String content = mRequest.getParameter("content");
-		articleMap.put("content", content);
-		
-		// String imageFileName = upload(mRequest);
-		List<String> fileList = upload(mRequest);
-		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
-		if(fileList != null && fileList.size() != 0) {
-			for(String fileName:fileList) {
-				ImageDTO imageDTO = new ImageDTO();
-				imageDTO.setImageFileName(fileName);
-				imageDTO.setArticleNo
-					(Integer.parseInt((String) articleMap.get("articleNo")));
-				imageFileList.add(imageDTO);
-			}
-			articleMap.put("imageFileList", imageFileList);
-		}
-		
-		HttpSession session = mRequest.getSession();
-				
-		String id = (String)session.getAttribute("loginId");
-		articleMap.put("id", id);
-		
-		String message;
-		ResponseEntity resEnt = null;
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
-		
-		try {
-			service.modArticle(articleMap);
-			if(imageFileList != null && imageFileList.size() != 0) {
-				for(ImageDTO imageDTO: imageFileList) {
-					File srcFile = 
-							new File(BOARD_REPO + "\\" + "temp" + "\\" 
-									+ imageDTO.getImageFileName());
-					File destDir = new File(BOARD_REPO + "\\" + articleNo);
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-				}
-			}
-			message = "<script>";
-			message += "alert('글이 수정 되었습니다.');";
-			message += "location.href='/animal/board/listArticles.do?articleNo="
-					+articleNo+"';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
-		} catch (Exception e) {
-			if(imageFileList != null && imageFileList.size() != 0) {
-				for(ImageDTO imageDTO : imageFileList) {
-					File srcFile = 
-							new File(BOARD_REPO + "\\" + "temp" + "\\" 
-									+ imageDTO.getImageFileName());
-					srcFile.delete();
-				}
-			}
-			message = "<script>";
-			message += "alert('수정 중 오류가 발생했습니다. 다시 시도해 주세요');";
-			message += "location.href='/animal/board/viewArticle.do?articleNo="
-					+articleNo+"';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			e.printStackTrace();
-		}
-		
-		return resEnt;
+	@RequestMapping(value = "/listComments.do", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<CommentDTO>> listComments(@RequestParam("bno") int bno) throws Exception {
+	    List<CommentDTO> commentList = service.getComment(bno);
+	    return new ResponseEntity<>(commentList, HttpStatus.OK);
 	}
 
+	// 댓글 삭제
 	@Override
-	@RequestMapping(value="/removeArticle.do", method=RequestMethod.POST)
-	public ResponseEntity removeArticle(int articleNo, HttpServletRequest Request, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
-		String message = null;
-		ResponseEntity resEnt = null;
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
-		
-		try {
-			service.removeArticle(articleNo);
-			File destDir = new File(BOARD_REPO + "\\" + articleNo);
-			FileUtils.deleteDirectory(destDir);
-			
-			message = "<script>";
-			message += "alert('삭제가 완료되었습니다.');";
-			message += "location.href='/animal/board/listArticles.do;";
-			message += "</script>";
-			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.OK);
-		} catch(Exception e) {
-			message = "<script>";
-			message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
-			message += "location.href='/animal/board/viewArticle.do;";
-			message += "</script>";
-			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			e.printStackTrace();
-		}
-		
-		return resEnt;
+	@RequestMapping(value = "/deleteComment.do", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> deleteComment(@RequestParam("cno") int cno) throws Exception {
+	    int result = service.deleteComment(cno);
+	    if (result > 0) {
+	        return new ResponseEntity<>("success", HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}
 
-	@Override
-	@RequestMapping("/deleteImage.do")
-	public ResponseEntity deleteImage(
-			ImageDTO image, 
-			HttpServletRequest mRequest, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
-		int articleNo = service.deleteImage(image.getImageFileNo());
-		String message = null;
-		ResponseEntity resEnt = null;
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
-		
-		try {
-			File deleteFile = new File(BOARD_REPO + "\\" + articleNo + "\\" 
-					+ image.getImageFileName());
-			deleteFile.delete();
-			
-			message = "<script>";
-			message += "alert('삭제가 완료되었습니다.');";
-			message += "location.href='/animal/board/viewArticle.do?articleNo="
-					+articleNo+"';";
-			message += "</script>";
-			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.OK);
-		} catch(Exception e) {
-			message = "<script>";
-			message += "alert('삭제에 실패했습니다. 다시 시도해 주세요.');";
-			message += "location.href='/animal/board/viewArticle.do?articleNo="
-					+articleNo+"';";
-			message += "</script>";
-			resEnt = new  ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			e.printStackTrace();
-		}
-		
-		return resEnt;
-	}
-
-	
 }
-
-
-
-
-
-
-
+	
+	

@@ -1,109 +1,125 @@
 package com.test.animal.board.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.test.animal.board.service.BoardService;
 import com.test.animal.board.dao.BoardDAO;
-import com.test.animal.board.dto.ArticleDTO;
-import com.test.animal.board.dto.ImageDTO;
+import com.test.animal.board.dto.BoardDTO;
+import com.test.animal.board.dto.CommentDTO;
 
-
-@Service
-@Transactional(propagation = Propagation.REQUIRED)
+@Service("boardService")
 public class BoardServiceImpl implements BoardService {
 	@Autowired
-	private BoardDAO dao;
+	private BoardDAO boardDAO;
+
+	public List<BoardDTO> getBoardList() {
+		return boardDAO.getBoardList();
+	}
 	
-	@Override
-	public List<ArticleDTO> listArticles() {
-		// TODO Auto-generated method stub
-		return dao.listArticles();
+	public BoardDTO getBoard(BoardDTO dto) {
+		return boardDAO.getBoard(dto);
+		
+	}
+	
+	public void insertBoard(BoardDTO dto) {
+		boardDAO.insertBoard(dto); // 100번 글 등록 성공
+		
+	}
+
+	public void updateBoard(BoardDTO dto) {
+		boardDAO.updateBoard(dto);
+	}
+
+	public void deleteBoard(BoardDTO dto) {
+		boardDAO.deleteBoard(dto);
+	}
+
+	//댓글 등록
+	public int insertComment(CommentDTO dto) {
+		return boardDAO.insertComment(dto); 
+		
+	}
+
+	//댓글 리스트
+	public List<CommentDTO> getComment(BoardDTO dto) {
+		return boardDAO.getComment(dto);
+	}
+
+	//좋아요 증가
+	public void updateLike(int bno) {
+		boardDAO.updateLike(bno);
+		
+	}
+
+	//좋아요 갯수 가져오기
+	public int selectLikeCount(int bno) {
+		return boardDAO.selectLikeCount(bno);
 	}
 
 	@Override
-	public int addNewArticle(Map<String, Object> articleMap) {
-		// TODO Auto-generated method stub
-		int articleNo = dao.selectNewArticleNo();
-		articleMap.put("articleNo", articleNo);
-		int result = dao.insertNewArticle(articleMap);
-		
-		List<ImageDTO> imageFileList = (List<ImageDTO>) articleMap.get("imageFileList");
-		int imageFileNo = dao.selectNewImageFileNo();
-		
-		for(ImageDTO imageDTO : imageFileList) {
-			imageDTO.setImageFileNo(++imageFileNo);
-			imageDTO.setArticleNo(articleNo);
-		}
-		
-		dao.insertNewImage(imageFileList);
-		return result;
-	}
-
-	@Override
-	public Map viewArticle(int articleNo) {
-		// TODO Auto-generated method stub
-		Map articleMap = new HashMap();
-		ArticleDTO articleDTO = dao.viewArticle(articleNo);
-		List<ImageDTO> imageFileList = dao.selectImageFileList(articleNo);
-		
-		articleMap.put("article", articleDTO);
-		articleMap.put("imageFileList", imageFileList);
-		return articleMap;
-	}
-
-	@Override
- 	public void modArticle(Map<String, Object> articleMap) {
- 	    // 1️⃣ articleNo가 있는지 확인
- 	    if (!articleMap.containsKey("articleNo") || articleMap.get("articleNo") == null) {
- 	        return; // articleNo 없으면 업데이트 중단
- 	    }
-
- 	    // 2️⃣ 게시글 업데이트 실행
- 	    int updateCount = dao.updateArticle(articleMap);
- 	    if (updateCount == 0) {
- 	        return; // 업데이트 실패 시 중단
- 	    }
-
- 	    // 3️⃣ 이미지 리스트 확인
- 	    List<ImageDTO> imageFileList = (List<ImageDTO>) articleMap.get("imageFileList");
- 	    if (imageFileList == null || imageFileList.isEmpty()) {
- 	        return; // 이미지가 없으면 추가 작업 없이 종료
- 	    }
-
- 	    // 4️⃣ 새로운 이미지 파일 번호 설정 후 삽입
- 	    int imageFileNo = dao.selectNewImageFileNo();
- 	    for (ImageDTO imageDTO : imageFileList) {
- 	        imageDTO.setImageFileNo(++imageFileNo);
- 	    }
- 	    dao.insertNewImage(imageFileList);
- 	}
-
-
-	@Override
-	public int deleteImage(int imageFileNo) {
-		// TODO Auto-generated method stub
-		int articleNo = dao.selectArticleNo(imageFileNo);
-		dao.deleteImage(imageFileNo);
-		return articleNo;
-	}
-
-	@Override
-	public void removeArticle(int articleNo) {
+	public void deleteBoard(int bno) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Map getBoard(int bno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addNewboard(Map<String, Object> boardMap) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int likeBoard(int bno, String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteComment(int cno) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<CommentDTO> getComment(int bno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addComment(Map<String, String> paramMap) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replyBoard(Map<String, Object> boardMap) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void modBoard(Map<String, Object> boardMap) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateHitCount(int bno) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
-
-
-
-
-
-
-

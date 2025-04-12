@@ -1,23 +1,20 @@
 package com.test.animal.board.dao;
 
 import java.util.List;
-import java.util.Map;
-
-import com.test.animal.board.dto.ArticleDTO;
-import com.test.animal.board.dto.ImageDTO;
+import com.test.animal.board.dto.BoardDTO;
+import com.test.animal.board.dto.CommentDTO;
 
 public interface BoardDAO {
 
-	List<ArticleDTO> listArticles();
-	int selectNewArticleNo();
-	int insertNewArticle(Map<String, Object> articleMap);
-	ArticleDTO viewArticle(int articleNo);
-	int updateArticle(Map<String, Object> articleMap);
-	void deleteArticle(int articleNo);
-	int selectNewImageFileNo();
-	void insertNewImage(List<ImageDTO> imageFileList);
-	List<ImageDTO> selectImageFileList(int articleNo);
-	int deleteImage(int imageFileNo);
-	int selectArticleNo(int imageFileNo);
+	
+	List<BoardDTO> getBoardList();
+	List<CommentDTO> getComment(BoardDTO dto);
+	void deleteBoard(BoardDTO dto);
+	int insertComment(CommentDTO dto);
+	void updateBoard(BoardDTO dto);
+	void updateLike(int bno);
+	int selectLikeCount(int bno);
+	void insertBoard(BoardDTO dto);
+	BoardDTO getBoard(BoardDTO dto);
 
 }

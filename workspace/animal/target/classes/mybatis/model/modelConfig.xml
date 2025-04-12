@@ -5,7 +5,8 @@
 <configuration> <!-- 이 태그는 MyBatis 설정 파일의 루트 요소 -->
 	<typeAliases>
 		<typeAlias type="com.test.animal.member.dto.MemberDTO" alias="memberDTO"/>
-		<typeAlias type="com.test.animal.board.dto.ArticleDTO" alias="articleDTO"/>
+		<typeAlias type="com.test.animal.board.dto.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="com.test.animal.board.dto.CommentDTO" alias="commentDTO"/>
 		<typeAlias type="com.test.animal.board.dto.ImageDTO" alias="imageDTO" />
 		<typeAlias type="com.test.animal.dog_board.dto.DogArticleDTO" alias="dogarticleDTO"/>
 		<typeAlias type="com.test.animal.dog_board.dto.DogImageDTO" alias="dogimageDTO" />

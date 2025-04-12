@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-    request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -22,17 +22,20 @@
 			<main
 				class="flex-1 p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 				<!-- 상품 카드 반복 예시 -->
-				
+
 				<c:forEach var="product" items="${productList}">
-					<div class="bg-white p-4 rounded-xl shadow text-center">
+					<div class="product bg-white p-4 rounded-xl shadow text-center"
+						data-id="${product.id}">
 						<img src="${product.image_url}" alt="제품 이미지">
-						<h4>${product.name}</h4>
-						<p>${product.category}</p>
-						
+						<h4 class="text-lg font-semibold mt-2">${product.name}</h4>
+						<p class="text-gray-500">${product.category}</p>
+
 						<!-- ❤️ 좋아요 버튼 -->
-					<button onclick="likeProduct(${product.id})" class="text-red-500">❤️</button>
-					<span id="like-${product.id}">0</span>
-						<a href="/animal/product/product.do?id=${product.id}">제품 보기 →</a>
+						<button onclick="likeProduct(${product.id})"
+							class="text-red-500 mt-2">❤️</button>
+						<span id="like-${product.id}">0</span> <a
+							class="block text-blue-500 hover:underline mt-2"
+							href="/animal/product/product.do?id=${product.id}"> 제품 보기 → </a>
 					</div>
 				</c:forEach>
 
@@ -40,7 +43,7 @@
 			</main>
 		</div>
 	</div>
-		<script>
+	<script>
   // 저장된 좋아요 값 가져오기
   function getLikes(productId) {
     return parseInt(localStorage.getItem("like-" + productId)) || 0;

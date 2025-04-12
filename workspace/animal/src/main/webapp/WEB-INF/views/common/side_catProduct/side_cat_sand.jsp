@@ -63,19 +63,6 @@
             </div>
         </div>
 
-        <!-- 모래 소재 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>모래 소재</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">천연소재</label>
-                <label class="block"><input type="checkbox" class="mr-2">인공소재</label>
-            </div>
-        </div>
-
-
         <!-- 총 용량 -->
         <div class="filter-group">
             <div class="section-toggle" onclick="toggleSection(this)">
@@ -84,8 +71,7 @@
             </div>
             <div class="filter-options">
                 <label class="block"><input type="checkbox" class="mr-2">5L 이하</label>
-                <label class="block"><input type="checkbox" class="mr-2">5~10L</label>
-                <label class="block"><input type="checkbox" class="mr-2">10~15L</label>
+                <label class="block"><input type="checkbox" class="mr-2">5L 이상</label>
             </div>
         </div>
 

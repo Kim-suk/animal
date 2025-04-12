@@ -17,6 +17,7 @@ encoding//src/main/java/com/test/animal/member/social/dto/NaverUserDTO.java=UTF-
 encoding//src/main/java/com/test/animal/member/social/service/GoogleLoginServiceImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/service/KakaoLoginServiceImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/service/NaverLoginServiceImpl.java=UTF-8
+encoding//src/main/java/com/test/animal/product/controller/ProductControllerImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/side_catProduct/side_catProduct.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/hospital/map.jsp=UTF-8

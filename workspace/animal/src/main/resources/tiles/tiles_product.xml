@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+	
+<tiles-definitions>
+	<definition name="productLayout" template="/WEB-INF/views/common/layout_product.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="side" value="" /> 
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<!-- 고양이 상점 -->
+	<definition name="/cat_product/cat_all" extends="productLayout">
+		<put-attribute name="title" value="고양이용품전체"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_catProduct.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_feed" extends="productLayout">
+		<put-attribute name="title" value="고양이사료"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_feed.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_treat" extends="productLayout">
+		<put-attribute name="title" value="고양이간식"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_treat.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_sand" extends="productLayout">
+		<put-attribute name="title" value="고양이모래"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_sand.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_carrier" extends="productLayout">
+		<put-attribute name="title" value="고양이이동장"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_carrier.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_toy" extends="productLayout">
+		<put-attribute name="title" value="고양이장난감"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_toy.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_bath" extends="productLayout">
+		<put-attribute name="title" value="고양이목욕용품"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_bath.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_house" extends="productLayout">
+		<put-attribute name="title" value="고양이하우스"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_house.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<definition name="/cat_product/cat_dish" extends="productLayout">
+		<put-attribute name="title" value="고양이식기"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_catProduct/side_cat_dish.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/views/product/cat_product.jsp" />
+	</definition>
+	
+	<!-- 강아지 상점 -->
+	<definition name="/dog_product/dog_all" extends="productLayout">
+		<put-attribute name="title" value="강아지용품전체"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dogProduct.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_feed" extends="productLayout">
+		<put-attribute name="title" value="강아지사료"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_feed.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_treat" extends="productLayout">
+		<put-attribute name="title" value="강아지간식"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_treat.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_poop" extends="productLayout">
+		<put-attribute name="title" value="강아지배변용품"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_poop.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_carrier" extends="productLayout">
+		<put-attribute name="title" value="강아지이동장"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_carrier.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_toy" extends="productLayout">
+		<put-attribute name="title" value="강아지장난감"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_toy.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_bath" extends="productLayout">
+		<put-attribute name="title" value="강아지목욕용품"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_bath.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_house" extends="productLayout">
+		<put-attribute name="title" value="강아지하우스"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_house.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+	
+	<definition name="/dog_product/dog_dish" extends="productLayout">
+		<put-attribute name="title" value="강아지식기"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side_dogProduct/side_dog_dish.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/dog_product.jsp" />
+	</definition>
+</tiles-definitions>

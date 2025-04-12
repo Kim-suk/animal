@@ -59,22 +59,8 @@
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">케리어/이동가방</label>
-                <label class="block"><input type="checkbox" class="mr-2">백팩</label>
+                <label class="block"><input type="checkbox" class="mr-2">캐리어/백팩</label>
                 <label class="block"><input type="checkbox" class="mr-2">켄넬/이동장</label>
-            </div>
-        </div>
-
-        <!-- 실내/실외용 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>실내 실외용</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">실외용</label>
-                <label class="block"><input type="checkbox" class="mr-2">실내외겸용</label>
-                <label class="block"><input type="checkbox" class="mr-2">실내용</label>
             </div>
         </div>
 

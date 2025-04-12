@@ -60,8 +60,7 @@
             </div>
             <div class="filter-options">
                 <label class="block"><input type="checkbox" class="mr-2">소형</label>
-                <label class="block"><input type="checkbox" class="mr-2">중형</label>
-                <label class="block"><input type="checkbox" class="mr-2">대형</label>
+                <label class="block"><input type="checkbox" class="mr-2">중대형</label>
             </div>
         </div>
 

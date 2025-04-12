@@ -10,7 +10,7 @@ public interface ProductService {
 	ProductDTO productDetail(String id);
 	
 	// 고양이 메인
-	List<ProductDTO> getCatTop10();
+	List<ProductDTO> catTop10();
 	
 	// 고양이 사료
 	List<ProductDTO> catFeedProducts();
@@ -43,5 +43,41 @@ public interface ProductService {
 	// 고양이 식기
 	List<ProductDTO> catDishProducts();
 	List<ProductDTO> catDishFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 메인
+	List<ProductDTO> dogTop10();
+
+	// 강아지 사료 
+	List<ProductDTO> dogFeedProducts();
+	List<ProductDTO> dogFeedFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 간식
+	List<ProductDTO> dogTreatProducts();
+	List<ProductDTO> dogTreatFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 배변용품
+	List<ProductDTO> dogPoopProducts();
+	List<ProductDTO> dogPoopFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 이동장
+	List<ProductDTO> dogCarrierProducts();
+	List<ProductDTO> dogCarrierFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 장난감
+	List<ProductDTO> dogToyProducts();
+	List<ProductDTO> dogToyFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 목욕용품
+	List<ProductDTO> dogBathProducts();
+	List<ProductDTO> dogBathFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 하우스
+	List<ProductDTO> dogHouseProducts();
+	List<ProductDTO> dogHouseFilter(Map<String, List<String>> filters, int count);
+
+	// 강아지 식기
+	List<ProductDTO> dogDishProducts();
+	List<ProductDTO> dogDishFilter(Map<String, List<String>> filters, int count);
+	
 	
 }

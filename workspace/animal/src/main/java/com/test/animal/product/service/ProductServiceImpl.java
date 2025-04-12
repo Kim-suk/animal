@@ -22,9 +22,10 @@ public class ProductServiceImpl implements ProductService{
 		return dao.productDetail(id);
 	}
 
+	// 강아지 메인
 	@Override
-	public List<ProductDTO> getCatTop10() {
-	    return dao.getCatTop10();
+	public List<ProductDTO> catTop10() {
+	    return dao.catTop10();
 	}
 	
 	// 고양이 사료
@@ -145,6 +146,133 @@ public class ProductServiceImpl implements ProductService{
         paramMap.put("filters", filters);
         paramMap.put("conditionCount", conditionCount);
 		return dao.catDishFilter(paramMap);
+	}
+
+	// 강아지 메인
+	@Override
+	public List<ProductDTO> dogTop10() {
+		// TODO Auto-generated method stub
+		return dao.dogTop10();
+	}
+
+	// 강아지 사료
+	@Override
+	public List<ProductDTO> dogFeedProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogFeedProducts();
+	}
+	@Override
+	public List<ProductDTO> dogFeedFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogFeedFilter(paramMap);
+	}
+
+	// 강아지 간식
+	@Override
+	public List<ProductDTO> dogTreatProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogTreatProducts();
+	}
+	@Override
+	public List<ProductDTO> dogTreatFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogTreatFilter(paramMap);
+	}
+
+	// 강아지 배변용품
+	@Override
+	public List<ProductDTO> dogPoopProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogPoopProducts();
+	}
+	@Override
+	public List<ProductDTO> dogPoopFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogPoopFilter(paramMap);
+	}
+
+	// 강아지 이동장
+	@Override
+	public List<ProductDTO> dogCarrierProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogCarrierProducts();
+	}
+	@Override
+	public List<ProductDTO> dogCarrierFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogCarrierFilter(paramMap);
+	}
+
+	// 강아지 장난감
+	@Override
+	public List<ProductDTO> dogToyProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogToyProducts();
+	}
+	@Override
+	public List<ProductDTO> dogToyFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogToyFilter(paramMap);
+	}
+
+	// 강아지 목욕용품
+	@Override
+	public List<ProductDTO> dogBathProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogBathProducts();
+	}
+	@Override
+	public List<ProductDTO> dogBathFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogBathFilter(paramMap);
+	}
+
+	// 강아지 하우스
+	@Override
+	public List<ProductDTO> dogHouseProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogHouseProducts();
+	}
+	@Override
+	public List<ProductDTO> dogHouseFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogHouseFilter(paramMap);
+	}
+
+	// 강아지 식기
+	@Override
+	public List<ProductDTO> dogDishProducts() {
+		// TODO Auto-generated method stub
+		return dao.dogDishProducts();
+	}
+	@Override
+	public List<ProductDTO> dogDishFilter(Map<String, List<String>> filters, int conditionCount) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("filters", filters);
+        paramMap.put("conditionCount", conditionCount);
+		return dao.dogDishFilter(paramMap);
 	}
 
 }

@@ -24,7 +24,7 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	// 고양이 매인
 	@Override
-	public List<ProductDTO> getCatTop10() {
+	public List<ProductDTO> catTop10() {
 	    return session.selectList("mapper.product.getCatTop10");
 	}
 	
@@ -122,6 +122,109 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<ProductDTO> catDishFilter(Map<String, Object> paramMap) {
 		// TODO Auto-generated method stub
 		return session.selectList("mapper.product.catDishFilter", paramMap);
+	}
+
+	// 강아지 메인
+	@Override
+	public List<ProductDTO> dogTop10() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.getDogTop10");
+	}
+
+	// 강아지 사료
+	@Override
+	public List<ProductDTO> dogFeedProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogFeedProducts");
+	}
+	@Override
+	public List<ProductDTO> dogFeedFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogFeedFilter", paramMap);
+	}
+
+	// 강아지 간식
+	@Override
+	public List<ProductDTO> dogTreatProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogTreatProducts");
+	}
+	@Override
+	public List<ProductDTO> dogTreatFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogTreatFilter", paramMap);
+	}
+
+	// 강아지 배변용품
+	@Override
+	public List<ProductDTO> dogPoopProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogPoopProducts");
+	}
+	@Override
+	public List<ProductDTO> dogPoopFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogPoopFilter", paramMap);
+	}
+
+	// 강아지 이동장
+	@Override
+	public List<ProductDTO> dogCarrierProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogDishProducts");
+	}
+	@Override
+	public List<ProductDTO> dogCarrierFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogCarrierFilter", paramMap);
+	}
+
+	// 강아지 장난감
+	@Override
+	public List<ProductDTO> dogToyProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogToyProducts");
+	}
+	@Override
+	public List<ProductDTO> dogToyFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogToyFilter", paramMap);
+	}
+
+	// 강아지 목욕용품
+	@Override
+	public List<ProductDTO> dogBathProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogBathProducts");
+	}
+	@Override
+	public List<ProductDTO> dogBathFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogBathFilter", paramMap);
+	}
+	
+	// 강아지 하우스
+	@Override
+	public List<ProductDTO> dogHouseProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogHouseProducts");
+	}
+	@Override
+	public List<ProductDTO> dogHouseFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogHouseFilter", paramMap);
+	}
+
+	// 강아지 식기
+	@Override
+	public List<ProductDTO> dogDishProducts() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogDishProducts");
+	}
+	@Override
+	public List<ProductDTO> dogDishFilter(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.product.dogDishFilter", paramMap);
 	}
 
 }

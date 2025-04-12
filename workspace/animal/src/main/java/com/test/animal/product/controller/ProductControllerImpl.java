@@ -40,8 +40,8 @@ public class ProductControllerImpl implements ProductController {
 	// 고양이 상점 메인
 	@Override
 	@RequestMapping("/cat_product/cat_all.do")
-	public ModelAndView productList() {
-	    List<ProductDTO> list = service.getCatTop10(); 
+	public ModelAndView catTop10() {
+	    List<ProductDTO> list = service.catTop10(); 
 	    ModelAndView mav = new ModelAndView("/cat_product/cat_all"); // 타일즈의 이름과 /까지 완전 똒같아야함
 	    mav.addObject("productList", list);
 	    return mav;
@@ -348,77 +348,313 @@ public class ProductControllerImpl implements ProductController {
 	}
 	
 	// <<강아지 상점 관련>>
-	
-	// 강아지 상점 메인
+	// 강아지 메인 페이지
 	@Override
 	@RequestMapping("/dog_product/dog_all.do")
-	public String productDogAll() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_all";
+	public ModelAndView dogtop10() {
+		 List<ProductDTO> list = service.dogTop10(); 
+		 ModelAndView mav = new ModelAndView("/dog_product/dog_all"); 
+		 mav.addObject("productList", list);
+		 return mav;
 	}
 	
 	// 강아지 사료 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_feed.do")
-	public String productDogFeed() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_feed";
-	}
+		@Override
+		@RequestMapping("/dog_product/dog_feed.do")
+	    public ModelAndView dogFeedFilter(
+	        @RequestParam(required = false, value = "연령") List<String> age,           	// 연령
+	        @RequestParam(required = false, value = "무게") List<String> weight,       	// 무게
+	        @RequestParam(required = false, value = "주원료") List<String> ingredient, 	// 주원료
+	        @RequestParam(required = false, value = "알갱이크기") List<String> grainSize	// 알갱이크기
+	    ) {
+	        boolean isFilterApplied = (age != null || weight != null || ingredient != null || grainSize != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_feed");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogFeedProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (age != null && !age.isEmpty()) { filters.put("연령", age); count++; }
+	            if (weight != null && !weight.isEmpty()) { filters.put("무게", weight); count++; }
+	            if (ingredient != null && !ingredient.isEmpty()) { filters.put("주원료", ingredient); count++; }
+	            if (grainSize != null && !grainSize.isEmpty()) { filters.put("알갱이크기", grainSize); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogFeedProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogFeedFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+	    }
+
+		
+		// 강아지 간식 페이지
+		@Override
+		@RequestMapping("/dog_product/dog_treat.do")
+		public ModelAndView dogTreatFilter(
+				@RequestParam(required = false, value = "급여대상") List<String> target, 
+				@RequestParam(required = false, value = "종류") List<String> kind, 
+				@RequestParam(required = false, value = "주원료") List<String> ingredient,
+				@RequestParam(required = false, value = "기능")List<String> function) 
+		{
+			boolean isFilterApplied = (target != null || kind != null || ingredient != null || function != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_treat");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogTreatProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (target != null && !target.isEmpty()) { filters.put("급여대상", target); count++; }
+	            if (kind != null && !kind.isEmpty()) { filters.put("종류", kind); count++; }
+	            if (ingredient != null && !ingredient.isEmpty()) { filters.put("주원료", ingredient); count++; }
+	            if (function != null && !function.isEmpty()) { filters.put("기능", function); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogTreatProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogTreatFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+		}
+		
+		// 강아지 배변용품 페이지
+		@Override
+		@RequestMapping("/dog_product/dog_poop.do")
+		public ModelAndView dogPoopFilter(
+				@RequestParam(required = false, value = "종류") List<String> type, 
+				@RequestParam(required = false, value = "크기") List<String> size) 
+		{
+			boolean isFilterApplied = (type != null || size != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_poop");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogPoopProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (type != null && !type.isEmpty()) { filters.put("종류", type); count++; }
+	            if (size != null && !size.isEmpty()) { filters.put("크기", size); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogPoopProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogPoopFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+		}
+		
+		// 강아지 이동장 페이지
+		@Override
+		@RequestMapping("/dog_product/dog_carrier.do")
+		public ModelAndView dogCarrierFilter(
+				@RequestParam(required = false, value = "허용무게") List<String> weight, 
+				@RequestParam(required = false, value = "종류") List<String> carrierType) 
+		{
+			boolean isFilterApplied = (weight != null || carrierType != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_carrier");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogCarrierProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (weight != null && !weight.isEmpty()) { filters.put("허용무게", weight); count++; }
+	            if (carrierType != null && !carrierType.isEmpty()) { filters.put("종류", carrierType); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogCarrierProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogCarrierFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+		}
+		
+		// 고양이 장난감 페이지
+		@Override
+		@RequestMapping("/dog_product/dog_toy.do")
+		public ModelAndView dogToyFilter(
+				@RequestParam(required = false, value = "종류") List<String> toyType, 
+				@RequestParam(required = false, value = "형태") List<String> form) 
+		{
+			boolean isFilterApplied = (toyType != null || form != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_toy");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogToyProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (toyType != null && !toyType.isEmpty()) { filters.put("급여대상", toyType); count++; }
+	            if (form != null && !form.isEmpty()) { filters.put("종류", form); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogToyProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogToyFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+		}
+		
+		// 강아지 목욕용품 페이지
+		@Override
+		@RequestMapping("/dog_product/dog_bath.do")
+		public ModelAndView dogBathFilter(
+				@RequestParam(required = false, value = "종류") List<String> bathType, 
+				@RequestParam(required = false, value = "비듬관리여부") List<String> dandruff) 
+		{
+			boolean isFilterApplied = (bathType != null || dandruff != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_bath");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogBathProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (bathType != null && !bathType.isEmpty()) { filters.put("종류", bathType); count++; }
+	            if (dandruff != null && !dandruff.isEmpty()) { filters.put("비듬관리여부", dandruff); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogBathProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogBathFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+		}
+		
+		// 강아지 하우스 페이지
+		@Override
+		@RequestMapping("/dog_product/dog_house.do")
+		public ModelAndView dogHouseFilter(
+				@RequestParam(required = false, value = "종류") List<String> houseType, 
+				@RequestParam(required = false, value = "소재") List<String> capacity) 
+		{
+			boolean isFilterApplied = (houseType != null || capacity != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_house");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogHouseProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (houseType != null && !houseType.isEmpty()) { filters.put("종류", houseType); count++; }
+	            if (capacity != null && !capacity.isEmpty()) { filters.put("소재", capacity); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogHouseProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogHouseFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+		}
+		
+		// 강아지 식기 페이지
+		@Override
+		@RequestMapping("/dog_product/dog_dish.do")
+		public ModelAndView dogDishFilter(
+				@RequestParam(required = false, value = "소재") List<String> material, 
+				@RequestParam(required = false, value = "대상크기") List<String> size, 
+				@RequestParam(required = false, value = "자동급식기") List<String> automatic) 
+		{
+			boolean isFilterApplied = (material != null || size != null || automatic != null);
+	        ModelAndView mav = new ModelAndView("/dog_product/dog_dish");
+
+	        if (!isFilterApplied) {
+	            // ✅ 필터가 없으면 전체 조회
+	            List<ProductDTO> list = service.dogDishProducts();
+	            mav.addObject("productList", list);
+	        } else {
+	            // ✅ 필터가 있을 경우
+	            Map<String, List<String>> filters = new HashMap<>();
+	            int count = 0;
+
+	            if (size != null && !size.isEmpty()) { filters.put("대상크기", size); count++; }
+	            if (automatic != null && !automatic.isEmpty()) { filters.put("자동급식기", automatic); count++; }
+	            
+	            if (count == 0) {
+	                // 필터 없음 → 전체 조회
+	                List<ProductDTO> list = service.dogDishProducts();
+	                mav.addObject("productList", list);
+	            } else {
+	                // 필터 적용
+	                List<ProductDTO> filtered = service.dogDishFilter(filters, count);
+	                mav.addObject("productList", filtered);
+	            }
+	        }
+
+	        return mav;
+		}
 	
-	// 강아지 간식 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_treat.do")
-	public String productDogTreat() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_treat";
-	}
-	
-	// 강아지 배변용품 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_poop.do")
-	public String productDogPoop() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_poop";
-	}
-	
-	// 강아지 이동장 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_carrier.do")
-	public String productDogCarrier() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_carrier";
-	}
-	
-	// 강아지 장난감 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_toy.do")
-	public String productDogToy() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_toy";
-	}
-	
-	// 강아지 목욕용품 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_bath.do")
-	public String productDogBath() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_bath";
-	}
-	
-	// 강아지 하우스 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_house.do")
-	public String productDogHouse() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_house";
-	}
-	
-	// 강아지 식기 페이지
-	@Override
-	@RequestMapping("/dog_product/dog_dish.do")
-	public String productDogDish() {
-		// TODO Auto-generated method stub
-		return "/dog_product/dog_dish";
-	}
 
 }

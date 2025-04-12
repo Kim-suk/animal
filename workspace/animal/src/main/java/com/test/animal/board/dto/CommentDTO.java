@@ -3,11 +3,11 @@ package com.test.animal.board.dto;
 import java.sql.Date;
 
 public class CommentDTO {
-	private int comment_num;	// ´ñ±Û °íÀ¯ ¹øÈ£
-	private int bno;			// °³»ç±¼ ¹øÈ£(¾î¶² °Ô½Ã±ÛÀÇ ´ñ±ÛÀÎÁö)
-	private String id;			// ´ñ±Û ÀÛ¼ºÀÚ ¾ÆÀÌµð
-	private String content;		// ´ñ±Û ³»¿ë
-	private Date writedate;		// ´ñ±Û ÀÛ¼ºÀÏ(java.sql.Date·Î ¼±¾ð)
+	private int comment_num;
+	private int bno;
+	private String id;
+	private String content;
+	private Date writedate;
 	
 	public int getComment_num() {
 		return comment_num;
@@ -39,6 +39,11 @@ public class CommentDTO {
 	public void setWritedate(Date writedate) {
 		this.writedate = writedate;
 	}
-	
+	@Override
+	public String toString() {
+		return "CommentDTO [comment_num=" + comment_num + ", bno=" + bno + ", id=" + id + ", content=" + content
+				+ ", writedate=" + writedate + "]";
+	}
+
 	
 }

@@ -7,19 +7,27 @@
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
-
-	<definition name="/board/getBoardList" extends="baseLayout">
-		<put-attribute name="title" value="글쓰기창" />
-		<put-attribute name="body" value="/WEB-INF/views/board/getBoardList.jsp" />
-	</definition>	
 	
-	<definition name="/board/insertBoard" extends="baseLayout">
-		<put-attribute name="title" value="글보기" />
-		<put-attribute name="body" value="/WEB-INF/views/board/insertBoard.jsp" />
+	<definition name="/board/getBoardList" extends="baseLayout">
+		<put-attribute name="title" value="글목록창" />
+		<put-attribute name="body" value="/WEB-INF/views/board/getBoardList.jsp" />		
 	</definition>
 	
-	</tiles-definitions>
+	<definition name="/board/insertBoard" extends="baseLayout">
+		<put-attribute name="title" value="게시글 쓰기" />
+		<put-attribute name="body" value="/WEB-INF/views/board/insertBoard.jsp" />		
+	</definition>
+	
+	<definition name="/board/getBoard" extends="baseLayout">
+		<put-attribute name="title" value="게시글 보기" />
+		<put-attribute name="body" value="/WEB-INF/views/board/getBoard.jsp" />		
+	</definition>
+	
+	
+	
+	
+	
+</tiles-definitions>

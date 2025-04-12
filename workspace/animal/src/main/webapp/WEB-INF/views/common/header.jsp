@@ -251,13 +251,14 @@
         </ul>
       </li>
 
-      <li class="nav-item">게시판
-        <ul class="submenu">
-          <li><a href="${contextPath}/cat_board/cat_listArticles.do">고양이</a></li>
-          <li><a href="${contextPath}/dog_board/dog_listArticles.do">강아지</a></li>
-          <li><a href="${contextPath}/board/listArticles.do">자유게시판</a></li>
-        </ul>
-      </li>
+      <li class="nav-item">
+    게시판
+    <ul class="submenu">
+        <li><a href="${contextPath}/board/getBoardList.do?category=cat">고양이 게시판</a></li>
+        <li><a href="${contextPath}/board/getBoardList.do?category=dog">강아지 게시판</a></li>
+        <li><a href="${contextPath}/board/getBoardList.do?category=free">자유게시판</a></li>
+    </ul>
+</li>
 
       <li class="nav-item">강아지 용품
         <ul class="submenu">

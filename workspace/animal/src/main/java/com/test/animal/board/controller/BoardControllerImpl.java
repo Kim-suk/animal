@@ -4,131 +4,130 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-
+import java.util.*;
+import javax.servlet.http.*;
+import org.apache.commons.io.FileUtils;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.test.animal.board.dto.BoardDTO;
-import com.test.animal.board.dto.CommentDTO;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
+import org.springframework.web.servlet.ModelAndView;
 import com.test.animal.board.service.BoardService;
+import com.test.animal.board.dto.*;
 
-
-@Controller
-@RequestMapping("/hospital")
+@Controller 
 @SessionAttributes("board")
-public class BoardControllerImpl implements BoardController{
-	
+public class BoardControllerImpl implements BoardController {
+
 	@Autowired
-	private BoardService BoardService;
+	private BoardService boardService;
 
-	// 게시�? 목록?�� 조회?��?�� 메서?��
-	// - �??�� ?��?��?���? ?��?�� 경우 그에 맞는 결과�? 조회
-	// - 조회?�� 게시�? 리스?���? boardList?��?�� ?��름으�? Model?�� ?��?�� getBoardList.jsp?�� ?��?��
-	
-	// 게시�? ?��?��보기 + ?���? 리스?�� ?���? 조회?��?�� 메서?��
-	// - ?��?��?�� 게시�? 1개의 ?��보�?? 조회?��?�� board?��?�� ?��름으�? ???��
-	// - ?��?�� 게시�??�� ?���? 목록?? cmt_list�? ???��
-	@Override
-	public String getBoard(BoardDTO dto, Model model) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	// �? ?��?�� ?�� 보여주기(GET)
-	// - insertBoard.jsp�? 보여�?
-	// - ?��?�� �? ?��?�� 처리?�� POST 방식?�� ?���? 메서?��?��?�� 처리?��
-	@Override
-	@RequestMapping(value="boardForm.do", method=RequestMethod.GET)
-	public String insertBoardForm(BoardDTO dto) throws IOException {
-		// TODO Auto-generated method stub
-		return "/hospital/review_boardForm"; // ⬅️ Tiles?��?�� �??��?�� �? ?���? 반환
-	}
-	
-	// 게시�??�� ?��?���? ?��록하?�� 메서?��(POST)
-	// - ?��?��?�� 게시�? ?��?��?���? 받아 boardService.insertBoard()?�� ?��?��
-	// - 만약 첨�??��?��?�� ?��?�� 경우 ?��로드 경로?�� ???��?���?, ?��?��명을 DB?�� ?���? ???��
-	// - 처리 ?���? ?�� 게시�? 목록 ?��?���?�? 리다?��?��?��
-	/*
-	 * @Override
-	 * 
-	 * @RequestMapping(value="/insertBoard.do", method=RequestMethod.POST) public
-	 * String insertBoard(boardDTO dto) throws IOException { // TODO Auto-generated
-	 * method stub MultipartFile uploadFile = dto.getUploadFile(); SimpleDateFormat
-	 * sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss"); Timestamp timestamp = new
-	 * Timestamp(System.currentTimeMillis());
-	 * 
-	 * if(!uploadFile.isEmpty()) { String fileName =
-	 * uploadFile.getOriginalFilename(); String newFileName = sdf.format(timestamp)
-	 * + fileName; String uploadPath =
-	 * "C:\\spring_project\\workspace\\animal\\workspace\\animal\\src\\main\\webapp\\resources\\image\\";
-	 * 
-	 * dto.setImg("/resources/image/" + newFileName); // ?��?��?�� ?���? �??��?��
-	 * 경로�? ???�� uploadFile.transferTo(new File(uploadPath + newFileName)); }
-	 * reviewBoardService.insertBoard(dto); return "redirect:review_boardList.do"; }
-	 */
-	
-	// 게시�? ?��?�� ?�� 보여주기(GET)
-	// - 기존 게시�? ?��?��?���? board 객체?�� ?��?�� updateBoard.jsp?�� 출력
-	// - 기존 ?��?��?���? ?��?�� 미리 채워?�� 보여�?
-	@Override
-	public String updateBoardForm(BoardDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	// 게시�? ?��?��?�� ?��?���? 처리?��?�� 메서?��(POST)
-	// - ?��?��?���? ?��로드?�� 첨�??��?��?�� ?���? 처리?��
-	// - 첨�??��?��?�� ?��?���? 기존 ?��?��?�� ?�� ?��?���? ??�?
-	// - boardService.updateBoard()�? ?��출하?�� DB?�� 반영
-	@Override
-	public String updateBoard(BoardDTO dto) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	// 게시�? ?��?�� 메서?��
-	// - 게시�? 번호(bno)�? 받아 ?��?�� �??�� ?��?�� 처리
-	// - ?��?�� ?�� 게시�? 목록?���? 리다?��?��?��
-	@Override
-	public String deleteBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	// ?���? ?��?�� 처리
-	// - 게시�??�� ???�� ?���??�� 받아 DB?�� ???��
-	// - ?���? ?��?�� ?�� ?��?�� 게시�? ?��?��보기 ?��?���?�? 리다?��?��?��
-	@Override
-	public String insertComment(CommentDTO cdto) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	// 좋아?�� 기능 처리
-	// - ?��?�� 게시�??�� 좋아?�� ?���? 1 증�??��?��
-	// - DB?�� 반영?�� 좋아?�� ?���? ?��?�� 조회?��?�� JSON ?��?���? 반환
-	// - ?�� 처리?�� 보통 AJAX�? ?��루어�?
-	@Override
-	public String likeAction(int bno) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+	// 寃뚯떆湲� 紐⑸줉
+	@RequestMapping("/board/getBoardList.do")
+	public String getBoardList(BoardDTO dto, @RequestParam("category") String category, Model model) {
+		dto.setCategory(category);
+		model.addAttribute("boardList", boardService.getBoardList(dto));
+		model.addAttribute("category", category); // jsp�뿉�꽌 �쑀吏��븯湲� �쐞�빐
+		return "/board/getBoardList";
 	}
 
-	@Override
-	public String getBoardList(BoardDTO dto, Model model) {
-		// TODO Auto-generated method stub
-		return null;
+	// 寃뚯떆湲� �긽�꽭 蹂닿린
+	@RequestMapping("/board/getBoard.do")
+	public String getBoard(BoardDTO dto, @RequestParam("category") String category, Model model) {
+		dto.setCategory(category);
+		model.addAttribute("board", boardService.getBoard(dto));
+		List<CommentDTO> cmt_list = boardService.getComment(dto);
+		model.addAttribute("cmt_list", cmt_list);
+		model.addAttribute("category", category);
+		return "/board/getBoard";
 	}
 
-	@Override
-	public String insertBoard(BoardDTO dto) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+	// 湲��벐湲� �뤌
+	@RequestMapping(value = "/board/insertBoard.do", method = RequestMethod.GET)
+	public String insertBoardForm(@RequestParam("category") String category, Model model) {
+		model.addAttribute("category", category);
+		return "/board/insertBoard";
+	}
+
+	// 湲� �벑濡� 泥섎━
+	@RequestMapping(value = "/board/insertBoard.do", method = RequestMethod.POST)
+	public String insertBoard(BoardDTO dto, @RequestParam("category") String category) throws IOException {
+		dto.setCategory(category);
+
+		MultipartFile uploadFile = dto.getUploadFile();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+		if (!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename(); 
+			String newFileName = sdf.format(timestamp)+ fileName; 
+			String uploadPath = "C:\\spring_project\\workspace\\animal\\workspace\\animal\\src\\main\\webapp\\resources\\image\\";
+			
+			dto.setImg(newFileName);
+			uploadFile.transferTo(new File(uploadPath + newFileName));
+		}
+		
+		boardService.insertBoard(dto);
+		return "redirect:getBoardList.do?category=" + category;
+	}
+
+	// 湲� �닔�젙 �뤌
+	@RequestMapping(value = "/board/updateBoard.do", method = RequestMethod.GET)
+	public String updateBoardForm(@ModelAttribute("board") BoardDTO dto, @RequestParam("category") String category, Model model) {
+		model.addAttribute("category", category);
+		return "updateBoard";
+	}
+
+	// 湲� �닔�젙 泥섎━
+	@RequestMapping(value = "/board/updateBoard.do", method = RequestMethod.POST)
+	public String updateBoard(@ModelAttribute("board") BoardDTO dto, @RequestParam("category") String category) throws IOException {
+		dto.setCategory(category);
+
+		MultipartFile uploadFile = dto.getUploadFile();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+		if (!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			dto.setImg(sdf.format(timestamp) + fileName);
+			uploadFile.transferTo(new File("C:/Users/User/Desktop/kitchen_of_all/KOA/src/main/webapp/img/" + sdf.format(timestamp) + fileName));
+		}
+
+		boardService.updateBoard(dto);
+		return "redirect:getBoardList.do?category=" + category;
+	}
+
+	// 湲� �궘�젣
+	@RequestMapping("/board/deleteBoard.do")
+	public String deleteBoard(BoardDTO dto, @RequestParam("category") String category) {
+		dto.setCategory(category);
+		boardService.deleteBoard(dto);
+		return "redirect:getBoardList.do?category=" + category;
+	}
+
+	// �뙎湲� �벑濡�
+	@RequestMapping(value = "/board/insertComment.do")
+	public String insertComment(CommentDTO cdto, @RequestParam("category") String category) throws IOException {
+		boardService.insertComment(cdto);
+		return "redirect:getBoard.do?bno=" + cdto.getBno() + "&category=" + category;
+	}
+
+	// 醫뗭븘�슂 泥섎━ (AJAX)
+	@ResponseBody
+	@RequestMapping(value = "board/like.do")
+	public String likeAction(@RequestParam("bno") int bno) throws IOException {
+		boardService.updateLike(bno);
+		int like = boardService.selectLikeCount(bno);
+
+		JSONObject obj = new JSONObject();
+		obj.put("like", like);
+		return obj.toString();
 	}
 
 }
+
+

@@ -2,18 +2,26 @@ package com.test.animal.board.dto;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
+
 public class BoardDTO {
 	private int bno;
-	private int category;
+	private String category; // 'free', 'cat', 'dog'
 	private String id;
 	private String title;
 	private String content;
 	private String hashtag;
 	private Date writedate;
 	private int readcount;
+	
 	private String img;
 	private int  comment_count;
 	private int like_it;
+
+	private String searchKeyword;
+	private MultipartFile uploadFile;
+	
 	
 	public int getBno() {
 		return bno;
@@ -21,6 +29,14 @@ public class BoardDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
+	
+	public String getCategory() {
+	    return category;
+	}
+	public void setCategory(String category) {
+	    this.category = category;
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -76,12 +92,26 @@ public class BoardDTO {
 	public void setLike_it(int like_it) {
 		this.like_it = like_it;
 	}
-
-	public int getCategory() {
-		return category;
+	public String getSearchKeyword() {
+		return searchKeyword;
 	}
-	public void setCategory(int category) {
-		this.category = category;
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
+
+	@Override
+	public String toString() {
+		return "BoardDTO [bno=" + bno + ",category=" + category + ", id=" + id + ", title=" + title + ", content="
+				+ content + ", hashtag=" + hashtag + ", writedate=" + writedate + ", readcount=" + readcount + ", img="
+				+ img + ", comment_count=" + comment_count + ", like_it=" + like_it + ", searchKeyword=" + searchKeyword
+				+ ", uploadFile=" + uploadFile + "]";
 	}
 	
 }

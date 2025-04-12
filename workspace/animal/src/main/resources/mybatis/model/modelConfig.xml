@@ -5,11 +5,11 @@
 <configuration> <!-- 이 태그는 MyBatis 설정 파일의 루트 요소 -->
 	<typeAliases>
 		<typeAlias type="com.test.animal.member.dto.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="com.test.animal.board.dto.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="com.test.animal.board.dto.CommentDTO" alias="commentDTO"/>
 		<typeAlias type="com.test.animal.animal_hospital.dto.AnimalHospitalDTO" alias="animalHospitalDTO" />
 		<typeAlias type="com.test.animal.product.dto.ProductDTO" alias="productDTO" />
-		<typeAlias type="com.test.animal.board.dto.BoardDTO" alias="boardDTO"/>
-		<typeAlias type="com.test.animal.board.dto.CommentDTO" alias="commentDTO"/>		<!-- alias 는 간단히 말해 하나의 변수명 -->
+		<!-- alias 는 간단히 말해 하나의 변수명 -->
 	</typeAliases>
 </configuration>	
 <!-- MyBatis의 XML 매핑 파일 -->
-

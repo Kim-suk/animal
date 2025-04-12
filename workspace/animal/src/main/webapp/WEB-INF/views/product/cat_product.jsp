@@ -28,6 +28,10 @@
 						<img src="${product.image_url}" alt="제품 이미지">
 						<h4>${product.name}</h4>
 						<p>${product.category}</p>
+						
+						<!-- ❤️ 좋아요 버튼 -->
+					<button onclick="likeProduct(${product.id})" class="text-red-500">❤️</button>
+					<span id="like-${product.id}">0</span>
 						<a href="/animal/product/product.do?id=${product.id}">제품 보기 →</a>
 					</div>
 				</c:forEach>
@@ -36,6 +40,32 @@
 			</main>
 		</div>
 	</div>
+		<script>
+  // 저장된 좋아요 값 가져오기
+  function getLikes(productId) {
+    return parseInt(localStorage.getItem("like-" + productId)) || 0;
+  }
+
+  // 좋아요 누를 때 처리
+  function likeProduct(productId) {
+    let count = getLikes(productId);
+    count++;
+    localStorage.setItem("like-" + productId, count);
+    document.getElementById("like-" + productId).innerText = count;
+  }
+
+  // 페이지 로드 시 좋아요 값 복원
+  window.addEventListener("load", () => {
+    const products = document.querySelectorAll(".product");
+    products.forEach(p => {
+      const id = p.dataset.id;
+      const countEl = document.getElementById("like-" + id);
+      if (countEl) {
+        countEl.innerText = getLikes(id);
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

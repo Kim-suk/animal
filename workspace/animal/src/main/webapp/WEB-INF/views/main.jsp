@@ -15,13 +15,11 @@
 	<title>네오오토 NEOOTO</title>
 	<!-- jQuery 및 Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-	<link rel="stylesheet" href="/animal/resources/css/main.css?v=250413024730">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/animal/resources/css/main.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
+	
         $(document).ready(function(){
             $(".nav-item").hover(
                 function(){ 
@@ -102,8 +100,7 @@
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bPopup/0.11.0/jquery.bpopup.min.js"></script>
 	<script type="text/javascript" src="/animal/resources/js/common.js"></script>
-	<script type="text/javascript" src="/site/api/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/site/api/kcaptcha/kcaptcha.js" charset="utf-8"></script>
+	
 
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
@@ -243,23 +240,11 @@
 								</div>
 							</li>
 						</ul>
-					</div>
-							</li>
-							<li class="">
-								<a href="/kr/sub/contact/notice.php">CONTACT</a>
-								<div class="subDepth menu7">
-									<ul>
-										<li ><a href="/kr/sub/contact/notice.php">공지사항</a></li>
-										<li ><a href="/kr/sub/contact/news.php">뉴스</a></li>
-										<li ><a href="/kr/sub/contact/inquiry.php">문의하기</a></li>
-										<li ><a href="/kr/sub/contact/location.php">오시는 길</a></li>
-									</ul>
-								</div>
-							</li>
-						</ul>
+				
 					</div>
 				</nav>
-					
+				
+					<section>
 					<div class="inner1720">
 					    <!-- 검색 버튼 -->
 					    <div class="search-btn">
@@ -278,7 +263,7 @@
 					    </div>
 					
 					  </div>
-					  
+					  </section>
 				<div class="top-menu">
 					<ul class="top-links">
 				<c:choose>
@@ -402,319 +387,230 @@
         </div>
     </div>
 		</section>
-		<script src="/js/jquery.1.12.4.min.js"></script>
-			</div>
 		
-		<section class="section main5 esg-box">
-			<div class="inner1720">
-				<div class="title-box ani">
-					<h3><span>ESG</span></h3>
-					<div class="txt txt-right">
-						좋은 기업이 좋은 제품을 만들 수 있다는 신념을 가지고 <br />
-						지속적인 사회공헌활동을 실시하고 있습니다.
-					</div>
-				</div>
-			</div>
-			<div class="esgCont ani">
-				<div class="inner1720">
-					<div class="listbox ani">
-						<ul>
-							<li>
-								<div class="box">
-									<a href="/kr/sub/esg/management/sustainability.php">
-										<div class="imgbox"><img src="/img/main/esg_img01.png" alt=""></div>
-										<div class="txtbox">
-											<p>ESG Management</p>
-											<div class="btn">
-												<strong>ESG 경영</strong>
-												<span><img src="/img/common/btn_more.svg" alt=""></span>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-							<li>
-								<div class="box">
-									<a href="/kr/sub/esg/ethical.php">
-										<div class="imgbox"><img src="/img/main/esg_img02.png" alt=""></div>
-										<div class="txtbox">
-											<p>Ethics Management</p>
-											<div class="btn">
-												<strong>윤리경영</strong>
-												<span><img src="/img/common/btn_more.svg" alt=""></span>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-							<li>
-								<div class="box">
-									<a href="/kr/sub/esg/report.php">
-										<div class="imgbox"><img src="/img/main/esg_img03.png" alt=""></div>
-										<div class="txtbox">
-											<p>Cyber Newspapers</p>
-											<div class="btn">
-												<strong>사이버신문고</strong>
-												<span><img src="/img/common/btn_more.svg" alt=""></span>
-											</div>
-										</div>
-									</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="bg-txt">
-						<svg width="1114" height="64" viewBox="0 0 1114 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-						  <text x="0" y="50%" dominant-baseline="middle">
-							NEOOTO’S ENVIRONMENT·SOCIAL·GOVERNANCE
-						  </text>
-						</svg>
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section class="section main6 contact-box">
-			<div class="inner1720">
-				<div class="title-box ani">
-					<h3><span>CONTACT</span></h3>
-				</div>
-				<div class="notice-box">
-					<div class="listCont">
-						<ul class="nav">
-							<li class="active"><a href="#all">All</a></li>
-							<li><a href="#notice">NOTICE</a></li>
-							<li><a href="#news">NEWS</a></li>
-						</ul>
-						<div class="listbox">
-							<div class="txt-top">
-								우리는 새로운 세상을 열어가는 데 기여하고 함께 성장합니다. <br />
-								네오오토의 투명하고 공정한 소식을 알아보세요.
-								<div class="btn_more">
-									<a href="">
-										<strong>VIEW MORE</strong>
-										<span><img src="/img/common/btn_more.svg" alt=""></span>
-									</a>
-								</div>
-							</div>
-							<div id="all" class="list on ani">
-								<div class="slider">
-									<div class="inner">
-										<div class="swiper-wrapper">
-																					<div class="swiper-slide">
-												<a href="/kr/sub/contact/?mode=view&bid=2&idx=138">
-													<div class="imgbox">
-																													<img src="/upload/thumb/NISI20250325_0001799659_web_80946.jpg" alt="">
-														</div>
-													<div class="txtbox">
-														<dl>
-															<dt>네오오토, 4공장 증설 착수... 생산 CAPA 확대 본격화</dt>
-															<dd>&nbsp;글로벌 모빌리티 부품 전문 기업 네오오토(대표 김선현, 김원일, 212560)가 충청남도 예산일반산업단지에 4공장 증설을 착수했다.
+<section>
 
-&nbsp;
+  <style>
+    h2 {
+      font-size: 28px;
+      color: #e60023;
+      margin-bottom: 20px;
+    }
 
-이번에 증설하는 신규공장은 고객사의 차세대 하이브리드 부품 신규수주에 대응하기 위한 것으로 총면적
-16,505.10㎡(약 5천 평) 규모 부지에 7,452㎡(2,254평) 규모의 기어가공공장</dd>
-														</dl>
-													</div>
-												</a>
-											</div>
-																					<div class="swiper-slide">
-												<a href="/kr/sub/contact/?mode=view&bid=2&idx=128">
-													<div class="imgbox">
-																													<img src="/animal/resources/image/cat.jpg" alt="">
-														</div>
-													<div class="txtbox">
-														<dl>
-															<dt>충남도, 네오오토·피라인모터스 등 21개사와 투자협약 체결</dt>
-															<dd>국내외 기업으로부터 역대급 투자 유치 성과를 올리고 있는 민선8기 힘쎈충남이 새해 초부터 강한 ‘투자 유치 드라이브’를 걸고 있다.&nbsp;지난달 미국과 스위스, 싱가포르 기업 외자를 유치한데 이어, 이번엔 국내 21개 기업으로부터 5600억여 원의 투자를 유치해냈다.&nbsp;김태흠 지사는 10일 도청 대회의실에서 박상돈 천안시장 등 9개 시군 단체장·</dd>
-														</dl>
-													</div>
-												</a>
-											</div>
-																					<div class="swiper-slide">
-												<a href="/kr/sub/contact/?mode=view&bid=2&idx=127">
-													<div class="imgbox">
-																													<img src="/upload/thumb/oto로고(투명)_56aa8.png" alt="">
-														</div>
-													<div class="txtbox">
-														<dl>
-															<dt>네오오토, 지난해 사상 최대 실적 달성</dt>
-															<dd>모빌리티 부품 전문 기업 네오오토는 지난해 영업이익이 122억원을 기록해 전년 대비 18.0% 증가했다고 13일 공시했다.같은 기간 매출액과 순이익은 2179억원, 173억원으로 각각 9.9%, 45.4% 늘었다. 매출액과 영업이익 모두 설립 이래 최대 실적이라고 회사 측은 설명했다.회사는 이번 실적 성장의 주요 요인으로 고객사의 완성차 판매 증가로 인한 </dd>
-														</dl>
-													</div>
-												</a>
-											</div>
-																				</div>
-										<div class="control_box">
-											<div class="box">
-												<div class="txt txt_l"><strong>0<span class="activeslide">1</span></strong></div>
-												<div class="swiper-pagination-n"></div>
-												<div class="txt txt_r">0<span class="totalslide"></span></div>
-											</div>
-											<div class="btn-box">
-												<span class="btn btn_prev">이전</span>
-												<span class="btn btn_next">다음</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div id="notice" class="list ani">
-								<div class="slider">
-									<div class="inner">
-										<div class="swiper-wrapper">
-																				</div>
-										<div class="control_box">
-											<div class="box">
-												<div class="txt txt_l"><strong>0<span class="activeslide">1</span></strong></div>
-												<div class="swiper-pagination-n"></div>
-												<div class="txt txt_r">0<span class="totalslide"></span></div>
-											</div>
-											<div class="btn-box">
-												<span class="btn btn_prev">이전</span>
-												<span class="btn btn_next">다음</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div id="news" class="list ani">
-								<div class="slider">
-									<div class="inner">
-										<div class="swiper-wrapper">
-																					<div class="swiper-slide">
-												<a href="/kr/sub/contact/news.php?mode=view&bid=2&idx=138">
-													<div class="imgbox">
-																													<img src="/animal/resources/image/cat.jpg" alt="">
-														</div>
-													<div class="txtbox">
-														<dl>
-															<dt>고양이 귀여웡</dt>
-															<dd>&nbsp;글로벌 모빌리티 부품 전문 기업 네오오토(대표 김선현, 김원일, 212560)가 충청남도 예산일반산업단지에 4공장 증설을 착수했다.
+    .swiper-container {
+      width: 100%;
+      padding-bottom: 50px;
+      position: relative;
+    }
 
-&nbsp;
+    .swiper-slide {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-이번에 증설하는 신규공장은 고객사의 차세대 하이브리드 부품 신규수주에 대응하기 위한 것으로 총면적
-16,505.10㎡(약 5천 평) 규모 부지에 7,452㎡(2,254평) 규모의 기어가공공장</dd>
-														</dl>
-													</div>
-												</a>
-											</div>
-																					<div class="swiper-slide">
-												<a href="/kr/sub/contact/news.php?mode=view&bid=2&idx=128">
-													<div class="imgbox">
-																													<img src="" alt="">
-														</div>
-													<div class="txtbox">
-														<dl>
-															<dt>충남도, 네오오토·피라인모터스 등 21개사와 투자협약 체결</dt>
-															<dd>국내외 기업으로부터 역대급 투자 유치 성과를 올리고 있는 민선8기 힘쎈충남이 새해 초부터 강한 ‘투자 유치 드라이브’를 걸고 있다.&nbsp;지난달 미국과 스위스, 싱가포르 기업 외자를 유치한데 이어, 이번엔 국내 21개 기업으로부터 5600억여 원의 투자를 유치해냈다.&nbsp;김태흠 지사는 10일 도청 대회의실에서 박상돈 천안시장 등 9개 시군 단체장·</dd>
-														</dl>
-													</div>
-												</a>
-											</div>
-												<div class="swiper-slide">
-												<a href="/kr/sub/contact/news.php?mode=view&bid=2&idx=127">
-													<div class="imgbox">
-																													<img src="/animal/resources/image/cat.jpg" alt="">
-														</div>
-													<div class="txtbox">
-														<dl>
-															<dt>네오오토, 지난해 사상 최대 실적 달성</dt>
-															<dd>모빌리티 부품 전문 기업 네오오토는 지난해 영업이익이 122억원을 기록해 전년 대비 18.0% 증가했다고 13일 공시했다.같은 기간 매출액과 순이익은 2179억원, 173억원으로 각각 9.9%, 45.4% 늘었다. 매출액과 영업이익 모두 설립 이래 최대 실적이라고 회사 측은 설명했다.회사는 이번 실적 성장의 주요 요인으로 고객사의 완성차 판매 증가로 인한 </dd>
-														</dl>
-													</div>
-												</a>
-											</div>
-										</div>
-									<div class="control_box">
-										<div class="box">
-											<div class="txt txt_l"><strong>0<span class="activeslide">1</span></strong></div>
-											<div class="swiper-pagination-n"></div>
-											<div class="txt txt_r">0<span class="totalslide"></span></div>
-										</div>
-										<div class="btn-box">
-											<span class="btn btn_prev">이전</span>
-											<span class="btn btn_next">다음</span>
-										</div>
-									</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    .swiper-slide img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
 
-	</article>
+    .art-info {
+      padding: 15px;
+      text-align: left;
+    }
 
+    .artist-name {
+      font-size: 14px;
+      color: #222;
+      margin-bottom: 2px;
+    }
 
-	<!-- footer -->
-	<footer>
-		<div class="inner1720">
-			<div class="footer_box">
-				<div class="txtbox">
-					<a href="/kr/sub/company/greeting.php">
-						<strong>Let's Get Started <br /> with NEOOTO</strong>
-						<span class="over"><span>Let’s start!</span></span>
-					</a>
-				</div>
-				<div class="infobox">
-					<div class="info-1">
-						<ul>
-							<li><strong>본사 :</strong> <span>서울 종로구 새문안로5길 19, 로얄빌딩 6층</span></li>
-							<li><strong>TEL_</strong><span>02-732-2871</span></li>
-							<li><strong>FAX_</strong><span>02-6732-2870</span></li>
-						</ul>
-					</div>
-					<div class="info-1">
-						<ul>
-							<li><strong>예산 1공장 :</strong> <span>충남 예산군 삽교읍 두루머리길8</span></li>
-							<li><strong>TEL_</strong><span>041-337-1730</span></li>
-							<li><strong>FAX_</strong><span>041-337-1756</span></li>
-						</ul>
-					</div>
-					<div class="info-2">
-						<ul>
-							<li><strong>예산 2공장 :</strong> <span>충남 예산군 삽교읍 두루머리길33</span></li>
-							<li><strong>예산 3공장 :</strong> <span>충남 예산군 삽교읍 산단2길 85</span></li>
-						</ul>
-					</div>
-					
-				</div>
-				<div class="fmenu">
-					<ul>
-						<li><a href="/kr/sub/policy/privacy.php">개인정보처리방침</a></li>
-						<li><a href="/kr/sub/policy/terms.php">이용약관</a></li>
-						<li><span class="copyright">COPYRIGHTⓒNEOOTO CO., Ltd. ALL RRIGHTS RESERVED.</span></li>
-					</ul>
-				</div>
+    .art-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+    }
 
-				<div class="f-bottom">
-					<div class="family-site">
-						<p>Family Site</p>
-						<div class="box">
-							<ul>
-								<li><a href="http://www.oto.kr/" target="_blank">오토인더스트리</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="btnTop"><a href="#" class="btn_top"><img src="/img/common/bnt_top.svg" class="svg" alt=""></a></div>
-				</div>
-			</div>
-		</div>
-			
-	</footer>
-	<!-- //footer -->
+    .art-size {
+      font-size: 12px;
+      color: #999;
+      margin: 4px 0;
+    }
 
-	<script src="/js/gsap.min.js"></script>
-	<script src="/js/ScrollTrigger.min.js"></script>
-	<script src="/js/ScrollToPlugin.min.js"></script>
-	<script src="/js/cont_fb.js"></script>
+    .art-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #e60023;
+      margin-top: 4px;
+    }
 
+    .art-stats {
+      font-size: 12px;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .art-stats i {
+      margin-right: 2px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #333;
+      background-color: transparent;
+      font-size: 30px;
+      font-weight: bold;
+      top: 45%;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      color: #e60023;
+    }
+
+    .swiper-pagination-bullet {
+      background: #ccc;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #e60023;
+    }
+
+    @media (max-width: 768px) {
+      .swiper-slide img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .swiper-slide img {
+        height: 160px;
+      }
+    }
+  </style>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+<title></title>
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+  <a href="detail.jsp?artId=1" style="text-decoration: none; color: inherit;">
+    <img src="/animal/resources/image/cat1.jpg" alt="봄 사랑">
+    <div class="art-info">
+      <div class="artist-name">최향숙</div>
+      <div class="art-title">봄 사랑</div>
+      <div class="art-size">W72.7 x H60.6 cm</div>
+      <div class="art-stats">
+        <span>👤 3</span>
+        <span>♡ 5</span>
+      </div>
+      <div class="art-price">₩2,000,000</div>
+    </div>
+  </a>
+</div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+  <a href="detail.jsp?artId=2" style="text-decoration: none; color: inherit;">
+    <img src="/animal/resources/image/poppy1.png" alt="회상">
+    <div class="art-info">
+      <div class="artist-name">최종우</div>
+      <div class="art-title">회상</div>
+      <div class="art-size">W53.0 x H45.5 cm</div>
+      <div class="art-stats">
+        <span>👤 2</span>
+        <span>♡ 1</span>
+      </div>
+      <div class="art-price">₩500,000</div>
+    </div>
+  </a>
+</div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+       <a href="detail.jsp?artId=2" style="text-decoration: none; color: inherit;">
+        <img src="/animal/resources/image/cat2.jpg" alt="스며들다">
+        <div class="art-info">
+          <div class="artist-name">후후 HooHoo</div>
+          <div class="art-title">스며들다 / Permeate 36</div>
+          <div class="art-size">W106.0 x H72.0 cm</div>
+          <div class="art-stats">
+            <span>👤 9</span>
+            <span>♡ 2</span>
+          </div>
+          <div class="art-price">₩9,000,000</div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+       <a href="detail.jsp?artId=2" style="text-decoration: none; color: inherit;">
+        <img src="/animal/resources/image/poppy.jpeg" alt="빛 항아리">
+        <div class="art-info">
+          <div class="artist-name">정희연</div>
+          <div class="art-title">빛흘풀은 항아리23.-8.5</div>
+          <div class="art-size">W50.0 x H50.0 cm</div>
+          <div class="art-stats">
+            <span>👤 8</span>
+            <span>♡ 2</span>
+          </div>
+          <div class="art-price">₩2,400,000</div>
+        </div>
+      </div>
+
+    </div>
+    
+
+    <!-- 네비게이션 버튼 -->
+    <div class="swiper-button-prev">←</div>
+    <div class="swiper-button-next">→</div>
+
+    <!-- 페이징 -->
+    <div class="swiper-pagination"></div>
+  </div>
+  
+</section>
+
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      speed: 700,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      slidesPerView: 4,
+      spaceBetween: 24,
+      breakpoints: {
+        1024: {
+          slidesPerView: 3
+        },
+        768: {
+          slidesPerView: 2
+        },
+        480: {
+          slidesPerView: 1
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>

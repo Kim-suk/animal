@@ -14,6 +14,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+	<link rel="stylesheet" href="/animal/resources/css/main.css?v=250413024730">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -259,6 +260,25 @@ body {
 			<a href="${contextPath}/main.do" class="banner-link"> <img
 				src="${contextPath}/resources/image/banner.png">
 			</a>
+			<div class="inner1720" style="display: flex; align-items: center; justify-content: space-between;">
+
+    <!-- 검색 버튼 -->
+    <div class="search-btn">
+      <a href="/kr/sub/search/result.php">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" class="svg replaced-svg">
+          <g clip-path="url(#clip0_999_6312)">
+            <path d="M22.9956 21.4631C24.8694 19.243 26 16.3762 26 13.25C26 6.21886 20.2811 0.5 13.25 0.5C6.21886 0.5 0.5 6.21886 0.5 13.25C0.5 20.2811 6.21886 26 13.25 26C16.3762 26 19.243 24.8694 21.4631 22.9956L27.6504 29.1829C27.8623 29.3948 28.1416 29.5 28.4167 29.5C28.6939 29.5 28.9715 29.3944 29.1829 29.1829L29.1841 29.1818C29.6047 28.7585 29.6063 28.0738 29.1829 27.6504L22.9956 21.4631ZM2.66667 13.25C2.66667 7.41427 7.41427 2.66667 13.25 2.66667C19.0857 2.66667 23.8333 7.41427 23.8333 13.25C23.8333 19.0857 19.0857 23.8333 13.25 23.8333C7.41427 23.8333 2.66667 19.0857 2.66667 13.25Z" fill="black" stroke="black"></path>
+          </g>
+          <defs>
+            <clipPath id="clip0_999_6312">
+              <rect width="30" height="30" fill="black"></rect>
+            </clipPath>
+          </defs>
+        </svg>
+      </a>
+    </div>
+
+  </div>
 			<ul class="top-links">
 				<c:choose>
 					<c:when test="${not empty sessionScope.loginMember}">
@@ -294,80 +314,5 @@ body {
 			</div>
 		</div>
 	</div>
-
-	<nav class="navbar navbar-expand-lg">
-		<div class="container-fluid">
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link"
-					href="${contextPath }/main.do">홈</a></li>
-
-				<li class="nav-item">동물병원
-					<ul class="submenu">
-						<li><a href="${contextPath }/hospital/map.do">지도</a></li>
-						<li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
-					</ul>
-				</li>
-
-				<li class="nav-item">고양이
-					<ul class="submenu">
-						<li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
-						<li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
-						<li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까
-								고민 중이신가요?</a></li>
-					</ul>
-				</li>
-
-				<li class="nav-item">강아지
-					<ul class="submenu">
-						<li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
-						<li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
-						<li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까
-								고민 중이신가요?</a></li>
-					</ul>
-				</li>
-
-				<li class="nav-item">게시판
-					<ul class="submenu">
-						<li><a
-							href="${contextPath}/board/getBoardList.do?category=cat">고양이
-								게시판</a></li>
-						<li><a
-							href="${contextPath}/board/getBoardList.do?category=dog">강아지
-								게시판</a></li>
-						<li><a
-							href="${contextPath}/board/getBoardList.do?category=free">자유게시판</a></li>
-					</ul>
-				</li>
-
-				<li class="nav-item">강아지 용품
-					<ul class="submenu">
-						<li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
-						<li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
-						<li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
-						<li><a href="${contextPath }/dog_product/dog_poop.do">배변용품</a></li>
-						<li><a href="${contextPath }/dog_product/dog_carrier.do">이동장</a></li>
-						<li><a href="${contextPath }/dog_product/dog_toy.do">장난감</a></li>
-						<li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>
-						<li><a href="${contextPath }/dog_product/dog_house.do">하우스</a></li>
-						<li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
-					</ul>
-				</li>
-
-				<li class="nav-item">고양이 용품
-					<ul class="submenu">
-						<li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
-						<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
-						<li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
-						<li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
-						<li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
-						<li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
-						<li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
-						<li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
-						<li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
 </body>
 </html>

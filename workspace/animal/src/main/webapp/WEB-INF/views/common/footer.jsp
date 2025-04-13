@@ -100,7 +100,8 @@
     <a href="https://www.pet-news.or.kr/"> 한국 반려 동물 뉴스 </a>
     <a href="https://www.hani.co.kr/arti/animalpeople/companion_animal"> 정보 </a>
 </div>
-      <p> © 2025 반려묘/견 사이트 | 모든 콘텐츠는 저작권의 보호를 받습니다.</p>
+      <p> © 2025 반려묘/견 사이트 | 모든 콘텐츠는 저작권의 보호를 받습니다.<br>
+      &copy; All rights reserved.</p>
     </div>
     
     

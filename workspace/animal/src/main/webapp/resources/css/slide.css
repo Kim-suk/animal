@@ -1,0 +1,49 @@
+ body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 40px 0;
+            background: #fdfdfd;
+        }
+
+        .slider-track {
+            display: flex;
+            animation: slideLeft 20s linear infinite;
+        }
+
+        .review-box {
+            flex: 0 0 400px;
+            margin: 0 10px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .review-box:hover {
+            transform: scale(1.05);
+            background-color: #fff8e1;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 20px;
+            margin-top: 15px;
+        }
+
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }

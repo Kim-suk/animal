@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
 </head>
 <body>
-	<div id="container">
 		<div id="header">
 			<tiles:insertAttribute name="header" /> 
 		</div>
@@ -29,6 +28,6 @@
     <div id="footer">
         <tiles:insertAttribute name="footer" />
     </div>
-	</div>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
@@ -200,7 +200,7 @@ body>.modal-backdrop.show {
 	color: black;
 }
 
-.banner {
+/* .banner {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -224,7 +224,7 @@ body>.modal-backdrop.show {
 	height: 100%; /* 기존처럼 배너 높이에 맞게 조정 */
 	width: auto; /* 비율 유지 */
 	object-fit: contain; /* 이미지가 넘치지 않도록 조정 */
-}
+} */
 
 /* 본문이 네비게이션에 가려지지 않도록 여백 추가 */
 body {
@@ -250,18 +250,17 @@ body {
 </head>
 
 <body>
-	<div class="banner">
+	<!-- <div class="banner">
 		<a href="${contextPath }/main.do" class="banner-link"> <img
 			src="${contextPath}/resources/image/banner.png">
 		</a>
 
-		<!-- 상단 배너 -->
+		 상단 배너 
 		<div class="banner">
 			<a href="${contextPath}/main.do" class="banner-link"> <img
 				src="${contextPath}/resources/image/banner.png">
 			</a>
-			<div class="inner1720" style="display: flex; align-items: center; justify-content: space-between;">
-
+			<div class="inner1720" style="display: flex; align-items: center; justify-content: space-between;" -->
     <!-- 검색 버튼 -->
     <div class="search-btn">
       <a href="/kr/sub/search/result.php">
@@ -278,7 +277,7 @@ body {
       </a>
     </div>
 
-  </div>
+ <!--  </div> -->
 			<ul class="top-links">
 				<c:choose>
 					<c:when test="${not empty sessionScope.loginMember}">
@@ -315,4 +314,4 @@ body {
 		</div>
 	</div>
 </body>
-</html>
+</html> --%>

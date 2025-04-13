@@ -2,14 +2,10 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<!-- slick slider CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<!-- slick slider JS -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="format-detection" content="telephone=no">
@@ -30,9 +26,9 @@
 	<meta property="og:description" content="">
 
 	<!-- css block -->
-	<link rel="stylesheet" type="text/css" href="/site/css/axj.css" />
-	<link rel="stylesheet" type="text/css" href="/site/css/AXButton.css" />
-	<link rel="stylesheet" type="text/css" href="/site/css/site.css?d=20250413" />
+	<link rel="stylesheet" type="text/css" href="/animal/resources/css/axj.css" />
+	<link rel="stylesheet" type="text/css" href="/animal/resources/css/AXButton.css" />
+	<link rel="stylesheet" type="text/css" href="/animal/resources/css/site.css" />
 	<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
@@ -42,7 +38,7 @@
 	<script type="text/javascript" src="//code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bPopup/0.11.0/jquery.bpopup.min.js"></script>
-	<script type="text/javascript" src="/site/js/common.js?d=20250413"></script>
+	<script type="text/javascript" src="/animal/resources/js/common.js"></script>
 	<script type="text/javascript" src="/site/api/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script type="text/javascript" src="/site/api/kcaptcha/kcaptcha.js" charset="utf-8"></script>
 
@@ -51,27 +47,25 @@
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.css">
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.js"></script>
-	<script src="/animal/resources/js/slick.js"></script>
-	<script src="/animal/resources/js/common.js?v=250413024730"></script>
+<script src="/animal/resources/js/slick.js"></script>
+	<script src="/animal/resources/js/common.js"></script>
 	<script src="/animal/resources/js/swiper.min.js"></script>
 	<script src="/animal/resources/js/OverlayScrollbars.js"></script>
 
-	<link rel="stylesheet" href="/animal/resources/css/base.css?v=250413024730">
+	<link rel="stylesheet" href="/animal/resources/css/base.css">
 	<link rel="stylesheet" href="/animal/resources/css/OverlayScrollbars.css">
-	<link rel="stylesheet" href="/animal/resources/css/common.css?v=250413024730">
-	<link rel="stylesheet" href="/animal/resources/css/animation.css?v=250413024730">
+	<link rel="stylesheet" href="/animal/resources/css/common.css">
+	<link rel="stylesheet" href="/animal/resources/css/animation.css">
 	<link rel="stylesheet" href="/animal/resources/css/swiper.css">
 	<link rel="stylesheet" href="/animal/resources/css/slick.css">
 	<link rel="stylesheet" href="/animal/resources/css/slide.css">
 	
-	<script src="/animal/resources/js/jquery.fullPage.min.js?v=250413024730"></script>
+	<script src="/animal/resources/js/jquery.fullPage.min.js"></script>
 	<script src="/animal/resources/js/scrolloverflow.min.js"></script>
-	<script src="/animal/resources/js/main.js?v=250413024730"></script>
-	<link rel="stylesheet" href="/animal/resources/css/fullpage.css?v=250413024730">
-	<link rel="stylesheet" href="/animal/resources/css/main.css?v=250413024730">
-	<!--[if lt IE 9]>
-	<script src="/js/html5shiv.js"></script>
-	<![endif]-->
+	<script src="/animal/resources/js/main.js"></script>
+	<link rel="stylesheet" href="/animal/resources/css/fullpage.css">
+	<link rel="stylesheet" href="/animal/resources/css/main.css">
+
 	<script>
 		var windowWidth = window.screen.width
 		setViewPort(windowWidth);
@@ -104,105 +98,127 @@
 		<!-- header -->
 
 		<header >
-			<div class="inner1720">
-			<h1><a href="/kr/"><img src="/img/common/img_logo.svg" class="svg" alt="OTO"></a></h1>
-
 				<nav id="navi">
 					<div id="gnb">
 						<div class="arr"></div>
 						<ul>
 							<li class="">
-								<a href="${contextPath }/main.do">HOME</a>
-
-							</li>
-							<li class="">
-								<a href="#">HOSPITAL</a>
+								<a href="/kr/sub/company/greeting.php">HOME</a>
 								<div class="subDepth menu1">
-									<ul>	
-										<li class="mo over"><a href="${contextPath }/hospital/map.do">지도</a></li>
-										<li ><a href="${contextPath }/hospital/review.do">리뷰</a></li>
+									<ul>
+										<li ><a href="/kr/sub/company/greeting.php">인사말</a></li>
+										<li ><a href="/kr/sub/company/philosophy.php">경영이념</a></li>
+										<li ><a href="/kr/sub/company/history.php">연혁</a></li>
+										<li ><a href="/kr/sub/company/group.php">오토그룹소개</a></li>
+										<li ><a href="/kr/sub/company/workplace.php">사업장 및 관계사</a></li>
+										<li ><a href="/kr/sub/company/corporate.php">네오오토의 역량</a></li>
+										<li ><a href="/kr/sub/company/certificate.php">인증 및 특허</a></li>
+										<li ><a href="/kr/sub/company/equipment.php">보유설비</a></li>
+										<!-- <li><a href="">리더쉽</a></li> -->
 									</ul>
 								</div>
 							</li>
 							<li class="">
-								<a href="#">CAT</a>
+								<a href="/kr/sub/product/prod.php">HOSPITAL</a>
 								<div class="subDepth menu2">
 									<ul>	
-										<li class="mo over"><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
-										<li ><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
-										<li ><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 생각중이신가요?</a></li>
-										
+										<li class="mo over"><a href="/kr/sub/product/prod.php">전체제품</a></li>
+										<li ><a href="/kr/sub/product/prod.php?s_cate=10">친환경차 부품</a></li>
+										<li ><a href="/kr/sub/product/prod.php?s_cate=11">내연기관 부품</a></li>
+										<li ><a href="/kr/sub/product/prod.php?s_cate=12">신규개발품</a></li>
+										<!-- <li ><a href="/kr/sub/product/process.php">공정소개</a></li> -->
 									</ul>
 								</div>
 							</li>
 							<li class="">
-								<a href="#">DOG</a>
+								<a href="/kr/sub/rnd/rnd.php">CAT</a>
 								<div class="subDepth menu3">
-									<ul>	
-										<li class="mo over"><a href="${contextPath }/dog/dog_type.do">품종</a></li>
-										<li ><a href="${contextPath }/dog/dog_kitten.do">어린 강아지</a></li>
-										<li ><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 생각중이신가요?</a></li>
-										
+									<ul>
+										<li ><a href="/kr/sub/rnd/rnd.php">R&D</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="/kr/sub/ir/disclosure.php">DOG</a>
+								<div class="subDepth menu4">
+									<ul>
+										<li ><a href="/kr/sub/ir/disclosure.php">공시정보</a></li>
+										<li ><a href="/kr/sub/ir/finance.php">재무정보</a></li>
+										<li ><a href="/kr/sub/ir/data.php">IR자료실</a></li>
 									</ul>
 								</div>
 							</li>
 							<li class="">
 								<a href="/kr/sub/esg/management/sustainability.php">ARTICLE</a>
-								<div class="subDepth menu4">
+								<div class="subDepth menu5">
 									<ul>
-										<li ><a href="${contextPath}/board/Board.do">자유 게시판</a></li>
-										<li ><a href="${contextPath}/board/CatBoard.do">고양이 게시판</a></li>
-										<li ><a href="${contextPath}/board/DogBoard.do">강아지 게시판</a></li>
+										<li >
+											<a href="/kr/sub/esg/management/sustainability.php">ESG경영</a>
+										</li>
+										<li ><a href="/kr/sub/esg/ethical.php">윤리경영</a></li>
+										<li ><a href="/kr/sub/esg/report.php">사이버신문고</a></li>
 									</ul>
 								</div>
 							</li>
 							<li class="">
-								<a href="#">DOG PRODUCT</a>
-								<div class="subDepth menu5">
-									<ul class="submenu">
-						<li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
-						<li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
-						<li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
-						<li><a href="${contextPath }/dog_product/dog_poop.do">배변용품</a></li>
-						<li><a href="${contextPath }/dog_product/dog_carrier.do">이동장</a></li>
-						<li><a href="${contextPath }/dog_product/dog_toy.do">장난감</a></li>
-						<li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>
-						<li><a href="${contextPath }/dog_product/dog_house.do">하우스</a></li>
-						<li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
-					</ul>
+								<a href="/kr/sub/career/talent.php">PRODUCT</a>
+								<div class="subDepth menu6">
+									<ul>
+										<li ><a href="/kr/sub/career/talent.php">인재상</a></li>
+										<li ><a href="/kr/sub/career/welfare.php">복리후생</a></li>
+										<li ><a href="/kr/sub/career/recruitment.php">채용공고</a></li>
+									</ul>
 								</div>
 							</li>
 							<li class="">
-								<a href="#">CAT PRODUCT</a>
-								<div class="subDepth menu6">
-									<ul class="submenu">
-						<li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
-						<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
-						<li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
-						<li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
-						<li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
-						<li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
-						<li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
-						<li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
-						<li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
-					</ul>
+								<a href="/kr/sub/contact/notice.php">CONTACT</a>
+								<div class="subDepth menu7">
+									<ul>
+										<li ><a href="/kr/sub/contact/notice.php">공지사항</a></li>
+										<li ><a href="/kr/sub/contact/news.php">뉴스</a></li>
+										<li ><a href="/kr/sub/contact/inquiry.php">문의하기</a></li>
+										<li ><a href="/kr/sub/contact/location.php">오시는 길</a></li>
+									</ul>
 								</div>
 							</li>
 						</ul>
 					</div>
-
 				</nav>
 					
+					<div class="inner1720">
+					    <!-- 검색 버튼 -->
+					    <div class="search-btn">
+					      <a href="/kr/sub/search/result.php">
+					        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="white" class="svg replaced-svg">
+					          <g clip-path="url(#clip0_999_6312)">
+					            <path d="M22.9956 21.4631C24.8694 19.243 26 16.3762 26 13.25C26 6.21886 20.2811 0.5 13.25 0.5C6.21886 0.5 0.5 6.21886 0.5 13.25C0.5 20.2811 6.21886 26 13.25 26C16.3762 26 19.243 24.8694 21.4631 22.9956L27.6504 29.1829C27.8623 29.3948 28.1416 29.5 28.4167 29.5C28.6939 29.5 28.9715 29.3944 29.1829 29.1829L29.1841 29.1818C29.6047 28.7585 29.6063 28.0738 29.1829 27.6504L22.9956 21.4631ZM2.66667 13.25C2.66667 7.41427 7.41427 2.66667 13.25 2.66667C19.0857 2.66667 23.8333 7.41427 23.8333 13.25C23.8333 19.0857 19.0857 23.8333 13.25 23.8333C7.41427 23.8333 2.66667 19.0857 2.66667 13.25Z" fill="white" stroke="white"></path>
+					          </g>
+					          <defs>
+					            <clipPath id="clip0_999_6312">
+					              <rect width="30" height="30" fill="white"></rect>
+					            </clipPath>
+					          </defs>
+					        </svg>
+					      </a>
+					    </div>
+					
+					  </div>
 				<div class="top-menu">
-					<div class="language">
-						<a href=""><img src="/img/common/btn_lang.svg" class="svg" alt=""></a>
-						<!-- <ul>
-							<li class="on"><a href="">KR</a></li>
-							<li><a href="">EN</a></li>
-						</ul> -->
-					</div>
-					<div class="search-btn"><a href="/kr/sub/search/result.php"><img src="/img/common/btn_search.svg" class="svg" alt="search"></a></div>
-					<div class="allBox"><div class="allmenu"><a href="javascript:void(0);"><span></span></a></div></div>
+					<ul class="top-links">
+				<c:choose>
+					<c:when test="${not empty sessionScope.loginMember}">
+						<li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
+						<li><a class="nav-link" href="#">${sessionScope.loginName}님 환영합니다</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a class="nav-link"
+							href="${contextPath}/member/loginForm.do"> 로그인 </a></li>
+						<li><a class="nav-link"
+							href="${contextPath}/member/joinMember.do"> 회원가입 </a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+					<div class="allBox"><div class="allmenu"><a href="javascript:void(0);"></a></div></div>
 				</div>
 
 			</div>
@@ -229,11 +245,10 @@
 			<div id="visual">
 				<div class="visual swiper-container">
 					<div class="swiper-wrapper">
-													<div class="swiper-slide slide1" data-page="1"><!-- data-swiper-autoplay="13000"-->
+							<div class="swiper-slide slide1" data-page="1">
 								<div class="mov">
 									<video loop muted playsinline data-autoplay preload="auto" id="myVideo">
 										<source src="/animal/resources/upload/cat.mp4" type="video/mp4" />
-										Your browser does not support HTML5 video.
 									</video>
 								</div>
 								<div class="bg"></div>
@@ -244,39 +259,13 @@
 									</div>
 								</div>
 							</div>
-											</div>
-	
-
-				</div>
-			</div>
-		</section>
-		<!-- //visual -->
-		
-		<section class="section main2">
-			<div class="company-txt">
-				<div class="top ani">
-					<div class="txt txt-left"><span>세상을 이롭게</span> </div>
-					<div class="txt txt-right"><span>하는 기업,</span> <span class="txt">NEOOTO</span></div>
-				</div>
-				<div class="txtbox">
-					<div class="txt">
-						네오오토는 진보적인 기술개발로 <br />
-						세계 최고의 모빌리티 제품 공급을 통해 <br />
-						인류의 안정과 행복에 기여하겠습니다.
-					</div>
-					<div class="btn_more">
-						<a href="/kr/sub/company/workplace.php">
-							<strong>VIEW MORE</strong>
-							<span><img src="/img/common/btn_more.svg" alt=""></span>
-						</a>
 					</div>
 				</div>
 			</div>
 		</section>
-		
+		<!-- 슬라이드 -->
 		<section>
-		
- <div class="slider-container">
+		<div class="slider-container">
         <div class="slider-track">
             <!-- 클릭 가능한 박스: 링크로 감싸기 -->
             <a href="reviewDetail.jsp?id=1" class="review-box">
@@ -323,162 +312,9 @@
             </a>
         </div>
     </div>
-</section>
-
-		<section class="section main3 product-box">
-			<div class="inner1720">
-				<div class="title-box ani">
-					<h3><span>PRODUCT</span></h3>
-					<div class="txt txt-right">
-						네오오토는 고객에게 친환경차 변감속기 등 최고품질의 모빌리티 제품을 공급하기 위해 <br />
-						최신 설비와 유연생산시스템을 통한 개발, 생산, 주문 관리 및 품질관리 부문까지 엄격한 관리를 <br />
-						진행하고 있으며 자체 단조, 가공 공정으로 고객이 요구하는 기술과 품질을 보증합니다.
-					</div>
-				</div>
-			</div>
-			<div class="productCont ani">
-				<div class="inner1720">
-					<div class="listbox ani">
-						<ul>
-							<li>
-								<div class="box">
-									<a href="/kr/sub/product/new.php">
-										<div class="txtbox">
-											<div class="stxt">Electric car parts</div>
-											<div class="tit">
-												<h4>전기차부품</h4>
-												<span><img src="/img/common/btn_more.svg" alt=""></span>
-											</div>
-										</div>
-										<div class="imgbox"><img src="/img/main/product_img03.png" alt=""></div>
-									</a>
-								</div>
-							</li> 
-							<li>
-								<div class="box">
-									<a href="/kr/sub/product/eco-friendly.php">
-										<div class="txtbox">
-											<div class="stxt">Hybrid parts</div>
-											<div class="tit">
-												<h4>하이브리드부품</h4>
-												<span><img src="/img/common/btn_more.svg" alt=""></span>
-											</div>
-										</div>
-										<div class="imgbox"><img src="/img/main/product_img02.png" alt=""></div>
-									</a>
-								</div>
-							</li>
-							<li>
-								<div class="box">
-									<a href="/kr/sub/product/IC-engine.php">
-										<div class="txtbox">
-											<div class="stxt">Internal combustion engine parts</div>
-											<div class="tit">
-												<h4>내연기관부품</h4>
-												<span><img src="/img/common/btn_more.svg" alt=""></span>
-											</div>
-										</div>
-										<div class="imgbox"><img src="/img/main/product_img01.png" alt=""></div>
-									</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="bg-txt">
-						<svg width="1697" height="64" viewBox="0 0 1697 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-						  <text x="0" y="50%" dominant-baseline="middle">
-							NEOOTO WILL NEVER STOP FOR THE FUTURE OF CARS AND THE HAPPINESS OF MANKIND
-						  </text>
-						</svg>
-					</div>
-				</div>
-			</div>
 		</section>
-		
-		<section class="section main4 global-box">
-			<div class="inner1720">
-				<div class="title-box ani">
-					<h3><span>GLOBAL <br /> BUSINESS</span></h3>
-					<div class="txt txt-right">
-						네오오토는  최고품질의 제품을 <br />
-						오랜 기간 고객에게 공급해 왔습니다
-					</div>
-				</div>
+		<script src="/js/jquery.1.12.4.min.js"></script>
 			</div>
-		<div class="listbox">
-			<dl>
-				<dt>고객사</dt>
-				<dd>
-					<ul>
-						<li>
-							<div class="icon"><img src="/img/main/hyundal_icon.svg" alt="HYUNDAL"></div>
-							<strong>현대</strong>
-						</li>
-						<li>
-							<div class="icon"><img src="/img/main/kia_icon.svg" alt="KIA"></div>
-							<strong>기아</strong>
-						</li>
-						<li>
-							<div class="icon"><img src="/img/main/stellantis_icon.svg" alt="STELLANTIS"></div>
-							<strong>스텔란티스</strong>
-						</li>
-					</ul>
-				</dd>
-			</dl>
-		</div>
-	</div>
-	
-
-<script src="/js/jquery.1.12.4.min.js"></script>
-<script>
-var $1124 = jQuery.noConflict();
-$1124(function() {
-    $1124('.p-box').each(function(index) {
-        $1124(this).data('index', index);
-    });
-
-    $1124('.p-box').on('click', function(event) {
-		event.stopPropagation();
-        $1124('.p-box').not(this).removeClass('on');
-        $1124(this).toggleClass('on');
-		$1124('.global-popup').removeClass(function(i, className) {
-			//return (className.match(/(^|\s)over_\d+/g) || []).join(' ');
-			return (className.match(/(?!global-popup)(\S+)/g) || []).join(' '); // 'global-popup' 클래스를 제외하고 나머지 클래스 제거
-		});
-		
-        var targetClass = $1124(this).attr('data-target');
-        if ($1124(this).hasClass('on')) {
-            $1124('.global-popup').addClass('on ' + targetClass);
-        } else {
-            $1124('.global-popup').removeClass('on ' + targetClass);
-        }
-
-        var targetMapCont = $1124('.map-list .mapCont.' + targetClass);
-        $1124('.global-popup .body').html(targetMapCont.html());
-    });
-	$1124(document).on('click', function() {
-        if (!$1124(event.target).closest('.p-box').length && !$1124(event.target).closest('.global-popup').length) {
-            $1124('.p-box').removeClass('on'); // 모든 p-box의 'on' 클래스 제거
-            $1124('.global-popup').removeClass('on'); // global-popup의 'on' 클래스 제거
-			/*$1124('.global-popup').removeClass(function(i, className) {
-				return (className.match(/(?!global-popup)(\S+)/g) || []).join(' ');
-			});*/
-        }
-    });
-});
-
-</script>				</div>
-
-				<div class="bg-txt">
-					<svg width="1450" height="64" viewBox="0 0 1450 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-					  <text x="0" y="50%" dominant-baseline="middle">
-						GLOBAL BUSINESS GLOBAL BUSINESS GLOBAL BUSINESS GLOBAL BUSINESS
-					  </text>
-					</svg>
-				</div>
-				
-			</div>
-		</section>
 		
 		<section class="section main5 esg-box">
 			<div class="inner1720">
@@ -598,7 +434,7 @@ $1124(function() {
 																					<div class="swiper-slide">
 												<a href="/kr/sub/contact/?mode=view&bid=2&idx=128">
 													<div class="imgbox">
-																													<img src="/upload/thumb/IM0003104133_9a504.jpg" alt="">
+																													<img src="/animal/resources/image/cat.jpg" alt="">
 														</div>
 													<div class="txtbox">
 														<dl>
@@ -662,11 +498,11 @@ $1124(function() {
 																					<div class="swiper-slide">
 												<a href="/kr/sub/contact/news.php?mode=view&bid=2&idx=138">
 													<div class="imgbox">
-																													<img src="/upload/thumb/NISI20250325_0001799659_web_80946.jpg" alt="">
+																													<img src="/animal/resources/image/cat.jpg" alt="">
 														</div>
 													<div class="txtbox">
 														<dl>
-															<dt>네오오토, 4공장 증설 착수... 생산 CAPA 확대 본격화</dt>
+															<dt>고양이 귀여웡</dt>
 															<dd>&nbsp;글로벌 모빌리티 부품 전문 기업 네오오토(대표 김선현, 김원일, 212560)가 충청남도 예산일반산업단지에 4공장 증설을 착수했다.
 
 &nbsp;
@@ -680,7 +516,7 @@ $1124(function() {
 																					<div class="swiper-slide">
 												<a href="/kr/sub/contact/news.php?mode=view&bid=2&idx=128">
 													<div class="imgbox">
-																													<img src="/upload/thumb/IM0003104133_9a504.jpg" alt="">
+																													<img src="" alt="">
 														</div>
 													<div class="txtbox">
 														<dl>
@@ -690,10 +526,10 @@ $1124(function() {
 													</div>
 												</a>
 											</div>
-																					<div class="swiper-slide">
+												<div class="swiper-slide">
 												<a href="/kr/sub/contact/news.php?mode=view&bid=2&idx=127">
 													<div class="imgbox">
-																													<img src="/upload/thumb/oto로고(투명)_56aa8.png" alt="">
+																													<img src="/animal/resources/image/cat.jpg" alt="">
 														</div>
 													<div class="txtbox">
 														<dl>
@@ -703,7 +539,7 @@ $1124(function() {
 													</div>
 												</a>
 											</div>
-																				</div>
+										</div>
 									<div class="control_box">
 										<div class="box">
 											<div class="txt txt_l"><strong>0<span class="activeslide">1</span></strong></div>
@@ -721,7 +557,6 @@ $1124(function() {
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</section>
 
@@ -774,8 +609,8 @@ $1124(function() {
 						<p>Family Site</p>
 						<div class="box">
 							<ul>
-															<li><a href="http://www.oto.kr/" target="_blank">오토인더스트리</a></li>
-														</ul>
+								<li><a href="http://www.oto.kr/" target="_blank">오토인더스트리</a></li>
+							</ul>
 						</div>
 					</div>
 					<div class="btnTop"><a href="#" class="btn_top"><img src="/img/common/bnt_top.svg" class="svg" alt=""></a></div>
@@ -789,7 +624,7 @@ $1124(function() {
 	<script src="/js/gsap.min.js"></script>
 	<script src="/js/ScrollTrigger.min.js"></script>
 	<script src="/js/ScrollToPlugin.min.js"></script>
-	<script src="/js/cont_fb.js?v=250413024730"></script>
+	<script src="/js/cont_fb.js"></script>
 
 
 </body>

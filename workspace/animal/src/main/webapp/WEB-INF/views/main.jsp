@@ -264,6 +264,7 @@
 					
 					  </div>
 					  </section>
+					  
 				<div class="top-menu">
 					<ul class="top-links">
 				<c:choose>
@@ -337,6 +338,7 @@
 				</div>
 			</div>
 		</section>
+		
 		<!-- 슬라이드 -->
 		<section>
 		<div class="slider-container">
@@ -497,9 +499,10 @@
       }
     }
   </style>
+ 	<section id="Trends">
   <div class="swiper-container">
     <div class="swiper-wrapper">
-<title></title>
+
       <!-- Slide 1 -->
       <div class="swiper-slide">
   <a href="detail.jsp?artId=1" style="text-decoration: none; color: inherit;">

@@ -528,3 +528,17 @@
 /* animation */
 .notice-box .listCont .listbox .list { opacity:0 }
 .notice-box .listCont .listbox .list.subOn { animation:ani_4 0.8s 0.3s; animation-fill-mode:both; } 
+
+/* search btn */
+.search-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 999;
+}
+.inner1720 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}

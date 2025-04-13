@@ -13,6 +13,69 @@
 	<meta property="og:image" content="/img/common/img_web.png">
 	
 	<title>네오오토 NEOOTO</title>
+	<!-- jQuery 및 Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+	<link rel="stylesheet" href="/animal/resources/css/main.css?v=250413024730">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+        $(document).ready(function(){
+            $(".nav-item").hover(
+                function(){ 
+                    $(this).find(".submenu").stop(true, true).slideDown(200); 
+                }, 
+                function(){ 
+                    $(this).find(".submenu").stop(true, true).slideUp(0); 
+                }
+            );
+        });
+    </script>
+<script>
+  var contextPath = "${pageContext.request.contextPath}";
+  var logoutConfirmed = false;
+
+  $(document).ready(function () {
+
+    // 확인 버튼 클릭 → 모달 닫기, 플래그 설정
+    $('#confirmLogout').on('click', function () {
+      logoutConfirmed = true;
+      const modal = bootstrap.Modal.getInstance(document.getElementById('logoutModal'));
+      modal.hide(); // 모달 닫기
+    });
+    $('.modal-backdrop').remove();
+    // 모달 닫힌 후 로그아웃 처리
+    $('#logoutModal').on('hidden.bs.modal', function () {
+      if (logoutConfirmed) {
+        $.ajax({
+          url: contextPath + "/member/logout.do",
+          method: "GET",
+          success: function () {
+            window.location.href = contextPath + "/main.do";
+          },
+          error: function () {
+            alert("로그아웃에 실패했습니다.");
+          }
+        });
+        logoutConfirmed = false;
+      }
+    });
+  });
+
+  // 로그아웃 버튼 클릭 → 모달 실행 (닫힘 방지 설정 포함)
+  function logout(event) {
+    event.preventDefault();
+    const modalElement = document.getElementById('logoutModal');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement, {
+        backdrop: false // 배경 클릭 방지
+      });
+      modal.show();
+    }
+  }
+</script>
 	<meta name="title" content="네오오토 NEOOTO" />
 	<meta name="author" content="" />
 	<meta name="keywords" content="" />
@@ -103,72 +166,84 @@
 						<div class="arr"></div>
 						<ul>
 							<li class="">
-								<a href="/kr/sub/company/greeting.php">HOME</a>
+								<a href="${contextPath }/main.do">HOME</a>
+
+							</li>
+							<li class="">
+								<a href="#">HOSPITAL</a>
 								<div class="subDepth menu1">
-									<ul>
-										<li ><a href="/kr/sub/company/greeting.php">인사말</a></li>
-										<li ><a href="/kr/sub/company/philosophy.php">경영이념</a></li>
-										<li ><a href="/kr/sub/company/history.php">연혁</a></li>
-										<li ><a href="/kr/sub/company/group.php">오토그룹소개</a></li>
-										<li ><a href="/kr/sub/company/workplace.php">사업장 및 관계사</a></li>
-										<li ><a href="/kr/sub/company/corporate.php">네오오토의 역량</a></li>
-										<li ><a href="/kr/sub/company/certificate.php">인증 및 특허</a></li>
-										<li ><a href="/kr/sub/company/equipment.php">보유설비</a></li>
-										<!-- <li><a href="">리더쉽</a></li> -->
+									<ul>	
+										<li class="mo over"><a href="${contextPath }/hospital/map.do">지도</a></li>
+										<li ><a href="${contextPath }/hospital/review.do">리뷰</a></li>
 									</ul>
 								</div>
 							</li>
 							<li class="">
-								<a href="/kr/sub/product/prod.php">HOSPITAL</a>
+								<a href="#">CAT</a>
 								<div class="subDepth menu2">
 									<ul>	
-										<li class="mo over"><a href="/kr/sub/product/prod.php">전체제품</a></li>
-										<li ><a href="/kr/sub/product/prod.php?s_cate=10">친환경차 부품</a></li>
-										<li ><a href="/kr/sub/product/prod.php?s_cate=11">내연기관 부품</a></li>
-										<li ><a href="/kr/sub/product/prod.php?s_cate=12">신규개발품</a></li>
-										<!-- <li ><a href="/kr/sub/product/process.php">공정소개</a></li> -->
+										<li class="mo over"><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
+										<li ><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
+										<li ><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 생각중이신가요?</a></li>
+										
 									</ul>
 								</div>
 							</li>
 							<li class="">
-								<a href="/kr/sub/rnd/rnd.php">CAT</a>
+								<a href="#">DOG</a>
 								<div class="subDepth menu3">
-									<ul>
-										<li ><a href="/kr/sub/rnd/rnd.php">R&D</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="">
-								<a href="/kr/sub/ir/disclosure.php">DOG</a>
-								<div class="subDepth menu4">
-									<ul>
-										<li ><a href="/kr/sub/ir/disclosure.php">공시정보</a></li>
-										<li ><a href="/kr/sub/ir/finance.php">재무정보</a></li>
-										<li ><a href="/kr/sub/ir/data.php">IR자료실</a></li>
+									<ul>	
+										<li class="mo over"><a href="${contextPath }/dog/dog_type.do">품종</a></li>
+										<li ><a href="${contextPath }/dog/dog_kitten.do">어린 강아지</a></li>
+										<li ><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 생각중이신가요?</a></li>
+										
 									</ul>
 								</div>
 							</li>
 							<li class="">
 								<a href="/kr/sub/esg/management/sustainability.php">ARTICLE</a>
-								<div class="subDepth menu5">
+								<div class="subDepth menu4">
 									<ul>
-										<li >
-											<a href="/kr/sub/esg/management/sustainability.php">ESG경영</a>
-										</li>
-										<li ><a href="/kr/sub/esg/ethical.php">윤리경영</a></li>
-										<li ><a href="/kr/sub/esg/report.php">사이버신문고</a></li>
+										<li ><a href="${contextPath}/board/Board.do">자유 게시판</a></li>
+										<li ><a href="${contextPath}/board/CatBoard.do">고양이 게시판</a></li>
+										<li ><a href="${contextPath}/board/DogBoard.do">강아지 게시판</a></li>
 									</ul>
 								</div>
 							</li>
 							<li class="">
-								<a href="/kr/sub/career/talent.php">PRODUCT</a>
-								<div class="subDepth menu6">
-									<ul>
-										<li ><a href="/kr/sub/career/talent.php">인재상</a></li>
-										<li ><a href="/kr/sub/career/welfare.php">복리후생</a></li>
-										<li ><a href="/kr/sub/career/recruitment.php">채용공고</a></li>
-									</ul>
+								<a href="#">DOG PRODUCT</a>
+								<div class="subDepth menu5">
+									<ul class="submenu">
+						<li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
+						<li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
+						<li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
+						<li><a href="${contextPath }/dog_product/dog_poop.do">배변용품</a></li>
+						<li><a href="${contextPath }/dog_product/dog_carrier.do">이동장</a></li>
+						<li><a href="${contextPath }/dog_product/dog_toy.do">장난감</a></li>
+						<li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>
+						<li><a href="${contextPath }/dog_product/dog_house.do">하우스</a></li>
+						<li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
+					</ul>
 								</div>
+							</li>
+							<li class="">
+								<a href="#">CAT PRODUCT</a>
+								<div class="subDepth menu6">
+									<ul class="submenu">
+						<li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
+						<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
+						<li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
+						<li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
+						<li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
+						<li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
+						<li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
+						<li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
+						<li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
+					</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
 							</li>
 							<li class="">
 								<a href="/kr/sub/contact/notice.php">CONTACT</a>
@@ -203,6 +278,7 @@
 					    </div>
 					
 					  </div>
+					  
 				<div class="top-menu">
 					<ul class="top-links">
 				<c:choose>
@@ -211,20 +287,33 @@
 						<li><a class="nav-link" href="#">${sessionScope.loginName}님 환영합니다</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="nav-link"
-							href="${contextPath}/member/loginForm.do"> 로그인 </a></li>
-						<li><a class="nav-link"
-							href="${contextPath}/member/joinMember.do"> 회원가입 </a></li>
+						<li><a class="nav-link" href="${contextPath}/member/loginForm.do"> 로그인 </a></li>
+						<li><a class="nav-link" href="${contextPath}/member/joinMember.do"> 회원가입 </a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
+		
 					<div class="allBox"><div class="allmenu"><a href="javascript:void(0);"></a></div></div>
 				</div>
 
-			</div>
-
+		<!-- 로그아웃 모달 -->
 			<div class="gnb_bg"></div>
-		
+		<div class="modal fade" id="logoutModal" tabindex="-1"
+		aria-labelledby="logoutModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content bg-white text-center">
+				<div class="modal-header border-0">
+					<h5 class="modal-title" id="logoutModalLabel">알림</h5>
+				</div>
+				<div class="modal-body">${sessionScope.loginName}님, 로그아웃 하시겠습니까?</div>
+				<div class="modal-footer border-0 justify-content-center">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary" id="confirmLogout">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
 		</header>
 		<!-- //header -->
 

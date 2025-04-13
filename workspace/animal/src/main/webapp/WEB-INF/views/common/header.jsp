@@ -200,36 +200,6 @@ body>.modal-backdrop.show {
 	color: black;
 }
 
-/* .banner {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 80px;
-	background-color: white;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 1000; /* 최상단 배치 */
-}
-
-.banner-link {
-	display: flex; /* 링크 크기 조정 */
-	align-items: center;
-	height: 100%; /* 배너 높이에 맞춤 */
-}
-
-.banner img {
-	height: 100%; /* 기존처럼 배너 높이에 맞게 조정 */
-	width: auto; /* 비율 유지 */
-	object-fit: contain; /* 이미지가 넘치지 않도록 조정 */
-} */
-
-/* 본문이 네비게이션에 가려지지 않도록 여백 추가 */
-body {
-	margin-top: 140px;
-}
 
 /* 로그인 버튼 스타일 */
 .nav-login {

@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="/animal/resources/css/footer.css">
 <link rel="stylesheet" href="/animal/resources/css/slider.css">
 <link rel="stylesheet" href="/animal/resources/css/font_face.css">
+<link rel="stylesheet" href="/animal/resources/css/common.css">
+<link rel="stylesheet" href="/animal/resources/css/main.css">
+<link rel="stylesheet" href="/animal/resources/css/style.css">
 
 
 <!-- script -->
@@ -44,241 +47,20 @@
 <script type="text/javascript" src="/animal/resources/script/swiper.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/aos.js"></script>
 <script type="text/javascript" src="/animal/resources/script/g5.js"></script>
+<script type="text/javascript" src="/animal/resources/script/modal.js"></script>
+<script type="text/javascript" src="/animal/resources/script/content.js"></script>
+<script type="text/javascript" src="/animal/resources/script/nav.js"></script>
+<script type="text/javascript" src="/animal/resources/script/slide.js"></script>
+<script type="text/javascript" src="/animal/resources/script/swiper.js"></script>
 
-<script>
-        $(document).ready(function(){
-            $(".nav-item").hover(
-                function(){ 
-                    $(this).find(".submenu").stop(true, true).slideDown(200); 
-                }, 
-                function(){ 
-                    $(this).find(".submenu").stop(true, true).slideUp(0); 
-                }
-            );
-        });
-    </script>
-<script>
-  var contextPath = "${pageContext.request.contextPath}";
-  var logoutConfirmed = false;
-
-  $(document).ready(function () {
-
-    // 확인 버튼 클릭 → 모달 닫기, 플래그 설정
-    $('#confirmLogout').on('click', function () {
-      logoutConfirmed = true;
-      const modal = bootstrap.Modal.getInstance(document.getElementById('logoutModal'));
-      modal.hide(); // 모달 닫기
-    });
-    $('.modal-backdrop').remove();
-    // 모달 닫힌 후 로그아웃 처리
-    $('#logoutModal').on('hidden.bs.modal', function () {
-      if (logoutConfirmed) {
-        $.ajax({
-          url: contextPath + "/member/logout.do",
-          method: "GET",
-          success: function () {
-            window.location.href = contextPath + "/main.do";
-          },
-          error: function () {
-            alert("로그아웃에 실패했습니다.");
-          }
-        });
-        logoutConfirmed = false;
-      }
-    });
-  });
-
-  // 로그아웃 버튼 클릭 → 모달 실행 (닫힘 방지 설정 포함)
-  function logout(event) {
-    event.preventDefault();
-    const modalElement = document.getElementById('logoutModal');
-    if (modalElement) {
-      const modal = new bootstrap.Modal(modalElement, {
-        backdrop: false // 배경 클릭 방지
-      });
-      modal.show();
-    }
-  }
-</script>
 </head>
 <body>
-<style>
-/* 디자인샘플 보러가기 */
-#goToDesign {
-	position: relative;
-	z-index: 100;
-	width: 100%;
-	padding: 7px 0;
-	border-bottom: 1px solid #fff073;
-	font-size: 12px;
-	text-align: center;
-	background-color: #fffbd9;
-	font-family: dotum
-}
 
-#goToDesign a {
-	padding-left: 10px;
-	font-weight: bold;
-	color: #f96319
-}
-
-#goToDesign a:hover {
-	text-decoration: underline
-}
-</style>
-	<div id="sh_wrapper">
-		<!-- 상단 시작 { -->
-		<header id="sh_hd" class="">
-			<div id="skip_to_container">
-				<a href="#sh_container">본문 바로가기</a>
-			</div>
-
-			<!-- 팝업레이어 시작 { -->
-			<div id="hd_pop">
-				<h2>팝업레이어 알림</h2>
-
-				<span class="sound_only">팝업레이어 알림이 없습니다.</span>
-			</div>
-	
-			<script>
-$(function() {
-    $(".hd_pops_reject").click(function() {
-        var id = $(this).attr('class').split(' ');
-        var ck_name = id[1];
-        var exp_time = parseInt(id[2]);
-        $("#"+id[1]).css("display", "none");
-        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
-    });
-    $('.hd_pops_close').click(function() {
-        var idb = $(this).attr('class').split(' ');
-        $('#'+idb[1]).css('display','none');
-    });
-    $("#hd").css("z-index", 1000);
-});
-</script>
-			<!-- } 팝업레이어 끝 -->
-			<div id="sh_hd_wrapper">
-
-				<div id="top_nav_wrap">
-
-					<!-- 로그인 -->
-
-					<div class="top-menu">
-						<ul class="top-links">
-							<c:choose>
-								<c:when test="${not empty sessionScope.loginMember}">
-									<li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
-									<li><a class="nav-link" href="#">${sessionScope.loginName}님
-											환영합니다</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a style="color: white;" class="nav-link"
-										href="${contextPath}/member/loginForm.do"> LOGIN</a></li>
-
-									<li><a style="color: white;" class="nav-link"
-										href="${contextPath}/member/joinMember.do"> SIGN UP </a></li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-						<!-- 로그아웃 모달 -->
-						<div class="modal fade" id="logoutModal" tabindex="-1"
-							aria-labelledby="logoutModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered">
-								<div class="modal-content bg-white text-center">
-									<div class="modal-header border-0">
-										<h5 class="modal-title" id="logoutModalLabel">알림</h5>
-									</div>
-									<div class="modal-body">${sessionScope.loginName}님,로그아웃
-										하시겠습니까?</div>
-									<div class="modal-footer border-0 justify-content-center">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">취소</button>
-										<button type="button" class="btn btn-primary"
-											id="confirmLogout">확인</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="allBox">
-								<div class="allmenu">
-									<a href="javascript:void(0);"></a>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="right">
-							<nav id="r_menu">
-								<!-- 상단메뉴 -->
-								<ul id="top_nav">
-									<li class="list01"><a class="list"
-										href="${contextPath }/main.do">HOME</a></li>
-									<li class="list02"><a class="list"
-										href="/bbs/board.php?bo_table=table13">HOSPITAL</a>
-										<ul class="sub_ul1">
-											<li><a href="${contextPath }/hospital/map.do">지도</a></li>
-											<li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
-										</ul></li>
-									<li class="list03"><a class="list"
-										href="/sh_page/page10.php">CAT</a>
-										<ul class="sub_ul2">
-											<li class="mo over"><a
-												href="${contextPath }/cat/cat_type.do">묘종</a></li>
-											<li><a href="${contextPath }/cat/cat_kitten.do">어린
-													고양이</a></li>
-											<li><a href="${contextPath }/cat/cat_think.do">고양이를
-													기를까 생각중이신가요?</a></li>
-
-										</ul></li>
-									<li class="list04"><a class="list"
-										href="/bbs/board.php?bo_table=table42">DOG</a>
-										<ul class="sub_ul3">
-											<li class="mo over"><a
-												href="${contextPath }/dog/dog_type.do">품종</a></li>
-											<li><a href="${contextPath }/dog/dog_kitten.do">어린
-													강아지</a></li>
-											<li><a href="${contextPath }/dog/dog_think.do">강아지를
-													기를까 생각중이신가요?</a></li>
-
-										</ul></li>
-									<li class="list04"><a class="list"
-										href="/bbs/board.php?bo_table=table42"> ARTICLE</a>
-										<ul class="sub_ul4">
-											<li><a href="${contextPath}/board/Board.do">자유 게시판</a></li>
-											<li><a href="${contextPath}/board/CatBoard.do">고양이
-													게시판</a></li>
-											<li><a href="${contextPath}/board/DogBoard.do">강아지
-													게시판</a></li>
-										</ul></li>
-									<li class="list05"><a class="list"
-										href="/bbs/board.php?bo_table=table42">PRODUCT</a>
-										<ul class="sub_ul5">
-											<li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
-											<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
-											<li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
-											<li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
-											<li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
-											<li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
-											<li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
-											<li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
-											<li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
-										</ul></li>
-
-								</ul>
-							</nav>
-						</div>
-
-
-					</div>
-				</div>
-		</header>
-		<!-- } 상단 끝 -->
-
-		<!-- 콘텐츠 시작 { -->
+		<!-- main 영상  -->
 		<main id="sh_container">
 			<div id="sh_container_wrapper">
 
-				<div id="main_banner" style="position: relative; overflow: hidden;">
+			<div id="main_banner" style="position: relative; overflow: hidden;"> 
 					<!-- 배경 영상 -->
 					<video autoplay loop muted playsinline preload="auto" id="myVideo"
 						style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
@@ -304,53 +86,109 @@ $(function() {
 					</div>
 				</div>
 
-				<script>
-$(document).ready(function () {
-	var main_swiper = new Swiper("#main_banner .main_slide", {
-	effect:'fade',
-	slideActiveClass: 'on',
+<article id="atc03">
+    <div class="inner">
+        <div class="tit_area">
+            <p data-aos="fade-right"> Our Review</p>
+            <div class="flex">
+                <div class="txt" data-aos="fade-right">병원 리뷰를 보여주는 슬라이드임.</div>
+                <div class="pager">
+           
+        </div>
+        <!-- 라테스트 -->
+        <div class="sh_notice_area">
+            <div class="sh_notice swiper-container">
+    <ul class="slider swiper-wrapper">
+                <li class="slide swiper-slide">
+            <a href="https://co1123.shiningcorp.com/bbs/board.php?bo_table=table49&amp;wr_id=5">            <dl>
+                <dd class="sh_date">2024-03-19</dd>
+                <dt>
+                건강한 아름다움을 전하는 샤이닝 …                </dt>
+                <dd class="sh_contents">양질의 서비스와 발전하는 기업이 되기위해 샤이닝 스킨의 홈페이지가 새롭게 오픈하였습니다. 항상 보내주시는 격려와 관심 감사드리며...</dd>
+                <dd class="info">
+                    <p></p>
+                                        <div class="more">more view</div>
+                </dd>
+            </dl>
+			</a>  
+        </li>
+                <li class="slide swiper-slide">
+            <a href="https://co1123.shiningcorp.com/bbs/board.php?bo_table=table49&amp;wr_id=4">            <dl>
+                <dd class="sh_date">2024-03-04</dd>
+                <dt>
+                건강한 아름다움을 전하는 샤이닝 …                </dt>
+                <dd class="sh_contents">양질의 서비스와 발전하는 기업이 되기위해 샤이닝&nbsp;스킨의 홈페이지가 새롭게 오픈하였습니다. 항상&nbsp;보내주시는 격려와 관심 감사드리며...</dd>
+                <dd class="info">
+                    <p></p>
+                                        <div class="more">more view</div>
+                </dd>
+            </dl>
+			</a>  
+        </li>
+                <li class="slide swiper-slide">
+            <a href="https://co1123.shiningcorp.com/bbs/board.php?bo_table=table49&amp;wr_id=3">            <dl>
+                <dd class="sh_date">2024-03-04</dd>
+                <dt>
+                건강한 아름다움을 전하는 샤이닝 …                </dt>
+                <dd class="sh_contents">양질의 서비스와 발전하는 기업이 되기위해 샤이닝&nbsp;스킨의 홈페이지가 새롭게 오픈하였습니다. 항상&nbsp;보내주시는 격려와 관심 감사드리며...</dd>
+                <dd class="info">
+                    <p></p>
+                                        <div class="more">more view</div>
+                </dd>
+            </dl>
+			</a>  
+        </li>
+                <li class="slide swiper-slide">
+            <a href="https://co1123.shiningcorp.com/bbs/board.php?bo_table=table49&amp;wr_id=2">            <dl>
+                <dd class="sh_date">2024-03-04</dd>
+                <dt>
+                건강한 아름다움을 전하는 샤이닝 …                </dt>
+                <dd class="sh_contents">양질의 서비스와 발전하는 기업이 되기위해 샤이닝&nbsp;스킨의 홈페이지가 새롭게 오픈하였습니다. 항상&nbsp;보내주시는 격려와 관심 감사드리며...</dd>
+                <dd class="info">
+                    <p></p>
+                                        <div class="more">more view</div>
+                </dd>
+            </dl>
+			</a>  
+        </li>
+                <li class="slide swiper-slide">
+            <a href="https://co1123.shiningcorp.com/bbs/board.php?bo_table=table49&amp;wr_id=1">            <dl>
+                <dd class="sh_date">2024-03-04</dd>
+                <dt>
+                건강한 아름다움을 전하는 샤이닝 …                </dt>
+                <dd class="sh_contents">양질의 서비스와 발전하는 기업이 되기위해 샤이닝&nbsp;스킨의 홈페이지가 새롭게 오픈하였습니다. 항상&nbsp;보내주시는 격려와 관심 감사드리며...</dd>
+                <dd class="info">
+                    <p></p>
+                                        <div class="more">more view</div>
+                </dd>
+            </dl>
+			</a>  
+        </li>	
+                    </ul>
+</div>        </div>
+</article>
+
+<script>
+var atc03swiper = new Swiper("#atc03 .sh_notice", {
+    slidesPerView:4,
+    spaceBetween:40,
+	speed:600,
+    loop: true,
 	autoplay: {
-		delay: 3500,
-		disableOnInteraction: false
+	delay: 5000,
 	},
-	speed: 1000,
-	loop: true,
-	grabCursor: true,
-	on: {
-		init: function () {
-		$(".swiper-progress-bar").removeClass("animate");
-		$(".swiper-progress-bar").removeClass("active");
-		$(".swiper-progress-bar").eq(0).addClass("animate");
-		$(".swiper-progress-bar").eq(0).addClass("active");
-		},
-		slideChangeTransitionStart: function () {
-		$(".swiper-progress-bar").removeClass("animate");
-		$(".swiper-progress-bar").removeClass("active");
-		$(".swiper-progress-bar").eq(0).addClass("active");
-		},
-		slideChangeTransitionEnd: function () {
-		$(".swiper-progress-bar").eq(0).addClass("animate");
-		}
-	}
-	});
-	var main_num = new Swiper("#main_banner .controls .pager", {
-	effect:'fade',
-	slideActiveClass: 'on',
-	autoplay: {
-		delay: 4000,
-	},
-	speed: 500,
-	loop: true,
-	});
+    navigation: {
+    nextEl: "#atc03 .next",
+    prevEl: "#atc03 .prev",
+    },
 });
-function scrollToTarget() {
-	const targetElement = document.getElementById("inc01");
-	targetElement.scrollIntoView({ behavior: "smooth" });
-}
 </script>
-
+					
+		
+		<!-- 이거 뺴면 inc01, inc02, inc03  디자인 효과 다 날라감 (그냥 텅 비어짐) -->
+		
+	<!-- inc01 -->
 				<section id="sh_section">
-
 					<article id="inc01">
 						<div class="inc01_inr">
 							<div class="inner">
@@ -363,40 +201,48 @@ function scrollToTarget() {
 											</h2>
 											<div class="ko_box">
 												<h3 class="tit">
-													<span>미학과 깊이 있는 가치</span>를 담아낸 공간,<br> 그 감성을 이어가는 새로운
-													브랜딩
+													<span>이 아이는 내 삶의 일부가 아니라,</span><br>나는 이 아이의 전부다.<br> 
 												</h3>
-												단순한 생활의 배경이 아니라, 머무는 순간마다 아름다움과 깊이를<br> 느낄 수 있는 특별한 경험을
-												선사하며, 조화로운 디자인과 세심한 디테일이 어우러져<br> 일상의 품격을 한층 더 높여주는 브랜딩
-												프로젝트 입니다. <a href="/sh_page/page10.php" class="more"><img
+												단순히 귀엽다고, 갖고싶다고 라는 마음을 가지고는 절대 안돼<br>어린시절에만 잠깐 좋아하는 것도 안돼<br>
+												늙고 병들어도 끝까지 책임지고 사랑해줄 수 있어야 진짜 가족이야.<br>모든 것들을 사랑으로 감싸줄 준비가 되어 있어야 해.
+												 <a href="/sh_page/page10.php" class="more"><img
 													src="https://co1156.shiningcorp.com/sh_img/include/inc01/img/arrow.png"
 													alt="화살표"></a>
 											</div>
 										</div>
 										<div class="right" data-aos="fade-left">
 											<div class="top_txt">
-												품질과 혁신을 최우선으로 생각하며, 고객의 기대를 뛰어넘는 브랜드 가치를<br> 제공하기 위해
-												끊임없이 노력하고 있습니다.<br> <br> 지난 수년 간의 경험과 전문성을 바탕으로,
-												우리 브랜드는 시장에서 확고한 입지를<br> 구축했으며, 고객에게 더 나은서비스를 제공하는 것을
-												목표로 하고 있습니다.
+												"우리는 반려동물을 단순한 동물이 아닌, 가족 그 이상의 존재로 생각합니다.<br>
+
+													작은 발자국 하나에도 진심을 담고, 따뜻한 눈빛 하나에도 사랑을 전하며,
+													오직 아이들의 행복만을 바라보며 걸어왔습니다."<br>
+													<br><br>
+													"수많은 경험과 정성스러운 연구 끝에,
+													우리의 마음은 아이들의 일상 속에 자연스럽게 <br>스며들었습니다.
+													<div class="top_txt">
+													더 건강하게, 더 따뜻하게, 더 오래 함께할 수 있도록—
+													우리는 오늘도 반려동물의 ‘행복한 삶’을 위해 나아갑니다."
+													
 											</div>
 											<a href="/sh_page/page6.php" class="bot_img">
-												<div class="h_img">
-													<img src="/animal/resources/image/cat.jpg">
+												<div class="h_img" data-aos="fade-left">
+													<img src="/animal/resources/image/o.jpg">
 												</div>
 											</a>
+											</div>
+											
 										</div>
 									</div>
 									<div class="bot_area">
 										<div class="left" data-aos="fade-right">
 											<div class="img_box">
 												<div class="h_img">
-													<img src="/animal/resources/image/cat.jpg">
+													<img src="/animal/resources/image/sb.jpg">
 												</div>
-												<a href="/sh_page/page6.php" class="i_more"><i></i>Brand<br>Disclaction</a>
+												<a href="/sh_page/page6.php" class="i_more"><i></i>Click<br></a>
 											</div>
-											<h2 class="en_tit">
-												What you see<br> <b>is the brand message</b>
+											<h2 class="en_tit" align="center">
+												Cat
 											</h2>
 											<div class="ko_box">
 												<h3 class="tit">
@@ -411,7 +257,7 @@ function scrollToTarget() {
 										<div class="right" data-aos="fade-left">
 											<div class="txt_inr">
 												<h2 class="en_tit">
-													Design that matches<br> <b>your visual branding</b>
+													Dog
 												</h2>
 												<div class="ko_box">
 													<h3 class="tit">
@@ -423,8 +269,8 @@ function scrollToTarget() {
 												</div>
 											</div>
 											<a href="/sh_page/page7.php" class="img_r">
-												<div class="h_img">
-													<img src="/animal/resources/image/cat.jpg">
+												<div class="h_img" data-aos="fade-left">
+													<img src="/animal/resources/image/dog_cat.jfif">
 												</div>
 											</a>
 										</div>
@@ -434,7 +280,7 @@ function scrollToTarget() {
 						</div>
 					</article>
 
-
+					<!-- 상품 -->
 					<article id="inc02">
 						<div class="inner">
 							<div class="top">
@@ -453,8 +299,7 @@ function scrollToTarget() {
 										</div>
 										<div class="txt_box">
 											<p>사료</p>
-											<div class="txt pl">최신 혁신 제품인 샘플 브랜딩은 뛰어난 품질과 세련된 디자인,
-												그리고 높은 기능성을 완벽하게 통합하여 탄생한 작품입니다.</div>
+											<div class="txt pl">우리 아이에게 어떤 사료가 가장 잘 맞을까?</div>
 										</div>
 								</a></li>
 								<li><a href="/bbs/board.php?bo_table=table13">
@@ -463,8 +308,7 @@ function scrollToTarget() {
 										</div>
 										<div class="txt_box">
 											<p>이동장</p>
-											<div class="txt pl">창의성과 혁신이 넘치는 공간으로, 여기서 만들어지는 모든 작품은
-												과거와 미래를 잇는 독특한 예술적 여정을 담고 있습니다.</div>
+											<div class="txt pl">우리 아이가 가장 편안할 수 있도록..</div>
 										</div>
 								</a></li>
 								<li><a href="/bbs/board.php?bo_table=table13">
@@ -473,8 +317,7 @@ function scrollToTarget() {
 										</div>
 										<div class="txt_box">
 											<p>간식</p>
-											<div class="txt pl">상상력이 살아 숨 쉬는 공간으로, 각기 다른 색깔과 형태로
-												풀어낸 아이디어들이 현실로 변해가는 곳입니다.</div>
+											<div class="txt pl">우리 아이의 삶의 질을 높여줄 sweet</div>
 										</div>
 								</a></li>
 								<li><a href="/bbs/board.php?bo_table=table13">
@@ -484,8 +327,7 @@ function scrollToTarget() {
 										</div>
 										<div class="txt_box">
 											<p>장난감</p>
-											<div class="txt pl">창작의 과정 하나하나가 철저하게 다듬어지며, 모든 작업은
-												정교함과 고급스러움의 극치를 보여줍니다.</div>
+											<div class="txt pl">어떤것을 가장 좋아할까?</div>
 										</div>
 								</a></li>
 								<li><a href="/bbs/board.php?bo_table=table13">
@@ -494,8 +336,7 @@ function scrollToTarget() {
 										</div>
 										<div class="txt_box">
 											<p>목욕 용품</p>
-											<div class="txt pl">전통과 현대가 조화를 이루는 창작의 공간입니다. 여기서 탄생하는
-												작품들은 고유의 클래식한 매력을 지닙니다.</div>
+											<div class="txt pl">목욕하는 시간을 즐겁게 놀이라고 생각할 수 있도록.. </div>
 										</div>
 								</a></li>
 								<li><a href="/bbs/board.php?bo_table=table13">
@@ -504,40 +345,13 @@ function scrollToTarget() {
 										</div>
 										<div class="txt_box">
 											<p>식기</p>
-											<div class="txt pl">기존의 틀을 넘어서는 도전적인 프로젝트들이 이루어지며, 새로운
-												기술과 접근 방식이 끊임없이 탐구됩니다.</div>
+											<div class="txt pl">내가 쓰는 식기라고 생각하고..</div>
 										</div>
 								</a></li>
 							</ul>
 						</div>
 					</article>
 
-					<script>
-gsap.registerPlugin(ScrollTrigger);
-const pinnedImageWrappers = document.querySelectorAll('#inc02');
-
-ScrollTrigger.matchMedia({
-        "(min-width: 769px)": function() {
-            if (pinnedImageWrappers) {
-                pinnedImageWrappers.forEach((wrapper) => {
-                    const inner = wrapper.querySelector('#inc02 .img_wrap ul');
-                    gsap.to(inner, {
-                        x: () => -((inner.scrollWidth - inner.offsetWidth)) + 'px',            
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: "#inc02",
-                            start: "25% top",
-                            toggleClass:"on",
-                            scrub: 2,
-                            pin:true,
-                            end: () => `+=${inner.offsetWidth}`,
-                        }
-                    });
-                });
-            }
-        },
-    })
-</script>
 					<!-- 게시판 -->
 					<article id="inc03">
 						<div class="inner">
@@ -547,7 +361,7 @@ ScrollTrigger.matchMedia({
 							<div class="latest" data-aos="fade-down">
 
 								<article>
-									<a href="/bbs/board.php?bo_table=table42&wr_id=9">
+									<a href="${contextPath }/board/getBoardList.do">
 										<div class="num">01</div>
 										<div class="cont">
 											<p>자유 게시판</p>
@@ -594,57 +408,17 @@ ScrollTrigger.matchMedia({
 						<article id="inc04">
 							<div class="inner">
 								<h3 class="en_tit">Interested in this ?</h3>
-								<a href="${contextPath }/hospital/review.do">REVIEW</a>
+								<a href="${contextPath }/hospital/review.do">CAT   &   DOG</a>
 							</div>
 						</article>
 
-						<div class="slider-container">
-							<div class="slider-track">
-								<a href="reviewDetail.jsp?id=1" class="review-box"> 40대 중반의
-									회사원이... 너무 예쁜 내 자식같은 홈페이지가요!
-									<div class="stars">★★★★★</div>
-									<div>Lit****</div>
-								</a> <a href="reviewDetail.jsp?id=2" class="review-box"> 홈페이지 제작
-									1시간만에 끝! 진심 이건 추천을...
-									<div class="stars">★★★★★</div>
-									<div>imc*****</div>
-								</a> <a href="reviewDetail.jsp?id=3" class="review-box"> 예전에 웹X로
-									만든 적 있었는데 복잡하고...
-									<div class="stars">★★★★★</div>
-									<div>임**</div>
-								</a> <a href="reviewDetail.jsp?id=4" class="review-box"> 사실 컴편
-									사이트만들려 했는데 솔직히...
-									<div class="stars">★★★★★</div>
-									<div>익명</div>
-								</a>
-
-								<!-- 반복 -->
-								<a href="reviewDetail.jsp?id=1" class="review-box"> 40대 중반의
-									회사원이... 너무 예쁜 내 자식같은 홈페이지가요!
-									<div class="stars">★★★★★</div>
-									<div>Lit****</div>
-								</a> <a href="reviewDetail.jsp?id=2" class="review-box"> 홈페이지 제작
-									1시간만에 끝! 진심 이건 추천을...
-									<div class="stars">★★★★★</div>
-									<div>imc*****</div>
-								</a> <a href="reviewDetail.jsp?id=3" class="review-box"> 예전에 웹X로
-									만든 적 있었는데 복잡하고...
-									<div class="stars">★★★★★</div>
-									<div>임**</div>
-								</a> <a href="reviewDetail.jsp?id=4" class="review-box"> 사실 컴편
-									사이트만들려 했는데 솔직히...
-									<div class="stars">★★★★★</div>
-									<div>익명</div>
-								</a>
-							</div>
-						</div>
 					</section>
-			</div>
-		</main>
-		<script>
+					
+<script>
 AOS.init();
 feather.replace(); 
 </script>
+
 </body>
 <script src="/animal/resources/js/designTail.js"></script>
 </html>

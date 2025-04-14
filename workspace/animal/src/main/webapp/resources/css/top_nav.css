@@ -13,10 +13,3 @@
 #top_nav > li > ul > li a{font-size:15px;color:#ddd;transition:all .2s}
 #top_nav > li > ul > li a:hover{color:#fff}
 
-/* 문의하기 */
-#top_nav_wrap .contact{margin-left:auto}
-#top_nav_wrap .contact ul{display:flex;gap:10px}
-#top_nav_wrap .contact li a{display:flex;align-items:center;justify-content:center;width:46px;height:46px;background:#Fff;border-radius:50px;transition:all 0.2s}
-#top_nav_wrap .contact li:nth-child(2) a{background:#111}
-#top_nav_wrap .contact li:nth-child(2) a svg{color:#Fff}
-#top_nav_wrap .contact li a svg{width:16px}

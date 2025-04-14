@@ -1,87 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <body>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const linkElement = document.getElementById("link");
-        linkElement.href = linkElement.href.replace("http://localhost:8080/", "");
-        linkElement.textContent = linkElement.href; // 텍스트도 변경
-    });
-</script>
-
-<script>
-    function isMobile() {
-        return /Mobi|Android/i.test(navigator.userAgent);
-    }
-
-    function handleContact() {
-        if (isMobile()) {
-            location.href = "tel:01056199939";
-        } else {
-            document.getElementById("contact-text").style.display = "block";
-        }
-    }
-</script>
-
-<style>
-    .footer {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        padding: 30px;
-        background-color: #333;
-        color: white;
-        font-size:12px;
-    }
-
-    .footer-column {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .footer-column a {
-        color: #ccc;
-        text-decoration: none;
-    }
-
-    .footer-column a:hover {
-        color: white;
-    }
-
-    .footer-column p {
-        margin: 0;
-    }
-</style>
-
-<body>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const linkElement = document.getElementById("link");
-        linkElement.href = linkElement.href.replace("http://localhost:8080/", "");
-        linkElement.textContent = linkElement.href;
-    });
-</script>
-
-<div class="footer">
-    <div class="footer-column">
+<footer id="sh_ft" >
+			<div class="top_cont">
+				<ul class="menu">
+					<li> <a href="https://www.mars.com/privacy-policy-korean#cookies">개인정보보호준칙</a></li>
+        <li> <a href="https://www.mars.com/privacy-policy-korean#cookies">쿠키</a></li>
+       <li>  <a href="https://www.mars.com/legal-korea">이용약관</a></li>
+       <li>  <a href="https://www.mars.com/accessibility-korean">접근성</a></li>
+		<li> <a href="https://www.copyright.or.kr" target="_blank">한국저작권위원회</a> </li>
+		<li> <a href="/policy/copyright.do">저작권 정책</a> </li>
+				</ul>
+				<div class="footer" style="background-color: black">
+				 <div class="footer-column">
         <a href="https://www.zooseyo.or.kr">https://www.zooseyo.or.kr | 유기견</a>
         <a href="https://tools.mypetlife.co.kr/adoption/adopt">https://tools.mypetlife.co.kr/adoption/adopt | 보호소 입양</a>
         <a href="https://mypetlife.co.kr/">https://mypetlife.co.kr/ |  반려동물 문화연구소 마이펫라이프</a>
         <a href="https://www.animal.go.kr/front/index.do">https://www.animal.go.kr/front/index.do | 국가 동물 보호 정보 시스템</a>
         <a href="https://www.ekara.org/">https://www.ekara.org/ | 동물자유연대</a>
-    </div>
-    
-    <div class="footer-column">
-    	 <a href="https://www.mars.com/privacy-policy-korean#cookies">개인정보보호준칙</a>
-        <a href="https://www.mars.com/privacy-policy-korean#cookies">쿠키</a>
-        <a href="https://www.mars.com/legal-korea">이용약관</a>
-        <a href="https://www.mars.com/accessibility-korean">접근성</a>
-		<a href="https://www.copyright.or.kr" target="_blank">한국저작권위원회</a> 
-		<a href="/policy/copyright.do">저작권 정책</a> 
-		
     </div>
     
     <div class="footer-column">
@@ -103,7 +40,8 @@
       <p> © 2025 반려묘/견 사이트 | 모든 콘텐츠는 저작권의 보호를 받습니다.<br>
       &copy; All rights reserved.</p>
     </div>
+    </div>
+		</footer>
+	
     
-    
-    
-</body>
+</body＞

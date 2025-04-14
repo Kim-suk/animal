@@ -1,25 +1,259 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="format-detection" content="telephone=no">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-	<meta property="og:image" content="/img/common/img_web.png">
-	
-	<title>네오오토 NEOOTO</title>
-	<!-- jQuery 및 Bootstrap -->
+<meta charset="utf-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>수경이꺼</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/animal/resources/css/main.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-	
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="/animal/resources/css/default.css">
+<link rel="stylesheet" href="/animal/resources/css/top_nav.css">
+<link rel="stylesheet" href="/animal/resources/css/swiper.css">
+<link rel="stylesheet" href="/animal/resources/css/aos.css">
+<link rel="stylesheet"
+	href="/animal/resources/css/main_banner_style.css">
+<link rel="stylesheet" href="/animal/resources/css/inc01_style.css">
+<link rel="stylesheet" href="/animal/resources/css/inc02_style.css">
+<link rel="stylesheet" href="/animal/resources/css/inc03_style.css">
+<link rel="stylesheet" href="/animal/resources/css/inc04_style.css">
+<link rel="stylesheet" href="/animal/resources/css/user.css">
+<link rel="stylesheet" href="/animal/resources/css/footer.css">
+
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+/* 나눔스퀘어 */
+@font-face {
+	font-family: 'NanumSquare';
+	src: url(//font.shiningcorp.com/css/font/NanumSquareR.eot);
+	src: url(//font.shiningcorp.com/css/font/NanumSquareR.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/NanumSquareR.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/NanumSquareR.ttf)
+		format('truetype');
+}
+
+/* 본고딕 */
+@font-face {
+	font-family: 'notokr-thin';
+	src: url(//font.shiningcorp.com/css/font/notokr-thin.eot);
+	src: url(//font.shiningcorp.com/css/font/notokr-thin.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/notokr-thin.woff2) format('woff2'),
+		url(//font.shiningcorp.com/css/font/notokr-thin.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/notokr-thin.ttf)
+		format('truetype'),
+		url(//font.shiningcorp.com/css/font/notokr-thin.svg#notokr-thin)
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'notokr-regular';
+	src: url(//font.shiningcorp.com/css/font/notokr-regular.eot);
+	src: url(//font.shiningcorp.com/css/font/notokr-regular.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/notokr-regular.woff2)
+		format('woff2'),
+		url(//font.shiningcorp.com/css/font/notokr-regular.woff)
+		format('woff'),
+		url(//font.shiningcorp.com/css/font/notokr-regular.svg#notokr-regular)
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'notokr-medium';
+	src: url(//font.shiningcorp.com/css/font/notokr-medium.eot);
+	src: url(//font.shiningcorp.com/css/font/notokr-medium.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/notokr-medium.woff2)
+		format('woff2'),
+		url(//font.shiningcorp.com/css/font/notokr-medium.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/notokr-medium.svg#notokr-medium)
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'notokr-light';
+	src: url(//font.shiningcorp.com/css/font/notokr-light.eot);
+	src: url(//font.shiningcorp.com/css/font/notokr-light.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/notokr-light.woff2)
+		format('woff2'),
+		url(//font.shiningcorp.com/css/font/notokr-light.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/notokr-light.ttf)
+		format('truetype'),
+		url(//font.shiningcorp.com/css/font/notokr-light.svg#notokr-light)
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'notokr-demilight';
+	src: url(//font.shiningcorp.com/css/font/notokr-demilight.eot);
+	src: url(//font.shiningcorp.com/css/font/notokr-demilight.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/notokr-demilight.woff2)
+		format('woff2'),
+		url(//font.shiningcorp.com/css/font/notokr-demilight.woff)
+		format('woff'),
+		url(//font.shiningcorp.com/css/font/notokr-demilight.ttf)
+		format('truetype'),
+		url(//font.shiningcorp.com/css/font/notokr-demilight.svg#notokr-demilight)
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'notokr-bold';
+	src: url(//font.shiningcorp.com/css/font/notokr-bold.eot);
+	src: url(//font.shiningcorp.com/css/font/notokr-bold.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/notokr-bold.woff2) format('woff2'),
+		url(//font.shiningcorp.com/css/font/notokr-bold.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/notokr-bold.svg#notokr-bold)
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'notokr-black';
+	src: url(//font.shiningcorp.com/css/font/notokr-black.eot);
+	src: url(//font.shiningcorp.com/css/font/notokr-black.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/notokr-black.woff2)
+		format('woff2'),
+		url(//font.shiningcorp.com/css/font/notokr-black.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/notokr-black.ttf)
+		format('truetype'),
+		url(//font.shiningcorp.com/css/font/notokr-black.svg#notokr-black)
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* 아리따 */
+@font-face {
+	font-family: 'arita-thin';
+	src: url(//font.shiningcorp.com/css/font/arita-Thin.eot);
+	src: url(//font.shiningcorp.com/css/font/arita-Thin.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/arita-Thin.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/arita-Thin.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'arita-light';
+	src: url(//font.shiningcorp.com/css/font/arita-Light.eot);
+	src: url(//font.shiningcorp.com/css/font/arita-Light.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/arita-Light.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/arita-Light.ttf)
+		format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'arita-medium';
+	src: url(//font.shiningcorp.com/css/font/arita-Medium.eot);
+	src: url(//font.shiningcorp.com/css/font/arita-Medium.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/arita-Medium.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/arita-Medium.ttf)
+		format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'arita-semibold';
+	src: url(//font.shiningcorp.com/css/font/arita-SemiBold.eot);
+	src: url(//font.shiningcorp.com/css/font/arita-SemiBold.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/arita-SemiBold.woff)
+		format('woff'),
+		url(//font.shiningcorp.com/css/font/arita-SemiBold.ttf)
+		format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'arita-bold';
+	src: url(//font.shiningcorp.com/css/font/arita-Bold.eot);
+	src: url(//font.shiningcorp.com/css/font/arita-Bold.eot?#iefix)
+		format('embedded-opentype'),
+		url(//font.shiningcorp.com/css/font/arita-Bold.woff) format('woff'),
+		url(//font.shiningcorp.com/css/font/arita-Bold.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#main_banner {
+	position: relative;
+	overflow: hidden;
+	min-height: 100vh; /* 전체 화면 높이를 유지 */
+	padding-bottom: 150px; /* contact 영역이 있을 때의 여백을 확보 (원하는 값으로 조정) */
+}
+</style>
+<!--[if lte IE 8]>
+<script src="https://co1156.shiningcorp.com/js/html5.js"></script>
+<![endif]-->
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "https://co1156.shiningcorp.com";
+var g5_bbs_url   = "https://co1156.shiningcorp.com/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+
+</script>
+
+<script type="text/javascript" src="/animal/resources/script/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/animal/resources/script/jquery-ui.js"></script>
+<script type="text/javascript" src="/animal/resources/script/jquery-menu.js"></script>
+<script type="text/javascript" src="/animal/resources/script/common.js"></script>
+<script type="text/javascript" src="/animal/resources/script/wrest.js"></script>
+<script type="text/javascript" src="/animal/resources/script/placeholders.min.js"></script>
+<link rel="stylesheet" href="/animal/resources/css/font-awesome.min.css">
+<script type="text/javascript" src="/animal/resources/script/feather.js"></script>
+<script type="text/javascript" src="/animal/resources/script/script.js"></script>
+<script type="text/javascript" src="/animal/resources/script/gsap.min.js"></script>
+<script type="text/javascript" src="/animal/resources/script/ScrollTrigger.min.js"></script>
+<script type="text/javascript" src="/animal/resources/script/swiper.min.js"></script>
+<script type="text/javascript" src="/animal/resources/script/aos.js"></script>
+
+<script>
         $(document).ready(function(){
             $(".nav-item").hover(
                 function(){ 
@@ -74,546 +308,602 @@
     }
   }
 </script>
-	<meta name="title" content="네오오토 NEOOTO" />
-	<meta name="author" content="" />
-	<meta name="keywords" content="" />
-	<meta name="subject" content=""/>
-	<meta name="description" content="" />
-	<meta name="copyright" content="" />
-	<meta name="content-language" content="" />
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="네오오토 NEOOTO">
-	<meta property="og:site_name" content="네오오토 NEOOTO">
-	<meta property="og:description" content="">
-
-	<!-- css block -->
-	<link rel="stylesheet" type="text/css" href="/animal/resources/css/axj.css" />
-	<link rel="stylesheet" type="text/css" href="/animal/resources/css/AXButton.css" />
-	<link rel="stylesheet" type="text/css" href="/animal/resources/css/site.css" />
-	<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-	
-	<!-- js block -->
-	<script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bPopup/0.11.0/jquery.bpopup.min.js"></script>
-	<script type="text/javascript" src="/animal/resources/js/common.js"></script>
-	
-
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.css">
-	
-	<script src="//cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.js"></script>
-<script src="/animal/resources/js/slick.js"></script>
-	<script src="/animal/resources/js/common.js"></script>
-	<script src="/animal/resources/js/swiper.min.js"></script>
-	<script src="/animal/resources/js/OverlayScrollbars.js"></script>
-
-	<link rel="stylesheet" href="/animal/resources/css/base.css">
-	<link rel="stylesheet" href="/animal/resources/css/OverlayScrollbars.css">
-	<link rel="stylesheet" href="/animal/resources/css/common.css">
-	<link rel="stylesheet" href="/animal/resources/css/animation.css">
-	<link rel="stylesheet" href="/animal/resources/css/swiper.css">
-	<link rel="stylesheet" href="/animal/resources/css/slick.css">
-	<link rel="stylesheet" href="/animal/resources/css/slide.css">
-	
-	<script src="/animal/resources/js/jquery.fullPage.min.js"></script>
-	<script src="/animal/resources/js/scrolloverflow.min.js"></script>
-	<script src="/animal/resources/js/main.js"></script>
-	<link rel="stylesheet" href="/animal/resources/css/fullpage.css">
-	<link rel="stylesheet" href="/animal/resources/css/main.css">
-
-	<script>
-		var windowWidth = window.screen.width
-		setViewPort(windowWidth);
-		function setViewPort(w_width) {
-			if (w_width <= 380) {
-				$("meta[name=viewport]").attr("content", "width=400, maximum-scale=2.0, user-scalable=yes, target-densitydpi=medium-dpi");
-			} else {
-				$("meta[name=viewport]").attr("content", "width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi");
-			}
-		}
-		$(window).resize(function(){
-			var windowWidth = window.screen.width
-			setViewPort(windowWidth);
-		});
-	</script>
-	<script type="text/javascript"> 
-		if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
-		  window.location = 'microsoft-edge:' + window.location;
-		  setTimeout(function() {
-		    window.location = 'https://go.microsoft.com/fwlink/?linkid=2135547';
-		  }, 1);
-		}
-	</script>
-	
 </head>
 <body>
+<style>
+/* 디자인샘플 보러가기 */
+#goToDesign {
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	padding: 7px 0;
+	border-bottom: 1px solid #fff073;
+	font-size: 12px;
+	text-align: center;
+	background-color: #fffbd9;
+	font-family: dotum
+}
 
-	<!-- wrap -->
-	<div id="wrap" class="mainbody">
-		<!-- header -->
+#goToDesign a {
+	padding-left: 10px;
+	font-weight: bold;
+	color: #f96319
+}
 
-		<header >
-				<nav id="navi">
-					<div id="gnb">
-						<div class="arr"></div>
-						<ul>
-							<li class="">
-								<a href="${contextPath }/main.do">HOME</a>
+#goToDesign a:hover {
+	text-decoration: underline
+}
+</style>
+	<div id="sh_wrapper">
+		<!-- 상단 시작 { -->
+		<header id="sh_hd" class="">
+			<div id="skip_to_container">
+				<a href="#sh_container">본문 바로가기</a>
+			</div>
 
-							</li>
-							<li class="">
-								<a href="#">HOSPITAL</a>
-								<div class="subDepth menu1">
-									<ul>	
-										<li class="mo over"><a href="${contextPath }/hospital/map.do">지도</a></li>
-										<li ><a href="${contextPath }/hospital/review.do">리뷰</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="">
-								<a href="#">CAT</a>
-								<div class="subDepth menu2">
-									<ul>	
-										<li class="mo over"><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
-										<li ><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
-										<li ><a href="${contextPath }/cat/cat_think.do">고양이를 기를까 생각중이신가요?</a></li>
-										
-									</ul>
-								</div>
-							</li>
-							<li class="">
-								<a href="#">DOG</a>
-								<div class="subDepth menu3">
-									<ul>	
-										<li class="mo over"><a href="${contextPath }/dog/dog_type.do">품종</a></li>
-										<li ><a href="${contextPath }/dog/dog_kitten.do">어린 강아지</a></li>
-										<li ><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 생각중이신가요?</a></li>
-										
-									</ul>
-								</div>
-							</li>
-							<li class="">
-								<a href="/kr/sub/esg/management/sustainability.php">ARTICLE</a>
-								<div class="subDepth menu4">
-									<ul>
-										<li ><a href="${contextPath}/board/Board.do">자유 게시판</a></li>
-										<li ><a href="${contextPath}/board/CatBoard.do">고양이 게시판</a></li>
-										<li ><a href="${contextPath}/board/DogBoard.do">강아지 게시판</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="">
-								<a href="#">DOG PRODUCT</a>
-								<div class="subDepth menu5">
-									<ul class="submenu">
-						<li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
-						<li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
-						<li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
-						<li><a href="${contextPath }/dog_product/dog_poop.do">배변용품</a></li>
-						<li><a href="${contextPath }/dog_product/dog_carrier.do">이동장</a></li>
-						<li><a href="${contextPath }/dog_product/dog_toy.do">장난감</a></li>
-						<li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>
-						<li><a href="${contextPath }/dog_product/dog_house.do">하우스</a></li>
-						<li><a href="${contextPath }/dog_product/dog_dish.do">식기</a></li>
-					</ul>
-								</div>
-							</li>
-							<li class="">
-								<a href="#">CAT PRODUCT</a>
-								<div class="subDepth menu6">
-									<ul class="submenu">
-						<li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
-						<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
-						<li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
-						<li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
-						<li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
-						<li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
-						<li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
-						<li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
-						<li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
-					</ul>
-								</div>
-							</li>
+			<!-- 팝업레이어 시작 { -->
+			<div id="hd_pop">
+				<h2>팝업레이어 알림</h2>
+
+				<span class="sound_only">팝업레이어 알림이 없습니다.</span>
+			</div>
+	
+			<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+			<!-- } 팝업레이어 끝 -->
+			<div id="sh_hd_wrapper">
+
+				<div id="top_nav_wrap">
+
+					<!-- 로그인 -->
+
+					<div class="top-menu">
+						<ul class="top-links">
+							<c:choose>
+								<c:when test="${not empty sessionScope.loginMember}">
+									<li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
+									<li><a class="nav-link" href="#">${sessionScope.loginName}님
+											환영합니다</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a style="color: white;" class="nav-link"
+										href="${contextPath}/member/loginForm.do"> LOGIN</a></li>
+
+									<li><a style="color: white;" class="nav-link"
+										href="${contextPath}/member/joinMember.do"> SIGN UP </a></li>
+								</c:otherwise>
+							</c:choose>
 						</ul>
-				
-					</div>
-				</nav>
-				
-					<section>
-					<div class="inner1720">
-					    <!-- 검색 버튼 -->
-					    <div class="search-btn">
-					      <a href="/kr/sub/search/result.php">
-					        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="white" class="svg replaced-svg">
-					          <g clip-path="url(#clip0_999_6312)">
-					            <path d="M22.9956 21.4631C24.8694 19.243 26 16.3762 26 13.25C26 6.21886 20.2811 0.5 13.25 0.5C6.21886 0.5 0.5 6.21886 0.5 13.25C0.5 20.2811 6.21886 26 13.25 26C16.3762 26 19.243 24.8694 21.4631 22.9956L27.6504 29.1829C27.8623 29.3948 28.1416 29.5 28.4167 29.5C28.6939 29.5 28.9715 29.3944 29.1829 29.1829L29.1841 29.1818C29.6047 28.7585 29.6063 28.0738 29.1829 27.6504L22.9956 21.4631ZM2.66667 13.25C2.66667 7.41427 7.41427 2.66667 13.25 2.66667C19.0857 2.66667 23.8333 7.41427 23.8333 13.25C23.8333 19.0857 19.0857 23.8333 13.25 23.8333C7.41427 23.8333 2.66667 19.0857 2.66667 13.25Z" fill="white" stroke="white"></path>
-					          </g>
-					          <defs>
-					            <clipPath id="clip0_999_6312">
-					              <rect width="30" height="30" fill="white"></rect>
-					            </clipPath>
-					          </defs>
-					        </svg>
-					      </a>
-					    </div>
-					
-					  </div>
-					  </section>
-					  
-				<div class="top-menu">
-					<ul class="top-links">
-				<c:choose>
-					<c:when test="${not empty sessionScope.loginMember}">
-						<li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
-						<li><a class="nav-link" href="#">${sessionScope.loginName}님 환영합니다</a></li>
-					</c:when>
-					<c:otherwise>
-						<li><a class="nav-link" href="${contextPath}/member/loginForm.do"> 로그인 </a></li>
-						<li><a class="nav-link" href="${contextPath}/member/joinMember.do"> 회원가입 </a></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-		
-					<div class="allBox"><div class="allmenu"><a href="javascript:void(0);"></a></div></div>
-				</div>
-
-		<!-- 로그아웃 모달 -->
-			<div class="gnb_bg"></div>
-		<div class="modal fade" id="logoutModal" tabindex="-1"
-		aria-labelledby="logoutModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content bg-white text-center">
-				<div class="modal-header border-0">
-					<h5 class="modal-title" id="logoutModalLabel">알림</h5>
-				</div>
-				<div class="modal-body">${sessionScope.loginName}님, 로그아웃 하시겠습니까?</div>
-				<div class="modal-footer border-0 justify-content-center">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary" id="confirmLogout">확인</button>
-				</div>
-			</div>
-		</div>
-	</div>
-		</header>
-		<!-- //header -->
-
-
-		<div id="allmenuBox">
-			<div class="lang"></div>
-			<div class="top">
-				<h2>SITEMAP</h2>
-				<button class="menuClose"><i class="xi-close"></i></button>
-			</div>
-			<div class="menuBox"></div>
-		</div>
-		
-	<article class="main">
-
-		<!-- visual -->
-		<section class="section main1">
-			<div id="visual">
-				<div class="visual swiper-container">
-					<div class="swiper-wrapper">
-							<div class="swiper-slide slide1" data-page="1">
-								<div class="mov">
-									<video loop muted playsinline data-autoplay preload="auto" id="myVideo">
-										<source src="/animal/resources/upload/cat.mp4" type="video/mp4" />
-									</video>
-								</div>
-								<div class="bg"></div>
-								<div class="txtbox">
-									<div class="txtCont">
-										<div class="txt txt-1 aniTxt1">Best Partner in Mobility</div>
-										<div class="txt txt-2"><span>NEOOTO</span></div>
+						<!-- 로그아웃 모달 -->
+						<div class="modal fade" id="logoutModal" tabindex="-1"
+							aria-labelledby="logoutModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered">
+								<div class="modal-content bg-white text-center">
+									<div class="modal-header border-0">
+										<h5 class="modal-title" id="logoutModalLabel">알림</h5>
+									</div>
+									<div class="modal-body">${sessionScope.loginName}님,로그아웃
+										하시겠습니까?</div>
+									<div class="modal-footer border-0 justify-content-center">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">취소</button>
+										<button type="button" class="btn btn-primary"
+											id="confirmLogout">확인</button>
 									</div>
 								</div>
 							</div>
+
+							<div class="allBox">
+								<div class="allmenu">
+									<a href="javascript:void(0);"></a>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="right">
+							<nav id="r_menu">
+								<!-- 상단메뉴 -->
+								<ul id="top_nav">
+									<li class="list01"><a class="list"
+										href="${contextPath }/main.do">HOME</a></li>
+									<li class="list02"><a class="list"
+										href="/bbs/board.php?bo_table=table13">HOSPITAL</a>
+										<ul class="sub_ul1">
+											<li><a href="${contextPath }/hospital/map.do">지도</a></li>
+											<li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
+										</ul></li>
+									<li class="list03"><a class="list"
+										href="/sh_page/page10.php">CAT</a>
+										<ul class="sub_ul2">
+											<li class="mo over"><a
+												href="${contextPath }/cat/cat_type.do">묘종</a></li>
+											<li><a href="${contextPath }/cat/cat_kitten.do">어린
+													고양이</a></li>
+											<li><a href="${contextPath }/cat/cat_think.do">고양이를
+													기를까 생각중이신가요?</a></li>
+
+										</ul></li>
+									<li class="list04"><a class="list"
+										href="/bbs/board.php?bo_table=table42">DOG</a>
+										<ul class="sub_ul3">
+											<li class="mo over"><a
+												href="${contextPath }/dog/dog_type.do">품종</a></li>
+											<li><a href="${contextPath }/dog/dog_kitten.do">어린
+													강아지</a></li>
+											<li><a href="${contextPath }/dog/dog_think.do">강아지를
+													기를까 생각중이신가요?</a></li>
+
+										</ul></li>
+									<li class="list04"><a class="list"
+										href="/bbs/board.php?bo_table=table42"> ARTICLE</a>
+										<ul class="sub_ul4">
+											<li><a href="${contextPath}/board/Board.do">자유 게시판</a></li>
+											<li><a href="${contextPath}/board/CatBoard.do">고양이
+													게시판</a></li>
+											<li><a href="${contextPath}/board/DogBoard.do">강아지
+													게시판</a></li>
+										</ul></li>
+									<li class="list05"><a class="list"
+										href="/bbs/board.php?bo_table=table42">PRODUCT</a>
+										<ul class="sub_ul5">
+											<li><a href="${contextPath }/cat_product/cat_all.do">전체</a></li>
+											<li><a href="${contextPath }/cat_product/cat_feed.do">사료</a></li>
+											<li><a href="${contextPath }/cat_product/cat_treat.do">간식</a></li>
+											<li><a href="${contextPath }/cat_product/cat_sand.do">모래</a></li>
+											<li><a href="${contextPath }/cat_product/cat_carrier.do">이동장</a></li>
+											<li><a href="${contextPath }/cat_product/cat_toy.do">장난감</a></li>
+											<li><a href="${contextPath }/cat_product/cat_bath.do">목욕용품</a></li>
+											<li><a href="${contextPath }/cat_product/cat_house.do">하우스</a></li>
+											<li><a href="${contextPath }/cat_product/cat_dish.do">식기</a></li>
+										</ul></li>
+
+								</ul>
+							</nav>
+						</div>
+
+
 					</div>
 				</div>
+		</header>
+		<!-- } 상단 끝 -->
+
+		<!-- 콘텐츠 시작 { -->
+		<main id="sh_container">
+			<div id="sh_container_wrapper">
+
+				<div id="main_banner" style="position: relative; overflow: hidden;">
+					<!-- 배경 영상 -->
+					<video autoplay loop muted playsinline preload="auto" id="myVideo"
+						style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+						<source src="/animal/resources/upload/cat.mp4" type="video/mp4" />
+					</video>
+
+					<!-- 어두운 오버레이 -->
+					<div class="overlay"
+						style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: 1;"></div>
+
+					<!-- 텍스트 및 컨트롤 -->
+					<div class="txt" style="position: relative; z-index: 2;">
+						<div class="main_txt">
+							<h1 data-aos="fade-right" class="aos-init aos-animate"
+								style="color: white;">Turning Ideas</h1>
+							<h2 class="ko_txt aos-init aos-animate" data-aos="fade-left"
+								style="color: white;">
+								“삶의 온도를 올려주는 작은 존재, 반려동물. 너와의 하루는 특별하지 않아도 어느새 특별해지고,<br>
+								말없이 곁에 있어주는 너는 내 마음의 쉼표가 되어준다. 작은 숨결 하나로도 온 집안은 따뜻해지고,<br>
+								가장 진심을 주는 너는 나에게 가장 조용한 위로가 된다.”
+							</h2>
+						</div>
+					</div>
+				</div>
+
+				<script>
+$(document).ready(function () {
+	var main_swiper = new Swiper("#main_banner .main_slide", {
+	effect:'fade',
+	slideActiveClass: 'on',
+	autoplay: {
+		delay: 3500,
+		disableOnInteraction: false
+	},
+	speed: 1000,
+	loop: true,
+	grabCursor: true,
+	on: {
+		init: function () {
+		$(".swiper-progress-bar").removeClass("animate");
+		$(".swiper-progress-bar").removeClass("active");
+		$(".swiper-progress-bar").eq(0).addClass("animate");
+		$(".swiper-progress-bar").eq(0).addClass("active");
+		},
+		slideChangeTransitionStart: function () {
+		$(".swiper-progress-bar").removeClass("animate");
+		$(".swiper-progress-bar").removeClass("active");
+		$(".swiper-progress-bar").eq(0).addClass("active");
+		},
+		slideChangeTransitionEnd: function () {
+		$(".swiper-progress-bar").eq(0).addClass("animate");
+		}
+	}
+	});
+	var main_num = new Swiper("#main_banner .controls .pager", {
+	effect:'fade',
+	slideActiveClass: 'on',
+	autoplay: {
+		delay: 4000,
+	},
+	speed: 500,
+	loop: true,
+	});
+});
+function scrollToTarget() {
+	const targetElement = document.getElementById("inc01");
+	targetElement.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+				<section id="sh_section">
+
+					<article id="inc01">
+						<div class="inc01_inr">
+							<div class="inner">
+								<div class="cont_box">
+									<div class="top_area">
+										<div class="left" data-aos="fade-right">
+											<h2 class="en_tit">
+												Our<br> <b>Family</b> <span>The one I cherish
+													the most</span>
+											</h2>
+											<div class="ko_box">
+												<h3 class="tit">
+													<span>미학과 깊이 있는 가치</span>를 담아낸 공간,<br> 그 감성을 이어가는 새로운
+													브랜딩
+												</h3>
+												단순한 생활의 배경이 아니라, 머무는 순간마다 아름다움과 깊이를<br> 느낄 수 있는 특별한 경험을
+												선사하며, 조화로운 디자인과 세심한 디테일이 어우러져<br> 일상의 품격을 한층 더 높여주는 브랜딩
+												프로젝트 입니다. <a href="/sh_page/page10.php" class="more"><img
+													src="https://co1156.shiningcorp.com/sh_img/include/inc01/img/arrow.png"
+													alt="화살표"></a>
+											</div>
+										</div>
+										<div class="right" data-aos="fade-left">
+											<div class="top_txt">
+												품질과 혁신을 최우선으로 생각하며, 고객의 기대를 뛰어넘는 브랜드 가치를<br> 제공하기 위해
+												끊임없이 노력하고 있습니다.<br> <br> 지난 수년 간의 경험과 전문성을 바탕으로,
+												우리 브랜드는 시장에서 확고한 입지를<br> 구축했으며, 고객에게 더 나은서비스를 제공하는 것을
+												목표로 하고 있습니다.
+											</div>
+											<a href="/sh_page/page6.php" class="bot_img">
+												<div class="h_img">
+													<img src="/animal/resources/image/cat.jpg">
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="bot_area">
+										<div class="left" data-aos="fade-right">
+											<div class="img_box">
+												<div class="h_img">
+													<img src="/animal/resources/image/cat.jpg">
+												</div>
+												<a href="/sh_page/page6.php" class="i_more"><i></i>Brand<br>Disclaction</a>
+											</div>
+											<h2 class="en_tit">
+												What you see<br> <b>is the brand message</b>
+											</h2>
+											<div class="ko_box">
+												<h3 class="tit">
+													보이는 순간, <span>브랜드가 기억되다</span>
+												</h3>
+												<div class="txt pl">샘플 브랜드는 디자인과 기능, 혁신적인 가치를 결합하여
+													소비자의 눈과 마음에 강렬한 흔적을 남깁니다. 모든 디테일은 소비자가 마주한 순간부터 그 브랜드의 특별함을
+													기억할 수 있도록 세심하게 설계되었습니다.</div>
+
+											</div>
+										</div>
+										<div class="right" data-aos="fade-left">
+											<div class="txt_inr">
+												<h2 class="en_tit">
+													Design that matches<br> <b>your visual branding</b>
+												</h2>
+												<div class="ko_box">
+													<h3 class="tit">
+														<span>시각적인 브랜딩</span>과 어울리는 디자인
+													</h3>
+													<div class="txt pl">브랜딩은 단순한 로고나 색상이 아닌, 브랜드가 가진 철학과
+														스토리를 시각적으로 표현하는 과정입니다. 한눈에 각인되는 디자인은 브랜드의 아이덴티티를 형성하고 감성적인
+														연결을 만들어냅니다.</div>
+												</div>
+											</div>
+											<a href="/sh_page/page7.php" class="img_r">
+												<div class="h_img">
+													<img src="/animal/resources/image/cat.jpg">
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+
+					<article id="inc02">
+						<div class="inner">
+							<div class="top">
+								<h2 class="tit">
+									PRODUCT<br> <b>with Little things for our beloved</b> <b><b><b>
+												companion</b></b></b>
+								</h2>
+								<div class="txt pl">“사랑스러운 친구들를 위한 작은 것들”</div>
+							</div>
+						</div>
+						<div class="img_wrap" data-aos="fade-left" data-aos-duration="800">
+							<ul>
+								<li><a href="/bbs/board.php?bo_table=table13">
+										<div class="img_cont">
+											<img src="/animal/resources/image/food.jfif">
+										</div>
+										<div class="txt_box">
+											<p>사료</p>
+											<div class="txt pl">최신 혁신 제품인 샘플 브랜딩은 뛰어난 품질과 세련된 디자인,
+												그리고 높은 기능성을 완벽하게 통합하여 탄생한 작품입니다.</div>
+										</div>
+								</a></li>
+								<li><a href="/bbs/board.php?bo_table=table13">
+										<div class="img_cont">
+											<img src="/animal/resources/image/carrier.jfif">
+										</div>
+										<div class="txt_box">
+											<p>이동장</p>
+											<div class="txt pl">창의성과 혁신이 넘치는 공간으로, 여기서 만들어지는 모든 작품은
+												과거와 미래를 잇는 독특한 예술적 여정을 담고 있습니다.</div>
+										</div>
+								</a></li>
+								<li><a href="/bbs/board.php?bo_table=table13">
+										<div class="img_cont">
+											<img src="/animal/resources/image/snack.jfif">
+										</div>
+										<div class="txt_box">
+											<p>간식</p>
+											<div class="txt pl">상상력이 살아 숨 쉬는 공간으로, 각기 다른 색깔과 형태로
+												풀어낸 아이디어들이 현실로 변해가는 곳입니다.</div>
+										</div>
+								</a></li>
+								<li><a href="/bbs/board.php?bo_table=table13">
+										<div class="img_cont">
+											<img src="/animal/resources/image/toy.jfif">
+
+										</div>
+										<div class="txt_box">
+											<p>장난감</p>
+											<div class="txt pl">창작의 과정 하나하나가 철저하게 다듬어지며, 모든 작업은
+												정교함과 고급스러움의 극치를 보여줍니다.</div>
+										</div>
+								</a></li>
+								<li><a href="/bbs/board.php?bo_table=table13">
+										<div class="img_cont">
+											<img src="/animal/resources/image/bath.jfif">
+										</div>
+										<div class="txt_box">
+											<p>목욕 용품</p>
+											<div class="txt pl">전통과 현대가 조화를 이루는 창작의 공간입니다. 여기서 탄생하는
+												작품들은 고유의 클래식한 매력을 지닙니다.</div>
+										</div>
+								</a></li>
+								<li><a href="/bbs/board.php?bo_table=table13">
+										<div class="img_cont">
+											<img src="/animal/resources/image/dish.jfif">
+										</div>
+										<div class="txt_box">
+											<p>식기</p>
+											<div class="txt pl">기존의 틀을 넘어서는 도전적인 프로젝트들이 이루어지며, 새로운
+												기술과 접근 방식이 끊임없이 탐구됩니다.</div>
+										</div>
+								</a></li>
+							</ul>
+						</div>
+					</article>
+
+					<script>
+gsap.registerPlugin(ScrollTrigger);
+const pinnedImageWrappers = document.querySelectorAll('#inc02');
+
+ScrollTrigger.matchMedia({
+        "(min-width: 769px)": function() {
+            if (pinnedImageWrappers) {
+                pinnedImageWrappers.forEach((wrapper) => {
+                    const inner = wrapper.querySelector('#inc02 .img_wrap ul');
+                    gsap.to(inner, {
+                        x: () => -((inner.scrollWidth - inner.offsetWidth)) + 'px',            
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: "#inc02",
+                            start: "25% top",
+                            toggleClass:"on",
+                            scrub: 2,
+                            pin:true,
+                            end: () => `+=${inner.offsetWidth}`,
+                        }
+                    });
+                });
+            }
+        },
+    })
+</script>
+					<article id="inc03">
+						<div class="inner">
+							<h2 class="en_tit">
+								<b>Articles</b>
+							</h2>
+							<div class="latest" data-aos="fade-down">
+
+								<article>
+									<a href="/bbs/board.php?bo_table=table42&wr_id=9">
+										<div class="num">01</div>
+										<div class="cont">
+											<p>자유 게시판</p>
+											<div>샘플 브랜드의 홈페이지가 새롭게 리뉴얼되어 오픈했습니다! 많은 관심 부탁드립니다.더욱
+												편리하고 감각적인 디자인으로 지금 바로 방문하셔서 새로운 변화를 경험해 보세요.</div>
+										</div> <span class="arrow"> <img
+											src="/animal/resources/image/arrow.png" alt="화살표">
+									</span>
+									</a>
+								</article>
+
+								<article>
+									<a href="${contextPath }/board/getBoardList.do?category=cat">
+										<div class="num">02</div>
+										<div class="cont">
+											<p>고양이 게시판</p>
+											<div>샘플 브랜드의 홈페이지가 새롭게 리뉴얼되어 오픈했습니다! 많은 관심 부탁드립니다.더욱
+												편리하고 감각적인 디자인으로 지금 바로 방문하셔서 새로운 변화를 경험해 보세요.</div>
+										</div> <span class="arrow"> <img
+											src="/animal/resources/image/arrow.png" alt="화살표">
+									</span>
+									</a>
+								</article>
+
+								<article>
+									<a href="${contextPath }/board/getBoardList.do?category=dog">
+										<div class="num">03</div>
+										<div class="cont">
+											<p>강아지 게시판</p>
+
+											<div>샘플 브랜드의 홈페이지가 새롭게 리뉴얼되어 오픈했습니다! 많은 관심 부탁드립니다.더욱
+												편리하고 감각적인 디자인으로 지금 바로 방문하셔서 새로운 변화를 경험해 보세요.</div>
+										</div> <span class="arrow"> <img
+											src="/animal/resources/image/arrow.png" alt="화살표">
+									</span>
+									</a>
+								</article>
+							</div>
+						</div>
+					</article>
+
+					<section id="sh_section">
+
+						<!-- 스타일은 <head>에 넣거나 CSS 파일에 따로 작성 -->
+						<style>
+.slider-container {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	padding: 40px 0;
+	background: #fdfdfd;
+}
+
+.slider-track {
+	display: flex;
+	animation: slideLeft 20s linear infinite;
+}
+
+.review-box {
+	flex: 0 0 400px;
+	margin: 0 10px;
+	background: white;
+	border-radius: 20px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+	transition: transform 0.3s ease-in-out;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+}
+
+.review-box:hover {
+	transform: scale(1.05);
+	background-color: #fff8e1;
+}
+
+.stars {
+	color: gold;
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
+
+						<!-- 동물병원 리뷰 -->
+
+						<article id="inc04">
+							<div class="inner">
+								<h3 class="en_tit">Interested in this ?</h3>
+								<a href="${contextPath }/hospital/review.do">REVIEW</a>
+							</div>
+						</article>
+
+						<div class="slider-container">
+							<div class="slider-track">
+								<a href="reviewDetail.jsp?id=1" class="review-box"> 40대 중반의
+									회사원이... 너무 예쁜 내 자식같은 홈페이지가요!
+									<div class="stars">★★★★★</div>
+									<div>Lit****</div>
+								</a> <a href="reviewDetail.jsp?id=2" class="review-box"> 홈페이지 제작
+									1시간만에 끝! 진심 이건 추천을...
+									<div class="stars">★★★★★</div>
+									<div>imc*****</div>
+								</a> <a href="reviewDetail.jsp?id=3" class="review-box"> 예전에 웹X로
+									만든 적 있었는데 복잡하고...
+									<div class="stars">★★★★★</div>
+									<div>임**</div>
+								</a> <a href="reviewDetail.jsp?id=4" class="review-box"> 사실 컴편
+									사이트만들려 했는데 솔직히...
+									<div class="stars">★★★★★</div>
+									<div>익명</div>
+								</a>
+
+								<!-- 반복 -->
+								<a href="reviewDetail.jsp?id=1" class="review-box"> 40대 중반의
+									회사원이... 너무 예쁜 내 자식같은 홈페이지가요!
+									<div class="stars">★★★★★</div>
+									<div>Lit****</div>
+								</a> <a href="reviewDetail.jsp?id=2" class="review-box"> 홈페이지 제작
+									1시간만에 끝! 진심 이건 추천을...
+									<div class="stars">★★★★★</div>
+									<div>imc*****</div>
+								</a> <a href="reviewDetail.jsp?id=3" class="review-box"> 예전에 웹X로
+									만든 적 있었는데 복잡하고...
+									<div class="stars">★★★★★</div>
+									<div>임**</div>
+								</a> <a href="reviewDetail.jsp?id=4" class="review-box"> 사실 컴편
+									사이트만들려 했는데 솔직히...
+									<div class="stars">★★★★★</div>
+									<div>익명</div>
+								</a>
+							</div>
+						</div>
+					</section>
 			</div>
-		</section>
-		
-		<!-- 슬라이드 -->
-		<section>
-		<div class="slider-container">
-        <div class="slider-track">
-            <!-- 클릭 가능한 박스: 링크로 감싸기 -->
-            <a href="reviewDetail.jsp?id=1" class="review-box">
-                40대 중반의 회사원이... 너무 예쁜 내 자식같은 홈페이지가요!
-                <div class="stars">★★★★★</div>
-                <div>Lit****</div>
-            </a>
-            <a href="reviewDetail.jsp?id=2" class="review-box">
-                홈페이지 제작 1시간만에 끝! 진심 이건 추천을...
-                <div class="stars">★★★★★</div>
-                <div>imc*****</div>
-            </a>
-            <a href="reviewDetail.jsp?id=3" class="review-box">
-                예전에 웹X로 만든 적 있었는데 복잡하고...
-                <div class="stars">★★★★★</div>
-                <div>임**</div>
-            </a>
-            <a href="reviewDetail.jsp?id=4" class="review-box">
-                사실 컴편 사이트만들려 했는데 솔직히...
-                <div class="stars">★★★★★</div>
-                <div>익명</div>
-            </a>
+		</main>
 
-            <!-- 반복 -->
-            <a href="reviewDetail.jsp?id=1" class="review-box">
-                40대 중반의 회사원이... 너무 예쁜 내 자식같은 홈페이지가요!
-                <div class="stars">★★★★★</div>
-                <div>Lit****</div>
-            </a>
-            <a href="reviewDetail.jsp?id=2" class="review-box">
-                홈페이지 제작 1시간만에 끝! 진심 이건 추천을...
-                <div class="stars">★★★★★</div>
-                <div>imc*****</div>
-            </a>
-            <a href="reviewDetail.jsp?id=3" class="review-box">
-                예전에 웹X로 만든 적 있었는데 복잡하고...
-                <div class="stars">★★★★★</div>
-                <div>임**</div>
-            </a>
-            <a href="reviewDetail.jsp?id=4" class="review-box">
-                사실 컴편 사이트만들려 했는데 솔직히...
-                <div class="stars">★★★★★</div>
-                <div>익명</div>
-            </a>
-        </div>
-    </div>
-		</section>
-		
-<section>
-
-  <style>
-    h2 {
-      font-size: 28px;
-      color: #e60023;
-      margin-bottom: 20px;
-    }
-
-    .swiper-container {
-      width: 100%;
-      padding-bottom: 50px;
-      position: relative;
-    }
-
-    .swiper-slide {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .swiper-slide img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-    }
-
-    .art-info {
-      padding: 15px;
-      text-align: left;
-    }
-
-    .artist-name {
-      font-size: 14px;
-      color: #222;
-      margin-bottom: 2px;
-    }
-
-    .art-title {
-      font-size: 16px;
-      font-weight: bold;
-      color: #000;
-    }
-
-    .art-size {
-      font-size: 12px;
-      color: #999;
-      margin: 4px 0;
-    }
-
-    .art-price {
-      font-size: 16px;
-      font-weight: bold;
-      color: #e60023;
-      margin-top: 4px;
-    }
-
-    .art-stats {
-      font-size: 12px;
-      color: #444;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .art-stats i {
-      margin-right: 2px;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #333;
-      background-color: transparent;
-      font-size: 30px;
-      font-weight: bold;
-      top: 45%;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-    }
-
-    .swiper-button-next:hover,
-    .swiper-button-prev:hover {
-      color: #e60023;
-    }
-
-    .swiper-pagination-bullet {
-      background: #ccc;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: #e60023;
-    }
-
-    @media (max-width: 768px) {
-      .swiper-slide img {
-        height: 200px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .swiper-slide img {
-        height: 160px;
-      }
-    }
-  </style>
- 	<section id="Trends">
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-
-      <!-- Slide 1 -->
-      <div class="swiper-slide">
-  <a href="detail.jsp?artId=1" style="text-decoration: none; color: inherit;">
-    <img src="/animal/resources/image/cat1.jpg" alt="봄 사랑">
-    <div class="art-info">
-      <div class="artist-name">최향숙</div>
-      <div class="art-title">봄 사랑</div>
-      <div class="art-size">W72.7 x H60.6 cm</div>
-      <div class="art-stats">
-        <span>👤 3</span>
-        <span>♡ 5</span>
-      </div>
-      <div class="art-price">₩2,000,000</div>
-    </div>
-  </a>
-</div>
-
-      <!-- Slide 2 -->
-      <div class="swiper-slide">
-  <a href="detail.jsp?artId=2" style="text-decoration: none; color: inherit;">
-    <img src="/animal/resources/image/poppy1.png" alt="회상">
-    <div class="art-info">
-      <div class="artist-name">최종우</div>
-      <div class="art-title">회상</div>
-      <div class="art-size">W53.0 x H45.5 cm</div>
-      <div class="art-stats">
-        <span>👤 2</span>
-        <span>♡ 1</span>
-      </div>
-      <div class="art-price">₩500,000</div>
-    </div>
-  </a>
-</div>
-
-      <!-- Slide 3 -->
-      <div class="swiper-slide">
-       <a href="detail.jsp?artId=2" style="text-decoration: none; color: inherit;">
-        <img src="/animal/resources/image/cat2.jpg" alt="스며들다">
-        <div class="art-info">
-          <div class="artist-name">후후 HooHoo</div>
-          <div class="art-title">스며들다 / Permeate 36</div>
-          <div class="art-size">W106.0 x H72.0 cm</div>
-          <div class="art-stats">
-            <span>👤 9</span>
-            <span>♡ 2</span>
-          </div>
-          <div class="art-price">₩9,000,000</div>
-        </div>
-      </div>
-
-      <!-- Slide 4 -->
-      <div class="swiper-slide">
-       <a href="detail.jsp?artId=2" style="text-decoration: none; color: inherit;">
-        <img src="/animal/resources/image/poppy.jpeg" alt="빛 항아리">
-        <div class="art-info">
-          <div class="artist-name">정희연</div>
-          <div class="art-title">빛흘풀은 항아리23.-8.5</div>
-          <div class="art-size">W50.0 x H50.0 cm</div>
-          <div class="art-stats">
-            <span>👤 8</span>
-            <span>♡ 2</span>
-          </div>
-          <div class="art-price">₩2,400,000</div>
-        </div>
-      </div>
-
-    </div>
-    
-
-    <!-- 네비게이션 버튼 -->
-    <div class="swiper-button-prev">←</div>
-    <div class="swiper-button-next">→</div>
-
-    <!-- 페이징 -->
-    <div class="swiper-pagination"></div>
-  </div>
-  
-</section>
-
-  <script>
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
-      speed: 700,
-      autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      slidesPerView: 4,
-      spaceBetween: 24,
-      breakpoints: {
-        1024: {
-          slidesPerView: 3
-        },
-        768: {
-          slidesPerView: 2
-        },
-        480: {
-          slidesPerView: 1
-        }
-      }
-    });
-  </script>
-
+		<script>
+AOS.init();
+feather.replace(); 
+</script>
 </body>
+<script src="https://www.shiningcorp.com/designTail.js"></script>
 </html>

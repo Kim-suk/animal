@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-#visual { position:relative; width:100%; height:100vh; overflow:hidden; background:#000 }
+#visual { position:relative; width:100%; height:100vh; overflow:hidden; background:#fefefe }
 #visual .swiper-container { position:relative; width:100%; height:100%; overflow:hidden; }
 #visual .swiper-container .swiper-slide { position:relative; width:100%; height:100%; overflow:hidden; display:flex; }
 #visual .swiper-container .swiper-slide .bg { z-index:2; position:absolute; left:0; top:0; width:100%; height:100%; opacity: 0.4; background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 81.22%, #000 100%), linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, #00163C 100%);}

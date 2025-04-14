@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -11,234 +11,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <title>수경이꺼</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- css -->
 <link rel="stylesheet" href="/animal/resources/css/default.css">
 <link rel="stylesheet" href="/animal/resources/css/top_nav.css">
 <link rel="stylesheet" href="/animal/resources/css/swiper.css">
 <link rel="stylesheet" href="/animal/resources/css/aos.css">
-<link rel="stylesheet"
-	href="/animal/resources/css/main_banner_style.css">
+<link rel="stylesheet" href="/animal/resources/css/main_banner_style.css">
 <link rel="stylesheet" href="/animal/resources/css/inc01_style.css">
 <link rel="stylesheet" href="/animal/resources/css/inc02_style.css">
 <link rel="stylesheet" href="/animal/resources/css/inc03_style.css">
 <link rel="stylesheet" href="/animal/resources/css/inc04_style.css">
 <link rel="stylesheet" href="/animal/resources/css/user.css">
 <link rel="stylesheet" href="/animal/resources/css/footer.css">
+<link rel="stylesheet" href="/animal/resources/css/slider.css">
+<link rel="stylesheet" href="/animal/resources/css/font_face.css">
 
-<style>
-@import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 
-@import url(//fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
-@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
-
-@import url(//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-
-/* 나눔스퀘어 */
-@font-face {
-	font-family: 'NanumSquare';
-	src: url(//font.shiningcorp.com/css/font/NanumSquareR.eot);
-	src: url(//font.shiningcorp.com/css/font/NanumSquareR.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/NanumSquareR.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/NanumSquareR.ttf)
-		format('truetype');
-}
-
-/* 본고딕 */
-@font-face {
-	font-family: 'notokr-thin';
-	src: url(//font.shiningcorp.com/css/font/notokr-thin.eot);
-	src: url(//font.shiningcorp.com/css/font/notokr-thin.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/notokr-thin.woff2) format('woff2'),
-		url(//font.shiningcorp.com/css/font/notokr-thin.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/notokr-thin.ttf)
-		format('truetype'),
-		url(//font.shiningcorp.com/css/font/notokr-thin.svg#notokr-thin)
-		format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'notokr-regular';
-	src: url(//font.shiningcorp.com/css/font/notokr-regular.eot);
-	src: url(//font.shiningcorp.com/css/font/notokr-regular.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/notokr-regular.woff2)
-		format('woff2'),
-		url(//font.shiningcorp.com/css/font/notokr-regular.woff)
-		format('woff'),
-		url(//font.shiningcorp.com/css/font/notokr-regular.svg#notokr-regular)
-		format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'notokr-medium';
-	src: url(//font.shiningcorp.com/css/font/notokr-medium.eot);
-	src: url(//font.shiningcorp.com/css/font/notokr-medium.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/notokr-medium.woff2)
-		format('woff2'),
-		url(//font.shiningcorp.com/css/font/notokr-medium.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/notokr-medium.svg#notokr-medium)
-		format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'notokr-light';
-	src: url(//font.shiningcorp.com/css/font/notokr-light.eot);
-	src: url(//font.shiningcorp.com/css/font/notokr-light.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/notokr-light.woff2)
-		format('woff2'),
-		url(//font.shiningcorp.com/css/font/notokr-light.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/notokr-light.ttf)
-		format('truetype'),
-		url(//font.shiningcorp.com/css/font/notokr-light.svg#notokr-light)
-		format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'notokr-demilight';
-	src: url(//font.shiningcorp.com/css/font/notokr-demilight.eot);
-	src: url(//font.shiningcorp.com/css/font/notokr-demilight.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/notokr-demilight.woff2)
-		format('woff2'),
-		url(//font.shiningcorp.com/css/font/notokr-demilight.woff)
-		format('woff'),
-		url(//font.shiningcorp.com/css/font/notokr-demilight.ttf)
-		format('truetype'),
-		url(//font.shiningcorp.com/css/font/notokr-demilight.svg#notokr-demilight)
-		format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'notokr-bold';
-	src: url(//font.shiningcorp.com/css/font/notokr-bold.eot);
-	src: url(//font.shiningcorp.com/css/font/notokr-bold.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/notokr-bold.woff2) format('woff2'),
-		url(//font.shiningcorp.com/css/font/notokr-bold.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/notokr-bold.svg#notokr-bold)
-		format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'notokr-black';
-	src: url(//font.shiningcorp.com/css/font/notokr-black.eot);
-	src: url(//font.shiningcorp.com/css/font/notokr-black.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/notokr-black.woff2)
-		format('woff2'),
-		url(//font.shiningcorp.com/css/font/notokr-black.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/notokr-black.ttf)
-		format('truetype'),
-		url(//font.shiningcorp.com/css/font/notokr-black.svg#notokr-black)
-		format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-/* 아리따 */
-@font-face {
-	font-family: 'arita-thin';
-	src: url(//font.shiningcorp.com/css/font/arita-Thin.eot);
-	src: url(//font.shiningcorp.com/css/font/arita-Thin.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/arita-Thin.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/arita-Thin.ttf) format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'arita-light';
-	src: url(//font.shiningcorp.com/css/font/arita-Light.eot);
-	src: url(//font.shiningcorp.com/css/font/arita-Light.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/arita-Light.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/arita-Light.ttf)
-		format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'arita-medium';
-	src: url(//font.shiningcorp.com/css/font/arita-Medium.eot);
-	src: url(//font.shiningcorp.com/css/font/arita-Medium.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/arita-Medium.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/arita-Medium.ttf)
-		format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'arita-semibold';
-	src: url(//font.shiningcorp.com/css/font/arita-SemiBold.eot);
-	src: url(//font.shiningcorp.com/css/font/arita-SemiBold.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/arita-SemiBold.woff)
-		format('woff'),
-		url(//font.shiningcorp.com/css/font/arita-SemiBold.ttf)
-		format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'arita-bold';
-	src: url(//font.shiningcorp.com/css/font/arita-Bold.eot);
-	src: url(//font.shiningcorp.com/css/font/arita-Bold.eot?#iefix)
-		format('embedded-opentype'),
-		url(//font.shiningcorp.com/css/font/arita-Bold.woff) format('woff'),
-		url(//font.shiningcorp.com/css/font/arita-Bold.ttf) format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-#main_banner {
-	position: relative;
-	overflow: hidden;
-	min-height: 100vh; /* 전체 화면 높이를 유지 */
-	padding-bottom: 150px; /* contact 영역이 있을 때의 여백을 확보 (원하는 값으로 조정) */
-}
-</style>
-<!--[if lte IE 8]>
-<script src="https://co1156.shiningcorp.com/js/html5.js"></script>
-<![endif]-->
-<script>
-// 자바스크립트에서 사용하는 전역변수 선언
-var g5_url       = "https://co1156.shiningcorp.com";
-var g5_bbs_url   = "https://co1156.shiningcorp.com/bbs";
-var g5_is_member = "";
-var g5_is_admin  = "";
-var g5_is_mobile = "";
-var g5_bo_table  = "";
-var g5_sca       = "";
-var g5_editor    = "";
-var g5_cookie_domain = "";
-
-</script>
-
+<!-- script -->
 <script type="text/javascript" src="/animal/resources/script/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/jquery-ui.js"></script>
 <script type="text/javascript" src="/animal/resources/script/jquery-menu.js"></script>
@@ -252,6 +43,7 @@ var g5_cookie_domain = "";
 <script type="text/javascript" src="/animal/resources/script/ScrollTrigger.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/swiper.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/aos.js"></script>
+<script type="text/javascript" src="/animal/resources/script/g5.js"></script>
 
 <script>
         $(document).ready(function(){
@@ -746,6 +538,7 @@ ScrollTrigger.matchMedia({
         },
     })
 </script>
+					<!-- 게시판 -->
 					<article id="inc03">
 						<div class="inner">
 							<h2 class="en_tit">
@@ -796,59 +589,8 @@ ScrollTrigger.matchMedia({
 						</div>
 					</article>
 
+					<!-- 동물병원 리뷰 -->
 					<section id="sh_section">
-
-						<!-- 스타일은 <head>에 넣거나 CSS 파일에 따로 작성 -->
-						<style>
-.slider-container {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	padding: 40px 0;
-	background: #fdfdfd;
-}
-
-.slider-track {
-	display: flex;
-	animation: slideLeft 20s linear infinite;
-}
-
-.review-box {
-	flex: 0 0 400px;
-	margin: 0 10px;
-	background: white;
-	border-radius: 20px;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-	padding: 30px;
-	transition: transform 0.3s ease-in-out;
-	cursor: pointer;
-	text-decoration: none;
-	color: inherit;
-}
-
-.review-box:hover {
-	transform: scale(1.05);
-	background-color: #fff8e1;
-}
-
-.stars {
-	color: gold;
-	font-size: 20px;
-	margin-top: 15px;
-}
-
-@keyframes slideLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-</style>
-
-						<!-- 동물병원 리뷰 -->
-
 						<article id="inc04">
 							<div class="inner">
 								<h3 class="en_tit">Interested in this ?</h3>
@@ -899,11 +641,10 @@ ScrollTrigger.matchMedia({
 					</section>
 			</div>
 		</main>
-
 		<script>
 AOS.init();
 feather.replace(); 
 </script>
 </body>
-<script src="https://www.shiningcorp.com/designTail.js"></script>
+<script src="/animal/resources/js/designTail.js"></script>
 </html>

@@ -1,5 +1,13 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>카테고리</title>
+<head>
 <body>
 
 <footer id="sh_ft" >
@@ -44,4 +52,6 @@
 		</footer>
 	
     
-</body＞
+</body>
+</head>
+</html>

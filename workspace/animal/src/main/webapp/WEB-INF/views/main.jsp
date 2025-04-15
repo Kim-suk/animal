@@ -91,6 +91,7 @@
         <div class="tit_area">
             <p data-aos="fade-right"> Our Review</p>
             <div class="flex">
+            
                 <div class="txt" data-aos="fade-right">병원 리뷰를 보여주는 슬라이드임.</div>
                 <div class="pager">
            
@@ -266,10 +267,10 @@ var atc03swiper = new Swiper("#atc03 .sh_notice", {
 												<div class="ko_box">
 													<h3 class="tit">
 														강아지 눈빛엔 <span>조건 없는 사랑</span>이 있다.
-													</h3>
+													</h3><br>
 													<div class="txt pl">강아지는 하루의 끝에 가장 먼저 달려와주는, 세상에서 가장 순수한 마음입니다.
 
-														<br>작은 꼬리 하나로 온 마음을 전하는 존재, 그게 바로 강아지입니다.
+														작은 꼬리 하나로 온 마음을 전하는 존재, 그게 바로 강아지입니다.
 														
 														강아지의 눈동자에는 ‘사랑해’라는 말보다 더 깊은 신뢰와 애정이 담겨 있어요.
 														
@@ -418,7 +419,7 @@ var atc03swiper = new Swiper("#atc03 .sh_notice", {
 						<article id="inc04">
 							<div class="inner">
 								<h3 class="en_tit">Interested in this ?</h3>
-								<a href="${contextPath }/hospital/review.do">CAT   &   DOG</a>
+								<a href="${contextPath }/main.do">CAT   &   DOG</a>
 							</div>
 						</article>
 

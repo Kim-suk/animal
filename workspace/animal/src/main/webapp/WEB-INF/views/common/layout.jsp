@@ -13,12 +13,14 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css">
 </head>
 <body>
-		<div id="header">
+		<div id="header" >
 			<tiles:insertAttribute name="header" /> 
 		</div>
+		
 		<div id="content">
 			<tiles:insertAttribute name="body" />
 		</div>
+		
 		<div id="footer">
 			<tiles:insertAttribute name="footer" />
 		</div>

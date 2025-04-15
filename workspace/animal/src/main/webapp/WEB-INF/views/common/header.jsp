@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="/animal/resources/css/font_face.css">
 <link rel="stylesheet" href="/animal/resources/css/common.css">
 <link rel="stylesheet" href="/animal/resources/css/main.css">
+<link rel="stylesheet" href="/animal/resources/css/style.css">
 
 
 
@@ -51,6 +52,12 @@
 <script type="text/javascript" src="/animal/resources/script/content.js"></script>
 <script type="text/javascript" src="/animal/resources/script/nav.js"></script>
 
+
+<Style>
+a {
+    text-decoration: none;
+}
+</Style>
 </head>
 <body>
 	<!-- 로그인 -->

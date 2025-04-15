@@ -41,40 +41,46 @@
 </script>
 
 <style>
-body {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-   background-color: #f9f9f9;
-}
 
-model-viewer {
-   width: 500px;
-   height: 500px;
-   background: #fff;
-}
+   body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      margin: 60px auto;
+      margin-right:100px;
+    }
 
+ model-viewer {
+      width: 400px;
+      height: 400px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
 #textsetting {
    text-align: left;
 }
 
 #category1 {
    margin-bottom: 25px; /* h2 아래쪽 여백 */
+   align:center;
 }
 
-.cat-container {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 40px;
-   padding: 30px;
-   background-color: #f8f8f8;
-   border-radius: 20px;
-   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-   max-width: 1000px;
-   margin: 50px auto;
-}
+ .cat-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 50px;
+      margin-top: 150px; /* 헤더 높이만큼 추가 */
+      background-color: #f8f8f8;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 1200px;
+      margin: 60px auto;
+    } 
 
 .cat-container .cat-model {
    width: 400px;
@@ -141,7 +147,9 @@ model-viewer {
 nav {
    display: block;
    unicode-bidi: isolate;
+   background-color:black;
 }
+
 
 .iJqTVc {
    width: 100%;
@@ -216,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
 <body>
+
   <div data-qa="breadcrumbs" class="sc-58202797-0 iJqTVc">
       <nav>
          <ol class="sc-58202797-1 hmSxNI">
@@ -249,16 +258,9 @@ document.addEventListener("DOMContentLoaded", function() {
          </ol>
       </nav>
    </div>
-   <div class="page-wrapper">
-    <!-- 여기에 필터 버튼들 -->
-    <h3>모질 선택</h3>
-    <button onclick="filterCats('short')">단모종</button>
-    <button onclick="filterCats('medium')">중모종</button>
-    <button onclick="filterCats('long')">장모종</button>
-    <button onclick="filterCats('all')">전체 보기</button>
-  <div>
   <!-- Main 컨텐츠 영역 -->
   <main>
+ 
     <div class="cat-container">
       <!-- 3D 모델뷰어 -->
       <model-viewer
@@ -624,7 +626,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				src="https://cdn.royalcanin-weshare-online.io/7OdvpH0BaPOZra8qlssp/v7/bp-lot-8-turkish-angora-davinci">
 				<p>터키쉬 앙고라</p></a></li>
 		</ul>
-	</div>
+	
 	<div id="textsetting">
 		<h2 id=category1>장모종</h2>
 		<ul class="cat-grid">
@@ -653,7 +655,12 @@ document.addEventListener("DOMContentLoaded", function() {
 				<p>페르시안</p></a></li>
 		</ul>
 	</div>
+	
+	
  <p id="no-results-message" style="display: none;">검색 결과가 없습니다.</p>
-
+ </div>
+  <br>
+   <br>
+   <br>
 </body>
 </html>

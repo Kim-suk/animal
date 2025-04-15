@@ -32,6 +32,8 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css">
 
 
+
+
 <!-- script -->
 <script type="text/javascript" src="/animal/resources/script/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/jquery-ui.js"></script>
@@ -54,6 +56,7 @@
 <script type="text/javascript" src="/animal/resources/script/swiper.js"></script>
 
 </head>
+
 <body>
 
 		<!-- main 영상  -->

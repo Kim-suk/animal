@@ -5,6 +5,7 @@ isELIgnored="false" %>
 <html>
 <head>
     <meta charset="UTF-8">
+   
     <title>제품 상세 페이지</title>
     <style>
         .container {

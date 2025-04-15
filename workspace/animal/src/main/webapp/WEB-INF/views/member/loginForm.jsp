@@ -11,6 +11,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap 5 CDN 추가 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- css -->
+<link rel="stylesheet" href="/animal/resources/css/default.css">
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <c:choose>
 	<c:when test='${param.result == "loginFailed"}'>
@@ -77,6 +80,9 @@
   background-color: #FEE500;
   color: black;
 }
+ 
+
+
 
     
 </style>
@@ -144,7 +150,7 @@
 </script>
 
 </head>
-<body  style="padding-top: 140px;">
+<body>
 
 <div class="container">
   <div class="login-container">

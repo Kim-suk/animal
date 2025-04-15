@@ -16,6 +16,7 @@
 		<div id="header">
 			<tiles:insertAttribute name="header" /> 
 		</div>
+		<br><br><br><br><br><br><br>
 		 <div style="display: flex; flex: 1;">
         <div id="sidebar-product">
             <tiles:insertAttribute name="side" />

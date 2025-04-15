@@ -48,5 +48,4 @@ public class catViewControllerImpl implements catViewController{
 		return "/cat/cat_responsible";
 	}
 	
-	
 }

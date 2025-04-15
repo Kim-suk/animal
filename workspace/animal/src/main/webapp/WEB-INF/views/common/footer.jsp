@@ -7,11 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>카테고리</title>
+<link rel="stylesheet" href="/animal/resources/css/style.css">
 <head>
 <body>
 
-<footer id="sh_ft" >
-			<div class="top_cont">
+<footer id="sh_ft" style="background-color: black;">
+			<div class="top_cont" style="background-color: black;">
 				<ul class="menu">
 					<li> <a href="https://www.mars.com/privacy-policy-korean#cookies">개인정보보호준칙</a></li>
         <li> <a href="https://www.mars.com/privacy-policy-korean#cookies">쿠키</a></li>
@@ -20,7 +21,7 @@
 		<li> <a href="https://www.copyright.or.kr" target="_blank">한국저작권위원회</a> </li>
 		<li> <a href="/policy/copyright.do">저작권 정책</a> </li>
 				</ul>
-				<div class="footer" style="background-color: black">
+				<div class="footer" style="background-color: black;">
 				 <div class="footer-column">
         <a href="https://www.zooseyo.or.kr">https://www.zooseyo.or.kr | 유기견</a>
         <a href="https://tools.mypetlife.co.kr/adoption/adopt">https://tools.mypetlife.co.kr/adoption/adopt | 보호소 입양</a>

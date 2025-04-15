@@ -10,23 +10,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <title><tiles:insertAttribute name="title"/></title>
-<link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
+<link rel="stylesheet" href="/animal/resources/css/style.css">
 </head>
-<body>
-		<div id="header">
+<body class="${pageType}">
+		<div id="header" >
 			<tiles:insertAttribute name="header" /> 
 		</div>
-		 <div style="display: flex; flex: 1;">
-        <div id="sidebar-animal">
-            <tiles:insertAttribute name="side" />
-        </div>
-        <div id="content">
-            <tiles:insertAttribute name="body" />
-        </div>
-</div>
-    <div id="footer">
-        <tiles:insertAttribute name="footer" />
-    </div>
+		<div id="content">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<div id="footer">
+			<tiles:insertAttribute name="footer" />
+		</div>
 
 </body>
 </html>

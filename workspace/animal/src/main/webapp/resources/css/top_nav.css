@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-#top_nav_wrap{position:absolute;width:100%;padding:0 5.5%;display:flex;align-items:center;gap:358px;height:100px;z-index:200}
+#top_nav_wrap{position:absolute;width:100%;padding:0 5.5%;display:flex;align-items:center;gap:358px;height:100px;z-index:200; background-color:#000;}
 
 /* 대분류  */
 #top_nav{display:flex;align-items:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}

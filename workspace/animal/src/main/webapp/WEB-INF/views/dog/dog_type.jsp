@@ -1,29 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-
-<title>품종</title>
-
-</head>
-<!-- jQuery 라이브러리 로드 (필수) -->
+<head>   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>어린 강아지</title>
+ <!-- jQuery 라이브러리 로드 (필수) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bxSlider 플러그인 로드 (필수) -->
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 
-<!-- bxSlider CSS (필수) -->
+ <!-- bxSlider CSS (필수) -->
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
 <script type="module"
    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
     </script>
 
-<script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  --> 
+ 
+
+  <script>
        $(document).ready(function() {
       $('.smart-banner-bxslider').bxSlider({
          mode : 'fade', // 전환 방식: 'horizontal', 'vertical', 'fade'
@@ -56,41 +58,48 @@
    });   
 </script>
 
-<style>
-body {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-   background-color: #f9f9f9;
-}
-
-model-viewer {
-   width: 500px;
-   height: 500px;
-   background: #fff;
-}
+  <!-- 페이지 전용 스타일 -->
+  <style>
+ 
+     body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      margin: 60px auto;
+    }
+    model-viewer {
+      width: 400px;
+      height: 400px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
 
 #textsetting {
    text-align: left;
+
+   
 }
 
 #category1 {
    margin-bottom: 25px; /* h2 아래쪽 여백 */
+   align:center;
 }
 
-.dog-container {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 40px;
-   padding: 30px;
-   background-color: #f8f8f8;
-   border-radius: 20px;
-   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-   max-width: 1000px;
-   margin: 50px auto;
-}
+    .dog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 50px;
+      margin-top: 150px; /* 헤더 높이만큼 추가 */
+      background-color: #f8f8f8;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 1200px;
+      margin: 60px auto;
+    } 
 
 .dog-container .dog-model {
    width: 400px;
@@ -122,7 +131,7 @@ model-viewer {
    padding: 0;
    width: 1200px;
    margin-top: 30px;
-   margin-left: 100px;
+   margin-left: 250px;
 }
 
 .dog:hover {
@@ -195,6 +204,39 @@ nav {
 }
 </style>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	  const searchBox = document.getElementById("search-box");
+	  const dogItems = document.querySelectorAll(".dog-grid li");
+	  const noResultsMessage = document.getElementById("no-results-message"); // "검색 결과 없음" 메시지
+
+	  searchBox.addEventListener("keyup", function() { // 실시간 검색
+	    const keyword = searchBox.value.toLowerCase(); // 대소문자 구분 없이 처리
+	    let hasResults = false; // 결과가 있는지 확인할 변수
+
+	    catItems.forEach(function(item) {
+	      const dogNameElement = item.querySelector("p");
+	      const dogName = catNameElement.textContent.toLowerCase();
+
+	      if (dogName.includes(keyword)) {
+	        item.style.display = "block";  // 검색어가 포함된 항목은 표시
+	        hasResults = true;  // 결과 있음
+	      } else {
+	        item.style.display = "none";  // 검색어가 포함되지 않은 항목은 숨김
+	      }
+	    });
+
+	    // 검색 결과가 없으면 "검색 결과 없음" 메시지 표시
+	    if (!hasResults && keyword !== "") {
+	      noResultsMessage.style.display = "block";
+	    } else {
+	      noResultsMessage.style.display = "none";
+	    }
+	  });
+	});
+    
+</script>
+</head>
 
 <body>
    <div data-qa="breadcrumbs" class="sc-58202797-0 iJqTVc">
@@ -248,6 +290,7 @@ nav {
             300여종이 넘는 반려견 품종의 특징과 요구사항에 대한<br> 전문적인 정보를 찾아보세요. 스크롤 또는 검색
             기능을<br> 사용해 원하는 견종에 대한 정보를 찾아보세요.
          </p>
+         <input type="text" id="search-box" placeholder="품종 이름을 입력하세요">
       </div>
    </div>
 
@@ -255,8 +298,6 @@ nav {
 
    <div id="textsetting">
       <h2 id=category1>초소형</h2>
-      <input type="text" name="search" id="search-box" placeholder="품종이름">
-
       <ul class="dog-grid">
          <li><a
             href="${contextPath}/dog/dog_type/chihuahua-smooth-coat.do"> <img
@@ -352,8 +393,7 @@ nav {
 
    <div id="textsetting">
       <h2 id=category1>소형</h2>
-      <input type="text" name="search" id="search-box" placeholder="품종이름">
-
+    
       <ul class="dog-grid">
          <li><a href="${contextPath}/dog/dog_type/griffon-bruxellois.do"><img
                class="dog" alt="Russian adult black and white" loading="lazy"
@@ -457,7 +497,6 @@ nav {
 
    <div id="textsetting">
       <h2 id=category1>중형</h2>
-      <input type="text" name="search" id="search-box" placeholder="품종이름">
 
       <ul class="dog-grid">
          <li><a href="${contextPath}/dog/dog_type/gascon-saintongeois.do"><img
@@ -554,8 +593,7 @@ nav {
 
    <div id="textsetting">
       <h2 id=category1>대형</h2>
-      <input type="text" name="search" id="search-box" placeholder="품종이름">
-
+   
       <ul class="dog-grid">
          <li><a href="${contextPath}/dog/dog_type/gordon-setter.do"><img
                class="dog" alt="Russian adult black and white" loading="lazy"
@@ -661,11 +699,10 @@ nav {
          <!-- 나머지 품종들도 같은 방식으로 추가 -->
       </ul>
    </div>
-   
+ 
    <div id="textsetting">
       <h2 id=category1>초대형</h2>
-      <input type="text" name="search" id="search-box" placeholder="품종이름">
-
+    
       <ul class="dog-grid">
          <li><a href="${contextPath}/dog/dog_type/great-dane-cover.do"><img
                class="dog" alt="Great Dane adult in black and white" loading="lazy"
@@ -768,8 +805,11 @@ nav {
          <!-- 나머지 품종들도 같은 방식으로 추가 -->
       </ul>
    </div>
+   
+   <br>
+   <br>
+   <br>
 
 </body>
+
 </html>
-
-

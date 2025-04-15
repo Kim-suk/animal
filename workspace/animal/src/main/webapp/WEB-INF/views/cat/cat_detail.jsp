@@ -3,7 +3,6 @@
 <html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 <head>
     <title>고양이 상세 정보</title>
     <style>
@@ -12,7 +11,7 @@
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
-            margin: 0 auto;
+            margin:200px;
         }
         #cat-info h2 {
             color: rgb(138, 43, 226); /* 보라색 */
@@ -27,7 +26,6 @@
         }
     </style>
     
-
 </head>
 <body>
 <input type="hidden" id="breedVal" value="${breed}">
@@ -50,6 +48,9 @@ const breed = document.getElementById("breedVal").value.trim().toLowerCase(); 	/
             let html = "";
             html += "<h2>" + cat.name + "</h2>";
             html += "<p>" + cat.description + "</p>";
+            html += "<p>" + cat.introduce + "</p>";
+            html += "<p>" + cat.detail + "</p>";
+            html += "<p>" + cat.point + "</p>";
             html += "<img src='" + cat.image + "' alt='" + cat.name + "'>";
 
             document.getElementById("cat-info").innerHTML = html;
@@ -58,7 +59,6 @@ const breed = document.getElementById("breedVal").value.trim().toLowerCase(); 	/
             document.getElementById("cat-info").innerHTML = "<p>정보를 불러오는 데 실패했습니다.</p>";
         });
 </script>
-
 
 </body>
 </html>

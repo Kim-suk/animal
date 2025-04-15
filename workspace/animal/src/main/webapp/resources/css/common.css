@@ -82,7 +82,18 @@ header.over .gnb_bg { opacity:1; visibility:visible; z-index:1; }
 @media screen and (max-width:1200px){
 	header #navi { display:none }
 }
+/* 메인 페이지용 header */
+.main-page header {
+  background-color: transparent;
+}
 
+.sub-page header {
+  background-color: black !important;
+}
+
+.main-page header {
+  background-color: transparent !important;
+}
 /* 네비게이션 바 스타일 */
 /* 네비게이션 바 (배너 아래 고정) */
 .modal-content, .modal-footer, .btn {
@@ -112,6 +123,7 @@ body>.modal-backdrop.show {
 	width: 100%;
 	height: 100%;
 	align-items: center;
+	
 }
 
 .nav-item {
@@ -576,5 +588,7 @@ footer .footer_box .f-bottom .family-site ul a { color:#fff; font-size:16px; fon
 @media screen and (max-width:640px){
 	.bg-txt svg { height:100px; }
 }
+
+
 
 

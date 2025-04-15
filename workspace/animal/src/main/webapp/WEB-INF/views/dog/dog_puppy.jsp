@@ -49,6 +49,10 @@
       margin: 60px auto;
     }   
 
+nav {
+   display: block;
+   unicode-bidi: isolate;
+}
     .tab-button {
       font-size: 16px;
     }

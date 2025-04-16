@@ -11,7 +11,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <title>지도</title>
 
-<link rel="stylesheet" href="https://hos1034.shiningcorp.com/sh_img/include/inc05/style.css?ver=210215">
+<link rel="stylesheet" href="/animal/resources/css/inc05_style.css">
+<link rel="stylesheet" href="/animal/resources/css/aos.css">
 
 <script>
 // 자바스크립트에서 사용하는 전역변수 선언

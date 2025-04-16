@@ -112,7 +112,8 @@ function checkDuplicate() {
 <link rel="stylesheet" href="/animal/resources/css/default.css">
 <style>
     .signup-box {
-        margin-top: 75px;
+        margin-top: 200px;
+        margin-bottom: 100px;
         padding: 40px;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         border-radius: 10px;

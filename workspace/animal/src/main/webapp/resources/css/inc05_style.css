@@ -1,0 +1,119 @@
+@charset "utf-8";
+
+/* 전체 box-sizing 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#inc05 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* → 한 줄 고정 */
+  background-color: var(--primary);
+  height: 700px;
+  overflow: hidden; /* 혹시 넘칠 경우 대비 */
+}
+
+/* 왼쪽 지도 */
+#inc05 .map_area {
+  width: 50%;
+  height: 700px;
+  background: #222;
+}
+
+#inc05 .map_area iframe {
+  width: 100%;
+  height: 100%;
+  opacity: .8;
+  transition: all .3s;
+}
+
+#inc05 .map_area iframe:hover {
+  opacity: 1;
+}
+
+/* 오른쪽 컨텐츠 */
+#inc05 .cont_area {
+  width: 50%;
+  height: 700px;
+  padding: 85px 100px;
+  background-color: #fff;
+}
+
+#inc05 .cont_area .tit {
+  margin-bottom: 30px;
+  font-size: 52px;
+  color: #222;
+  font-weight: 700;
+  font-family: 'Lexend';
+}
+
+#inc05 .cont_area .tit span {
+  color: var(--primary);
+}
+
+#inc05 .cont_area .loc li {
+  display: flex;
+  align-items: center;
+}
+
+#inc05 .cont_area .loc li + li {
+  margin-top: 5px;
+}
+
+#inc05 .cont_area .loc li span {
+  margin-right: 20px;
+  width: 23px;
+  height: 23px;
+  color: #dedede;
+}
+
+#inc05 .cont_area .loc li a {
+  margin: 0 10px 0 20px;
+  color: #222;
+  text-decoration: underline;
+}
+
+#inc05 .cont_area .loc li a img {
+  margin-left: 10px;
+}
+
+#inc05 .cont_area .sch {
+  margin-top: 70px;
+}
+
+#inc05 .cont_area .sch .s_tit {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #222;
+  font-weight: 700;
+}
+
+#inc05 .cont_area .sch ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+#inc05 .cont_area .sch ul li {
+  width: calc(50% - 15px);
+  text-align: center;
+}
+
+#inc05 .cont_area .sch ul li .day {
+  height: 62px;
+  background-color: #f2f2f2;
+  font-size: 18px;
+  color: #222;
+  line-height: 62px;
+  font-weight: 600;
+}
+
+#inc05 .cont_area .sch ul li .time {
+  color: #777;
+  height: 68px;
+  border-bottom: 1px solid #555;
+  line-height: 68px;
+}

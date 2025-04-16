@@ -12,6 +12,8 @@
 <title>수경이꺼</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <!-- css -->
 <link rel="stylesheet" href="/animal/resources/css/default.css">
@@ -48,10 +50,8 @@
 <script type="text/javascript" src="/animal/resources/script/swiper.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/aos.js"></script>
 <script type="text/javascript" src="/animal/resources/script/g5.js"></script>
-<script type="text/javascript" src="/animal/resources/script/modal.js"></script>
 <script type="text/javascript" src="/animal/resources/script/content.js"></script>
 <script type="text/javascript" src="/animal/resources/script/nav.js"></script>
-
 
 <Style>
 a {
@@ -67,8 +67,8 @@ a {
 						<ul class="top-links">
 							<c:choose>
 								<c:when test="${not empty sessionScope.loginMember}">
-									<li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
-									<li><a class="nav-link" href="#">${sessionScope.loginName}님 환영합니다.</a></li>
+									<li><a class="nav-link" href="#" onclick="logout(event)" style="color:white">로그아웃</a></li>
+									<li><a class="nav-link" href="#" style="color:white">${sessionScope.loginName}님 환영합니다.</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><a style="color: white;" class="nav-link"
@@ -86,9 +86,9 @@ a {
 							<div class="modal-dialog modal-dialog-centered">
 								<div class="modal-content bg-white text-center">
 									<div class="modal-header border-0">
-										<h5 class="modal-title" id="logoutModalLabel">알림</h5>
+										<h5 class="modal-title" id="logoutModalLabel" style="color:#000">알림</h5>
 									</div>
-									<div class="modal-body">${sessionScope.loginName}님,로그아웃
+									<div class="modal-body" style="color:#000">${sessionScope.loginName}님,로그아웃
 										하시겠습니까?</div>
 									<div class="modal-footer border-0 justify-content-center">
 										<button type="button" class="btn btn-secondary"
@@ -97,6 +97,7 @@ a {
 											id="confirmLogout">확인</button>
 									</div>
 								</div>
+							</div>
 							</div>
 
 						<!-- 모바일용 카테고리 -->
@@ -146,10 +147,10 @@ a {
 									<li class="list04"><a class="list"
 										href="#"> ARTICLE</a>
 										<ul class="sub_ul4">
-											<li><a href="${contextPath}/board/getBoard.do">자유 게시판</a></li>
-											<li><a href="${contextPath}/board/CatBoard.do">고양이
+											<li><a href="${contextPath}/board/getBoardList.do?category=free">자유 게시판</a></li>
+											<li><a href="${contextPath}/board/getBoardList.do?category=cat">고양이
 													게시판</a></li>
-											<li><a href="${contextPath}/board/DogBoard.do">강아지
+											<li><a href="${contextPath}/board/getBoardList.do?category=dog">강아지
 													게시판</a></li>
 										</ul></li>
 									<li class="list05"><a class="list"
@@ -175,5 +176,7 @@ a {
 					</div>
 				</div> 
 		</header>
+		<script type="text/javascript" src="/animal/resources/script/g5.js"></script>
+<script type="text/javascript" src="/animal/resources/script/modal.js"></script>
 </body>
 </html>  

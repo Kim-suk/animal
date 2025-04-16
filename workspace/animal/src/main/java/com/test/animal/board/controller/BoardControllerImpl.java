@@ -53,27 +53,27 @@ public class BoardControllerImpl implements BoardController {
 		return "/board/insertBoard";
 	}
 
-	// 湲� �벑濡� 泥섎━
-	@RequestMapping(value = "/board/insertBoard.do", method = RequestMethod.POST)
-	public String insertBoard(BoardDTO dto, @RequestParam("category") String category) throws IOException {
-		dto.setCategory(category);
+	// 湲   벑濡  泥섎━
+	   @RequestMapping(value = "/board/insertBoard.do", method = RequestMethod.POST)
+	   public String insertBoard(BoardDTO dto, @RequestParam("category") String category) throws IOException {
+	      dto.setCategory(category);
 
-		MultipartFile uploadFile = dto.getUploadFile();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	      MultipartFile uploadFile = dto.getUploadFile();
+	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+	      Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-		if (!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename(); 
-			String newFileName = sdf.format(timestamp)+ fileName; 
-			String uploadPath = "C:\\spring_project\\workspace\\animal\\workspace\\animal\\src\\main\\webapp\\resources\\image\\";
-			
-			dto.setImg(newFileName);
-			uploadFile.transferTo(new File(uploadPath + newFileName));
-		}
-		
-		boardService.insertBoard(dto);
-		return "redirect:getBoardList.do?category=" + category;
-	}
+	      if (!uploadFile.isEmpty()) {
+	         String fileName = uploadFile.getOriginalFilename(); 
+	         String newFileName = sdf.format(timestamp)+ fileName; 
+	         String uploadPath = "C:/springframework/workspace/animal/upload/";
+	         
+	         dto.setImg(newFileName);
+	         uploadFile.transferTo(new File(uploadPath + newFileName));
+	      }
+	      
+	      boardService.insertBoard(dto);
+	      return "redirect:getBoardList.do?category=" + category;
+	   }
 
 	// 湲� �닔�젙 �뤌
 	@RequestMapping(value = "/board/updateBoard.do", method = RequestMethod.GET)

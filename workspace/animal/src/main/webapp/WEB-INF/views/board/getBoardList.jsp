@@ -68,7 +68,7 @@
               <div class="w3-third" style="width:350px;height:350px">
                 <div class="w3-card" >
                  <a href="getBoard.do?bno=${board.bno}&category=${category}">
-                    <img src="/animal/resources/image/${board.img}" class="w3-hover-opacity" style="width:335px;height:300px"></a>
+                   <img src="${pageContext.request.contextPath}/upload/${board.img}" class="w3-hover-opacity" style="width:335px;height:300px"></a>
                    <div class="w3-container">            
                      <table id="card">
                          <tr>

@@ -12,6 +12,8 @@
 <title>수경이꺼</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <!-- css -->
 <link rel="stylesheet" href="/animal/resources/css/default.css">
@@ -32,8 +34,6 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css">
 
 
-
-
 <!-- script -->
 <script type="text/javascript" src="/animal/resources/script/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/jquery-ui.js"></script>
@@ -49,15 +49,14 @@
 <script type="text/javascript" src="/animal/resources/script/swiper.min.js"></script>
 <script type="text/javascript" src="/animal/resources/script/aos.js"></script>
 <script type="text/javascript" src="/animal/resources/script/g5.js"></script>
-<script type="text/javascript" src="/animal/resources/script/modal.js"></script>
 <script type="text/javascript" src="/animal/resources/script/content.js"></script>
 <script type="text/javascript" src="/animal/resources/script/nav.js"></script>
 <script type="text/javascript" src="/animal/resources/script/slide.js"></script>
 <script type="text/javascript" src="/animal/resources/script/swiper.js"></script>
 
 </head>
-
 <body>
+
 
 		<!-- main 영상  -->
 		<main id="sh_container">
@@ -173,6 +172,7 @@
 </article>
 
 <script>
+
 var atc03swiper = new Swiper("#atc03 .sh_notice", {
     slidesPerView:4,
     spaceBetween:40,
@@ -375,7 +375,7 @@ var atc03swiper = new Swiper("#atc03 .sh_notice", {
 							<div class="latest" data-aos="fade-down">
 
 								<article>
-									<a href="${contextPath }/board/getBoardList.do">
+									<a href="${contextPath }/board/getBoardList.do?category=free">
 										<div class="num">01</div>
 										<div class="cont">
 											<p>자유 게시판</p>
@@ -427,12 +427,54 @@ var atc03swiper = new Swiper("#atc03 .sh_notice", {
 						</article>
 
 					</section>
-					
+		<script type="text/javascript" src="/animal/resources/script/g5.js"></script>
+		<script>
+		var contextPath = "${pageContext.request.contextPath}";
+		  var logoutConfirmed = false;
+
+		  $(document).ready(function () {
+
+		    // 확인 버튼 클릭 → 모달 닫기, 플래그 설정
+		    $('#confirmLogout').on('click', function () {
+		      logoutConfirmed = true;
+		      const modal = bootstrap.Modal.getInstance(document.getElementById('logoutModal'));
+		      modal.hide(); // 모달 닫기
+		    });
+		    $('.modal-backdrop').remove();
+		    // 모달 닫힌 후 로그아웃 처리
+		    $('#logoutModal').on('hidden.bs.modal', function () {
+		      if (logoutConfirmed) {
+		        $.ajax({
+		          url: contextPath + "/member/logout.do",
+		          method: "GET",
+		          success: function () {
+		            window.location.href = contextPath + "/main.do";
+		          },
+		          error: function () {
+		            alert("로그아웃에 실패했습니다.");
+		          }
+		        });
+		        logoutConfirmed = false;
+		      }
+		    });
+		  });
+
+		  // 로그아웃 버튼 클릭 → 모달 실행 (닫힘 방지 설정 포함)
+		  function logout(event) {
+		    event.preventDefault();
+		    const modalElement = document.getElementById('logoutModal');
+		    if (modalElement) {
+		      const modal = new bootstrap.Modal(modalElement, {
+		        backdrop: false // 배경 클릭 방지
+		      });
+		      modal.show();
+		    }
+		  }
+		</script>
 <script>
 AOS.init();
 feather.replace(); 
-</script>
-
+</script>	
 </body>
 <script src="/animal/resources/js/designTail.js"></script>
 </html>

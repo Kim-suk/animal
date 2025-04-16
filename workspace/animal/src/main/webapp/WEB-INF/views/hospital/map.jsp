@@ -34,7 +34,7 @@ var g5_cookie_domain = "";
 
 <br><br>
 <section id="sh_section">
-<article id="inc05" style="margin-right: 0!important"> <!-- Adjusted style -->
+<article id="inc05"> <!-- Adjusted style -->
     <div id="map" class="map_area" data-aos="fade-right"> </div>
     <div class="cont_area" data-aos="fade-left">
         <h2 class="tit">Hospital <span> Location</span></h2>

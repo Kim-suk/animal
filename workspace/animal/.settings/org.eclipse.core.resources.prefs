@@ -20,6 +20,7 @@ encoding//src/main/java/com/test/animal/member/social/service/NaverLoginServiceI
 encoding//src/main/java/com/test/animal/product/controller/ProductControllerImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/side_catProduct/side_catProduct.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/dog/dog_detail.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/hospital/map.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main.jsp=UTF-8
 encoding//src/main/webapp/resources/css/style.css=UTF-8

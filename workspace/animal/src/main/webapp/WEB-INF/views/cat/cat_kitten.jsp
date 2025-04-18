@@ -40,7 +40,7 @@
       align-items: center;
       gap: 40px;
       padding: 50px;
-      margin-top: 150px; /* 헤더 높이만큼 추가 */
+      margin-top: 400px; /* 헤더 높이만큼 추가 */
       background-color: #f8f8f8;
       border-radius: 20px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -161,6 +161,7 @@
 <body>
 
 	<!-- 3D 모델과 소개 영역 -->
+	<br><br><br><br><br>
 	<div class="cat-container">
 		<div class="cat-model">
 			<model-viewer src="${contextPath}/resources/model/model.glb"

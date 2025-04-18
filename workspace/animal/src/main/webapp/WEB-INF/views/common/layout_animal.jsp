@@ -17,9 +17,6 @@
 			<tiles:insertAttribute name="header" /> 
 		</div>
 		 <div style="display: flex; flex: 1;">
-        <div id="sidebar-animal">
-            <tiles:insertAttribute name="side" />
-        </div>
         <div id="content">
             <tiles:insertAttribute name="body" />
         </div>

@@ -41,7 +41,7 @@
       align-items: center;
       gap: 40px;
       padding: 50px;
-      margin-top: 150px; /* 헤더 높이만큼 추가 */
+      margin-top: 300px; /* 헤더 높이만큼 추가 */
       background-color: #f8f8f8;
       border-radius: 20px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -164,7 +164,7 @@ nav {
 </head>
 
 <body>
-
+<br><br><br><br><br>
    <!-- 3D 모델과 소개 영역 -->
    <div class="dog-container">
       <div class="dog-model">

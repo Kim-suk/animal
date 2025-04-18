@@ -37,7 +37,64 @@
       // 이미지 높이에 맞게 자동 조정
       });
    });
+   <script>
+   $(document).ready(function() {
+  $('.smart-banner-bxslider').bxSlider({
+     mode : 'fade', // 전환 방식: 'horizontal', 'vertical', 'fade'
+     auto : true, // 자동 슬라이드 여부
+     pause : 2000, // 각 슬라이드 정지 시간 (ms 단위, 2초)
+     speed : 500, // 슬라이드 전환 속도 (0.5초)
+     controls : true, // 이전/다음 버튼 표시 여부
+     pager : true, // 페이지 네이션(1,2,3 버튼) 활성화
+     adaptiveHeight : true
+  // 이미지 높이에 맞게 자동 조정
+  });
+}); 
    
+   
+   document.addEventListener("DOMContentLoaded", function () {
+       const searchBox = document.querySelector(".search-input");
+       const dogItems = document.querySelectorAll(".dog-grid li");
+       const noResultsMessage = document.getElementById("no-results-message");
+
+       searchBox.addEventListener("keyup", function () {
+           const keyword = searchBox.value.toLowerCase();
+           let hasResults = false;
+
+           dogItems.forEach(function (item) {
+               const dogName = item.querySelector("h3").textContent.toLowerCase();
+
+               if (dogName.includes(keyword)) {
+                   item.style.display = "block";
+                   hasResults = true;
+               } else {
+                   item.style.display = "none";
+               }
+           });
+
+           if (!hasResults && keyword !== "") {
+               noResultsMessage.style.display = "block";
+           } else {
+               noResultsMessage.style.display = "none";
+           }
+       });
+   });
+
+   function searchToggle(obj, evt) {
+       var container = $(obj).closest('.search-wrapper');
+       if (!container.hasClass('active')) {
+           container.addClass('active');
+           evt.preventDefault();
+       } else if (container.hasClass('active') && $(obj).closest('.input-holder').length === 0) {
+           container.removeClass('active');
+           container.find('.search-input').val('');
+           container.find('.search-input').trigger('keyup'); // clear 시 검색도 초기화
+       }
+   }
+   
+   
+   </script>
+
 </script>
 
 <style>
@@ -57,17 +114,15 @@
       border-radius: 20px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
-    
-#textsetting {
-   text-align: left;
-}
 
 #category1 {
    margin-bottom: 25px; /* h2 아래쪽 여백 */
    align:center;
+   font-size:18px;
 }
 
  .cat-container {
+ position: fixed;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -106,13 +161,12 @@
 
 .cat-grid {
    display: grid;
-   grid-template-columns: repeat(4, 1fr); /* 3열 그리드 */
-   gap: 20px; /* 항목 사이 간격 */
+   grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
+   gap: 20px;
    list-style: none;
    padding: 0;
    width: 1200px;
-   margin-top: 30px;
-   margin-left: 100px;
+   margin: 30px auto; /* 위쪽 여백 + 가운데 정렬 */
 }
 
 .cat:hover {
@@ -185,7 +239,146 @@ nav {
    min-width: 0.75rem;
 }
 
+.search-wrapper {
+    position: absolute;
+    margin-top:80px;
+    margin-left:230px;
+    transform: translate(-50%, -50%);
+    top:50%;
+    left:50%;
+}
+.search-wrapper.active {}
+
+.search-wrapper .input-holder {    
+    height: 70px;
+    width:70px;
+    overflow: hidden;
+    background: rgba(255,255,255,0);
+    border-radius:6px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+.search-wrapper.active .input-holder {
+    width:450px;
+    border-radius: 50px;
+    background: rgba(0,0,0,0.5);
+    transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+}
+.search-wrapper .input-holder .search-input {
+    width:100%;
+    height: 50px;
+    padding:0px 70px 0 20px;
+    opacity: 0;
+    position: absolute;
+    top:0px;
+    left:0px;
+    background: transparent;
+    box-sizing: border-box;
+    border:none;
+    outline:none;
+    font-family:"Open Sans", Arial, Verdana;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color:#FFF;
+    transform: translate(0, 60px);
+    transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.3s;
+}
+.search-wrapper.active .input-holder .search-input {
+    opacity: 1;
+    transform: translate(0, 10px);
+}
+.search-wrapper .input-holder .search-icon {
+    width:70px;
+    height:70px;
+    border:none;
+    border-radius:6px;
+    background: #FFF;
+    padding:0px;
+    outline:none;
+    position: relative;
+    z-index: 2;
+    float:right;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.search-wrapper.active .input-holder .search-icon {
+    width: 50px;
+    height:50px;
+    margin: 10px;
+    border-radius: 30px;
+}
+.search-wrapper .input-holder .search-icon span {
+    width:22px;
+    height:22px;
+    display: inline-block;
+    vertical-align: middle;
+    position:relative;
+    transform: rotate(45deg);
+    transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+}
+.search-wrapper.active .input-holder .search-icon span {
+    transform: rotate(-45deg);
+}
+.search-wrapper .input-holder .search-icon span::before, .search-wrapper .input-holder .search-icon span::after {
+    position: absolute; 
+    content:'';
+}
+.search-wrapper .input-holder .search-icon span::before {
+    width: 4px;
+    height: 11px;
+    left: 9px;
+    top: 18px;
+    border-radius: 2px;
+    background: #FE5F55;
+}
+.search-wrapper .input-holder .search-icon span::after {
+    width: 14px;
+    height: 14px;
+    left: 0px;
+    top: 0px;
+    border-radius: 16px;
+    border: 4px solid #FE5F55;
+}
+.search-wrapper .close {
+    position: absolute;
+    z-index: 1;
+    top:24px;
+    right:20px;
+    width:25px;
+    height:25px;
+    cursor: pointer;
+    transform: rotate(-180deg);
+    transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+    transition-delay: 0.2s;
+}
+.search-wrapper.active .close {
+    right:-50px;
+    transform: rotate(45deg);
+    transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.5s;
+}
+.search-wrapper .close::before, .search-wrapper .close::after {
+    position:absolute;
+    content:'';
+    background: #FE5F55;
+    border-radius: 2px;
+}
+.search-wrapper .close::before {
+    width: 5px;
+    height: 25px;
+    left: 10px;
+    top: 0px;
+}
+.search-wrapper .close::after {
+    width: 25px;
+    height: 5px;
+    left: 0px;
+    top: 10px;
+}
 </style>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -278,14 +471,20 @@ document.addEventListener("DOMContentLoaded", function() {
     필요로 하는 환경과 케어가 다를 수 있습니다.
   </p>
 
-  <!-- 검색박스 위치 이동 -->
-  <input type="text" id="search-box" placeholder="품종 이름을 입력하세요">
+  </div>
+   <div class="search-wrapper">
+    <div class="input-holder">
+        <input type="text" class="search-input" placeholder="Type to search" />
+           <div class="autocomplete-list" id="autocomplete-list"></div>
+        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+    </div>
+    <span class="close" onclick="searchToggle(this, event);"></span>
 </div>
-  </main>
-</body>
+      </div>
+       </div>
 
 <div id="textsetting">
-  <h2 id="category1">단모종</h2>
+  <h1 id="category1" align="center">단모종</h1	>
 		<ul class="cat-grid">
 			<li><a href="${contextPath}/cat/cat_type/devonrex">
 			<img alt="Devon Rex adult in black and white" loading="lazy"
@@ -510,7 +709,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	</div>
 	
 	<div id="textsetting">
-		<h2 id=category1>중모종</h2>
+		<h2 id=category1 align="center">중모종</h2>
 		<ul class="cat-grid">
 			<li><a href="${contextPath}/cat/cat_type/neva">
 			<img alt="Neva masquerade adult black and white" loading="lazy"
@@ -628,7 +827,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		</ul>
 	
 	<div id="textsetting">
-		<h2 id=category1>장모종</h2>
+		<h2 id=category1 align="center">장모종</h2>
 		<ul class="cat-grid">
 			<li><a href="${contextPath}/cat/cat_type/balinese">
 			<img alt="Balinese adult black and white" loading="lazy"

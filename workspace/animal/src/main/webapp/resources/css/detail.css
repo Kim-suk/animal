@@ -1,0 +1,164 @@
+/* 전체 box-sizing 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+#dog-info {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 50px auto;
+  margin-top: 200px;
+  width: 100%;
+}
+
+#dog-info-wrapper {
+  display: flex;
+  flex-wrap: nowrap; /* 줄바꿈 방지 */
+  gap: 20px;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #fdfdfd;
+  align-items: flex-start; /* 이미지와 설명 상단 정렬 */
+}
+
+#dog-imageBox {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dog-imageBox img {
+  width: 130%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  margin-left: 0px;
+  animation: fadeRight 1s forwards;
+}
+
+#dog-description {
+  flex: 2;
+  padding: 10px;
+  min-width: 300px;
+  word-break: keep-all; /* 줄 단위 끊김 방지 */
+  animation: fadeLeft 1s forwards;
+  color:white;
+}
+
+#dog-description h1 {
+  color: white;
+}
+
+#dog-description p {
+  font-size: 17px;
+  line-height: 1.5;
+  color:white;
+}
+
+button {
+  margin: 10px 5px 0 0;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#likeBtn {
+  border: 1px solid #000;
+}
+
+#shareBtn {
+
+  border: 1px solid #000;
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+#cat-info {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 50px auto;
+  margin-top: 200px;
+  width: 100%;
+}
+
+#cat-info-wrapper {
+  display: flex;
+  flex-wrap: nowrap; /* 줄바꿈 방지 */
+  gap: 20px;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #fdfdfd;
+  align-items: flex-start; /* 이미지와 설명 상단 정렬 */
+}
+
+#cat-imageBox {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#cat-imageBox img {
+  width: 130%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  margin-left: 0px;
+  animation: fadeRight 1s forwards;
+}
+
+#cat-description {
+  flex: 2;
+  padding: 10px;
+  min-width: 300px;
+  word-break: keep-all; /* 줄 단위 끊김 방지 */
+  animation: fadeLeft 1s forwards;
+}
+
+#cat-description h2 {
+  color: rgb(138, 43, 226);
+}
+
+#cat-description p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+

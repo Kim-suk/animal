@@ -13,6 +13,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 
 <!-- css -->
@@ -52,7 +55,6 @@
 <script type="text/javascript" src="/animal/resources/script/content.js"></script>
 <script type="text/javascript" src="/animal/resources/script/nav.js"></script>
 <script type="text/javascript" src="/animal/resources/script/slide.js"></script>
-<script type="text/javascript" src="/animal/resources/script/swiper.js"></script>
 
 </head>
 <body>
@@ -86,7 +88,8 @@
 							</h2>
 						</div>
 					</div>
-				</div>
+				
+				</div>	
 
 <article id="atc03">
     <div class="inner">
@@ -101,7 +104,7 @@
         <!-- 라테스트 -->
         <div class="sh_notice_area">
             <div class="sh_notice swiper-container">
-    <ul class="slider swiper-wrapper">
+   			 <ul class="slider swiper-wrapper">
                 <li class="slide swiper-slide">
             <a href="https://co1123.shiningcorp.com/bbs/board.php?bo_table=table49&amp;wr_id=5">            <dl>
                 <dd class="sh_date">2024-03-19</dd>
@@ -168,7 +171,11 @@
 			</a>  
         </li>	
                     </ul>
-</div>        </div>
+                      
+        </div>
+        <div class="swiper-pagination">
+</div>      
+  </div>
 </article>
 
 <script>
@@ -185,7 +192,16 @@ var atc03swiper = new Swiper("#atc03 .sh_notice", {
     nextEl: "#atc03 .next",
     prevEl: "#atc03 .prev",
     },
+    pagination: {
+        el: "#atc03 .swiper-pagination",
+        clickable: true,
+      },
 });
+
+
+
+
+
 </script>
 					
 		

@@ -5,7 +5,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-
 </head>
 <style>
 *,
@@ -69,6 +68,7 @@
   line-height: 1.5;
   color: white;
 }
+
 button {
   margin: 10px 5px 0 0;
   padding: 8px 12px;
@@ -83,7 +83,6 @@ button {
 }
 
 #shareBtn {
-
   border: 1px solid #000;
 }
 
@@ -108,191 +107,173 @@ button {
     transform: translateX(0);
   }
 }
-.background {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://cdn.royalcanin-weshare-online.io/fT9b43oBRYZmsWpcO7Yv/v15/bp-lot-1-maine-coon-bw-ws-1');
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px) brightness(0.5);
-    z-index: -1;
-} 
+
+
 
 
 </style>
-<body>
-<div class="background"></div>
-	<input type="hidden" id="breedVal" value="${breed}">
-	<div id="cat-info">로딩 중...</div>
 
-	<div id="navButtons"></div>
+<body>
+<div class="background" style="filter: blur(8px) brightness(0.5);"></div>
+<input type="hidden" id="breedVal" value="${breed}">
+<div id="cat-info">로딩 중...</div>
+
+<div id="navButtons"></div>
 
 <!-- 오른쪽 사이드바 -->
-
-  <div id="side-bar">
-    <div id="favoriteBox">
-      <h3>💖 즐겨찾기 목록</h3>
-      <ul id="favoriteList"></ul>
-    </div>
-
-    <div id="recommendedcats">
-      <h3>추천 고양이</h3>
-      <ul id="recommendedList"></ul>
-    </div>
+<div id="side-bar">
+  <div id="favoriteBox">
+    <h3>💖 즐겨찾기 목록</h3>
+    <ul id="favoriteList"></ul>
   </div>
-	<script>
-    const breed = document.getElementById("breedVal").value.trim().toLowerCase();
-    const breedList = ["devonrex", "donsphynx", "russian", "manx", "munchkin", "burmese","burmilla","bengale","bombay","british-shorthair","seychellois","sokoke",
-    	"snowshoe", "sphynx", "siamese", "singapura", "american-bobtail", "american-shorthair", "wirehair",
-    	"curl", "asian", "oriental", "australian", "ocicat", "egyptian", "german", "khao", "cornish", "korat", "bobtail", "thai", "tonkinese", "peterbald", "pixiebob",
-    	"havana", "neva", "norwegian", "ragamuffin", "laperm", "ragdoll", "maine", "birman", "chartreux", "selkirk" ,"somali", "scottish", "fold", "abyssinian", "exotic", 
-    	"japanese", "savannah", "cymric", "turkish", "angora", "balinese", "longhair", "siberian", "persian"]; // 확장 가능
 
-    	// 즐겨찾기 토글
-        function toggleLike() {
-            const key = 'like_' + breed;
-            const isLiked = localStorage.getItem(key) === 'true';
-            localStorage.setItem(key, (!isLiked).toString());
-            updateLikeButton();
-            updateFavoriteList();
-        }
+  <div id="recommendedcats">
+    <h3>추천 고양이</h3>
+    <ul id="recommendedList"></ul>
+  </div>
+</div>
 
-        function updateLikeButton() {
-            const key = 'like_' + breed;
-            const isLiked = localStorage.getItem(key) === 'true';
-            const btn = document.getElementById('likeBtn');
-            btn.innerText = isLiked ? '💖 즐겨찾기됨!' : '❤️ 즐겨찾기';
-        }
+<script>
+let backgroundImages = {}; // 전역 선언 추가
 
-        // 즐겨찾기 목록 출력
-        function updateFavoriteList() {
-            const ul = document.getElementById("favoriteList");
-            ul.innerHTML = '';
-            breedList.forEach(b => {
-                if (localStorage.getItem('like_' + b) === 'true') {
-                    const li = document.createElement("li");
-                    li.innerText = b;
-                    li.onclick = () => location.href = `cat_detail.jsp?breed=${b}`;
-                    ul.appendChild(li);
-                }
-            });
-        }
+const breed = document.getElementById("breedVal").value.trim().toLowerCase();
+const breedList = ["devonrex", "donsphynx", "russian", "manx", "munchkin", "burmese","burmilla","bengale","bombay","british-shorthair","seychellois","sokoke",
+   "snowshoe", "sphynx", "siamese", "singapura", "american-bobtail", "american-shorthair", "wirehair",
+   "curl", "asian", "oriental", "australian", "ocicat", "egyptian", "german", "khao", "cornish", "korat", "bobtail", "thai", "tonkinese", "peterbald", "pixiebob",
+   "havana", "neva", "norwegian", "ragamuffin", "laperm", "ragdoll", "maine", "birman", "chartreux", "selkirk" ,"somali", "scottish", "fold", "abyssinian", "exotic", 
+   "japanese", "savannah", "cymric", "turkish", "angora", "balinese", "longhair", "siberian", "persian"]; // 확장 가능
 
-        // 공유 기능
-       function sharePage() {
-        const url = window.location.href;
-        if (navigator.share) {
-            navigator.share({
-                title: document.title,
-                url: url
-            }).catch(console.error);
-        } else {
-            navigator.clipboard.writeText(url)
-                .then(() => alert("링크가 복사되었습니다!"))
-                .catch(() => alert("복사 실패!"));
-        }
-    }
+// 즐겨찾기 토글
+function toggleLike() {
+    const key = 'like_' + breed;
+    const isLiked = localStorage.getItem(key) === 'true';
+    localStorage.setItem(key, (!isLiked).toString());
+    updateLikeButton();
+    updateFavoriteList();
+}
 
-        // 고양이 데이터 로드
-        fetch("/animal/resources/data/cat_data.json")
-            .then(response => response.json())
-            .then(data => {
-                const cat = data[breed];
-                const container = document.getElementById("cat-info");
+function updateLikeButton() {
+    const key = 'like_' + breed;
+    const isLiked = localStorage.getItem(key) === 'true';
+    const btn = document.getElementById('likeBtn');
+    btn.innerText = isLiked ? '💖 즐겨찾기됨!' : '❤️ 즐겨찾기';
+}
 
-                if (!cat) {
-                    container.innerHTML = "<p>해당 품종 정보를 찾을 수 없습니다.</p>";
-                    return;
-                }
-
-                let html = "";
-                html += "<br>" + "<br>" + "<h1 style='font-size: 3rem; color: white;'>" + cat.name + " 상세 정보</h1>" + "<br>";
-                html += "</div>";
-                html += "<button id='likeBtn' onclick='toggleLike()'>🖤 즐겨찾기</button>";
-                html += "<button id='shareBtn' onclick='sharePage()'>🔗 공유하기</button>";
-                html += "</div>";
-                html += "<decription id='cat-description' class='fadeRight'>";
-                html += "<section id='cat-imageBox' class='fadeRight'>";
-                html += "<div class='description-right'fadeRight'>";
-                html += "<a href='" + cat.image + "' data-lightbox='cat-image' data-title='" + cat.name + "'>";
-                html += "<img src='" + cat.image + "' alt='강아지 이미지'></a>";
-                html += "</div>"; // 이미지 영역 종료
-
-                html += "<decription id='cat-description' class='fadeRLeft'>";
-                html += "<div class='description-right fadeLeft'>";
-     
-                html += "<p><strong>한 줄 소개</strong><br>" + cat.description + "</p>" + "<br>";
-                html += "<p><strong>자세한 설명</strong><br>" + cat.introduce + "</p>"+ "<br>";
-                html += "<p><strong>특징 </strong><br>" + cat.detail + "</p>"+ "<br>";
-                html += "<p><strong>주의할 점</strong><br>" + cat.point + "</p>";
-                html += "</div>"; // 설명 영역 종료
-
-                container.innerHTML = html;
-                updateLikeButton();
-                updateFavoriteList();
-
-               
-            })
-            .catch(err => {
-                document.getElementById("cat-info").innerHTML = "<p>정보를 불러오는 데 실패했습니다.</p>";
-            });
-
-        
-       // 추천 강아지 목록 업데이트
-    function updateRecommendedcats() {
-        const recommendedList = document.getElementById("recommendedList");
-        if (!recommendedList) return;
-
-        recommendedList.innerHTML = '';
-        const likedcats = breedList.filter(b => localStorage.getItem('like_' + b) === 'true');
-        const recommendedBreeds = likedcats.length > 0 ? likedcats.slice(0, 5) : [breedList[0]];
-
-        recommendedBreeds.forEach(b => {
+// 즐겨찾기 목록 출력
+function updateFavoriteList() {
+    const ul = document.getElementById("favoriteList");
+    ul.innerHTML = '';
+    breedList.forEach(b => {
+        if (localStorage.getItem('like_' + b) === 'true') {
             const li = document.createElement("li");
             li.innerText = b;
             li.onclick = () => location.href = `cat_detail.jsp?breed=${b}`;
-            recommendedList.appendChild(li);
-        });
-    }
+            ul.appendChild(li);
+        }
+    });
+}
 
-    // 별점 기능
-    function ratecat() {
-        const rating = prompt("이 강아지에게 몇 점을 주시겠어요? (1~5점)");
-        const num = parseInt(rating);
-        if (!isNaN(num) && num >= 1 && num <= 5) {
-            localStorage.setItem('rating_' + breed, num);
-            displayRating();
-        } else {
-            alert("1~5 사이의 숫자를 입력해주세요!");
+// 공유 기능
+function sharePage() {
+    const url = window.location.href;
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: url
+        }).catch(console.error);
+    } else {
+        navigator.clipboard.writeText(url)
+            .then(() => alert("링크가 복사되었습니다!"))
+            .catch(() => alert("복사 실패!"));
+    }
+}
+
+function setBackgroundImage(breed) {
+    const data = backgroundImages[breed]; // 해당 고양이 종류의 이미지 URL을 가져옵니다.
+    console.log(data);  // 데이터 확인
+
+    if (data && data.image) {
+        const backgroundElement = document.querySelector('.background'); // .background 요소 선택
+        console.log(backgroundElement);  // 요소가 잘 선택되었는지 확인
+        if (backgroundElement && backgroundElement.style.backgroundImage !== 'url("' + data.image + '")') {
+            backgroundElement.style.backgroundImage = 'url("' + data.image + '")'; // 배경 이미지 설정
+            backgroundElement.style.backgroundSize = 'cover'; // 배경 크기 조정
+            backgroundElement.style.position = 'fixed';
+            backgroundElement.style.top = '0';
+            backgroundElement.style.left = '0';
+            backgroundElement.style.width = '100%';
+            backgroundElement.style.height = '100%';
+            backgroundElement.style.backgroundSize = 'cover';
+            backgroundElement.style.backgroundPosition = 'center';
+            backgroundElement.style.zIndex = '-1';
         }
     }
+}
 
-    function displayRating() {
-        const ratingDisplay = document.getElementById("ratingDisplay");
-        const rating = localStorage.getItem('rating_' + breed);
-        if (ratingDisplay && rating) {
-            ratingDisplay.innerText = `⭐️ 별점: ${rating}/5`;
+// 고양이 데이터 로드
+fetch("/animal/resources/data/cat_data.json")
+    .then(response => response.json())
+    .then(data => {
+        backgroundImages = data;
+        setBackgroundImage(breed);
+
+        const cat = data[breed];
+        const container = document.getElementById("cat-info");
+
+        if (!cat) {
+            container.innerHTML = "<p>해당 품종 정보를 찾을 수 없습니다.</p>";
+            return;
         }
-    }
 
-    // 페이지 로딩 시
-    document.addEventListener("DOMContentLoaded", function () {
-        displayRating();
+        let html = "";
+        html += "<h1 style='font-size: 3rem; color: white;'>" + cat.name + " 상세 정보</h1>";
+        html += "<button id='likeBtn' onclick='toggleLike()'>🖤 즐겨찾기</button>";
+        html += "<button id='shareBtn' onclick='sharePage()'>🔗 공유하기</button>";
+
+        // 고양이 이미지(일반 이미지로 직접 표시)
+        html += "<section id='cat-imageBox'>";
+        html += "<a href='" + cat.image + "' data-lightbox='cat-image' data-title='" + cat.name + "'>";
+        html += "<img src='" + cat.image + "' alt='" + cat.name + "'></a>";
+        html += "</section>";
+
+        // 고양이 설명
+        html += "<div id='cat-description'>";
+        html += "<p><strong>한 줄 소개</strong><br>" + cat.description + "</p>";
+        html += "<p><strong>자세한 설명</strong><br>" + cat.introduce + "</p>";
+        html += "<p><strong>특징</strong><br>" + cat.detail + "</p>";
+        html += "<p><strong>주의할 점</strong><br>" + cat.point + "</p>";
+        html += "</div>";
+
+        container.innerHTML = html;
+        updateLikeButton();
         updateFavoriteList();
-        updateRecommendedcats();
+    })
+    .catch(err => {
+        document.getElementById("cat-info").innerHTML = "<p>정보를 불러오는 데 실패했습니다.</p>";
     });
 
-    function setBackgroundImage(breed) {
-        const imageUrl = backgroundImages[breed];
-        if (imageUrl) {
-            document.body.style.background = "url('${imageUrl}') no-repeat center center fixed";
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.filter = 'blur(2px) grayscale(100%)'; // 흐릿하고 흑백 느낌
-        }
-    }
-    </script>
+// 추천 고양이 목록 업데이트
+function updateRecommendedcats() {
+    const recommendedList = document.getElementById("recommendedList");
+    if (!recommendedList) return;
 
-    </body>
-    </html>
+    recommendedList.innerHTML = '';
+    const likedcats = breedList.filter(b => localStorage.getItem('like_' + b) === 'true');
+    const recommendedBreeds = likedcats.length > 0 ? likedcats.slice(0, 5) : [breedList[0]];
+
+    recommendedBreeds.forEach(b => {
+        const li = document.createElement("li");
+        li.innerText = b;
+        li.onclick = () => location.href = `cat_detail.jsp?breed=${b}`;
+        recommendedList.appendChild(li);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    updateFavoriteList();
+    updateRecommendedcats();
+});
+</script>
+
+</body>
+</html>

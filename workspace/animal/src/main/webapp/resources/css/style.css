@@ -47,10 +47,6 @@ body, html {
     color: white;
     text-align: center;footer {
 }
- /* 기본 헤더 (메인 페이지) */
-#top_nav_wrap {
-    background-color: #000; /* 또는 원하는 배경 없음 스타일 */
-    color: black;
-}
+
 
 }

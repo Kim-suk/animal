@@ -14,25 +14,12 @@
 <link rel="stylesheet" href="/animal/resources/css/inc05_style.css">
 <link rel="stylesheet" href="/animal/resources/css/aos.css">
 
-<script>
-// 자바스크립트에서 사용하는 전역변수 선언
-var g5_url       = "https://hos1034.shiningcorp.com";
-var g5_bbs_url   = "https://hos1034.shiningcorp.com/bbs";
-var g5_is_member = "";
-var g5_is_admin  = "";
-var g5_is_mobile = "";
-var g5_bo_table  = "";
-var g5_sca       = "";
-var g5_editor    = "";
-var g5_cookie_domain = "";
-</script>
 
 <script type="text/javascript"
     src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=222e15b05d5b656e4fecd3d1b114a121&libraries=clusterer"></script>
 
 </head>
-
-<br><br>
+<br><br><br><br><br>
 <section id="sh_section">
 <article id="inc05"> <!-- Adjusted style -->
     <div id="map" class="map_area" data-aos="fade-right"> </div>

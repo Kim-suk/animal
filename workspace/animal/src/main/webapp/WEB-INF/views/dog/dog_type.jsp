@@ -12,15 +12,11 @@
  <!-- jQuery 라이브러리 로드 (필수) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bxSlider 플러그인 로드 (필수) -->
-<script
-   src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 
  <!-- bxSlider CSS (필수) -->
-<link rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
-<script type="module"
-   src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-    </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"> </script>
 
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  --> 
  
@@ -108,18 +104,20 @@
 }
 
     .dog-container {
+      position: fixed;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 40px;
-      padding: 50px;
+      gap: 60px;
+      padding: 60px;
       margin-top: 150px; /* 헤더 높이만큼 추가 */
       background-color: #f8f8f8;
       border-radius: 20px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       max-width: 1200px;
-      margin: 60px auto;
+       flex-direction: column; /* 세로 정렬! */
+         margin:50px; /* 왼쪽에서 40px 떨어지게 */
     } 
 
 .dog-container .dog-model {
@@ -146,12 +144,13 @@
 
 .dog-grid {
    display: grid;
-   grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
+   grid-template-columns: repeat(3, 1fr); /* 4열 그리드 */
    gap: 20px;
-   list-style: none;
-   padding: 0;
-   width: 1200px;
-   margin: 30px auto; /* 위쪽 여백 + 가운데 정렬 */
+  width: 100%;
+  max-width: 900px;
+  margin: 100px 30px 100px auto; /* 오른쪽 정렬 + 오른쪽 여백 30px */
+  list-style: none;
+  justify-content: end; * 위쪽 여백 + 가운데 정렬 */
 }
 
 .dog:hover {
@@ -230,6 +229,7 @@ nav {
     transform: translate(-50%, -50%);
     top:50%;
     left:50%;
+   
 }
 .search-wrapper.active {}
 
@@ -277,8 +277,8 @@ nav {
     width:70px;
     height:70px;
     border:none;
-    border-radius:6px;
-    background: #FFF;
+    border-radius:50px;
+
     padding:0px;
     outline:none;
     position: relative;
@@ -291,7 +291,7 @@ nav {
     width: 50px;
     height:50px;
     margin: 10px;
-    border-radius: 30px;
+    border-radius: 50px;
 }
 .search-wrapper .input-holder .search-icon span {
     width:22px;
@@ -361,6 +361,22 @@ nav {
     left: 0px;
     top: 10px;
 }
+.search-icon {
+
+  background-color: white;
+  border-radius: 50%;         /* 완전한 원형 */
+  width: 40px;                /* 너비와 높이 같게 */
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;     /* 경계선(선택사항) */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-icon:hover {
+  background-color: #000;  /* 호버 시 살짝 회색 */
+}
 </style>
 
 </head>
@@ -402,8 +418,7 @@ nav {
 
    <div class="dog-container">
       <!-- 3D 고양이 모델 -->
-      <model-viewer
-         src="${pageContext.request.contextPath}/resources/model/Siberianhusky.glb"
+      <model-viewer src="${pageContext.request.contextPath}/resources/model/Siberianhusky.glb"
          alt="3D 고양이" auto-rotate camera-controls ar autoplay exposure="1"
          shadow-intensity="1"> </model-viewer>
 
@@ -422,17 +437,17 @@ nav {
    <div class="search-wrapper">
     <div class="input-holder">
         <input type="text" class="search-input" placeholder="Type to search" />
-           <div class="autocomplete-list" id="autocomplete-list"></div>
         <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
     </div>
     <span class="close" onclick="searchToggle(this, event);"></span>
 </div>
       </div>
-       </div>
+    
 
 
 
    <div id="textsetting" >
+   <br><br>
       <h1 id="category1" align="center">초소형</h1	>
       <ul class="dog-grid">
          <li><a

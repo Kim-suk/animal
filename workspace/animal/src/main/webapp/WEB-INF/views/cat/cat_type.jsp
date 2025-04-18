@@ -13,22 +13,17 @@
 <!-- jQuery 라이브러리 로드 (필수) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bxSlider 플러그인 로드 (필수) -->
-<script
-   src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 
 <!-- bxSlider CSS (필수) -->
-<link rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
-<script type="module"
-   src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-    </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"> </script>
 
-<script>
-   $(document).ready(function() {
+  <script>
+       $(document).ready(function() {
       $('.smart-banner-bxslider').bxSlider({
          mode : 'fade', // 전환 방식: 'horizontal', 'vertical', 'fade'
          auto : true, // 자동 슬라이드 여부
-         
          pause : 2000, // 각 슬라이드 정지 시간 (ms 단위, 2초)
          speed : 500, // 슬라이드 전환 속도 (0.5초)
          controls : true, // 이전/다음 버튼 표시 여부
@@ -36,66 +31,52 @@
          adaptiveHeight : true
       // 이미지 높이에 맞게 자동 조정
       });
-   });
-   <script>
-   $(document).ready(function() {
-  $('.smart-banner-bxslider').bxSlider({
-     mode : 'fade', // 전환 방식: 'horizontal', 'vertical', 'fade'
-     auto : true, // 자동 슬라이드 여부
-     pause : 2000, // 각 슬라이드 정지 시간 (ms 단위, 2초)
-     speed : 500, // 슬라이드 전환 속도 (0.5초)
-     controls : true, // 이전/다음 버튼 표시 여부
-     pager : true, // 페이지 네이션(1,2,3 버튼) 활성화
-     adaptiveHeight : true
-  // 이미지 높이에 맞게 자동 조정
-  });
-}); 
-   
-   
-   document.addEventListener("DOMContentLoaded", function () {
-       const searchBox = document.querySelector(".search-input");
-       const dogItems = document.querySelectorAll(".dog-grid li");
-       const noResultsMessage = document.getElementById("no-results-message");
+   }); 
+       
+       
+       document.addEventListener("DOMContentLoaded", function () {
+           const searchBox = document.querySelector(".search-input");
+           const catItems = document.querySelectorAll(".cat-grid li");
+           const noResultsMessage = document.getElementById("no-results-message");
 
-       searchBox.addEventListener("keyup", function () {
-           const keyword = searchBox.value.toLowerCase();
-           let hasResults = false;
+           searchBox.addEventListener("keyup", function () {
+               const keyword = searchBox.value.toLowerCase();
+               let hasResults = false;
 
-           dogItems.forEach(function (item) {
-               const dogName = item.querySelector("h3").textContent.toLowerCase();
+               catItems.forEach(function (item) {
+                   const catName = item.querySelector("h3").textContent.toLowerCase();
 
-               if (dogName.includes(keyword)) {
-                   item.style.display = "block";
-                   hasResults = true;
+                   if (catName.includes(keyword)) {
+                       item.style.display = "block";
+                       hasResults = true;
+                   } else {
+                       item.style.display = "none";
+                   }
+               });
+
+               if (!hasResults && keyword !== "") {
+                   noResultsMessage.style.display = "block";
                } else {
-                   item.style.display = "none";
+                   noResultsMessage.style.display = "none";
                }
            });
-
-           if (!hasResults && keyword !== "") {
-               noResultsMessage.style.display = "block";
-           } else {
-               noResultsMessage.style.display = "none";
-           }
        });
-   });
 
-   function searchToggle(obj, evt) {
-       var container = $(obj).closest('.search-wrapper');
-       if (!container.hasClass('active')) {
-           container.addClass('active');
-           evt.preventDefault();
-       } else if (container.hasClass('active') && $(obj).closest('.input-holder').length === 0) {
-           container.removeClass('active');
-           container.find('.search-input').val('');
-           container.find('.search-input').trigger('keyup'); // clear 시 검색도 초기화
+       function searchToggle(obj, evt) {
+           var container = $(obj).closest('.search-wrapper');
+           if (!container.hasClass('active')) {
+               container.addClass('active');
+               evt.preventDefault();
+           } else if (container.hasClass('active') && $(obj).closest('.input-holder').length === 0) {
+               container.removeClass('active');
+               container.find('.search-input').val('');
+               container.find('.search-input').trigger('keyup'); // clear 시 검색도 초기화
+           }
        }
-   }
-   
-   
-   </script>
+       
+       
+       </script>
 
-</script>
 
 <style>
 
@@ -121,20 +102,21 @@
    font-size:18px;
 }
 
- .cat-container {
- position: fixed;
+ .cat-container {	
+ 		position: fixed;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 40px;
-      padding: 50px;
+      gap: 60px;
+      padding: 60px;
       margin-top: 150px; /* 헤더 높이만큼 추가 */
       background-color: #f8f8f8;
       border-radius: 20px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       max-width: 1200px;
-      margin: 60px auto;
+       flex-direction: column; /* 세로 정렬! */
+         margin:50px; /* 왼쪽에서 40px 떨어지게 */
     } 
 
 .cat-container .cat-model {
@@ -160,13 +142,14 @@
 }
 
 .cat-grid {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
-   gap: 20px;
-   list-style: none;
-   padding: 0;
-   width: 1200px;
-   margin: 30px auto; /* 위쪽 여백 + 가운데 정렬 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 100px 30px 100px auto; /* 오른쪽 정렬 + 오른쪽 여백 30px */
+  list-style: none;
+  justify-content: end; /* 그리드를 오른쪽에 정렬 */
 }
 
 .cat:hover {
@@ -201,7 +184,6 @@
 nav {
    display: block;
    unicode-bidi: isolate;
-   background-color:black;
 }
 
 
@@ -246,6 +228,7 @@ nav {
     transform: translate(-50%, -50%);
     top:50%;
     left:50%;
+   
 }
 .search-wrapper.active {}
 
@@ -293,8 +276,8 @@ nav {
     width:70px;
     height:70px;
     border:none;
-    border-radius:6px;
-    background: #FFF;
+    border-radius:50px;
+
     padding:0px;
     outline:none;
     position: relative;
@@ -307,7 +290,7 @@ nav {
     width: 50px;
     height:50px;
     margin: 10px;
-    border-radius: 30px;
+    border-radius: 50px;
 }
 .search-wrapper .input-holder .search-icon span {
     width:22px;
@@ -377,44 +360,23 @@ nav {
     left: 0px;
     top: 10px;
 }
+.search-icon {
+
+  background-color: white;
+  border-radius: 50%;         /* 완전한 원형 */
+  width: 40px;                /* 너비와 높이 같게 */
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;     /* 경계선(선택사항) */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-icon:hover {
+  background-color: #000;  /* 호버 시 살짝 회색 */
+}
 </style>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-	  const searchBox = document.getElementById("search-box");
-	  const catItems = document.querySelectorAll(".cat-grid li");
-	  const noResultsMessage = document.getElementById("no-results-message"); // "검색 결과 없음" 메시지
-
-	  searchBox.addEventListener("keyup", function() { // 실시간 검색
-	    const keyword = searchBox.value.toLowerCase(); // 대소문자 구분 없이 처리
-	    let hasResults = false; // 결과가 있는지 확인할 변수
-
-	    catItems.forEach(function(item) {
-	      const catNameElement = item.querySelector("p");
-	      const catName = catNameElement.textContent.toLowerCase();
-
-	      if (catName.includes(keyword)) {
-	        item.style.display = "block";  // 검색어가 포함된 항목은 표시
-	        hasResults = true;  // 결과 있음
-	      } else {
-	        item.style.display = "none";  // 검색어가 포함되지 않은 항목은 숨김
-	      }
-	    });
-
-	    // 검색 결과가 없으면 "검색 결과 없음" 메시지 표시
-	    if (!hasResults && keyword !== "") {
-	      noResultsMessage.style.display = "block";
-	    } else {
-	      noResultsMessage.style.display = "none";
-	    }
-	  });
-	});
-    
-</script>
-
-
-    
 
 <body>
 
@@ -454,14 +416,21 @@ document.addEventListener("DOMContentLoaded", function() {
   <!-- Main 컨텐츠 영역 -->
   <main>
  
-    <div class="cat-container">
+<div class="cat-container">
       <!-- 3D 모델뷰어 -->
       <model-viewer
         src="${pageContext.request.contextPath}/resources/model/model.glb"
         alt="3D 고양이" auto-rotate camera-controls ar autoplay exposure="1"
         shadow-intensity="1" class="cat-model">
       </model-viewer>
-
+<div class="search-wrapper">
+    <div class="input-holder">
+        <input type="text" class="search-input" placeholder="Type to search" />
+        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+    </div>
+    <span class="close" onclick="searchToggle(this, event);"></span>
+</div>
+      
       <!-- 설명 텍스트 -->
       <div class="cat-text">
   <h1>묘종에 대해<br>찾아보세요.</h1>
@@ -470,20 +439,14 @@ document.addEventListener("DOMContentLoaded", function() {
     전문적인 정보를 확인하세요. 고양이 품종에 따라<br>
     필요로 하는 환경과 케어가 다를 수 있습니다.
   </p>
-
-  </div>
-   <div class="search-wrapper">
-    <div class="input-holder">
-        <input type="text" class="search-input" placeholder="Type to search" />
-           <div class="autocomplete-list" id="autocomplete-list"></div>
-        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
-    </div>
-    <span class="close" onclick="searchToggle(this, event);"></span>
 </div>
-      </div>
-       </div>
+ </div>
+ 
+  
+    
 
 <div id="textsetting">
+<br><br><br>
   <h1 id="category1" align="center">단모종</h1	>
 		<ul class="cat-grid">
 			<li><a href="${contextPath}/cat/cat_type/devonrex">

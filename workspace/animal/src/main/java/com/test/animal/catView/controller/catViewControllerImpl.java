@@ -48,4 +48,9 @@ public class catViewControllerImpl implements catViewController{
 		return "/cat/cat_responsible";
 	}
 	
+	@RequestMapping("/cat_grow.do")
+	public String showCatGrow() {
+		return "/cat/cat_grow";
+	}
+	
 }

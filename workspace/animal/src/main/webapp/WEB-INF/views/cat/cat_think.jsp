@@ -1,108 +1,159 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-<!DOCTYPE html>
-<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!doctype html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>고양이를 기를까 생각중이신가요?</title>
+<meta charset="utf-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>고양이를 기를까 고민 중이신가요?</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMJUA.woff.css" />
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="/animal/resources/css/style.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
-<script
-	src="https://cdn.jsdelivr.net/npm/@google/model-viewer@1.0.0/dist/model-viewer.min.js"></script>
+<script src="https://code.jquery.com/js/jquery-ui.js"></script>
+<style>
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+#mainVisual{overflow:hidden;position:relative;width:100%;height:935px}
 
-<!-- 3D 모델뷰어 -->
-<script type="module"
-	src="https://cdn.royalcanin-weshare-online.io/XEAlJ4oBRYZmsWpctAuD/v5/maine-coon-kittens"></script>
-<!-- 페이지 전용 스타일 -->
-	<style>
-
-.cat-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	gap: 40px;
-	padding: 50px;
-	padding-top: 50px;
-	margin-top: 120px; /* 추가: 헤더 높이만큼 공간 확보 */
-	background-color: #f8f8f8;
-	border-radius: 20px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-	max-width: 1200px;
-	margin-left: auto;
-	margin-right: auto;
+/* 이미지 */
+#mainVisual .main_img{
+opacity:1;position:absolute;left:0;top:0;z-index:10;width:100%;
+height:935px;margin-left:0px;-webkit-transition:all 1s;transition:all 1s}
+#mainVisual .main_img li {
+    opacity: 0; /* 투명도 0에서 1로 수정 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 1s;
+    visibility: visible; /* visibility 속성 추가 */
+}
+   
+   #mainVisual .main_img li.img01 {
+      background-image: url("/animal/resources/image/gr2.jpg");
+   }
+   #mainVisual .main_img li.img02 {
+     background-image: url("/animal/resources/image/gr4.jpg");
+   }
+   #mainVisual .main_img li.img03 {
+     background-image: url("/animal/resources/image/gr3.jpg");
+   }
+   
+ /* 추가한 부분 */
+   #mainVisual .main_img li.on {
+    opacity: 1;
+    z-index: 11;
+    visibility: visible; /* 이미지가 보이게 하기 */
 }
 
+/* 텍스트 */
+#mainVisual .main_txt{opacity:0;position:absolute;font-size:16px;bottom:215px;left:110px;z-index:15;margin-left:-20px;color:white;font-family:'notokr-regular'}
+#mainVisual .main_txt .txt1{padding-bottom:25px;font-size:50px;line-height:1.3;color:white;letter-spacing:-.2px;font-family:'notokr-bold'}
+#mainVisual .main_txt .txt2{font-size:17px;line-height:1.8;color:rgba(255,255,255,.7)}
+ 
+/* 페이저 */
+#mainVisual .pager_dot{display:flex;opacity:0;position:absolute;bottom:108px;left:110px;z-index:20}
+#mainVisual .pager_dot li{width:12px;height:12px;border-radius:50%;;font-size:0;background-color:rgba(255,255,255,.8);-webkit-transition:all .2s;transition:all .2s}
+#mainVisual .pager_dot li+li{margin-left:10px}
+#mainVisual .pager_dot li:hover{cursor:pointer}
+#mainVisual .pager_dot li.on{border:2px solid #fff;background:none}
 
-.tab-button {
-  font-size: 16px;
+   body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;	
+      background: #f0f0f0;
+      margin: 60px auto;
+    }
+       
+
+    .tab-button {
+      font-size: 16px;
+    }
+
+
+
+    .cat-text {
+      max-width: 500px;
+    }
+
+    .cat-text h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .cat-text p, section p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+   h2 {
+  margin-top: 20px;
+  color: #000;
+  font-size: 40px;
+  font-weight: 400;
+  font-family:'notokr-regular'
 }
-
-.cat-model {
-	flex-shrink: 0;
+h3{
+color:#355E3B;
 }
+    ul.toc {
+      list-style-type: none;
+      padding-left: 0;
+      font-size:20px;
+       text-decoration:none;
+    }
 
-	model-viewer {
-  width: 100%;
-  max-width: 400px;
-  height: 400px;
-	background: white;
-	border-radius: 20px;
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    ul.toc li a{
+      margin: 10px 0;
+      text-decoration:none;
+      color:#000;
+    }
+
+    ul.toc li::before {
+      margin-right: 9px;
+       text-decoration:none;
+    }
+    .toc li:hover {
+  background-color: #f0f8f5;
+  border-radius: 8px;
 }
-
-.cat-text {
-	max-width: 500px;
+    .circle-num {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+   margin-right: 8px;
+  margin-bottom: 8px; /* 아래 간격 추가 */
+  font-size: 12px;
+  color: white;
+  background-color: #355E3B;
+  border-radius: 50%;
+  font-weight: bold;
 }
-
-.cat-text h1 {
-	font-size: 32px;
-	margin-bottom: 20px;
+.circle-num:hover {
+  background-color: #6DA37A;
+  color: #fff;
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
 }
+   section {
 
-.cat-text p, section p {
-	font-size: 18px;
-	line-height: 1.6;
-	color: #333;
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 900px;
+
 }
-
-h2 {
-	margin-top: 40px;
-	color: #444;
-}
-
-ul.toc {
-	list-style-type: none;
-	padding-left: 0;
-}
-
-ul.toc li {
-	margin: 10px 0;
-}
-
-ul.toc li::before {
-	content: "🔹";
-	margin-right: 8px;
-}
-
-section {
-	background: #fff;
-	padding: 30px;
-	border-radius: 10px;
-	margin: 40px auto;
-	max-width: 900px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
 .tabs {
   text-align: center;
   font-family: 'Segoe UI', sans-serif;
@@ -127,7 +178,7 @@ section {
 }
 
 .tab-button.active {
-  color: #ff4b5c;
+  color: #355E3B;
   font-weight: bold;
 }
 
@@ -136,7 +187,7 @@ section {
   display: block;
   height: 3px;
   width: 100%;
-  background-color: #ff4b5c;
+  background-color: #355E3B;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -165,32 +216,47 @@ section {
   margin-bottom: 15px;
 }
 
-.apple {
-	appearance: none;
-	background: rgb(226, 0, 26);
-	border-color: rgb(226, 0, 26);
-	border-width: 2px;
-	border-radius: 2em;
-	border-style: solid;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-	font-family: "Nanum Gothic", Arial, sans-serif;
-	font-size: 1rem;
-	font-weight: 500;
-	line-height: 1.625rem;
-	max-width: 100%;
-	overflow: hidden;
-	padding: 0.5625rem 2rem;
-	position: relative;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	width: auto;
+    .apple{
+     appearance: none;
+    background: #355E3B;
+    border-color: #8F9779;
+    border-width: 2px;
+    border-radius: 2em;
+    border-style: solid;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: "Nanum Gothic", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.625rem;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0.5625rem 2rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+}
+@media screen and (max-width: 768px) {
+  #mainVisual {
+    height: auto;
+  }
+  #mainVisual .main_txt {
+    left: 30px;
+    bottom: 100px;
+    font-size: 14px;
+  }
+}
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .section-title {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #e74c3c;
+            color: #355E3B;
             text-align: center;
             margin-bottom: 10px;
             position: relative;
@@ -201,7 +267,7 @@ section {
             display: block;
             width: 60px;
             height: 3px;
-            background-color: #e74c3c;
+            background-color: #355E3B;
             margin: 8px auto 0;
         }
 
@@ -220,7 +286,7 @@ section {
         .info-title {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #e74c3c;
+            color: #355E3B;
             text-align: center;
             margin-bottom: 15px;
         }
@@ -260,50 +326,230 @@ section {
             margin: 0 5px;
         }
 
+.emoji {
+  font-size: 3rem;
+  animation: bounce 1s infinite;
+  margin: 0; /* 기본 여백 제거 */
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 </style>
 
+<script>
+/* щ씪 대뱶*/
+var n=0;
+     
+function view(n){
+    //硫붿씤 대 吏 
+   $("#mainVisual .main_img li").stop().removeClass('on');
+    $("#mainVisual .main_img li").eq(n).stop().addClass('on');
+   
+   // 섏씠  
+   $("#mainVisual .pager_dot li").stop().removeClass('on');
+    $("#mainVisual .pager_dot li").eq(n).stop().addClass('on');
+};
+   
+var cnt = 3;/*媛 닔議곗젅*/
+function move(i){
+   if(i==1){
+       n++;
+   }else{
+      n--;   
+   }
+   
+    if(n<0){
+        n=cnt-1;               
+        view(n);
+   }else if(n<cnt) {
+        view(n);
+    }else{
+        n=0;               
+        view(n);
+    };
+}; 
 
+sTimer1=setInterval("move(1)",4000); 
+
+$(document).ready(function(){
+   var pg_n = 0;
+   
+   view(0);
+   
+   $("#mainVisual .pager_dot li").click(function(){
+      pg_n = $(this).index();
+      clearInterval(sTimer1);
+      $("#mainVisual .pager_dot li").removeClass("on");
+      $("#mainVisual .pager_dot li").eq(pg_n).stop().addClass('on');
+      $("#mainVisual .main_img li").removeClass("on");
+      $("#mainVisual .main_img li").eq(pg_n).stop().addClass('on');
+   });
+   setTimeout(function() {$("#mainVisual").addClass("on")},0);
+   $('#mainVisual .main_txt').delay(200).animate({"opacity":"1","margin-left":"0"},1000);
+   $('#mainVisual .pager_dot').delay(200).animate({"opacity":"1"},1000);
+});
+</script>
 
 </head>
-
-
 <body>
-
-	
-	<div class="breadcrumb">
-        <a href="/animal/main.do">홈페이지</a>
-        <span>›</span>
-        <a href="/animal/cat_all.jsp" class="highlight">반려묘에 대한 모든 것</a>
-        <span>›</span>
-        <span class="/animal/cat_think.jsp">고양이를 키울지 고민 중이신가요?</span>
-    </div>
-
-	<div class="cat-container">
-		<div class="cat-model">
-			<a href="https://i.namu.wiki/i/sLuB1ME5-6ccGUkcrOBSHdYfreDnesqN3cXQ-3idUTyDAH80qZrPW__8FBeeKRb6oRU28rP9QgNm8kt-yKpNUsqAjKXoJyt8aAbRKYIQo-7hf5RwV5Pvo31jnmgz_wWEmMMmz7_7etHWGhBE1xOX2Q.webp"> </a>
-		</div>
-		<div class="cat-text">
-			<h1>
-				고양이를 키울지 고민<br>중이신가요?
-			</h1>
-			<p>
-			<p>
-				고양이를 키우고 싶으신가요? 고양이는 독립적이며 여러모로 자신을 스스로 돌볼 줄 아는 동물로 알려져 있습니다.<br>
-				하지만반려묘를 키우기에 앞서 많은 것을 고려해야 합니다.고양이와 함께하는 삶은 어떨까요?<br> 보호자로서
-				고양이를 위해 할 수 있는 것엔 무엇이 있을까요?<br> 해당 페이지를 통해 고양이를 키울 때 따르는 책임과
+            
+<!-- 메인 비주얼이미지 영역 -->
+<div id="main_banner">
+   <div id="mainVisual">
+   <ul class="main_img">
+     <li class="on img01"></li>
+      <li class="img02"></li>
+      <li class="img03"></li>                
+   </ul>
+   
+    <div class="main_txt">
+        <p class="txt1">고양이를 키울지<br> 고민 중 이신가요?</p>
+        <p class="txt2">	<p>
+				고양이는 독립적이며 여러모로 자신을 스스로 돌볼 줄 아는 동물로 알려져 있습니다.<br>
+				하지만반려묘를 키우기에 앞서 많은 것을 고려해야 합니다.고양이와 함께하는 삶은 어떨까요?
+				<br><br> 
+				보호자로서 고양이를 위해 할 수 있는 것엔 무엇이 있을까요?<br> 해당 페이지를 통해 고양이를 키울 때 따르는 책임과
 				장점에 대하여 알아보세요.
 			</p>
+    </div>
+    <div class="pager_area">
+        <ul class="pager_dot">
+            <li class="on">01</li>
+            <li>02</li>
+            <li>03</li>
+        </ul>
+   </div>    
+</div></div>
 
-			<h2>해당 페이지에서는 다음과 같은 정보를 확인할 수 있습니다.</h2>
-			<ul class="toc">
-				<li><a href="#first">1. 책임감 있는 보호자가 되려면?</a></li>
-				<li><a href="#second">2. 고양이를 키우기 전에 고려해야 할 점</a></li>
-				<li><a href="#third">3. 나에게 맞는 묘종은?</a></li>
-				<li><a href="#fourth">4. 고양이 입양처</a></li>
-			</ul>
-		</div>
-	</div>
+<section>
 
+<div class="info-header">
+  <h2>해당 페이지에서는 다음과 같은 정보를 확인할 수 있습니다.</h2>
+  <br><br><br>
+  <p class="emoji">🐈</p>
+</div>
+
+<ul class="toc">
+  <li><a href="#first"><span class="circle-num">1</span> 책임감 있는 보호자가 되려면?</a></li>
+  <li><a href="#second"><span class="circle-num">2</span> 고양이를 키우기 전에 고려해야 할 점</a></li>
+  <li><a href="#third"><span class="circle-num">3</span> 나에게 맞는 묘종은?</a></li>
+  <li><a href="#fourth"><span class="circle-num">4</span> 고양이 입양처</a></li>
+</ul>
+<div class="container my-5">
+
+    <!-- 아코디언 FAQ -->
+    <div class="accordion" id="catFaqAccordion">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    새끼 고양이를 데려오기 전에 무엇을 해야 하나요?
+                </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#catFaqAccordion">
+                <div class="accordion-body">
+                    집 환경이 새끼 고양이에게 안전하게 조성되었는지 확인하고 새끼 고양이가 지낼 방을 준비하세요. 이동을 위해 이동장도 있어야 합니다. 
+                    수의사를 미리 알아두어 새끼 고양이를 데려오고 며칠 뒤에 검진을 할 수 있도록 예약하는 것이 좋습니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                    새끼 고양이는 언제 집에 데려와야 하나요?
+                </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#catFaqAccordion">
+                <div class="accordion-body">
+                   생후 8주가 지나기 전에 새끼 고양이를 데려오면 안 됩니다. 일부 브리더는 12주가 될 때까지 새끼 고양이를 어미 고양이, 형제자매 고양이와 함께 두기도 합니다.
+                    그 시기에는 젖을 떼고 기본적인 사회화를 마쳤을 것이며 다른 반려묘와 만나야 합니다. 
+                   또한 새끼 고양이는 생후 8주에서 16주 사이에 본인이 속한 환경을 파악하기 시작하기 때문에 이때가 여러분의 집으로 거처를 옮기기 좋은 시기입니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                    새끼 고양이를 집으로 데려오기에 가장 좋은 시기는 언제인가요?
+                </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#catFaqAccordion">
+                <div class="accordion-body">
+                    새끼 고양이와 함께 며칠 동안 집에서 조용히 지낼 수 있고 손님이 올 예정이 없을 때 데려오는 것이 이상적입니다.
+                     밤이 되기 전에 집에 익숙해질 수 있도록 아침에 데려오는 것이 좋습니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                    새끼 고양이의 이전 보호자에게 무엇을 물어봐야 하나요?
+                </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#catFaqAccordion">
+                <div class="accordion-body">
+                   새끼 고양이가 어떤 사료를 먹었는지 묻고 급여 일과 및 화장실 배치에 대해 물어보세요. 수의사에게 데려갔는지, 백
+                   신 접종이나 구충 치료를 받았는지, 식별 칩이 이식됐는지도 확인하세요. 가장 좋아하는 장난감에 대해서도 물어봅니다.
+				가능하다면 데려오기 며칠 전부터 장난감과 담요를 새끼 고양이 곁에 두어서 집에 오는 동안, 그리고 집에 왔을 때 익숙한 냄새에서 안정감을 느끼게 하세요.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                    새끼 고양이를 데리러 갈 때 뭘 챙겨야 하나요?
+                </button>
+            </h2>
+            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#catFaqAccordion">
+                <div class="accordion-body">
+                    이동 수단이 무엇이든 이동장을 반드시 챙겨야 합니다. 차 안에 새끼 고양이를 풀어놓는 것은 위험하며 걷거나 대중교통으로 이동할 때 도망칠 수도 있기 때문입니다.
+
+					새끼 고양이가 다 자랐을 때에도 들어갈 수 있는 이동장을 고르고 편안함을 위해 담요를 안에 깔아 주세요. 
+					어두운 캐리어를 사용하면 새끼 고양이가 안정감을 느끼는 데 도움이 됩니다. 
+					그리고 이동 도중의 사고에 대비해 종이 수건과 교체용 담요를 준비하는 것도 잊지 마세요. 
+					이동 도중에 이동장을 가까이에 두어서 새끼 고양이를 편안하게 해 주세요.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading6">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                    새끼 고양이를 데려올 때 편안하게 해주는 방법은 무엇인가요?
+                </button>
+            </h2>
+            <div id="collapse6" class="accordion-collapse collapse show" data-bs-parent="#catFaqAccordion">
+                <div class="accordion-body">
+                    차로 데려오는 경우 침착함을 유지하고 천천히 운전하여 새끼 고양이가 놀라지 않게 합니다. <br>
+                    안전벨트로 이동장을 고정하거나 다른 사람이 붙잡게 하여 이동장이 미끄러지지 않게 하세요.<br>
+
+					새끼 고양이가 편안함을 느끼도록 도우려면 가벼운 담요로 이동장을 덮고 친숙한 냄새가 나는 장난감이나 담요를 안에 넣어 줍니다. 
+					이동 도중에는 상자 안에 넣어두는 것이 가장 안전하지만 부드럽게 말을 걸면 새끼 고양이가 안심하는 데 도움이 됩니다.
+	                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 하단 안내 문구 -->
+    <div class="text-center mt-5">
+      <h2> <div class="faq-title">새끼 고양이와 함께 보내는 첫날</div></h2><br>
+        <p class="faq-sub">
+            새끼 고양이는 새로운 환경에 매우 예민하므로 집으로 맞이할 때 조심해야 합니다.
+        </p>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 	<!-- SECTION 1 -->
 	<section id="first">
 		<div class="p-4 border rounded shadow-sm bg-white mb-4">
@@ -314,7 +560,7 @@ section {
 	</section>
 	
 		<h3>고양이를 키울 때의 장점</h3>
-		<p>고양이를 키울 때 따르는 책임에 대해서 알아보았다면 이제는 그 장점에 대해 알아볼 차례입니다.</p>
+		
 		<div class="tabs">
   <div class="tab-buttons">
     <button class="tab-button active" data-tab="tab1">장점 1</button>
@@ -372,16 +618,7 @@ section {
     });
   });
 </script>
-	<section>
-		<h3>고양이를 키울 때의 장점</h3>
-		<a
-			href="https://www.royalcanin.com/kr/cats/kitten/kitten-development-from-birth-to-adulthood">
-			<img
-			src="https://cdn.royalcanin-weshare-online.io/jldh6IwBBKJuub5qARjz/v3/sacred-birman-kitten-birth-growth-brand-emblematic-1-1"
-			width="200px">
-			<p class="apple">자세히 알아보기</p>
-		</a>
-	</section>
+		
 
 
 	<section id="second">
@@ -413,6 +650,7 @@ section {
 	</section>
 	<section id="third">
 		<h2>3. 나에게 맞는 묘종은?</h2>
+		<br>
 		<img
 			src="https://cdn.royalcanin-weshare-online.io/vlc47YwBBKJuub5q0xhB/v3/abyssinian-adult-brand-emblematic-4-3"
 			width="200px">
@@ -443,6 +681,7 @@ section {
 
 	<section id="fourth">
 		<h2>4. 고양이 입양처</h2>
+		<br>
 		<div data-qa="variation-content" class="sc-5f5e92c9-1 eWfCvf">
 			<div data-qa="rich-text">
 				<div class="sc-7ac1f6cf-0 dUwySw">
@@ -468,7 +707,8 @@ section {
             <div class="info-box">
                 <div class="info-title">보호소</div>
                 <div class="info-text">
-                    파양되거나 유기된 고양이를 데려오기로 결정했다면 지역에 있는 고양이 보호소를 방문해 가능한 많은 정보를 공유해보세요. 보호소 안의 고양이들에 대해 잘 알고 있기 때문에 가장 잘 어울리는 고양이를 추천해 줄 수 있습니다.
+                    파양되거나 유기된 고양이를 데려오기로 결정했다면 지역에 있는 고양이 보호소를 방문해 가능한 많은 정보를 공유해보세요.
+                     보호소 안의 고양이들에 대해 잘 알고 있기 때문에 가장 잘 어울리는 고양이를 추천해 줄 수 있습니다.
                 </div>
             </div>
         </div>
@@ -484,6 +724,7 @@ section {
 </div>
 
 	</section>
+
 
 </body>
 </html>

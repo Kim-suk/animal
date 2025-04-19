@@ -464,8 +464,10 @@
 .top-menu {
 	color:white;
 	font-style: white;
+	text-decoration:none;
 }
 .top_nav_wrap{
 	background-color:black !important;
+	text-decoration:none;
 	
 }

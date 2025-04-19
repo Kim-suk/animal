@@ -52,5 +52,12 @@ public class catViewControllerImpl implements catViewController{
 	public String showCatGrow() {
 		return "/cat/cat_grow";
 	}
+
+	@Override
+	@RequestMapping("/cat_born.do")
+	public String showCatBorn() {
+		// TODO Auto-generated method stub
+		return "/cat/cat_born";
+	}
 	
 }

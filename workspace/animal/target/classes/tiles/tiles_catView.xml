@@ -48,5 +48,10 @@
 		<put-attribute name="title" value="주요 발달 5단계"/>
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_grow.jsp" />
 	</definition>
+	
+	<definition name="/cat/cat_born" extends="baseLayout">
+		<put-attribute name="title" value="탄생"/>
+		<put-attribute name="body" value="/WEB-INF/views/cat/cat_born.jsp" />
+	</definition>
 
 </tiles-definitions>

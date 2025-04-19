@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 <!doctype html>
 <html lang="ko">
 <head>
@@ -12,9 +12,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <title>어린 고양이</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMJUA.woff.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="/animal/resources/css/default.css">
+
+
 <style>
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -121,7 +125,7 @@ color:#355E3B;
 
     ul.toc li::before {
       margin-right: 9px;
-       text-decoration:none;
+      
     }
     .toc li:hover {
   background-color: #f0f8f5;
@@ -137,7 +141,7 @@ color:#355E3B;
   margin-bottom: 8px; /* 아래 간격 추가 */
   font-size: 12px;
   color: white;
-  background-color: #355E3B;
+  background-color: #8F9779;
   border-radius: 50%;
   font-weight: bold;
 }
@@ -164,9 +168,9 @@ color:#355E3B;
 }
 
 .tab-button.active {
-    background-color: #355E3B;
+    background-color: #8F9779;
     color: white;
-    border-color: #8F9779;
+    border-color: #355E3B;
 }
 
 .tab-panel {
@@ -222,6 +226,7 @@ color:#355E3B;
   gap: 1rem;
 }
 
+
 .emoji {
   font-size: 3rem;
   animation: bounce 1s infinite;
@@ -232,6 +237,10 @@ color:#355E3B;
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+h3{
+	font-size:28px;
+}
+
 </style>
 
 <script>
@@ -342,7 +351,7 @@ $(document).ready(function(){
          <h2>1. 새끼 고양이 성장에 대한 기초 지식</h2>
          <style>
         .cat-title {
-            color: #355E3B;;
+            color: #8F9779;
             font-size: 1.8rem;
            
         }
@@ -351,7 +360,7 @@ $(document).ready(function(){
             font-size: 1rem;
         }
         .cat-img {
-    width: 100%;
+    width: 100%;	
     height: 350px; /* 원하는 높이로 설정 가능 */
     object-fit: cover; /* 비율 유지하면서 잘라줌 */
     border-radius: 10px;
@@ -402,7 +411,7 @@ $(document).ready(function(){
    </section>
 <section class="p-8 bg-gray-100">
   <!-- 탭 버튼 영역 -->
-   <div class="flex justify-center space-x-4 mb-6">
+  <div class="flex justify-center space-x-4 mb-6">
     <button class="tab-button px-4 py-2 bg-gray-200 rounded active" data-tab="vision">시각</button>
     <button class="tab-button px-4 py-2 bg-gray-200 rounded" data-tab="immunity">면역력</button>
     <button class="tab-button px-4 py-2 bg-gray-200 rounded" data-tab="weight">체중</button>
@@ -411,25 +420,25 @@ $(document).ready(function(){
   </div>
 
   <!-- 탭 내용 -->
-  <div class="tab-content bg-white shadow-md rounded-xl p-6 text-center">
+  <div class="tab-content bg-green-100 shadow-md rounded-xl p-6 text-center">
     <div id="vision" class="tab-panel">
-      <h3 class="text-lg font-bold text-red-500 mb-2">시각</h3>
-      <p class="text-gray-600">새끼 고양이의 시력 및 시각과 관련된 공간 지각력이 완전히 발달하려면 최대 4주가 걸립니다.</p>
+      <h3 class="text-2xl font-bold text-red-500 mb-2">시각</h3>
+      <p class="text-gray-600">새끼 고양이의 시력 및 시각과 관련된 공간 지각력이 완전히 발달하려면 최대 <br>4주가 걸립니다.</p>
     </div>
     <div id="immunity" class="tab-panel hidden">
-      <h3 class="text-lg font-bold text-red-500 mb-2">면역력</h3>
+      <h3 class="text-2xl font-bold text-red-500 mb-2">면역력</h3>
       <p class="text-gray-600">생후 6개월 동안 새끼 고양이는 미성숙한 면역 체계로 수많은 세균으로부터 자신을 보호해야 합니다.</p>
     </div>
     <div id="weight" class="tab-panel hidden">
-      <h3 class="text-lg font-bold text-red-500 mb-2">3배로 늘어나는 체중</h3>
-      <p class="text-gray-600">고양이는 태어나서 일주일 만에 체중이 2배, 3주 만에 3배로 늘어나는 급격한 성장을 보입니다.</p>
+      <h3 class="text-2xl font-bold text-red-500 mb-2">3배로 늘어나는 체중</h3>
+      <p class="text-gray-600">고양이는 태어나서 일주일 만에 체중이 2배, 3주 만에 3배로 늘어나는 <br>급격한 성장을 보입니다.</p>
     </div>
     <div id="bone" class="tab-panel hidden">
-      <h3 class="text-lg font-bold text-red-500 mb-2">튼튼한 뼈</h3>
+      <h3 class="text-2xl font-bold text-red-500 mb-2">튼튼한 뼈</h3>
       <p class="text-gray-600">생후 첫해 동안 새끼 고양이의 뼈는 콘크리트보다 네 배 강해질 정도로 빠르게 자랍니다.</p>
     </div>
     <div id="growth" class="tab-panel hidden">
-      <h3 class="text-lg font-bold text-red-500 mb-2">놀라운 성장</h3>
+      <h3 class="text-2xl font-bold text-red-500 mb-2">놀라운 성장</h3>
       <p class="text-gray-600">새끼 고양이는 생후 6개월 동안 10세 어린이만큼 성장하는 경이로운 속도를 보여줍니다.</p>
     </div>
   </div>
@@ -464,12 +473,24 @@ $(document).ready(function(){
         });
     });
 </script>
-   <section>
-      <h2>출생부터 성묘가 되기까지 새끼 고양이의 발달</h2>
-      <br><br>
-       <a href="https://www.royalcanin.com/kr/cats/kitten/kitten-development-from-birth-to-adulthood">
-      <img src="/animal/resources/image/catgrow.gif" width="500px">
-      <p class="apple">자세히 알아보기</p></a></section>
+  <section class="text-center my-10">
+  <h2 class="text-2xl font-bold text-gray-700 mb-6">출생부터 성묘가 되기까지 새끼 고양이의 발달</h2>
+<br>	
+  <a href="/animal/cat/cat_born.do" class="inline-block group">
+    <img src="/animal/resources/image/catgrow.gif" width="500px" class="mx-auto rounded-xl shadow-md mb-4">
+
+    <p class="inline-flex items-center gap-2 px-4 py-2 bg-transparent text-pink-600 font-semibold text-base  rounded-full hover:text-pink-700 hover:border-pink-400 transition duration-300 ease-in-out transform group-hover:scale-105">
+      <span class="cat-icon inline-block transition-transform duration-300 ease-in-out group-hover:rotate-6">🐾</span>
+      자세히 알아보기
+    </p>	
+  </a>
+</section>
+
+<style>
+  .group:hover .cat-icon {
+    transform: rotate(15deg) scale(1.1);
+  }
+</style>	
    
 
    <section id="second">
@@ -477,9 +498,9 @@ $(document).ready(function(){
     
     <style>
         .cat-slide-title {
-            color: #355E3B;;
+            color: #8F9779;
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 550;
         }
         .cat-slide-desc {
             color: #555;
@@ -669,9 +690,8 @@ $(document).ready(function(){
                       그렇기 때문에 새끼 고양이가 어미를 떠나는 순간부터 성장에 필요한 전부를 보호자에게 의지하게 됩니다.
                       <br><br>
                   	새끼 고양이의 면역체계는 아직 완전하지 않습니다. 어미 고양이가 수유를 중단하고 고체의 음식을 먹이기
-                     시작하면, 새끼 고양이의 면역이 감소하고 동시에 각종 질병에 취약해질 수 있습니다. <br>
-                     따라서 새끼 고양이의 건강한
-                     미래를 위한 첫 걸음은 바로 동물병원을 방문하는 것입니다.</p>
+                     시작하면, 새끼 고양이의 면역이 감소하고 동시에 각종 질병에 취약해질 수 있습니다. <br><br>
+                     따라서 새끼 고양이의 건강한  미래를 위한 첫 걸음은 바로 동물병원을 방문하는 것입니다.</p>
                   <p>일반적으로 새끼 고양이 건강 관리로는 정기적인 건강 검진, 백신 접종, 기생충 예방 및 구강 케어가
                      있으며, 모두 새끼 고양이의 건강에 필수적입니다. 집 근처의 좋은 수의사를 찾는 것은 새끼 고양이를 돌보는 과정에
                      있어 필요한 정보를 얻을 수 있는 좋은 자원이 될 것입니다.</p><br>
@@ -728,7 +748,7 @@ $(document).ready(function(){
 .svg-wreath:hover text {
   font-size: 18px; /* 글씨 크기 확대 */
   filter: blur(1px); /* 블러 효과를 주어 Boom 느낌을 추가 */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  text-shadow: 0 	0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
 }
 
 @keyframes rotateText {
@@ -738,7 +758,7 @@ $(document).ready(function(){
 }
 
 a {
-  text-decoration: none; /* 링크의 기본 밑줄 제거 */
+  text-decoration: none; /* 링크의 기본 밑줄 제거 */	
 }
 </style>
          <h2 class="sc-e30fa0b4-0 jVZGT sc-5a34121c-1 dxAFlT"> 5. 어린 반려묘의 출생부터 12주까지 주요 발달</h2>

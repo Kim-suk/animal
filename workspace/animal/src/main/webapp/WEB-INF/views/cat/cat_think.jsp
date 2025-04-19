@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   
 <!doctype html>
 <html lang="ko">
 <head>
@@ -12,9 +12,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <title>고양이를 기를까 고민 중이신가요?</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMJUA.woff.css" />
-
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="/animal/resources/css/default.css">
 <style>
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -102,6 +103,7 @@ height:935px;margin-left:0px;-webkit-transition:all 1s;transition:all 1s}
   font-size: 40px;
   font-weight: 400;
   font-family:'notokr-regular'
+ 
 }
 h3{
 color:#355E3B;
@@ -137,7 +139,7 @@ color:#355E3B;
   margin-bottom: 8px; /* 아래 간격 추가 */
   font-size: 12px;
   color: white;
-  background-color: #355E3B;
+  background-color: #8F9779;
   border-radius: 50%;
   font-weight: bold;
 }
@@ -195,6 +197,7 @@ color:#355E3B;
 
 .tab-panel {
   display: none;
+  background-color:#8F9779;
 }
 
 .tab-panel:not(.hidden) {
@@ -218,7 +221,7 @@ color:#355E3B;
 
     .apple{
      appearance: none;
-    background: #355E3B;
+    background: #8F9779;
     border-color: #8F9779;
     border-width: 2px;
     border-radius: 2em;
@@ -271,13 +274,17 @@ color:#355E3B;
             margin: 8px auto 0;
         }
 
-        .info-box {
-            background-color: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            padding: 30px;
-            transition: transform 0.3s ease;
-        }
+      .info-box {
+    background-color: #8F9779;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    padding: 30px;
+    transition: transform 0.3s ease;
+
+    width: 400px;      /* 원하는 너비로 조정 */
+    height: 300px;     /* 원하는 높이로 조정 */
+   /* 내용이 넘칠 경우 숨기기 (선택사항) */
+}
 
         .info-box:hover {
             transform: translateY(-5px);
@@ -286,14 +293,14 @@ color:#355E3B;
         .info-title {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #355E3B;
+            color: #8F9779;
             text-align: center;
             margin-bottom: 15px;
         }
 
         .info-text {
             font-size: 0.95rem;
-            color: #555;
+            color: #fff;
             text-align: center;
             line-height: 1.6;
         }
@@ -331,7 +338,24 @@ color:#355E3B;
   animation: bounce 1s infinite;
   margin: 0; /* 기본 여백 제거 */
 }
+.btn-outline-olive {
+  color: #8F9779;
+  border: 1px solid #8F9779;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
 
+.btn-outline-olive:hover {
+  background-color: #8F9779;
+  color: white;
+}
+  .cat-img {
+     width: 100%;
+     height: 350px;
+     object-fit: cover;
+     border-radius: 10px;
+   }
+   
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -427,7 +451,7 @@ $(document).ready(function(){
 
 <div class="info-header">
   <h2>해당 페이지에서는 다음과 같은 정보를 확인할 수 있습니다.</h2>
-  <br><br><br>
+ 
   <p class="emoji">🐈</p>
 </div>
 
@@ -554,12 +578,14 @@ $(document).ready(function(){
 	<section id="first">
 		<div class="p-4 border rounded shadow-sm bg-white mb-4">
   <h2 class="mb-3">1. 책임감 있는 보호자가 되려면?</h2>
-  <a href="${contextPath}/cat/cat_responsible.do" class="btn btn-outline-danger">자세히 알아보기</a>
+ <a href="${contextPath}/cat/cat_responsible.do" class="btn btn-outline-olive">
+  자세히 알아보기
+</a>
 </div>
 
 	</section>
 	
-		<h3>고양이를 키울 때의 장점</h3>
+		<h2>고양이를 키울 때의 장점</h2><br><br>
 		
 		<div class="tabs">
   <div class="tab-buttons">
@@ -625,80 +651,119 @@ $(document).ready(function(){
 		<h2>2.고양이를 키우기 전에 고려해야 할 점</h2>
 		<br>
 		<p>
-			고양이와 함께 살면서 애정 어린 유대감과 동반자로서 사랑을 느낄 수 있는 것은 물론, 다양한 보상이 있습니다.<br>
-			하지만 고양이와 함께 살기 이전에 장점과 단점을 모두 알고 있는 것이 좋습니다. 고양이는 좋은 반려동물이 될 수 있습니다.<br>
-			물론, 모든 고양이가 그런 것은 아니지만 대부분 조용하고 놀기를 좋아하며 집에서 훈련하기 쉬운 편입니다.<br>
-
-			그렇다면 고양이를 키우기에 앞서 아래 항목도 고려해 보세요.
-		</p>
-		<p>경제적 비용 고양이를 키우게 되면 위생과 그루밍, 고품질의 권장사료부터 병원비까지 기존의 월 예산에서 추가적
+			고양이와 함께 살면서 애정 어린 유대감과 동반자로서 사랑을 느낄 수 있는 것은 물론, 다양한 보상이 있습니다.<br><br>
+			하지만 고양이와 함께 살기 이전에 장점과 단점을 모두 알고 있는 것이 좋습니다.<br> 고양이는 좋은 반려동물이 될 수 있습니다.
+			물론, 모든 고양이가 그런 것은 아니지만 대부분 조용하고 놀기를 좋아하며 집에서 훈련하기 쉬운 편입니다.<br><br>그렇다면 고양이를 키우기에 앞서 아래 항목도 고려해 보세요.
+		<br>	
+		경제적 비용 고양이를 키우게 되면 위생과 그루밍, 고품질의 권장사료부터 병원비까지 기존의 월 예산에서 추가적
 			비용이 듭니다. 고양이의 수명이 18살 이상이라는 점을 고려할 때 장기적으로 고양이를 키우기 위한 재정적 지원이 가능한지
-			고려해야 합니다.</p>
-		<br>
-
-		<p>
-			독특한 성격 고양이는 독립적인 동물로 잘 알려져 있습니다. 고양이들도 애정 표현을 하지만 이는 고양이의 기분에 달려 있으며,<br>
-			여러분이 원한다고 해서 고양이가 애정 표현을 해줄 것이라고 기대해서는 안 됩니다. 대신, 보호자는 고양이들이 본래의 성격대로
+			고려해야 합니다.
+		<br><br>독특한 성격 고양이는 독립적인 동물로 잘 알려져 있습니다. 고양이들도 애정 표현을 하지만 이는 고양이의 기분에 달려 있으며,
+			여러분이 원한다고 해서 고양이가 애정 표현을 해줄 것이라고 기대해서는 안 됩니다.<br><br> 대신, 보호자는 고양이들이 본래의 성격대로
 			성장할 수 있도록 안전한 환경을 제공할 책임이 있습니다.
-		</p>
-		<br>
-		<p>
-			고양이가 혼자 있는 시간 고양이를 오랜 시간 혼자 두지 마세요. 여러분이 직장을 간 사이에도 고양이는 신선한 물과 양질의
-			사료,<br> 깨끗한 화장실 그리고 그들을 즐겁게 해줄 장난감이 필요합니다. 고양이와 함께 있을 때에는 고양이를<br>
+		<br><br>
+		고양이가 혼자 있는 시간 고양이를 오랜 시간 혼자 두지 마세요.<br> 여러분이 직장을 간 사이에도 고양이는 신선한 물과 양질의
+			사료, 깨끗한 화장실 그리고 그들을 즐겁게 해줄 장난감이 필요합니다. 고양이와 함께 있을 때에는 고양이를
 			위해 신나는 놀이 시간을 만들어 주세요.
 		</p>
 	</section>
-	<section id="third">
-		<h2>3. 나에게 맞는 묘종은?</h2>
-		<br>
-		<img
-			src="https://cdn.royalcanin-weshare-online.io/vlc47YwBBKJuub5q0xhB/v3/abyssinian-adult-brand-emblematic-4-3"
-			width="200px">
-
-		<p>고양이를 키우는 것이 처음이거나 또는 다묘 가정인 경우에도, 나에게 잘 맞는 고양이를 고르는 것은 아주<br>
-			중요합니다. 급하게 결정하기보다 시간을 갖고 천천히 다음의 사항들을 고려해보세요.<br>
-		<p>1. 나이: 새끼 고양이와 성묘 중 어느 연령대의 고양이를 선호하시나요?</p>
-
-		<p>2. 성별: 수컷과 암컷 중 어떤 고양이를 선호하시나요?</p>
-
-		<p>3. 성격: 에너지가 넘치는 고양이, 안기기를 좋아하는 고양이, 독립적인 고양이 등 어떤 성격의 고양이를
-			선호하시나요?</p><br>
-
-		<p>4. 가족 구성원: 입양 결정에 함께 고려해야 할 어린 자녀 혹은 다른 반려동물이 있으신가요?</p><br>
-
-		<p>5. 그루밍: 발톱 깎기, 빗질, 양치질과 같이 고양이를 그루밍하는데 얼마나 많은 시간을 할애할 수 있으신가요?</p>
-
-		<p>6. 생활 공간: 고양이들이 생활할 수 있는 개인 정원과 같은 실외공간이 있나요? 그렇지 않다면 실내에서 키울 수<br>
-			있는 고양이를 고려해보세요.</p>
+	
+	  <section id="third"  class="image-links-blur">
+      <h2>3. 영양 요소에 따른 새끼 고양이 급여 방법</h2>
+      <br><br>
+<style>
+.image-links-blur {
+  position: relative;
+  width: 100%;
+  min-height: 500px; /* 고정 height 대신 최소 높이로 */
+  padding: 2rem; /* 텍스트와 경계 사이 간격 */
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* 세로 정렬로 텍스트가 위, 이미지가 아래 */
+  justify-content: center;
+  align-items: center;
+}
 
 
-		<p>어떤 고양이를 입양할지 고민 중이시라면 고양이와 보호자와의 관계는 상호적인 것이라는 점을 꼭 기억하세요. 미래의 고양이에게<br>
-		여러분이 제공하는 환경과 애정은 고양이가 여러분의 삶을 풍요롭게 만들어 주는 것만큼 중요하답니다.</p>
-		
-		<a class="apple" href="/animal/cat/cat_type.do">묘종 알아보기</a>
+.image-links-blur::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/animal/resources/image/cat_think.avif');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* 흐리게 만들기 위한 불투명도 설정 */
+  filter: blur(2px); /* 블러 효과 추가 */
+  z-index: 1;
+}
 
-	</section>
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  z-index: 2; /* 텍스트와 이미지가 배경 위에 오도록 */
+}
+
+.image-container a {
+  display: block;
+}
+
+.image-container img {
+  width: 48%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+</style>
+      <p>새끼 고양이는 성장하면서 특별한 식단을 필요로 합니다. 새끼 고양이에게 무엇을 먹일지, 심지어 어떻게 먹여야
+         할지 궁금해 하는 것은 지극히 정상적인 일입니다.
+         <br><br>
+         생후 1-2주의 정도의 새끼 고양이라면 분유나 초유를 먹여야합니다. 생후 4주이상이라면 건식 사료를 급여를 해야 합니다.
+         사료양은 아기고양이든 성묘이든 크기와 나이, 활동량 건강상태에따라 다릅니다.
+         <br><br>
+         고양이의 신진대사와 필요한 영양분이 다르기 때문입니다. 고양이의 척추나 갈비벼가 보인다면 말랐다는 신호!! 
+         <br><br>
+		 만졌을 때척추나 갈비뼈가 보이지않는다면 과체중입니다.
+         고양이 사료 적정량을 알아보기에 앞서 고양이는 예민한 동물로 환경이 바뀌면 사료를 잘 먹지 않을 수 있어 분양 전 
+         먹였던 사료를 미리 알아두시고 사료를 바로 바꾸기보다 환경 적응을 한 후 천천히 바꿔나가시는 것이 좋습니다.
+         <br><br>
+         ​생후 4개월까지는 아기고양이 사료를 급여를 해주셔야하며 하루 급여량은 체중의 4%의 사료를 주는 것이 좋습니다. 
+         아기고양이 사료는 한번에 배급을 하는 것이 아닌 5시간 간격 4회나누어주어야 비만묘로갈 수 있는 원인을 차단할 수 있습니다.
+
+​
+   </section>
 
 	<section id="fourth">
-		<h2>4. 고양이 입양처</h2>
-		<br>
-		<div data-qa="variation-content" class="sc-5f5e92c9-1 eWfCvf">
-			<div data-qa="rich-text">
-				<div class="sc-7ac1f6cf-0 dUwySw">
-					<div>
-						<p>
-							여러분의 라이프 스타일에 가장 잘 어울리는 고양이를 결정했다면 그 고양이는 어디서 찾아야 할지 알고 계신가요?
-							 책임감 있는 보호자로서 안전하고 도덕적인 방법으로 고양이를 입양해야 합니다. <br>
+		<div class="container my-5">
+      <div class="row align-items-center">
+        <!-- 이미지 왼쪽 -->
+        <div class="col-md-6">
+          <img src="/animal/resources/image/cat_think2.avif" class="img-fluid rounded cat-img" alt="고양이">
+        </div>
+
+        <!-- 텍스트 오른쪽 -->
+        <div class="col-md-6">
+          <div class="cat-title"><h2>고양이 입양처</h2></div>
+          <p class="cat-desc mt-3">
+          여러분의 라이프 스타일에 가장 잘 어울리는 고양이를 결정했다면 그 고양이는 어디서 찾아야 할지 알고 계신가요?
+							 책임감 있는 보호자로서 안전하고 도덕적인 방법으로 고양이를 입양해야 합니다. <br><br>
 
 								책임감 있는 브리더와 동물 보호소, 펫샵에서는 가능한 그들이 보살피고 있는 반려동물을 위해 최고의 
 								가정을 찾아주려고 노력할 것입니다.</p>
-						<br>
-					</div>
-				</div>
-			</div>
-		</div>
+          
+        </div>
+      </div>
+    </div>
 	</section>
-	<section>
+
 		<div class="container py-5">
     <h2 class="section-title">입양하는 법</h2>
 
@@ -716,14 +781,15 @@ $(document).ready(function(){
             <div class="info-box">
                 <div class="info-title">지인이나 이웃</div>
                 <div class="info-text">
-                    고양이를 데려오기 전에 새끼 고양이가 건강한 어미 고양이로부터 적절하게 수유를 마쳤는지 확인해야 합니다. 건강검진과 예방접종을 위해 가능한 신속하게 동물 병원을 예약하세요.
+                    고양이를 데려오기 전에 새끼 고양이가 건강한 어미 고양이로부터 적절하게 수유를 마쳤는지 확인해야 합니다.
+                     건강검진과 예방접종을 위해 가능한 신속하게 동물 병원을 예약하세요.
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-	</section>
+	
 
 
 </body>

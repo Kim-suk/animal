@@ -10,5 +10,6 @@ public interface catViewController {
 	public String showCatType();
 	public String showCatResponsible();	
 	public String showCatGrow();	
+	public String showCatBorn();	
 	public String showCatDetail(@PathVariable("breed") String breed, Model model);
 }

@@ -5,14 +5,15 @@
   <meta charset="UTF-8">
   <title>고양이 보호자 가이드</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/animal/resources/css/default.css">
   <style>
     .card-icon { font-size: 2.5rem; color: #ff4b5c; }
     .card { border: none; border-radius: 1rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05); margin-bottom: 20px; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
+    .card:hover { transform: translateY(-5px); color:#8F9779;}
   </style>
 </head>
 <body class="bg-light">
-
+<br><br><br><br>
 <div class="container py-5">
   <h2 class="text-center mb-4">🐱 고양이 보호자 가이드</h2>
 

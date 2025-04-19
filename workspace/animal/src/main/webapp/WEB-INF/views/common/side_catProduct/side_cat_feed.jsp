@@ -39,9 +39,9 @@
           <span>무게</span><span class="toggle-icon">▼</span>
         </div>
         <div class="filter-options">
-          <label><input type="checkbox" name="무게" value="2KG 이하"> 2KG 이하</label>
-          <label><input type="checkbox" name="무게" value="10KG 이하"> 2이상 ~ 10KG 이하</label>
-          <label><input type="checkbox" name="무게" value="10KG 이상"> 10KG 이상</label>
+          <label><input type="checkbox" name="무게" value="2KG이하"> 2KG 이하</label>
+          <label><input type="checkbox" name="무게" value="10KG이하"> 2이상 ~ 10KG 이하</label>
+          <label><input type="checkbox" name="무게" value="10KG이상"> 10KG 이상</label>
         </div>
       </div>
 
@@ -68,7 +68,7 @@
           <label><input type="checkbox" name="알갱이크기" value="큰알갱이"> 큰알갱이</label>
         </div>
       </div>
-    </div>
+      </div>
   </aside>
 
   <script>

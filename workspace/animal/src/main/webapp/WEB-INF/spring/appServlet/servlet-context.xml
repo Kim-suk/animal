@@ -71,6 +71,8 @@
 			<property name="maxInMemorySize" value="1000000" />
 			<property name="defaultEncoding" value="utf-8" />	
 		</bean>
+		<!-- 결제 api 관련 설정 -->
+		<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
 </beans>
 
 

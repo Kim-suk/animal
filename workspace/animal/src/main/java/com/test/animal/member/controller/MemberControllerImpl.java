@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.test.animal.member.service.MemberService;
 import com.test.animal.member.service.MemberServiceImpl;
+import com.test.animal.cart.service.CartService;
 import com.test.animal.member.dto.MemberDTO;
 
 @Controller
@@ -27,6 +28,8 @@ import com.test.animal.member.dto.MemberDTO;
 public class MemberControllerImpl implements MemberController{
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private CartService cartService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
 	
@@ -184,6 +187,13 @@ public class MemberControllerImpl implements MemberController{
 	    if (session != null) {
 	        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
 	        if (isLogin != null && isLogin) {
+	        	
+	        	// 장바구니 비우기
+	        	String memberId = (String) session.getAttribute("loginId");
+	            if (memberId != null) {
+	                cartService.deleteCartByMemberId(memberId);
+	            }
+	            
 	            session.invalidate();
 	            rAttr.addAttribute("result", "logout");
 	        } else {

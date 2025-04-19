@@ -14,12 +14,9 @@
 	</resultMap>
 
 	<!-- 제품 설명 -->
-	<select id="productDetail" parameterType="String"
-		resultType="productDTO">
-      <![CDATA[
-			SELECT animal_type, name, category, description, price, image_url
-				FROM product WHERE id = #{id}
-		]]>
+	<select id="productDetail" resultType="ProductDTO" parameterType="String">
+		  SELECT * FROM product
+		  WHERE id = #{id, jdbcType=VARCHAR}
 	</select>
 
 	<!-- 제품 전체 목록 불러오기 -->

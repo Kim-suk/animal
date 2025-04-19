@@ -3,4 +3,5 @@ encoding//src/main/java/com/test/animal/animal_hospital/service/CsvParserService
 encoding//src/main/webapp/WEB-INF/views/common/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/side_catProduct/side_catProduct.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/product/cat_product.jsp=UTF-8
 encoding//src/main/webapp/resources/data/dog_data.json=UTF-8

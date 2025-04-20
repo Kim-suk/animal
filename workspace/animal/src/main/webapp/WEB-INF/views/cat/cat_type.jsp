@@ -7,17 +7,19 @@
 <head>
 <meta charset="UTF-8">
 
-<title>품종</title>
-
-</head>
-<!-- jQuery 라이브러리 로드 (필수) -->
+  <!-- CSS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bxSlider 플러그인 로드 (필수) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 
-<!-- bxSlider CSS (필수) -->
+ <!-- bxSlider CSS (필수) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"> </script>
+</head>
+
+<title>품종</title>
+
+
 
   <script>
        $(document).ready(function() {
@@ -117,6 +119,7 @@
       max-width: 1200px;
        flex-direction: column; /* 세로 정렬! */
          margin:50px; /* 왼쪽에서 40px 떨어지게 */
+      
     } 
 
 .cat-container .cat-model {
@@ -373,11 +376,12 @@ nav {
   transition: background-color 0.3s;
 }
 
+
 .search-icon:hover {
   background-color: #000;  /* 호버 시 살짝 회색 */
 }
 </style>
-
+</head>
 <body>
 
   <div data-qa="breadcrumbs" class="sc-58202797-0 iJqTVc">

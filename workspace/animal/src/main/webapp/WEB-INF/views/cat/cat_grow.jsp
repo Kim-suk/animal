@@ -6,6 +6,7 @@
 <html lang="ko">
 <head>
  <link rel="stylesheet" href="/animal/resources/css/style.css">
+ <link rel="stylesheet" href="/animal/resources/css/footer.css">
    
   
     <title>어린 반려묘의 발달 5단계</title>
@@ -23,20 +24,20 @@
             
         }
 
-          /* 배경 이미지 설정 */
-        .background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("https://cdn.pixabay.com/photo/2017/11/09/21/41/cat-2934720_1280.jpg");
-            background-size: cover;
-            background-size: cover; /* 추가: 전체 화면 채우기 */
-            background-position: center;
-            filter: blur(8px); /* 흐림 효과 */
-            z-index: -1; /* 콘텐츠 위로 올리지 않도록 설정 */
-        }
+       /* 배경 이미지 설정 */
+.background-image {
+    position: fixed; /* 화면 스크롤과 상관없이 고정 */
+    top: 0;
+    left: 0;
+    width: 100vw;  /* 뷰포트 너비 */
+    height: 100vh; /* 뷰포트 높이 */
+    background-image: url("https://cdn.pixabay.com/photo/2017/11/09/21/41/cat-2934720_1280.jpg");
+    background-size: cover;       /* 화면 꽉 채우기 */
+    background-position: center;  /* 중앙 정렬 */
+    background-repeat: no-repeat; /* 반복 방지 */
+    filter: blur(8px);            /* 흐림 효과 */
+    z-index: -1;                  /* 가장 뒤에 위치 */
+}
 
         .container {
             max-width: 960px;
@@ -62,7 +63,7 @@
 
         .milestone h2 {
             margin-top: 0;
-            color: #355E3B;
+            color: #8F9779;
             font-size: 20px;
         }
 

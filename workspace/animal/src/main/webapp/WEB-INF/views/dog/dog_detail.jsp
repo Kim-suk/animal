@@ -3,9 +3,12 @@
 <head>
 <title>강아지 상세 정보</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/animal/resources/css/default.css">
 
 
 
@@ -120,17 +123,7 @@ button {
     transform: translateX(0);
   }
 }
- .background {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://cdn.royalcanin-weshare-online.io/wWnrsmoBG95Xk-RBavY6/v1/bd286h-hub-russian-toy-adult-standing');
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px) brightness(0.5);
-    z-index: -1;
-} 
+
 
   /* 오른쪽 사이드바 스타일 */
   /* #side-bar {

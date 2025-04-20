@@ -9,13 +9,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>강아지를 기를까 생각중이신가요?</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMJUA.woff.css" />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
-<script src="https://cdn.jsdelivr.net/npm/@google/model-viewer@1.0.0/dist/model-viewer.min.js"></script>
-
+<script src="https://code.jquery.com/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="/animal/resources/css/default.css">
 <!-- 3D 모델뷰어 -->
 <script type="module" src="https://cdn.royalcanin-weshare-online.io/XEAlJ4oBRYZmsWpctAuD/v5/maine-coon-kittens"></script>
 <!-- 페이지 전용 스타일 -->

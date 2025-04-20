@@ -537,7 +537,7 @@ $(document).ready(function(){
                     <div class="col-md-6">
                         <div class="text-start px-4">
                             <p class="text-muted mb-1">1/3</p>
-                            <div class="cat-slide-title">새끼 고양이를 맞이할 준비</div>
+                            <div class="cat-slide-title">새끼 고양이를 맞이할 <br>준비</div>
                             <p class="cat-slide-desc mt-3">
                                 새끼 고양이를 맞이하기 전에는 안전한 공간과 필요한 용품들을 미리 준비해 주세요.
                                 편안한 첫 만남을 위해 조용한 방이 좋아요.
@@ -762,9 +762,12 @@ a {
 }
 </style>
          <h2 class="sc-e30fa0b4-0 jVZGT sc-5a34121c-1 dxAFlT"> 5. 어린 반려묘의 출생부터 12주까지 주요 발달</h2>
-         <br>
-        <img src="/animal/resources/image/cat10.avif" style=margin-left:-200px class="d-block rounded">
-      </div>
+<br>
+<div>
+    <a href="/animal/cat/cat_grow.do">
+        <img src="/animal/resources/image/cat10.avif" style="margin-left: -200px;" class="d-block rounded">
+    </a>
+</div>
    </div>
    </section>
   

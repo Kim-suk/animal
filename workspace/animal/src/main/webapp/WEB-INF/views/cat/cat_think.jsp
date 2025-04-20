@@ -280,7 +280,7 @@ color:#355E3B;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     padding: 30px;
     transition: transform 0.3s ease;
-
+  margin-bottom: 20px; /* 세로 여백 추가 */
     width: 400px;      /* 원하는 너비로 조정 */
     height: 300px;     /* 원하는 높이로 조정 */
    /* 내용이 넘칠 경우 숨기기 (선택사항) */
@@ -563,7 +563,7 @@ $(document).ready(function(){
 
     <!-- 하단 안내 문구 -->
     <div class="text-center mt-5">
-      <h2> <div class="faq-title">새끼 고양이와 함께 보내는 첫날</div></h2><br>
+      <h2> <div class="faq-title" style="color: #8F9779;">새끼 고양이와 함께 보내는 첫날</div></h2><br>
         <p class="faq-sub">
             새끼 고양이는 새로운 환경에 매우 예민하므로 집으로 맞이할 때 조심해야 합니다.
         </p>
@@ -764,32 +764,32 @@ $(document).ready(function(){
     </div>
 	</section>
 
-		<div class="container py-5">
-    <h2 class="section-title">입양하는 법</h2>
-
-    <div class="row mt-5 gx-4 gy-4">
-        <div class="col-md-6">
-            <div class="info-box">
-                <div class="info-title">보호소</div>
-                <div class="info-text">
-                    파양되거나 유기된 고양이를 데려오기로 결정했다면 지역에 있는 고양이 보호소를 방문해 가능한 많은 정보를 공유해보세요.
-                     보호소 안의 고양이들에 대해 잘 알고 있기 때문에 가장 잘 어울리는 고양이를 추천해 줄 수 있습니다.
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="info-box">
-                <div class="info-title">지인이나 이웃</div>
-                <div class="info-text">
-                    고양이를 데려오기 전에 새끼 고양이가 건강한 어미 고양이로부터 적절하게 수유를 마쳤는지 확인해야 합니다.
-                     건강검진과 예방접종을 위해 가능한 신속하게 동물 병원을 예약하세요.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+			<div class="container py-5">
+	    <h2 class="section-title">입양하는 법</h2>
 	
+	    <div class="row mt-5 gx-4 gy-4">
+	        <div class="col-md-6">
+	            <div class="info-box">
+	                <div class="info-title">보호소</div>
+	                <div class="info-text">
+	                    파양되거나 유기된 고양이를 데려오기로 결정했다면 지역에 있는 고양이 보호소를 방문해 가능한 많은 정보를 공유해보세요.
+	                     보호소 안의 고양이들에 대해 잘 알고 있기 때문에 가장 잘 어울리는 고양이를 추천해 줄 수 있습니다.
+	                </div>
+	            </div>
+	        </div>
+	        <div class="col-md-6">
+	            <div class="info-box">
+	                <div class="info-title">지인이나 이웃</div>
+	                <div class="info-text">
+	                    고양이를 데려오기 전에 새끼 고양이가 건강한 어미 고양이로부터 적절하게 수유를 마쳤는지 확인해야 합니다.
+	                     건강검진과 예방접종을 위해 가능한 신속하게 동물 병원을 예약하세요.
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+		
 
 
 </body>

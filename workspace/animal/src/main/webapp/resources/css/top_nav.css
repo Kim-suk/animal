@@ -16,3 +16,48 @@ background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0))
 #top_nav > li > ul > li a{font-size:15px;color:#ddd;transition:all .2s}
 #top_nav > li > ul > li a:hover{color:#fff}
 
+/* 로그인/로그아웃 메뉴 */
+.top-links-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+     justify-content: flex-end; /* ✅ 여기서 정렬 */
+     margin-left:0px;
+}
+
+.top-links li {
+    margin-left: 20px;
+}
+
+.top-links a {
+    color: white;
+    text-decoration: none;
+     justify-content: flex-end; /* 오른쪽 정렬 */
+     
+}
+
+.top-links .nav-link {
+    font-size: 16px;
+    padding: 5px 10px;
+    display: inline-block;
+    font-weight: 500;
+    transition: 0.3s;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.top-links .nav-link:hover {
+    color: #ccc;
+}
+
+/* 로그인 후 상태 */
+.top-links .nav-link.login {
+    font-weight: 600;
+}
+
+/* 로그인/로그아웃 처리 */
+.top-links .login a {
+    color: #fff;
+}

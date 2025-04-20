@@ -38,7 +38,7 @@
 
 
 <!-- script -->
-<script type="text/javascript" src="/animal/resources/script/jquery-1.8.3.min.js"></script>
+
 <script type="text/javascript" src="/animal/resources/script/jquery-ui.js"></script>
 <script type="text/javascript" src="/animal/resources/script/jquery-menu.js"></script>
 <script type="text/javascript" src="/animal/resources/script/common.js"></script>

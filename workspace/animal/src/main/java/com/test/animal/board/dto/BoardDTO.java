@@ -15,8 +15,8 @@ public class BoardDTO {
 	private Date writedate;
 	private int readcount;
 	
-	private String img;
-	private int  comment_count;
+	private String thumbnail;
+	private int comment_count;
 	private int like_it;
 
 	private String searchKeyword;
@@ -74,11 +74,11 @@ public class BoardDTO {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
-	public String getImg() {
-		return img;
+	public String getThumbnail() {
+		return thumbnail;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 	public int getComment_count() {
 		return comment_count;
@@ -109,8 +109,8 @@ public class BoardDTO {
 	@Override
 	public String toString() {
 		return "BoardDTO [bno=" + bno + ",category=" + category + ", id=" + id + ", title=" + title + ", content="
-				+ content + ", hashtag=" + hashtag + ", writedate=" + writedate + ", readcount=" + readcount + ", img="
-				+ img + ", comment_count=" + comment_count + ", like_it=" + like_it + ", searchKeyword=" + searchKeyword
+				+ content + ", hashtag=" + hashtag + ", writedate=" + writedate + ", readcount=" + readcount + ", thumbnail="
+				+ thumbnail + ", comment_count=" + comment_count + ", like_it=" + like_it + ", searchKeyword=" + searchKeyword
 				+ ", uploadFile=" + uploadFile + "]";
 	}
 	

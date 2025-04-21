@@ -2,6 +2,7 @@ package com.test.animal.board.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -27,94 +28,239 @@ public class BoardControllerImpl implements BoardController {
 	private BoardService boardService;
 
 	// 寃뚯떆湲� 紐⑸줉
-	@RequestMapping("/board/getBoardList.do")
-	public String getBoardList(BoardDTO dto, @RequestParam("category") String category, Model model) {
-		dto.setCategory(category);
-		model.addAttribute("boardList", boardService.getBoardList(dto));
-		model.addAttribute("category", category); // jsp�뿉�꽌 �쑀吏��븯湲� �쐞�빐
-		return "/board/getBoardList";
-	}
+		@RequestMapping("/board/getBoardList.do")
+		public String getBoardList(BoardDTO dto, @RequestParam("category") String category, Model model) {
+		    List<BoardDTO> boardList = boardService.getBoardList(dto);
 
-	// 寃뚯떆湲� �긽�꽭 蹂닿린
-	@RequestMapping("/board/getBoard.do")
-	public String getBoard(BoardDTO dto, @RequestParam("category") String category, Model model) {
-		dto.setCategory(category);
-		model.addAttribute("board", boardService.getBoard(dto));
-		List<CommentDTO> cmt_list = boardService.getComment(dto);
-		model.addAttribute("cmt_list", cmt_list);
-		model.addAttribute("category", category);
-		return "/board/getBoard";
-	}
+			
+			   for (BoardDTO board : boardList) {
+			        System.out.println("Board Thumbnail: " + board.getThumbnail());
+			    }
+			
+			model.addAttribute("boardList", boardService.getBoardList(dto));
+			model.addAttribute("category", category);
+			return "/board/getBoardList";
+		}
 
-	// 湲��벐湲� �뤌
+		@RequestMapping("/board/getBoard.do")
+		public String getBoard(@RequestParam("bno") int bno,
+		                       @RequestParam("category") String category,
+		                       Model model) {
+		    BoardDTO dto = new BoardDTO();
+		    dto.setBno(bno);
+		    dto.setCategory(category);
+		    
+		    boardService.updateCommentCountOnBoardLoad(dto.getBno());
+
+		    model.addAttribute("board", boardService.getBoard(dto));
+		    
+		    List<ImageDTO> imageList = boardService.getImageList(dto); // <- 여기에 실제 이미지 리스트를 가져오는 서비스 로직이 있어야 함
+		    model.addAttribute("imageList", imageList); // <- 여기에 넣어줍니다.
+		    
+		    List<CommentDTO> cmt_list = boardService.getComment(dto);
+		    model.addAttribute("cmt_list", cmt_list);
+		    model.addAttribute("category", category);
+
+		    return "/board/getBoard";
+		}
+		
+		
+		
+
+
 	@RequestMapping(value = "/board/insertBoard.do", method = RequestMethod.GET)
 	public String insertBoardForm(@RequestParam("category") String category, Model model) {
 		model.addAttribute("category", category);
 		return "/board/insertBoard";
 	}
 
-	// 湲   벑濡  泥섎━
-	   @RequestMapping(value = "/board/insertBoard.do", method = RequestMethod.POST)
-	   public String insertBoard(BoardDTO dto, @RequestParam("category") String category) throws IOException {
-	      dto.setCategory(category);
+	@RequestMapping(value = "/board/insertBoard.do", method = RequestMethod.POST)
+	public String insertBoard(MultipartHttpServletRequest mRequest, @RequestParam("category") String category) throws IOException {
+	    BoardDTO dto = new BoardDTO();
+	    dto.setCategory(category);
 
-	      MultipartFile uploadFile = dto.getUploadFile();
-	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-	      Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    // 게시글 기본 정보 처리
+	    dto.setTitle(mRequest.getParameter("title"));
+	    dto.setContent(mRequest.getParameter("content"));
+	    dto.setHashtag(mRequest.getParameter("hashtag"));
 
-	      if (!uploadFile.isEmpty()) {
-	         String fileName = uploadFile.getOriginalFilename(); 
-	         String newFileName = sdf.format(timestamp)+ fileName; 
-	         String uploadPath = "C:/springframework/workspace/animal/upload/";
-	         
-	         dto.setImg(newFileName);
-	         uploadFile.transferTo(new File(uploadPath + newFileName));
-	      }
-	      
-	      boardService.insertBoard(dto);
-	      return "redirect:getBoardList.do?category=" + category;
-	   }
+	    // 로그인한 사용자 ID 세션에서 가져오기
+	    HttpSession session = mRequest.getSession();
+	    String id = (String) session.getAttribute("loginId");
+	    dto.setId(id);
 
-	// 湲� �닔�젙 �뤌
+	    // 썸네일로 선택된 파일명 (input type="radio" value)
+	    String thumbnailFileName = mRequest.getParameter("thumbnail");
+
+	    // 파일 처리
+	    List<MultipartFile> uploadFiles = mRequest.getFiles("uploadFiles");
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+	    String uploadPath = "C:/spring_project/workspace/animal/upload/";
+
+	    List<ImageDTO> imageFileList = new ArrayList<>();
+
+	    if (uploadFiles != null && !uploadFiles.isEmpty()) {
+	        for (MultipartFile uploadFile : uploadFiles) {
+	            if (!uploadFile.isEmpty()) {
+	            	 String originalName = uploadFile.getOriginalFilename();
+	                 String cleanedName = Paths.get(originalName).getFileName().toString();
+	                 String newFileName = sdf.format(System.currentTimeMillis()) + "_" + cleanedName;
+	                // 파일 저장
+	                uploadFile.transferTo(new File(uploadPath + newFileName));
+
+	                // 이미지 정보 저장
+	                ImageDTO imageDTO = new ImageDTO();
+	                imageDTO.setImageFileName(newFileName);
+	                imageDTO.setRegDate(new Date());
+	               
+
+	                // 썸네일 여부 설정
+	                if (thumbnailFileName != null && thumbnailFileName.equals(cleanedName)) {
+	                    dto.setThumbnail(newFileName); // 실제 저장된 파일명으로 썸네일 설정
+	                }
+	                imageFileList.add(imageDTO);
+	            }
+	        }
+	    }
+
+	    // 게시글 저장 (bno 자동 생성)
+	    boardService.insertBoard(dto);
+	    int bno = dto.getBno();
+
+	    // 이미지 저장
+	    for (ImageDTO imageDTO : imageFileList) {
+	        imageDTO.setBno(bno);
+	        boardService.insertBoardImage(imageDTO);
+	    }
+	    
+	 // 썸네일이 설정되어 있으면 DB 업데이트
+	    if (dto.getThumbnail() != null) {
+	        boardService.updateBoardThumbnail(bno, dto.getThumbnail());
+	    }
+	   
+		/*
+		 * // 썸네일 처리 if (dto.getThumbnail() == null && !imageFileList.isEmpty()) { //
+		 * 사용자가 썸네일을 선택하지 않은 경우, 첫 번째 이미지를 썸네일로 설정 String fallbackThumbnail =
+		 * imageFileList.get(0).getImageFileName(); dto.setThumbnail(fallbackThumbnail);
+		 * }
+		 */
+	    return "redirect:getBoardList.do?category=" + category;
+	}
+
 	@RequestMapping(value = "/board/updateBoard.do", method = RequestMethod.GET)
-	public String updateBoardForm(@ModelAttribute("board") BoardDTO dto, @RequestParam("category") String category, Model model) {
-		model.addAttribute("category", category);
-		return "updateBoard";
+	public String updateBoardForm(@RequestParam("bno") int bno, @RequestParam("category") String category, Model model) {
+	    // 게시글 번호와 카테고리 설정
+	    BoardDTO dto = new BoardDTO();
+	    dto.setBno(bno);
+	    dto.setCategory(category);
+
+	    // 게시글 정보 가져오기
+	    BoardDTO board = boardService.getBoard(dto);
+
+	    // 게시글에 첨부된 이미지 리스트 가져오기
+	    List<ImageDTO> imageList = boardService.getBoardImages(bno);
+	    
+	    System.out.println("이미지 리스트: " + imageList);
+
+	    model.addAttribute("board", board);         // 게시글 데이터
+	    model.addAttribute("imageList", imageList); // 이미지 리스트
+	    model.addAttribute("category", category);   // 카테고리
+
+	    return "/board/updateBoard"; // 수정 폼 JSP
 	}
 
-	// 湲� �닔�젙 泥섎━
 	@RequestMapping(value = "/board/updateBoard.do", method = RequestMethod.POST)
-	public String updateBoard(@ModelAttribute("board") BoardDTO dto, @RequestParam("category") String category) throws IOException {
-		dto.setCategory(category);
+	public String updateBoard(MultipartHttpServletRequest mRequest,
+	                          @ModelAttribute("board") BoardDTO dto,
+	                          @RequestParam("category") String category,
+	                          @RequestParam(value = "thumbnail", required = false) String thumbnailFileName,
+	                          @RequestParam(value = "deleteImages", required = false) List<String> deleteImages) throws Exception {
 
-		MultipartFile uploadFile = dto.getUploadFile();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    dto.setCategory(category);
+	    String uploadPath = "C:/spring_project/workspace/animal/upload/";
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
-		if (!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			dto.setImg(sdf.format(timestamp) + fileName);
-			uploadFile.transferTo(new File("C:/Users/User/Desktop/kitchen_of_all/KOA/src/main/webapp/img/" + sdf.format(timestamp) + fileName));
-		}
+	    // ✅ 1. 기존 이미지 삭제 처리
+	    if (deleteImages != null && !deleteImages.isEmpty()) {
+	        for (String delName : deleteImages) {
+	            File file = new File(uploadPath + delName);
+	            if (file.exists()) file.delete(); // 실제 파일 삭제
+	            boardService.deleteImageByFileName(delName); // DB에서도 삭제
+	        }
+	    }
 
-		boardService.updateBoard(dto);
-		return "redirect:getBoardList.do?category=" + category;
+	    // ✅ 2. 새로 업로드된 이미지 처리
+	    List<MultipartFile> uploadFiles = mRequest.getFiles("uploadFiles");
+	    if (uploadFiles != null && !uploadFiles.isEmpty()) {
+	        for (MultipartFile uploadFile : uploadFiles) {
+	            if (!uploadFile.isEmpty()) {
+	                String originalName = uploadFile.getOriginalFilename();
+	                String cleanedName = Paths.get(originalName).getFileName().toString();
+	                String newFileName = sdf.format(new Date()) + "_" + cleanedName;
+
+	                
+	                System.out.println("🔥 thumbnailFileName: " + thumbnailFileName);
+	                System.out.println("🧩 originalName: " + originalName);
+	                System.out.println("🧩 cleanedName: " + cleanedName);
+	                System.out.println("✅ newFileName: " + newFileName);
+	                
+	                // 파일 저장
+	                uploadFile.transferTo(new File(uploadPath + newFileName));
+
+	                // 이미지 DTO 생성 및 DB 저장
+	                ImageDTO imageDTO = new ImageDTO();
+	                imageDTO.setBno(dto.getBno());
+	                imageDTO.setImageFileName(newFileName);
+	                imageDTO.setRegDate(new Date());
+	                boardService.insertImage(imageDTO);
+
+	                // 썸네일인지 체크해서 게시글 DTO에 반영
+	                if (thumbnailFileName != null && thumbnailFileName.equals(originalName)) {  // 기존 이미지 파일명과 비교
+	                	System.out.println("🌟 썸네일로 설정됨: " + newFileName);
+	                    dto.setThumbnail(newFileName);
+	                }
+	            }
+	            
+	        }
+	    }
+
+	    // ✅ 3. 썸네일이 기존 이미지인 경우 처리
+	    if (dto.getThumbnail() == null && thumbnailFileName != null) {
+	    	System.out.println("🪄 기존 이미지가 썸네일로 설정됨: " + thumbnailFileName);
+	        dto.setThumbnail(thumbnailFileName); // 기존 이미지가 썸네일로 선택됨
+	    }
+
+	    // ✅ 4. 게시글 정보 수정
+	    boardService.updateBoard(dto);
+
+	    return "redirect:getBoardList.do?category=" + category;
 	}
+
+
 
 	// 湲� �궘�젣
-	@RequestMapping("/board/deleteBoard.do")
+	@RequestMapping(value = "/board/deleteBoard.do", method = RequestMethod.GET)
 	public String deleteBoard(BoardDTO dto, @RequestParam("category") String category) {
 		dto.setCategory(category);
 		boardService.deleteBoard(dto);
 		return "redirect:getBoardList.do?category=" + category;
 	}
 
+	  // 댓글 추가
+    @RequestMapping("/board/insertComment.do")
+    public String insertComment(CommentDTO cdto, @RequestParam("category") String category) {
+        boardService.addComment(cdto);  // 댓글 추가 후 comment_count 갱신
+        return "redirect:/board/getBoard.do?bno=" + cdto.getBno() + "&category=" + category;
+    }
+	
+	/*
 	// �뙎湲� �벑濡�
 	@RequestMapping(value = "/board/insertComment.do")
 	public String insertComment(CommentDTO cdto, @RequestParam("category") String category) throws IOException {
 		boardService.insertComment(cdto);
 		return "redirect:getBoard.do?bno=" + cdto.getBno() + "&category=" + category;
 	}
+	*/
 
 	// 醫뗭븘�슂 泥섎━ (AJAX)
 	@ResponseBody
@@ -129,5 +275,4 @@ public class BoardControllerImpl implements BoardController {
 	}
 
 }
-
 

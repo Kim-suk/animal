@@ -178,8 +178,8 @@ a {
 
 						<li class="list03"><a class="list" href="#">CAT</a>
 							<ul class="sub_ul2">
-								<li class="mo over"><a
-									href="${contextPath }/cat/cat_type.do">묘종</a></li>
+								<li class="mo over"><a href="${contextPath }/cat/cat_about.do">고양이에 대한 모든 것</a></li>
+								<li><a href="${contextPath }/cat/cat_type.do">묘종</a></li>
 								<li><a href="${contextPath }/cat/cat_kitten.do">어린 고양이</a></li>
 								<li><a href="${contextPath }/cat/cat_think.do">고양이를 기를까
 										생각중이신가요?</a></li>
@@ -187,11 +187,10 @@ a {
 							</ul></li>
 						<li class="list04"><a class="list" href="#">DOG</a>
 							<ul class="sub_ul3">
-								<li class="mo over"><a
-									href="${contextPath }/dog/dog_type.do">품종</a></li>
+								<li class="mo over"><a href="${contextPath }/dog/dog_about.do">강아지에 대한 모든 것</a></li>
+								<li><a href="${contextPath }/dog/dog_type.do">품종</a></li>
 								<li><a href="${contextPath }/dog/dog_puppy.do">어린 강아지</a></li>
-								<li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까
-										생각중이신가요?</a></li>
+								<li><a href="${contextPath }/dog/dog_think.do">강아지를 기를까 생각중이신가요?</a></li>
 
 							</ul></li>
 						<li class="list04"><a class="list" href="#"> ARTICLE</a>

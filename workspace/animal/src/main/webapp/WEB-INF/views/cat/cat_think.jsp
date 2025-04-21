@@ -75,7 +75,11 @@ height:935px;margin-left:0px;-webkit-transition:all 1s;transition:all 1s}
       margin: 60px auto;
     }
        
-
+.accordion-button:not(.collapsed) {
+  background-color: #8f9e8b;
+   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+  font-weight: bold;
+}
     .tab-button {
       font-size: 16px;
     }
@@ -99,7 +103,7 @@ height:935px;margin-left:0px;-webkit-transition:all 1s;transition:all 1s}
 
    h2 {
   margin-top: 20px;
-  color: #000;
+  color: #252e23;
   font-size: 40px;
   font-weight: 400;
   font-family:'notokr-regular'

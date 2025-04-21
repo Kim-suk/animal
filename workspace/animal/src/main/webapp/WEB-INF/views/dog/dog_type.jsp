@@ -96,6 +96,8 @@
       border-radius: 20px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
+    
+   
 
 #category1 {
    margin-bottom: 25px; /* h2 아래쪽 여백 */
@@ -134,12 +136,13 @@
 .dog-container .dog-text h1 {
    font-size: 32px;
    margin-bottom: 20px;
+   color: #333;
 }
 
 .dog-container .dog-text p {
    font-size: 18px;
    line-height: 1.6;
-   color: #333;
+   color: #000;
 }
 
 .dog-grid {
@@ -158,7 +161,7 @@
 }
 
 .name {
-   color: rgb(204, 0, 204);
+   color: black;
 }
 
 .dog-grid li {

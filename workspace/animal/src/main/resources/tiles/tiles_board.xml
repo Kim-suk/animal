@@ -26,6 +26,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/board/getBoard.jsp" />		
 	</definition>
 	
+	<definition name="/board/updateBoard" extends="baseLayout">
+		<put-attribute name="title" value="게시글 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/board/updateBoard.jsp" />		
+	</definition>
+	
 	
 	
 	

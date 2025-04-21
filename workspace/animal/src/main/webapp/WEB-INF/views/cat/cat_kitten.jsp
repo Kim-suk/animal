@@ -102,7 +102,7 @@ height:935px;margin-left:0px;-webkit-transition:all 1s;transition:all 1s}
 
    h2 {
   margin-top: 20px;
-  color: #000;
+  color: #252e23;
   font-size: 40px;
   font-weight: 400;
   font-family:'notokr-regular'

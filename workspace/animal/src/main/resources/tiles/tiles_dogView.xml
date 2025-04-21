@@ -39,5 +39,20 @@
 		<put-attribute name="title" value=""/>
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_detail.jsp" />
 	</definition>
+	
+	<definition name="/dog/dog_feed" extends="baseLayout">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_feed.jsp" />
+	</definition>
+	
+	<definition name="/dog/dog_born" extends="baseLayout">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_born.jsp" />
+	</definition>
+	
+	<definition name="/dog/dog_responsible" extends="baseLayout">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_responsible.jsp" />
+	</definition>
 
 </tiles-definitions>

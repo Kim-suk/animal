@@ -4,101 +4,227 @@
 
 <mapper namespace="mapper.board">
 
-	<resultMap type="articleDTO" id="artResult">
-		<result property="articleNo" column="articleNo" />
-		<result property="parentNo" column="parentNo" />
+	<!-- 게시글용 resultMap -->
+	<resultMap type="boardDTO" id="boardResult">
+		<result property="bno" column="bno" />
+		<result property="category" column="category" />
+		<result property="id" column="id" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<result property="writeDate" column="writeDate" />
-		<result property="imageFileName" column="imageFileName" />
+		<result property="hashtag" column="hashtag" />
+		<result property="readcount" column="readcount" />
+		<result property="thumbnail" column="thumbnail" />
+		<result property="writedate" column="writedate" />
+		<result property="comment_count" column="comment_count" />
+		<result property="like_it" column="like_it" />
+	</resultMap>
+
+	<!-- 댓글용 resultMap -->
+	<resultMap type="commentDTO" id="commentResult">
+		<result property="comment_num" column="comment_num" />
+		<result property="bno" column="bno" />
 		<result property="id" column="id" />
+		<result property="content" column="content" />
+		<result property="writedate" column="writedate" />
 	</resultMap>
-	
-	<resultMap type="imageDTO" id="imgResult">
-		<result property="imageFileNo" column="imageFileNo"/>
-		<result property="imageFileName" column="imageFileName" />
-		<result property="regDate" column="regDate" />
-		<result property="articleNo" column="articleNo" />
+
+	<resultMap type="imageDTO" id="imageResult">
+		<result property="imageFileNo" column="image_file_no" />
+		<result property="imageFileName" column="image_file_name" />
+		<result property="regDate" column="reg_date" />
+		<result property="bno" column="bno" />
 	</resultMap>
-	
-	<select id="selectAllArticlesList" resultMap="artResult">
-		<![CDATA[
-			select articleNo, parentNo, title, content, writeDate, 
-			imageFileName, id from board 
-			start with parentNo = 0
-			connect by prior articleNo=parentNo
-			order siblings by articleNo desc
-		]]>
-	</select>
-	
-	<insert id="insertNewArticle" parameterType="articleDTO">
-		<![CDATA[
-			insert into board values(#{articleNo}, #{parentNo}, 
-			#{title}, #{content}, null, sysdate, #{id})
-		]]>
-	</insert>
-	
-	<select id="selectNewArticleNo" resultType="int">
-		<![CDATA[
-			select max(articleNo)+1 from board
-		]]>
-	</select>
-	
-	<select id="selectArticle" resultType="articleDTO" parameterType="int">
-		<![CDATA[
-			select * from board where articleNo=#{articleNo}
-		]]>
-	</select>
-	
-	<update id="updateArticle" parameterType="java.util.Map">
-		update board 
-		set title=#{title}, content=#{content}
-		<if test="imageFileName != '' and imageFileName != null">
-			, imageFileName=#{imageFileName}
+
+	<!-- <mapper namespace="com.test.animal.board.dao.BoardDAO"> -->
+
+	<!-- 게시글 목록 -->
+	<select id="getBoardList" parameterType="boardDTO"
+		resultType="boardDTO">
+		SELECT bno, title, thumbnail, comment_count, like_it
+		FROM board
+		WHERE 1=1
+		<if test="searchKeyword != null">
+			AND (title LIKE '%'||#{searchKeyword}||'%'
+			OR content LIKE '%'||#{searchKeyword}||'%'
+			OR hashtag LIKE '%'||#{searchKeyword}||'%')
 		</if>
-		where articleNo=#{articleNo}
-	</update>
-	
-	<delete id="deleteArticle" parameterType="int">
-		<![CDATA[
-			delete from board where articleNo in 
-			(select articleNo from board start with articleNo=#{articleNo}
-			connect by prior articleNo=parentNo)
-		]]>
-	</delete>
-	
-	<insert id="insertNewImage" parameterType="java.util.Map">
-		<foreach item="item" collection="list" open="insert all"
-			separator=" " close="select * from dual">
-			into image(imageFileNo, imageFileName, articleNo, regDate)
-			values (#{item.imageFileNo}, #{item.imageFileName}, #{item.articleNo},
-			sysdate)	
-		</foreach>
+		AND category = #{category}
+		ORDER BY bno DESC
+	</select>
+
+	<!-- 게시글 상세 보기 -->
+	<select id="getBoard" parameterType="boardDTO"
+		resultType="boardDTO">
+		SELECT * FROM board
+		WHERE bno = #{bno}
+	</select>
+
+	<!-- 게시글 등록 (board_seq 사용) -->
+	<insert id="insertBoard" parameterType="boardDTO">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			SELECT
+			board_seq.NEXTVAL FROM dual
+		</selectKey>
+		INSERT INTO board (
+		bno, category, id, title, content, hashtag,
+		writedate, readcount, thumbnail, comment_count, like_it
+		) VALUES (
+		#{bno},
+		#{category}, #{id}, #{title}, #{content}, #{hashtag},
+		SYSDATE,
+		0,
+		#{thumbnail, jdbcType=VARCHAR}, 0, 0
+		)
 	</insert>
-	
-	<select id="selectNewImageFileNo" resultType="int">
-		<![CDATA[
-			select nvl(max(imageFileNo), 0) from image
-		]]>
-	</select>
-	
-	<select id="selectImageFileList" resultMap="imgResult">
-		<![CDATA[
-			select * from image where articleNo=#{articleNo}
-		]]>
-	</select>
-	
-	<delete id="deleteImage" parameterType="int">
-		<![CDATA[
-			delete from image where imageFileNo=#{imageFileNo}
-		]]>	
+
+	<!-- 게시글 이미지 등록 -->
+	<insert id="insertBoardImage" parameterType="imageDTO">
+		<selectKey keyProperty="imageFileNo" resultType="int"
+			order="BEFORE">
+			SELECT board_image_seq.NEXTVAL FROM dual
+		</selectKey>
+		INSERT INTO board_image (
+		image_File_No, bno, image_File_Name, reg_Date
+		)
+		VALUES (
+		#{imageFileNo}, #{bno}, #{imageFileName}, #{regDate}
+		)
+	</insert>
+
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="boardDTO">
+		UPDATE board
+		SET title =
+		#{title},
+		content = #{content},
+		hashtag = #{hashtag},
+		thumbnail =
+		#{thumbnail}
+		WHERE
+		bno = #{bno}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="boardDTO">
+		DELETE FROM board
+		WHERE
+		bno = #{bno}
 	</delete>
-	
-	<select id="selectArticleNo" parameterType="int" resultType="int">
-		<![CDATA[
-			select articleNo from image where imageFileNo=#{imageFileNo}
-		]]>
+
+	<!-- 조회수 증가 -->
+	<update id="updateReadCount" parameterType="int">
+		UPDATE board
+		SET
+		readcount = readcount + 1
+		WHERE bno = #{bno}
+	</update>
+
+	<!-- <select id="getComment" parameterType="int" resultType="commentDTO"> 
+		SELECT * FROM board_comment WHERE bno = #{bno} ORDER BY comment_num ASC </select> -->
+
+	<!-- 댓글 등록 -->
+	<insert id="insertComment" parameterType="commentDTO">
+		INSERT INTO
+		board_comment (comment_num, bno, id, content, writedate)
+		VALUES
+		(board_comment_seq.NEXTVAL, #{bno}, #{id}, #{content}, SYSDATE)
+	</insert>
+
+	<!-- 댓글 추가 후 게시글의 comment_count 갱신 -->
+	<update id="updateCommentCountOnInsert" parameterType="int">
+		UPDATE
+		board
+		SET comment_count = comment_count + 1
+		WHERE bno = #{bno}
+	</update>
+
+	<!-- 게시글 조회 시 comment_count 갱신 -->
+	<update id="updateCommentCountOnBoardLoad" parameterType="int">
+		UPDATE
+		board
+		SET comment_count = (
+		SELECT COUNT(*) FROM board_comment WHERE bno
+		= #{bno}
+		)
+		WHERE bno = #{bno}
+	</update>
+
+	<select id="getComment" parameterType="int"
+		resultType="commentDTO">
+		SELECT comment_num, bno, id, content, writedate
+		FROM
+		board_comment
+		WHERE bno = #{bno}
+		ORDER BY comment_num ASC
 	</select>
+
+
+	<!-- 좋아요 증가 -->
+	<update id="updateLike" parameterType="int">
+		UPDATE board
+		SET like_it =
+		like_it + 1
+		WHERE bno = #{bno}
+	</update>
+
+	<!-- 좋아요 수 조회 -->
+	<select id="selectLikeCount" parameterType="int"
+		resultType="int">
+		SELECT like_it FROM board
+		WHERE bno = #{bno}
+	</select>
+
+	<!-- 썸네일 -->
+	<update id="updateBoardThumbnail" parameterType="map">
+		UPDATE board
+		SET
+		thumbnail = #{thumbnailFileName, jdbcType=VARCHAR}
+		WHERE bno = #{bno}
+	</update>
+
+	<select id="selectImagesByBno" parameterType="int"
+		resultMap="imageResult">
+		SELECT * FROM board_image
+		WHERE bno = #{bno}
+	</select>
+
+	<insert id="insertImage" parameterType="imageDTO">
+		INSERT INTO board_image
+		(image_file_no, image_file_name, reg_date, bno)
+		VALUES
+		(board_image_seq.NEXTVAL, #{imageFileName}, #{regDate}, #{bno})
+	</insert>
+
+	<!-- 이미지 삭제 (파일 이름 기준) -->
+	<delete id="deleteImageByFileName" parameterType="String">
+		DELETE FROM
+		board_image
+		WHERE image_file_name = #{imageFileName}
+	</delete>
+
+	<!-- 게시글 번호에 해당하는 이미지 목록을 가져오는 쿼리 -->
+	<select id="getImageListByBno"
+		resultType="com.test.animal.board.dto.ImageDTO">
+		SELECT image_file_no AS imageFileNo,
+		image_file_name AS
+		imageFileName,
+		reg_date AS regDate,
+		bno
+		FROM board_image
+		WHERE bno =
+		#{bno}
+	</select>
+	
+	<!-- 메인쪽 게시글 swiper 부분 -->
+	<select id="getTopHospitalReviews" resultType="boardDTO">
+    SELECT bno, category, title, content, writedate, readcount
+    FROM board
+    WHERE category = 'hospital'
+    ORDER BY readcount DESC
+    FETCH FIRST 5 ROWS ONLY
+</select>
+
+
 </mapper>
 
 

@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class dogViewControllerImpl implements dogViewController{
 	// animal/dog/dog_all.do
 	@Override
-	@RequestMapping("/dog_all.do")
-	public String showDogAll() {
+	@RequestMapping("/dog_about.do")
+	public String showDogAbout() {
 		// TODO Auto-generated method stub
-		return "/dog/dog_all";
+		return "/dog/dog_about";
 	}
 
 	@Override
@@ -42,12 +42,33 @@ public class dogViewControllerImpl implements dogViewController{
 	public String showDogDetail(
 			@PathVariable("breed") String breed, 
 			Model model) {
-		// .do Á¦°Å
+		// .do ï¿½ï¿½ï¿½ï¿½
 	    if (breed.endsWith(".do")) {
 	        breed = breed.replace(".do", "");
 	    }
 		model.addAttribute("breed",breed);
 		return "/dog/dog_detail";
+	}
+
+	@Override
+	@RequestMapping("/dog_feed.do")
+	public String showDogFeed() {
+		// TODO Auto-generated method stub
+		return "/dog/dog_feed";
+	}
+
+	@Override
+	@RequestMapping("/dog_born.do")
+	public String showDogBorn() {
+		// TODO Auto-generated method stub
+		return "/dog/dog_born";
+	}
+
+	@Override
+	@RequestMapping("/dog_responsible.do")
+	public String showDogResponsible() {
+		// TODO Auto-generated method stub
+		return "/dog/dog_responsible";
 	}
 
 }

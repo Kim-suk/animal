@@ -34,5 +34,5 @@ public class PaymentDTO {
 	public void setPaymentDate(Date paymentDate) {
 		this.paymentDate = paymentDate;
 	}
-
+    
 }

@@ -1,109 +1,118 @@
 package com.test.animal.board.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.test.animal.board.dao.BoardDAO;
-import com.test.animal.board.dto.ArticleDTO;
+import com.test.animal.board.dto.BoardDTO;
+import com.test.animal.board.dto.CommentDTO;
 import com.test.animal.board.dto.ImageDTO;
 
-
 @Service
-@Transactional(propagation = Propagation.REQUIRED)
 public class BoardServiceImpl implements BoardService {
-	@Autowired
-	private BoardDAO dao;
-	
+
+    @Autowired
+    private BoardDAO boardDAO;
+
+    @Override
+    public List<BoardDTO> getBoardList(BoardDTO dto) {
+        return boardDAO.getBoardList(dto);
+    }
+
+    @Override
+    public BoardDTO getBoard(BoardDTO dto) {
+        boardDAO.updateReadCount(dto.getBno()); // 조회수 증가
+        return boardDAO.getBoard(dto);
+    }
+
+    @Override
+    public void insertBoard(BoardDTO dto) {
+        boardDAO.insertBoard(dto);
+    }
+    
+    @Override
+    public void insertBoardImage(ImageDTO imageDTO) {
+        boardDAO.insertBoardImage(imageDTO);
+    }
+
+    @Override
+    public void updateBoard(BoardDTO dto) {
+        boardDAO.updateBoard(dto);
+    }
+
+    @Override
+    public void deleteBoard(BoardDTO dto) {
+        boardDAO.deleteBoard(dto);
+    }
+
+    @Override
+    public List<CommentDTO> getComment(BoardDTO dto) {
+        return boardDAO.getComment(dto.getBno());
+    }
+
+    @Override
+    public void insertComment(CommentDTO cdto) {
+        boardDAO.insertComment(cdto);
+    }
+
+    @Override
+    public void updateLike(int bno) {
+        boardDAO.updateLike(bno);
+    }
+
+    @Override
+    public int selectLikeCount(int bno) {
+        return boardDAO.selectLikeCount(bno);
+    }
+
 	@Override
-	public List<ArticleDTO> listArticles() {
+	public void updateBoardThumbnail(int bno, String thumbnailFileName) {
 		// TODO Auto-generated method stub
-		return dao.listArticles();
+	    boardDAO.updateBoardThumbnail(bno, thumbnailFileName);
 	}
 
 	@Override
-	public int addNewArticle(Map<String, Object> articleMap) {
+	public List<ImageDTO> getBoardImages(int bno) {
 		// TODO Auto-generated method stub
-		int articleNo = dao.selectNewArticleNo();
-		articleMap.put("articleNo", articleNo);
-		int result = dao.insertNewArticle(articleMap);
-		
-		List<ImageDTO> imageFileList = (List<ImageDTO>) articleMap.get("imageFileList");
-		int imageFileNo = dao.selectNewImageFileNo();
-		
-		for(ImageDTO imageDTO : imageFileList) {
-			imageDTO.setImageFileNo(++imageFileNo);
-			imageDTO.setArticleNo(articleNo);
-		}
-		
-		dao.insertNewImage(imageFileList);
-		return result;
+		return boardDAO.selectImagesByBno(bno);
 	}
 
 	@Override
-	public Map viewArticle(int articleNo) {
+	public void deleteImageByFileName(String delName) {
 		// TODO Auto-generated method stub
-		Map articleMap = new HashMap();
-		ArticleDTO articleDTO = dao.viewArticle(articleNo);
-		List<ImageDTO> imageFileList = dao.selectImageFileList(articleNo);
-		
-		articleMap.put("article", articleDTO);
-		articleMap.put("imageFileList", imageFileList);
-		return articleMap;
+		boardDAO.deleteImageByFileName(delName);
 	}
 
 	@Override
- 	public void modArticle(Map<String, Object> articleMap) {
- 	    // 1️⃣ articleNo가 있는지 확인
- 	    if (!articleMap.containsKey("articleNo") || articleMap.get("articleNo") == null) {
- 	        return; // articleNo 없으면 업데이트 중단
- 	    }
-
- 	    // 2️⃣ 게시글 업데이트 실행
- 	    int updateCount = dao.updateArticle(articleMap);
- 	    if (updateCount == 0) {
- 	        return; // 업데이트 실패 시 중단
- 	    }
-
- 	    // 3️⃣ 이미지 리스트 확인
- 	    List<ImageDTO> imageFileList = (List<ImageDTO>) articleMap.get("imageFileList");
- 	    if (imageFileList == null || imageFileList.isEmpty()) {
- 	        return; // 이미지가 없으면 추가 작업 없이 종료
- 	    }
-
- 	    // 4️⃣ 새로운 이미지 파일 번호 설정 후 삽입
- 	    int imageFileNo = dao.selectNewImageFileNo();
- 	    for (ImageDTO imageDTO : imageFileList) {
- 	        imageDTO.setImageFileNo(++imageFileNo);
- 	    }
- 	    dao.insertNewImage(imageFileList);
- 	}
-
-
-	@Override
-	public int deleteImage(int imageFileNo) {
+	public void insertImage(ImageDTO imageDTO) {
 		// TODO Auto-generated method stub
-		int articleNo = dao.selectArticleNo(imageFileNo);
-		dao.deleteImage(imageFileNo);
-		return articleNo;
+		boardDAO.insertImage(imageDTO);
 	}
 
 	@Override
-	public void removeArticle(int articleNo) {
+	public void updateCommentCountOnBoardLoad(int bno) {
 		// TODO Auto-generated method stub
-		
+		boardDAO.updateCommentCountOnBoardLoad(bno);  // 댓글 수 계산하여 갱신
 	}
 
+	@Override
+	public void addComment(CommentDTO cdto) {
+		// TODO Auto-generated method stub
+		boardDAO.insertComment(cdto);  // 댓글 추가
+        boardDAO.updateCommentCountOnInsert(cdto.getBno());  // 댓글 수 증가
+	}
+
+	@Override
+	public List<ImageDTO> getImageList(BoardDTO dto) {
+		// TODO Auto-generated method stub
+		return boardDAO.getImageListByBno(dto.getBno());
+	}
+
+	@Override
+	public List<BoardDTO> getTopHospitalReviews() {
+		// TODO Auto-generated method stub
+		return boardDAO.getTopHospitalReviews();
+	}
 }
-
-
-
-
-
-
-

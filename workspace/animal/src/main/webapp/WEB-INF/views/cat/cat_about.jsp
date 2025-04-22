@@ -1,85 +1,178 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
- <link rel="stylesheet" href="/animal/resources/css/style.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>반려묘 건강 관리</title>
+    <title>고양이에 대한 모든 것</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #fffaf9 url('https://www.transparenttextures.com/patterns/purty-wood.png');
+            color: #555;
+            line-height: 1.5;
         }
-        .section {
-            margin-bottom: 40px;
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 80px 100px;
+            margin-top:100px;
         }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: red;
-            border: 2px solid red;
-            text-decoration: none;
-            border-radius: 5px;
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
+            transition: transform 0.3s ease;
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+    width: 240px;
+    height: 240px; /* 높이도 고정해서 통일 */
+    object-fit: cover; /* 이미지 비율 유지하며 잘림 처리 */
+    border-radius: 12px;
+   
+}
+
+        .text-box {
+            max-width: 400px;
+        }
+
+        .title {
+            font-size: 22px;
             font-weight: bold;
-            cursor: pointer;
+            color: #263b2c;
+            margin-bottom: 12px;
         }
-        .button:hover {
-            background-color: red;
-            color: white;
+
+        .desc {
+            font-size: 15px;
+            margin-bottom: 18px;
+            color: #666;
+        }
+
+       .btn {
+             border: 1.5px solid #263b2c;
+            color: #263b2c;
+            background: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8F9779;
+            color: #fff;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .card img {
+                width: 140px;
+            }
+
+            .text-box {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="section">
-        <h2>반려묘 건강 관리하기</h2>
-        <p>홈페이지에서 건강한 반려묘로 키우는데 도움이 되는 정보를 찾아보세요.</p>
-    </div>
+    <div class="container">
 
-<div class="section">
-<img src="https://cdn.royalcanin-weshare-online.io/DGkwa2QBG95Xk-RBJ9Qe/v36/british-shorthair-adult-weight-management-emblematic?w=960&fm=jpg&auto=format,compress">
-        <h2>반려묘의 출생과 성장기</h2> 
-        <p>출생부터 성장기까지 어린 반려묘의 건강 관리에 대해 알아보세요.</p>
-        <a href="https://www.royalcanin.com/kr/cats/kitten" class="button">자세히 알아보기</a>
-    </div>
+        <div class="card">
+            <img src="/animal/resources/image/b8.avif" alt="고양이 출생">
+            <div class="text-box">
+                <div class="title">반려묘의 출생과 성장기</div>
+                <div class="desc">
+                    새끼 고양이가 성묘가 되기까지 겪는 놀라운 변화를 이해하면 각 발달 단계마다 알맞은 영양 균형을 유지하게 할 수 있습니다
+                </div>
+                 <a href="/animal/cat/cat_grow.do" class="btn">자세히 알아보기</a>
+            </div>
+        </div>
+
+ <div class="card">
+            <img src="/animal/resources/image/cat30.avif" alt="12주까지 주요 발달">
+            <div class="text-box">
+                <div class="title"> 어린 반려묘의 출생부터 12주까지 주요 발달</div>
+                <div class="desc">
+                      어린 고양이는 생후 첫 해에 중요한 변화를 겪게 됩니다.<br>
+                    생후 12주까지 살펴봐야 할 다섯 가지 주요 단계와 각 단계에서 반려묘에게 줄 수 있는 도움에 대해 알아보세요. 
+                </div>
+                   <a href="/animal/cat/cat_born.do" class="btn">자세히 알아보기</a>
+            </div>
+        </div>
     
-    <div class="section">
-        <h2>건강한 습관, 정상적인 체중 관리의 시작</h2>
-        <p>반려묘의 건강한 체중을 유지하는 방법을 알아보세요.</p>
-        <a href="https://www.royalcanin.com/kr/cats/weight-management" class="button">자세히 알아보기</a>
-    </div>
-    
-    
 
-    <div class="section">
-        <h2>묘종에 대해 알아보기</h2>
-        <p>묘종 검색</p>
-        <a href="https://example.com/breeds" class="button">묘종 모두 보기</a>
-    </div>
+        <div class="card">
+            <div class="text-box">
+                <div class="title">묘종에 대해 알아보기</div>
+                <div class="desc">
+                    전 세계 다양한 고양이 품종의 특징과 성격을 한눈에 볼 수 있어요.
+                </div>
+                <a href="/animal/cat/cat_type.do" class="btn">묘종 모두보기</a>
+            </div>
+            <img src="/animal/resources/image/gr4.jpg" alt="묘종 검색">
+        </div>
 
-    <div class="section">
-        <h2>반려묘를 기를까 고민 중이신가요?</h2>
-        <p>반려묘 입양 전 고려해야 할 사항을 살펴보세요.</p>
-        <a href="https://www.royalcanin.com/kr/cats/thinking-of-getting-a-cat" class="button">자세히 알아보기</a>
-    </div>
+        <div class="card">
+            <div class="text-box">
+                <div class="title">반려묘를 기를까 고민 중이신가요?</div>
+                <div class="desc">
+                   보호자로서 고양이를 위해 할 수 있는 것엔 무엇이 있을까요?
+		해당 페이지를 통해 고양이를 키울 때 따르는 책임과 장점에 대하여 알아보세요.
+                </div>
+                 <a href="/animal/cat/cat_think.do" class="btn">자세히 알아보기</a>
+            </div>
+            <img src="/animal/resources/image/o.jpg" alt="고민 고양이">
+        </div>
+        
+          <div class="card">
+            <img src="/animal/resources/image/img05.jpg" alt="고민 고양이">
+            <div class="text-box">
+                <div class="title"> 책임감 있는 보호자가 되려면?</div>
+                <div class="desc">
+                    책임감 있는 보호자가 되기 위해 필요한 마음가짐과 준비 사항을 알려드려요.
+                </div>
+                 <a href="/animal/cat/cat_responsible.do" class="btn">자세히 알아보기</a>
+            </div>
+        </div>
+       
+<div class="card">
+            <img src="/animal/resources/image/img03.jpg" alt="필수 케어 가이드">
+            <div class="text-box">
+                <div class="title"> 
+						새끼 고양이를 위한 필수 케어 가이드</div>
+                <div class="desc">
+                      새끼 고양이는 생후 첫 해가 건강적으로 가장 취약한 시기입니다.<br>
+                    이 가이드를 통해 새끼 고양이를 건강하게 키우는 방법을 확인해 보세요 
+                </div>
+                   <a href="/animal/cat/cat_kitten.do" class="btn">자세히 알아보기</a>
+            </div>
+        </div>
 
-    <div class="section">
-        <h2>반려묘에게 알맞는 사료 찾기</h2>
-        <p>반려묘에게 가장 적합한 사료를 선택하는 방법을 알아보세요.</p>
-        <a href="https://www.royalcanin.com/kr/pet-food-finder" class="button">자세히 알아보기</a>
     </div>
-
-    <div class="section">
-        <h2>건강한 반려묘 키우기 팁</h2>
-        <p>반려묘의 건강을 유지하는 다양한 팁을 확인하세요.</p>
-        <a href="https://www.royalcanin.com/kr/cats/health-and-wellbeing" class="button">자세히 알아보기</a>
-    </div>
-
-    <div class="section">
-        <h2>맞춤 영양 과학</h2>
-        <p>반려묘에게 필요한 맞춤 영양 정보를 제공합니다.</p>
-        <a href="https://www.royalcanin.com/kr/tailored-nutrition" class="button">자세히 알아보기</a>
-    </div>
-
 </body>
 </html>

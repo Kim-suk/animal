@@ -27,7 +27,8 @@ public class KakaoLoginController {
         String kakaoAuthUrl = "https://kauth.kakao.com/oauth/authorize"
                 + "?response_type=code"
                 + "&client_id=" + clientId
-                + "&redirect_uri=" + redirectUri;
+                + "&redirect_uri=" + redirectUri
+                + "&prompt=consent";
 
         response.sendRedirect(kakaoAuthUrl);
     }
@@ -53,12 +54,12 @@ public class KakaoLoginController {
         }
 
         // 3. kakao_id 기준 회원 조회
-        MemberDTO member = kakaoService.findByKakaoId(kakaoUser.getId());
+        MemberDTO member = kakaoService.selectByKakaoId(kakaoUser.getId());
 
         // 4. 회원이 없으면 새로 등록
         if (member == null) {
             // 4-1. 이메일 중복 여부 확인
-            MemberDTO existingByEmail = kakaoService.findByEmail(kakaoUser.getEmail());
+            MemberDTO existingByEmail = kakaoService.selectByEmail(kakaoUser.getEmail());
             if (existingByEmail != null) {
                 session.setAttribute("loginMember", existingByEmail);
                 return "redirect:/main.do";
@@ -68,6 +69,8 @@ public class KakaoLoginController {
             member = new MemberDTO();
             member.setId("kakao_" + kakaoUser.getId());
             member.setKakaoId(kakaoUser.getId());
+            session.setAttribute("loginName", member.getName());
+            session.setAttribute("loginType", member.getJoinType()); 
 
             // 👉 이메일 처리 간결화
             String email = (kakaoUser.getEmail() == null || kakaoUser.getEmail().trim().isEmpty())
@@ -75,12 +78,11 @@ public class KakaoLoginController {
                     : kakaoUser.getEmail();
             member.setEmail(email);
 
-            // 👉 이름 처리
-            if (kakaoUser.getName() == null || kakaoUser.getName().trim().isEmpty()) {
-                member.setName("카카오사용자");
-            } else {
-                member.setName(kakaoUser.getName());
-            }
+         // 👉 닉네임 처리
+            String nickname = (kakaoUser.getNickname() == null || kakaoUser.getNickname().trim().isEmpty())
+                    ? "카카오사용자" : kakaoUser.getNickname();
+            member.setName(nickname);         // 이름에 넣고
+            member.setNickname(nickname);     // 닉네임에도 꼭 저장하기!
 
             member.setJoinType("KAKAO");
             member.setPwd("SOCIAL");
@@ -93,7 +95,7 @@ public class KakaoLoginController {
                 if (e.getMessage().startsWith("EXISTING_USER:")) {
                     String existingId = e.getMessage().split(":")[1];
                     System.out.println("⚠️ 이미 등록된 ID로 로그인 처리: " + existingId);
-                    member = kakaoService.findByUserId(existingId);
+                    member = kakaoService.selectByUserId(existingId);
                 } else {
                     System.out.println("❌ 회원 등록 중 오류: " + e.getMessage());
                     return "redirect:/member/login.jsp?result=joinFailed";
@@ -106,6 +108,11 @@ public class KakaoLoginController {
         // 5. 세션 저장 후 로그인 완료
         session.setAttribute("loginMember", member);
         session.setAttribute("loginId", member.getId());
+        session.setAttribute("loginNickname", member.getNickname()); 
+        session.setAttribute("loginName", member.getName()); // 또는 nickname
+        session.setAttribute("isLogin", true);
+        
+    
         return "redirect:/main.do";
     }
 }

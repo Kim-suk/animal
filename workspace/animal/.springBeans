@@ -7,12 +7,19 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+<<<<<<< Upstream, based on origin/master
+		<config>src/main/webapp/WEB-INF/views/common/root-context.xml</config>
+=======
 		<config>src/main/resources/tiles/tiles_payment.xml</config>
+>>>>>>> bddd694 장바구니 구현완 폼xml변경함 잘봐야함
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/action-mybatis.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+<<<<<<< Upstream, based on origin/master
+=======
 		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+>>>>>>> bddd694 장바구니 구현완 폼xml변경함 잘봐야함
 	</autoconfigs>
 	<configSets>
 	</configSets>

@@ -18,4 +18,3 @@ public interface PaymentController {
 	public String processPayment(HttpServletRequest request);
 	public String success();
 }
-

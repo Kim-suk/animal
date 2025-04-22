@@ -118,5 +118,9 @@ request.setCharacterEncoding("utf-8");
 	</script>
 
 </body>
+<<<<<<< Upstream, based on origin/master
+</html>
+=======
 </html>
 
+>>>>>>> bddd694 장바구니 구현완 폼xml변경함 잘봐야함

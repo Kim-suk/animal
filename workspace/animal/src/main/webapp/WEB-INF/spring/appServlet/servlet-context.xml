@@ -14,7 +14,8 @@
 	<!-- "/resources/"아래의 모든 파일을 직접적으로 요청 가능 -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
- 	
+ 	<mvc:resources mapping="/upload/**"
+      location="file:/C:/springframework/workspace/animal/upload/" />
 	
 		<!-- Tiles를 사용하면 JSP의 공통 레이아웃을 효율적으로 관리 -->
 		<!--  Tiles를 사용하기 위한 설정 객체 생성 -->

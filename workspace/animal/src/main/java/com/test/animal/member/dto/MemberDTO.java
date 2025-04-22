@@ -5,14 +5,15 @@ import java.sql.Date;
 public class MemberDTO {
 	private String id;
 	private String pwd;
-	private int age;
+	private String age;
 	private String name;
 	private String gender;
 	private String email;
 	private Date joinDate;
 	private String naverId;   // 네이버 ID
-	private String kakaoId;   // 네이버 ID
-	private String googleId;   // 네이버 ID
+	private String kakaoId;   // 카카오 ID
+	private String googleId;   // 구글 ID
+	private String facebookId;   // 구글 ID
 	private String joinType;  // NAVER / EMAIL
 
 	public String getId() {
@@ -27,10 +28,10 @@ public class MemberDTO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	public String getName() {
@@ -107,17 +108,31 @@ public class MemberDTO {
 	public void setGoogleId(String googleId) {
 		this.googleId = googleId;
 	}
-	public void setAge(String ageStr) {
-	    try {
-	        this.age = Integer.parseInt(ageStr);
-	    } catch (NumberFormatException e) {
-	        this.age = 0;
-	    }
+
+	public void setAge(int i) {
+		// TODO Auto-generated method stub
+		this.age = String.valueOf(i);
 	}
+	private String nickname;  // ✅ 추가됨
 
-
-
-
+	public String getNickname() {
+	    return nickname;
+	}
+	public void setNickname(String nickname) {
+	    this.nickname = nickname;
+	}
+	/**
+	 * @return the facebookId
+	 */
+	public String getFacebookId() {
+		return facebookId;
+	}
+	/**
+	 * @param facebookId the facebookId to set
+	 */
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
+	}
 
 
 }

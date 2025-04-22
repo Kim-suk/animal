@@ -5,20 +5,15 @@
 <configuration> <!-- 이 태그는 MyBatis 설정 파일의 루트 요소 -->
 	<typeAliases>
 		<typeAlias type="com.test.animal.member.dto.MemberDTO" alias="memberDTO"/>
-		<typeAlias type="com.test.animal.board.dto.ArticleDTO" alias="articleDTO"/>
-		<typeAlias type="com.test.animal.board.dto.ImageDTO" alias="imageDTO" />
-		<typeAlias type="com.test.animal.dog_board.dto.DogArticleDTO" alias="dogarticleDTO"/>
-		<typeAlias type="com.test.animal.dog_board.dto.DogImageDTO" alias="dogimageDTO" />
-		<typeAlias type="com.test.animal.cat_board.dto.CatArticleDTO" alias="catarticleDTO"/>
-		<typeAlias type="com.test.animal.cat_board.dto.CatImageDTO" alias="catimageDTO" />
+		<typeAlias type="com.test.animal.board.dto.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="com.test.animal.board.dto.CommentDTO" alias="commentDTO"/>
+		<typeAlias type="com.test.animal.board.dto.ImageDTO" alias="imageDTO"/>
 		<typeAlias type="com.test.animal.animal_hospital.dto.AnimalHospitalDTO" alias="animalHospitalDTO" />
 		<typeAlias type="com.test.animal.product.dto.ProductDTO" alias="productDTO" />
 		<typeAlias type="com.test.animal.cart.dto.CartDTO" alias="cartDTO" />
 		<typeAlias type="com.test.animal.payment.dto.PaymentDTO" alias="paymentDTO" />
-		<typeAlias type="com.test.animal.payment.dto.PaymentDetailDTO" alias="paymentDetailDTO" />
 		
 		<!-- alias 는 간단히 말해 하나의 변수명 -->
 	</typeAliases>
 </configuration>	
 <!-- MyBatis의 XML 매핑 파일 -->
-

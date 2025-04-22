@@ -13,7 +13,7 @@
 <script>
 /**
  * 회원가입 유효성 검사
- */
+ 
 function join() {
     var form = document.forms['joinForm']; 
 
@@ -72,7 +72,7 @@ function join() {
     }
 
     alert("회원가입이 완료되었습니다!");
-
+    */
     // 폼 제출 후 로그인 페이지로 이동
     setTimeout(function () {
         form.submit();
@@ -109,9 +109,11 @@ function checkDuplicate() {
 }
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/animal/resources/css/default.css">
 <style>
     .signup-box {
-        margin-top: 75px;
+        margin-top: 200px;
+        margin-bottom: 100px;
         padding: 40px;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         border-radius: 10px;
@@ -160,7 +162,7 @@ function checkDuplicate() {
             </div>
             <div class="mb-3">
                 <label for="birthdate">AGE</label>
-                <input type="date" id="age" name="birthdate" class="form-control" required>
+                <input type="date" id="birthdate" name="age" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">NAME</label>

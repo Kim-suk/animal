@@ -35,7 +35,6 @@ public class PaymentControllerImpl implements PaymentController {
             String productName = productNames[i];
 
             totalAmount += price * quantity;
-
         }
 
         // DTO 생성 및 서비스에 전달

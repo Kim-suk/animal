@@ -15,16 +15,25 @@ public class AnimalHospitalDAOImpl implements AnimalHospitalDAO{
 	@Autowired
 	private SqlSession sqlSession;
 
-	@Override
-	public void batchInsertHospitals(List<AnimalHospitalDTO> hospitalList) {
-		// TODO Auto-generated method stub
-		sqlSession.insert("mapper.animalHospital.batchInsertHospitals", hospitalList);
-	}
 
 	@Override
-	public List<AnimalHospitalDTO> findHospitalsWithin5km(Map<String, Object> params) {
+	public void insertHospitals(List<AnimalHospitalDTO> list) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("mapper.animalHospital.findHospitalsWithin5km", params);
+		 sqlSession.insert("mapper.animalHospital.insertHospitals", list);
+	}
+
+
+	@Override
+	public List<AnimalHospitalDTO> getAllHospitals() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mapper.animalHospital.getAllHospitals");
+	}
+
+
+	@Override
+	public AnimalHospitalDTO getHospitalById(int id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.animalHospital.getHospitalById", id);
 	}
 
 }

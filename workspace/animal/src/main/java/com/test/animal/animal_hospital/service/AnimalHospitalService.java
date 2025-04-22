@@ -6,6 +6,8 @@ import com.test.animal.animal_hospital.dto.AnimalHospitalDTO;
 
 public interface AnimalHospitalService {
 
+    public List<AnimalHospitalDTO> findHospitalsWithinRadius(double lat, double lon, double radius);
+    public AnimalHospitalDTO getHospitalById(int id);
 	List<AnimalHospitalDTO> findHospitalsWithin5km(double latitude, double longitude);
 
 }

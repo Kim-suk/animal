@@ -1,23 +1,33 @@
 package com.test.animal.board.dao;
 
 import java.util.List;
-import java.util.Map;
-
-import com.test.animal.board.dto.ArticleDTO;
+import com.test.animal.board.dto.BoardDTO;
+import com.test.animal.board.dto.CommentDTO;
 import com.test.animal.board.dto.ImageDTO;
 
 public interface BoardDAO {
+    List<BoardDTO> getBoardList(BoardDTO dto);
+    BoardDTO getBoard(BoardDTO dto);
+    void insertBoard(BoardDTO dto);
+    void insertBoardImage(ImageDTO imageDTO);
+    void updateBoard(BoardDTO dto);
+    void deleteBoard(BoardDTO dto);
 
-	List<ArticleDTO> listArticles();
-	int selectNewArticleNo();
-	int insertNewArticle(Map<String, Object> articleMap);
-	ArticleDTO viewArticle(int articleNo);
-	int updateArticle(Map<String, Object> articleMap);
-	void deleteArticle(int articleNo);
-	int selectNewImageFileNo();
-	void insertNewImage(List<ImageDTO> imageFileList);
-	List<ImageDTO> selectImageFileList(int articleNo);
-	int deleteImage(int imageFileNo);
-	int selectArticleNo(int imageFileNo);
+    void updateReadCount(int bno);
 
+    List<CommentDTO> getComment(int bno);
+    void insertComment(CommentDTO cdto);
+
+    void updateLike(int bno);
+    int selectLikeCount(int bno);
+	void updateBoardThumbnail(int bno, String thumbnailFileName);
+	List<ImageDTO> selectImagesByBno(int bno);
+	void deleteImageByFileName(String delName);
+	void insertImage(ImageDTO imageDTO);
+
+	void updateCommentCountOnInsert(int bno);
+	void updateCommentCountOnBoardLoad(int bno);
+	List<ImageDTO> getImageListByBno(int bno);
+	List<BoardDTO> getTopHospitalReviews();
+	
 }

@@ -18,12 +18,12 @@
 	
 	<definition name="/payment/success" extends="baseLayout">
 		<put-attribute name="title" value="결제성공" />
-		<put-attribute name="body" value="/WEB-INF/views/payment/success.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/payment/payment-success.jsp" />
 	</definition>
 	
 	<definition name="/payment/fail" extends="baseLayout">
 		<put-attribute name="title" value="결제실패" />
-		<put-attribute name="body" value="/WEB-INF/views/payment/fail.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/payment/payment-fail.jsp" />
 	</definition>
 	
 	    <!-- 장바구니 목록 페이지 -->

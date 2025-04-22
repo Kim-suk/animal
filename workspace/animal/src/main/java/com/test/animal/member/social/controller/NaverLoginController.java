@@ -19,7 +19,6 @@ public class NaverLoginController {
     @Autowired
     private NaverLoginService naverService;
 
-    // 🔹 Step 1: 네이버 로그인 URL 생성 및 리다이렉트
     @RequestMapping("/naverLoginStart")
     public void naverLoginStart(HttpServletResponse response, HttpSession session) throws IOException {
         String state = UUID.randomUUID().toString();
@@ -31,78 +30,105 @@ public class NaverLoginController {
                 + "?response_type=code"
                 + "&client_id=" + clientId
                 + "&redirect_uri=" + redirectUri
-                + "&state=" + state;
+                + "&state=" + state
+        		+ "&scope=nickname,name,email"; 
 
         response.sendRedirect(naverAuthUrl);
     }
 
-    // 🔹 Step 2: 콜백 처리
     @RequestMapping("/naverLogin")
     public String naverCallback(@RequestParam("code") String code,
                                 @RequestParam("state") String state,
                                 HttpSession session) {
 
-        // 1. state 검증
         String savedState = (String) session.getAttribute("naverState");
         if (savedState == null || !savedState.equals(state)) {
             System.out.println("⚠️ state 불일치! 보안 위협 탐지");
             return "redirect:/member/login.jsp?result=loginFailed";
         }
 
-        // 2. 액세스 토큰 요청
         String accessToken = naverService.getAccessToken(code, state);
-
-        // 3. 사용자 정보 요청
         NaverUserDTO naverUser = naverService.getUserInfo(accessToken);
+        
+        System.out.println("네이버 사용자 이름: " + naverUser.getName());
+
 
         if (naverUser == null || naverUser.getId() == null) {
             System.out.println("⚠️ 네이버 사용자 정보 조회 실패");
             return "redirect:/member/login.jsp?result=loginFailed";
         }
 
-        // 4. naver_id 기준 회원 조회
-        MemberDTO member = naverService.findByNaverId(naverUser.getId());
+        MemberDTO member = naverService.selectByNaverId(naverUser.getId());
 
-        // 5. 회원이 없으면 새로 등록
         if (member == null) {
-            // 5-1. 이메일 중복 여부 확인
-            MemberDTO existingByEmail = naverService.findByEmail(naverUser.getEmail());
+            MemberDTO existingByEmail = naverService.selectByEmail(naverUser.getEmail());
             if (existingByEmail != null) {
-                // 기존 이메일 회원이 있으면 해당 회원으로 로그인 처리
                 session.setAttribute("loginMember", existingByEmail);
                 return "redirect:/main.do";
             }
 
-            // 5-2. 신규 회원 등록
             member = new MemberDTO();
-            member.setId("naver_" + naverUser.getId()); // 💡 DB id는 UNIQUE 해야 함
-            member.setEmail(naverUser.getEmail());
+            member.setId("naver_" + naverUser.getId());
+            member.setNaverId(naverUser.getId());
 
-            // 이름 처리
-            if (naverUser.getName() == null || naverUser.getName().trim().isEmpty()) {
-                member.setName("네이버사용자");
-            } else {
-                member.setName(naverUser.getName());
-            }
-
-            // 기본값 설정
+            String email = (naverUser.getEmail() == null || naverUser.getEmail().trim().isEmpty())
+                    ? "noemail_" + naverUser.getId() + "@naver.com"
+                    : naverUser.getEmail();
+            member.setEmail(email);
+            
+		
+			String userName = (naverUser.getName() == null ||
+			naverUser.getName().trim().isEmpty()) ? "네이버사용자" +
+			naverUser.getId().substring(0, 5) : naverUser.getName(); // 진짜 이름 저장
+			member.setName(userName);
+			 
+			  
+			  /*String userName = naverUser.getName();
+			  if (userName == null || userName.trim().isEmpty()) {
+                // 네이버에서 제공한 이름이 없을 경우 기본값을 설정
+                userName = "네이버사용자" + naverUser.getId().substring(0, 5);
+			  }
+			  member.setName(userName);*/
+            
+            
+            String nickname = (naverUser.getNickname() == null || naverUser.getNickname().trim().isEmpty())
+                    ? userName
+                    : naverUser.getNickname();
+            member.setNickname(nickname);
+            System.out.println("nickname: " + member.getNickname());
+            
             member.setJoinType("NAVER");
             member.setPwd("SOCIAL");
             member.setAge(0);
             member.setGender("U");
 
-            // 회원 등록 시도
             try {
                 naverService.registerNaverUser(member);
-            } catch (Exception e) {
-                System.out.println("❌ 회원 등록 중 오류 발생: " + e.getMessage());
+            } catch (IllegalStateException e) {
+                if (e.getMessage().startsWith("EXISTING_USER:")) {
+                    String existingId = e.getMessage().split(":")[1];
+                    System.out.println("⚠️ 이미 등록된 ID로 로그인 처리: " + existingId);
+                    member = naverService.selectByUserId(existingId);
+                } else {
+                    System.out.println("❌ 회원 등록 중 오류: " + e.getMessage());
+                    return "redirect:/member/login.jsp?result=joinFailed";
+                }
+            } catch (Exception ex) {
+                System.out.println("❌ 알 수 없는 오류: " + ex.getMessage());
                 return "redirect:/member/login.jsp?result=joinFailed";
             }
         }
 
-        // 6. 세션 저장 후 로그인 완료
         session.setAttribute("loginMember", member);
+        session.setAttribute("loginName", member.getName());
+        session.setAttribute("loginNickname", member.getNickname());
         session.setAttribute("loginId", member.getId());
+        session.setAttribute("loginType", member.getJoinType());
+        session.setAttribute("isLogin", true);
+        
+        System.out.println("네이버 로그인 처리됨: " + member.getId());
+        System.out.println("세션 저장됨: " + member.getName());
+        
         return "redirect:/main.do";
     }
 }

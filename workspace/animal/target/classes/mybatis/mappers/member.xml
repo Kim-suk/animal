@@ -15,6 +15,7 @@
         <result property="naverId" column="naver_id" />
         <result property="googleId" column="google_id" />
         <result property="kakaoId" column="kakao_id" />
+        <result property="facebookId" column="facebook_id" />
         <result property="joinType" column="join_type" />
         <result property="nickname" column="nickname" />
     </resultMap>
@@ -112,6 +113,12 @@
     ]]>
 </select>
 
+<select id="selectByFacebookId" parameterType="java.lang.String" resultMap="memResult">
+    <![CDATA[
+        SELECT * FROM animal_member WHERE facebook_id = #{facebookId, jdbcType=VARCHAR}
+    ]]>
+</select>
+
 
    <insert id="insertNaverUser" parameterType="com.test.animal.member.dto.MemberDTO">
     <![CDATA[
@@ -142,6 +149,16 @@
         (#{id}, #{pwd}, #{age}, #{name}, #{gender}, #{email}, #{joinType}, #{kakaoId, jdbcType=VARCHAR}, #{nickname})
     ]]>
         
+    </insert>
+    
+    <insert id="insertFacebookUser" parameterType="com.test.animal.member.dto.MemberDTO">
+        <![CDATA[
+            INSERT INTO animal_member (
+                id, pwd, name, email, facebook_id, join_type, age, gender, joinDate
+            ) VALUES (
+                #{id}, #{pwd}, #{name}, #{email}, #{facebookId, jdbcType=VARCHAR}, #{joinType}, 0, 'U', SYSDATE
+            )
+        ]]>
     </insert>
 
     <select id="checkEmailExists" parameterType="java.lang.String" resultType="int">

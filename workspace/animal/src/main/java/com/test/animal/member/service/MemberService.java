@@ -5,16 +5,16 @@ import com.test.animal.member.dto.MemberDTO;
 
 public interface MemberService {
 
-    List<MemberDTO> listMembers();                // ÀüÃ¼ È¸¿ø ¸ñ·Ï
-    MemberDTO memberDetail(String id);            // È¸¿ø »ó¼¼ Á¤º¸
-    int delMember(String id);                     // È¸¿ø »èÁ¦
-    int addMember(MemberDTO member);              // È¸¿ø °¡ÀÔ
-    int modMember(MemberDTO member);              // È¸¿ø Á¤º¸ ¼öÁ¤
-    MemberDTO login(MemberDTO member);            // ÀÏ¹Ý ·Î±×ÀÎ
-    int checkUserId(String id);                   // ID Áßº¹ Ã¼Å©
+    List<MemberDTO> listMembers();                // ï¿½ï¿½Ã¼ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½
+    MemberDTO memberDetail(String id);            // È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    int delMember(String id);                     // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    int addMember(MemberDTO member);              // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    int modMember(MemberDTO member);              // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    MemberDTO login(MemberDTO member);            // ï¿½Ï¹ï¿½ ï¿½Î±ï¿½ï¿½ï¿½
+    int checkUserId(String id);                   // ID ï¿½ßºï¿½ Ã¼Å©
 
-    MemberDTO selectByUserId(String id);          // ID·Î Á¶È¸
-    MemberDTO selectByEmail(String email);       // ÀÌ¸ÞÀÏ·Î Á¶È¸
+    MemberDTO selectByUserId(String id);          // IDï¿½ï¿½ ï¿½ï¿½È¸
+    MemberDTO selectByEmail(String email);       // ï¿½Ì¸ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½È¸
     
-    int updateNaverId(MemberDTO member);          // ³×ÀÌ¹ö ID ¿¬µ¿¿ë ¼öÁ¤
+    int updateNaverId(MemberDTO member);          // ï¿½ï¿½ï¿½Ì¹ï¿½ ID ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 }

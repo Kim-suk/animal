@@ -80,6 +80,11 @@
   background-color: #FEE500;
   color: black;
 }
+
+.facebook {
+  background: linear-gradient(90deg, #1877F2 0%, #4e69a2 100%);
+  color: white;
+}
  
 
 
@@ -169,7 +174,7 @@
       <label>
         <input type="checkbox" id="saveIdCheck"> 아이디 저장
       </label>
-      <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+     <button type="submit" class="btn btn-primary w-100">LOGIN</button>
     </form>
 
     <!-- 회원가입 폼 -->
@@ -177,11 +182,12 @@
       <button type="submit" class="btn btn-secondary w-100 mt-2">SIGN UP</button>
     </form>
 
-  <!-- 네이버, 구글, 카카오 버튼 -->
+  <!-- 네이버, 구글, 카카오, 페이스북 버튼 -->
 <div class="social-login">
   <a class="social-btn naver" href="${contextPath}/member/naverLoginStart" title="네이버 로그인" alt="네이버 로그인">N</a>
   <a class="social-btn google" href="${contextPath}/member/googleLoginStart" title="구글 로그인" alt="구글 로그인">G</a>
 <a class="social-btn kakao" href="${contextPath}/member/kakaoLoginStart" title="카카오 로그인" alt="카카오 로그인">K</a>
+<a class="social-btn facebook" href="${contextPath}/member/facebookLoginStart" title="페이스북 로그인" alt="페이스북 로그인">F</a>
 </div>
 
   </div>

@@ -15,6 +15,10 @@ public interface SocialUserDAO {
     // 👉 Kakao
     void insertKakaoUser(MemberDTO member);
     MemberDTO selectByKakaoId(String kakaoId);
+    
+ // 👉 Facebook
+    int insertFacebookUser(MemberDTO member);
+    MemberDTO selectByFacebookId(String facebookId);
 
     // 공통
     MemberDTO selectByEmail(String email);

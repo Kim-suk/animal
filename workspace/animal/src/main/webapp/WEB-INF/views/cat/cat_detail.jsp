@@ -89,9 +89,10 @@ button {
   cursor: pointer;
 }
 
+/* 
 #likeBtn {
   border: 1px solid #000;
-}
+} */
 
 #shareBtn {
   border: 1px solid #000;
@@ -120,20 +121,20 @@ button {
 }
 
 /* 모달 스타일 */
-#loginModal {
-    display: none; /* 기본적으로 숨김 */
+/* #loginModal {
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 배경 반투명 */
-    z-index: 1000; /* 다른 요소 위에 표시되도록 */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1000; 
     align-items: center;
     justify-content: center;
 }
-
-.modal-content {
+ */
+/* .modal-content {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -146,9 +147,9 @@ button {
     top: 10px;
     right: 10px;
     font-size: 25px;
-}
+} */
 /* 모달 오버레이 */
-.modal-overlay {
+/* .modal-overlay {
     display: none;
     position: fixed;
     top: 0; left: 0;
@@ -158,10 +159,10 @@ button {
     align-items: center;
     animation: fadeIn 0.3s ease forwards;
     z-index: 1000;
-}
+} */
 
 /* 모달 창 */
-.modal-content {
+/* .modal-content {
     background: #fff;
     padding: 30px 40px;
     border-radius: 15px;
@@ -170,32 +171,32 @@ button {
     transform: translateY(-20px);
     opacity: 0;
     animation: slideUp 0.3s ease forwards;
-}
+} */
 
 /* 버튼 영역 */
-.modal-buttons {
+/* .modal-buttons {
     margin-top: 20px;
-}
+} */
 
 /* 닫기 버튼 */
-.btn-cancel {
+/* .btn-cancel {
     padding: 10px 20px;
     background: #ccc;
     border: none;
     border-radius: 5px;
     margin-right: 10px;
     cursor: pointer;
-}
+} */
 
 /* 로그인 버튼 */
-.btn-login {
+/* .btn-login {
     padding: 10px 20px;
     background: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
+} */
 
 /* 페이드 인 애니메이션 */
 @keyframes fadeIn {
@@ -215,7 +216,7 @@ button {
 <body>
 
 <!-- 로그인 유도 모달 -->
-<div id="loginModal" class="modal-overlay">
+<!-- <div id="loginModal" class="modal-overlay">
     <div class="modal-content">
         <p>로그인이 필요한 기능입니다.</p>
         <div class="modal-buttons">
@@ -224,7 +225,7 @@ button {
         </div>
     </div>
 </div>
-
+ -->
 
 <div class="background" style="filter: blur(8px) brightness(0.5);"></div>
 <input type="hidden" id="breedVal" value="${breed}">
@@ -233,17 +234,17 @@ button {
 <div id="navButtons"></div>
 
 <!-- 오른쪽 사이드바 -->
-<div id="side-bar">
+<!-- <div id="side-bar">
   <div id="favoriteBox">
     <h3>💖 즐겨찾기 목록</h3>
     <ul id="favoriteList"></ul>
-  </div>
+  </div> 
 
-  <div id="recommendedcats">
+   <div id="recommendedcats">
     <h3>추천 고양이</h3>
     <ul id="recommendedList"></ul>
   </div>
-</div>
+</div> -->
 
 
 <script>
@@ -310,7 +311,7 @@ fetch("/animal/resources/data/cat_data.json")
 
         let html = "";
         html += "<h1 style='font-size: 3rem; color: white;'>" + cat.name + " 상세 정보</h1>";
-        html += "<button id='likeBtn' onclick='checkLoginStatus()'>🖤 즐겨찾기</button>";
+ /*        html += "<button id='likeBtn' onclick='checkLoginStatus()'>🖤 즐겨찾기</button>"; */
         html += "<button id='shareBtn' onclick='sharePage()'>🔗 공유하기</button>";
 
         // 고양이 이미지(일반 이미지로 직접 표시)
@@ -328,14 +329,14 @@ fetch("/animal/resources/data/cat_data.json")
         html += "</div>";
 
         container.innerHTML = html;
-        updateLikeButton();
-        updateFavoriteList();
+        /* updateLikeButton();
+        updateFavoriteList(); */
     })
     .catch(err => {
         document.getElementById("cat-info").innerHTML = "<p>정보를 불러오는 데 실패했습니다.</p>";
     });
 
-// 추천 고양이 목록 업데이트
+/* // 추천 고양이 목록 업데이트
 function updateRecommendedcats() {
     const recommendedList = document.getElementById("recommendedList");
     if (!recommendedList) return;
@@ -441,7 +442,7 @@ function updateFavoriteList() {
          ul.appendChild(li);
      }
  });
-}
+} */
 
 </script>
 

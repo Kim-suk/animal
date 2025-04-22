@@ -64,6 +64,17 @@ public class SocialUserDAOImpl implements SocialUserDAO {
 	    sqlSession.update("mapper.member.modMember", member);
 	}
 
+	@Override
+	public int insertFacebookUser(MemberDTO member) {
+		 return sqlSession.insert(NAMESPACE + ".insertFacebookUser", member);
+		
+	}
+
+	@Override
+	public MemberDTO selectByFacebookId(String facebookId) {
+		return sqlSession.selectOne(NAMESPACE + ".selectByFacebookId", facebookId);
+	}
+
 	
 
 }

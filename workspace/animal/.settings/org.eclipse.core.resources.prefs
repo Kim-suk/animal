@@ -8,12 +8,14 @@ encoding//src/main/java/com/test/animal/board/controller/BoardControllerImpl.jav
 encoding//src/main/java/com/test/animal/member/controller/MemberControllerImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/dao/MemberDAOImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/dto/MemberDTO.java=UTF-8
+encoding//src/main/java/com/test/animal/member/social/controller/FacebookLoginController.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/controller/GoogleLoginController.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/controller/KakaoLoginController.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/controller/NaverLoginController.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/dao/SocialUserDAO.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/dao/SocialUserDAOImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/dto/NaverUserDTO.java=UTF-8
+encoding//src/main/java/com/test/animal/member/social/service/FacebookLoginServiceImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/service/GoogleLoginServiceImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/service/KakaoLoginServiceImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/member/social/service/NaverLoginServiceImpl.java=UTF-8

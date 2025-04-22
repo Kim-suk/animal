@@ -11,8 +11,9 @@ public class MemberDTO {
 	private String email;
 	private Date joinDate;
 	private String naverId;   // 네이버 ID
-	private String kakaoId;   // 네이버 ID
-	private String googleId;   // 네이버 ID
+	private String kakaoId;   // 카카오 ID
+	private String googleId;   // 구글 ID
+	private String facebookId;   // 구글 ID
 	private String joinType;  // NAVER / EMAIL
 
 	public String getId() {
@@ -119,6 +120,18 @@ public class MemberDTO {
 	}
 	public void setNickname(String nickname) {
 	    this.nickname = nickname;
+	}
+	/**
+	 * @return the facebookId
+	 */
+	public String getFacebookId() {
+		return facebookId;
+	}
+	/**
+	 * @param facebookId the facebookId to set
+	 */
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
 	}
 
 

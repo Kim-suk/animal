@@ -223,7 +223,7 @@ a {
 								<li><a href="${contextPath }/dog_product/dog_all.do">전체</a></li>
 								<li><a href="${contextPath }/dog_product/dog_feed.do">사료</a></li>
 								<li><a href="${contextPath }/dog_product/dog_treat.do">간식</a></li>
-								<li><a href="${contextPath }/dog_product/dog_sand.do">모래</a></li>
+								<li><a href="${contextPath }/dog_product/dog_poop.do">배변용품</a></li>
 								<li><a href="${contextPath }/dog_product/dog_carrier.do">이동장</a></li>
 								<li><a href="${contextPath }/dog_product/dog_toy.do">장난감</a></li>
 								<li><a href="${contextPath }/dog_product/dog_bath.do">목욕용품</a></li>

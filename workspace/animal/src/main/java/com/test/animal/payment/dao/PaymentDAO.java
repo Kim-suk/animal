@@ -7,9 +7,12 @@ import com.test.animal.payment.dto.PaymentDetailDTO;
 
 public interface PaymentDAO {
 
-    int insertPayment(PaymentDTO paymentDTO);
-    int updatePaymentStatus(String orderNumber, String status);
-    PaymentDTO getPaymentByOrderNumber(String orderNumber);
-    List<PaymentDTO> getPaymentsByUserId(String userId);
+	// 결제 정보 저장
+    void insertPayment(PaymentDTO payment);
 
+	void insertPaymentDetail(PaymentDetailDTO paymentDetail);
+
+	/*
+	 * // 결제 상세 정보 저장 void insertPaymentDetail(PaymentDetailDTO paymentDetail);
+	 */
 }

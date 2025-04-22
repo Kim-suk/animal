@@ -15,6 +15,7 @@
 		<typeAlias type="com.test.animal.product.dto.ProductDTO" alias="productDTO" />
 		<typeAlias type="com.test.animal.cart.dto.CartDTO" alias="cartDTO" />
 		<typeAlias type="com.test.animal.payment.dto.PaymentDTO" alias="paymentDTO" />
+		<typeAlias type="com.test.animal.payment.dto.PaymentDetailDTO" alias="paymentDetailDTO" />
 		
 		<!-- alias 는 간단히 말해 하나의 변수명 -->
 	</typeAliases>

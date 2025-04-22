@@ -10,8 +10,6 @@ public class PaymentDTO {
     private double totalAmount;
     private Date paymentDate;  // 결제 시간 추가
     
-    private List<PaymentDetailDTO> details;
-    
 	public String getPaymentId() {
 		return paymentId;
 	}
@@ -37,11 +35,4 @@ public class PaymentDTO {
 		this.paymentDate = paymentDate;
 	}
     
-    // ✅ 추가된 getter/setter
-    public List<PaymentDetailDTO> getDetails() {
-        return details;
-    }
-    public void setDetails(List<PaymentDetailDTO> details) {
-        this.details = details;
-    }
 }

@@ -1,7 +1,6 @@
 package com.test.animal.payment.controller;
 
 import com.test.animal.payment.dto.PaymentDTO;
-import com.test.animal.payment.dto.PaymentDetailDTO;
 import com.test.animal.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +26,6 @@ public class PaymentControllerImpl implements PaymentController {
         String[] quantities = request.getParameterValues("quantities");
         String[] prices = request.getParameterValues("prices");
 
-        List<PaymentDetailDTO> details = new ArrayList<>();
         int totalAmount = 0;
 
         for (int i = 0; i < productIds.length; i++) {
@@ -38,21 +36,12 @@ public class PaymentControllerImpl implements PaymentController {
 
             totalAmount += price * quantity;
 
-            PaymentDetailDTO detail = new PaymentDetailDTO();
-            detail.setProductId(productId);
-            detail.setProductName(productName);
-            detail.setQuantity(quantity);
-            detail.setPrice(price);
-            detail.setTotalAmount(price * quantity); // 상세 금액
-
-            details.add(detail);
         }
 
         // DTO 생성 및 서비스에 전달
         PaymentDTO payment = new PaymentDTO();
         payment.setMemberId(memberId);
         payment.setTotalAmount(totalAmount);
-        payment.setDetails(details);
 
         // 한 번에 처리
         paymentService.processPayment(payment);

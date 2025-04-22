@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.animal.payment.dto.PaymentDTO;
-import com.test.animal.payment.dto.PaymentDetailDTO;
 
 @Repository
 public class PaymentDAOImpl implements PaymentDAO {
@@ -18,8 +17,4 @@ public class PaymentDAOImpl implements PaymentDAO {
         sqlSession.insert("mapper.payment.insertPayment", payment);
     }
 
-    @Override
-    public void insertPaymentDetail(PaymentDetailDTO paymentDetail) {
-        sqlSession.insert("mapper.payment.insertPaymentDetail", paymentDetail);
-    }
 }

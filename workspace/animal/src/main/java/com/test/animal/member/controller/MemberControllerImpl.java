@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.test.animal.member.service.MemberService;
 import com.test.animal.member.service.MemberServiceImpl;
+import com.test.animal.cart.service.CartService;
 import com.test.animal.member.dto.MemberDTO;
 
 @Controller
@@ -27,6 +28,8 @@ import com.test.animal.member.dto.MemberDTO;
 public class MemberControllerImpl implements MemberController{
    @Autowired
    private MemberService service;
+   @Autowired
+	private CartService cartService;
    
    private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
    
@@ -191,6 +194,7 @@ public class MemberControllerImpl implements MemberController{
 
 
    @Override
+ 
 	@RequestMapping("/member/logout.do")
 	public ModelAndView logout(
 	        RedirectAttributes rAttr,

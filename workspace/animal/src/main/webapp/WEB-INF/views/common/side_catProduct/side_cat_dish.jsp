@@ -39,8 +39,8 @@
           <span>크기</span><span class="toggle-icon">▼</span>
         </div>
         <div class="filter-options">
-          <label><input type="checkbox" name="크기" value="소형"> 소형</label>
-          <label><input type="checkbox" name="크기" value="중대형"> 중대형</label>
+          <label><input type="checkbox" name="대상크기" value="소형"> 소형</label>
+          <label><input type="checkbox" name="대상크기" value="중대형"> 중대형</label>
         </div>
       </div>
       

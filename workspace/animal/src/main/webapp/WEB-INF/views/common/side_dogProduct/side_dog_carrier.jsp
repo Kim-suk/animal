@@ -5,89 +5,83 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>필터</title>
-    <style>
-        .section-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .toggle-icon {
-            font-size: 14px;
-            margin-left: 5px;
-        }
-
-        .filter-group {
-            margin-bottom: 20px;
-        }
-
-        .filter-options {
-            margin-top: 5px;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>필터</title>
+  <style>
+    .section-toggle { display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 8px; font-weight: bold; }
+    .toggle-icon { font-size: 14px; margin-left: 5px; }
+    .filter-group { margin-bottom: 20px; }
+    .filter-options { margin-top: 5px; }
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
-    <aside class="w-64 p-4 border-r bg-white rounded-lg shadow-sm">
-        <h2 class="text-xl font-semibold mb-4">이동장</h2>
+  <aside class="w-64 p-4 border-r bg-white rounded-lg shadow-sm">
+    <h2 class="text-xl font-semibold mb-4">이동장</h2>
 
-        <!-- 허용 무게 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>허용 무게</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">3kg 이하</label>
-                <label class="block"><input type="checkbox" class="mr-2">3~10kg</label>
-                <label class="block"><input type="checkbox" class="mr-2">10kg 이상</label>
-            </div>
+    <!-- 필터 체크박스 -->
+    <div id="filterForm">
+      <!-- 허용무게 -->
+      <div class="filter-group">
+        <div class="section-toggle" onclick="toggleSection(this)">
+          <span>허용 무게</span><span class="toggle-icon">▼</span>
         </div>
-
-        <!-- 종류 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>종류</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">케리어/이동가방</label>
-                <label class="block"><input type="checkbox" class="mr-2">백팩</label>
-                <label class="block"><input type="checkbox" class="mr-2">켄넬/이동장</label>
-            </div>
+        <div class="filter-options">
+          <label><input type="checkbox" name="허용무게" value="1.5KG이하"> 1.5KG 이하</label>
+          <label><input type="checkbox" name="허용무게" value="10KG이상"> 10KG 이상</label>
         </div>
+      </div>
 
-        <!-- 실내/실외용 -->
-        <div class="filter-group">
-            <div class="section-toggle" onclick="toggleSection(this)">
-                <span>실내 실외용</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="filter-options">
-                <label class="block"><input type="checkbox" class="mr-2">실외용</label>
-                <label class="block"><input type="checkbox" class="mr-2">실내외겸용</label>
-                <label class="block"><input type="checkbox" class="mr-2">실내용</label>
-            </div>
+      <!-- 종류 -->
+      <div class="filter-group">
+        <div class="section-toggle" onclick="toggleSection(this)">
+          <span>종류</span><span class="toggle-icon">▼</span>
         </div>
+        <div class="filter-options">
+          <label><input type="checkbox" name="종류" value="캐리어/백팩"> 캐리어/백팩</label>
+          <label><input type="checkbox" name="종류" value="컨넬/이동장"> 컨넬/이동장</label>
+        </div>
+      </div>
+	</div>
+  </aside>
 
-    </aside>
+  <script>
+    // 토글 섹션 기능
+    function toggleSection(headerEl) {
+      const options = headerEl.nextElementSibling;
+      const icon = headerEl.querySelector(".toggle-icon");
+      options.classList.toggle("hidden");
+      icon.textContent = options.classList.contains("hidden") ? "▲" : "▼";
+    }
 
-    <script>
-        function toggleSection(headerEl) {
-            const options = headerEl.nextElementSibling;
-            const icon = headerEl.querySelector(".toggle-icon");
+    window.addEventListener("DOMContentLoaded", () => {
+        const checkboxes = document.querySelectorAll('#filterForm input[type="checkbox"]');
+        const params = new URLSearchParams(window.location.search);
 
-            options.classList.toggle("hidden");
-            icon.textContent = options.classList.contains("hidden") ? "▲" : "▼";
-        }
-    </script>
+        // ✅ 페이지 로딩 시 체크 상태 유지
+        checkboxes.forEach(cb => {
+          const values = params.getAll(cb.name);
+          if (values.includes(cb.value)) {
+            cb.checked = true;
+          }
+        });
+
+        // ✅ 클릭 시 필터 적용
+        checkboxes.forEach(cb => {
+          cb.addEventListener("change", () => {
+            const newParams = new URLSearchParams();
+
+            checkboxes.forEach(box => {
+              if (box.checked) {
+                newParams.append(box.name, box.value);
+              }
+            });
+
+            // URL 갱신 (GET 요청)
+            window.location.href = window.location.pathname + '?' + newParams.toString();
+          });
+        });
+      });
+  </script>
 </body>
 </html>

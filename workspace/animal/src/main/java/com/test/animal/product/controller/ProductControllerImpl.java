@@ -316,7 +316,7 @@ public class ProductControllerImpl implements ProductController {
 	public ModelAndView catDishFilter(
 			@RequestParam(required = false, value = "소재") List<String> material, 
 			@RequestParam(required = false, value = "대상크기") List<String> size, 
-			@RequestParam(required = false, value = "자동급식기") List<String> automatic) 
+			@RequestParam(required = false, value = "자동급식기능") List<String> automatic) 
 	{
 		boolean isFilterApplied = (material != null || size != null || automatic != null);
         ModelAndView mav = new ModelAndView("/cat_product/cat_dish");
@@ -329,12 +329,13 @@ public class ProductControllerImpl implements ProductController {
             // ✅ 필터가 있을 경우
             Map<String, List<String>> filters = new HashMap<>();
             int count = 0;
-
+            
+            if (material != null && !material.isEmpty()) { filters.put("소재", size); count++; }
             if (size != null && !size.isEmpty()) { filters.put("대상크기", size); count++; }
-            if (automatic != null && !automatic.isEmpty()) { filters.put("자동급식기", automatic); count++; }
+            if (automatic != null && !automatic.isEmpty()) { filters.put("자동급식기능", automatic); count++; }
             
             if (count == 0) {
-                // 필터 없음 → 전체 조회
+                // 필터 없음 → 전체 조회능
                 List<ProductDTO> list = service.catDishProducts();
                 mav.addObject("productList", list);
             } else {

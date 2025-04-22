@@ -1,6 +1,4 @@
-=\=\=\=\=\=\=
-<<<<<<<=Upstream, based on origin/master
->>>>>>>=13c3859 review
+
 eclipse.preferences.version=1
 encoding//src/main/java/com/test/animal/animal_hospital/service/AnimalHospitalServiceImpl.java=UTF-8
 encoding//src/main/java/com/test/animal/animal_hospital/service/CsvParserServiceImpl.java=UTF-8
@@ -26,5 +24,6 @@ encoding//src/main/webapp/WEB-INF/views/common/side_catProduct/side_catProduct.j
 encoding//src/main/webapp/WEB-INF/views/dog/dog_detail.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/hospital/map.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main.jsp=UTF-8
+
 encoding//src/main/webapp/resources/css/style.css=UTF-8
 encoding//src/main/webapp/resources/data/dog_data.json=UTF-8

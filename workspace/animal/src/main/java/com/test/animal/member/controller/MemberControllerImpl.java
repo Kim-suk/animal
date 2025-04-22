@@ -189,6 +189,7 @@ public class MemberControllerImpl implements MemberController{
        return mav;
    }
 
+
    @Override
 	@RequestMapping("/member/logout.do")
 	public ModelAndView logout(

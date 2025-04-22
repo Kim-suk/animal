@@ -191,39 +191,25 @@ public class MemberControllerImpl implements MemberController{
 
        return mav;
    }
-
-
-   @Override
  
+   @Override
 	@RequestMapping("/member/logout.do")
 	public ModelAndView logout(
-	        RedirectAttributes rAttr,
-	        HttpServletRequest request,
-	        HttpServletResponse response) throws Exception {
-
-	    HttpSession session = request.getSession(false);
-	    ModelAndView mav = new ModelAndView();
-
-	    if (session != null) {
-	        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
-	        if (isLogin != null && isLogin) {
-	        	
-	        	// 장바구니 비우기
-	        	String memberId = (String) session.getAttribute("loginId");
-	            if (memberId != null) {
-	                cartService.deleteCartByMemberId(memberId);
-	            }
-	            
-	            session.invalidate();
-	            rAttr.addAttribute("result", "logout");
-	        } else {
-	            rAttr.addAttribute("result", "notLogin");
-	        }
-	    } else {
-	        rAttr.addAttribute("result", "notLogin");
-	    }
-
-	    mav.setViewName("redirect:/member/loginForm.do");
-	    return mav;
+			RedirectAttributes rAttr,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
+		
+		ModelAndView mav = new ModelAndView();
+		Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+		
+		if(session != null && isLogin != null) {
+			session.invalidate();
+			rAttr.addAttribute("result", "logout");
+		} else {
+			rAttr.addAttribute("result", "notLogin");
+		}
+		mav.setViewName("redirect:/member/loginForm.do");
+		return mav;
 	}
 }

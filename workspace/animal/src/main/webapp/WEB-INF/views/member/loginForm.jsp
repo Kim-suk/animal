@@ -13,6 +13,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- css -->
 <link rel="stylesheet" href="/animal/resources/css/default.css">
+<link rel="stylesheet" href="/animal/resources/css/font-awesome.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <c:choose>
@@ -30,20 +31,31 @@
 </c:choose>
 <style>
 
+		body{
+		background:linear-gradient(to bottom, #000000, #ffffff);
+		}
+		
     .login-container {
-        max-width: 500px;
+        max-width: 600px;
+        height: 500px;
         margin: 90px auto;
-       	margin-top:300px;
+       	margin-top:200px;
         padding: 20px;
         background: white;
         border-radius: 10px;
         border : center;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          background: rgba(255, 255, 255, 0.05); /* 반투명 유리 느낌 */
+  backdrop-filter: blur(10px);           /* 유리 효과 */
+      
+        transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(3, 199, 90, 0.4);
     }
     .login-title {
-        font-size: 24px;
+   		 font-family: var(--e-font);
+        font-size: 60px;
         font-weight: bold;
         text-align: center;
+        color:white;
         margin-bottom: 20px;
     }
     
@@ -51,7 +63,7 @@
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .social-btn {
@@ -87,8 +99,29 @@
 }
  
 
+.social-btn:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
 
+.login-btn {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: black;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(3, 199, 90, 0.4);
+}
 
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(3, 199, 90, 0.6);
+}
     
 </style>
 
@@ -174,7 +207,7 @@
       <label>
         <input type="checkbox" id="saveIdCheck"> 아이디 저장
       </label>
-     <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+     <button type="submit" class="login-btn">LOGIN</button>
     </form>
 
     <!-- 회원가입 폼 -->

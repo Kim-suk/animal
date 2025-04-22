@@ -6,10 +6,8 @@ import com.test.animal.member.social.dto.GoogleUserDTO;
 public interface GoogleLoginService {
     String getAccessToken(String code);
     GoogleUserDTO getUserInfo(String accessToken);
-    MemberDTO selectByGoogleId(String googleId);
-    MemberDTO selectByEmail(String email);
-    MemberDTO selectByUserId(String id);
+    MemberDTO findByGoogleId(String googleId);
+    MemberDTO findByEmail(String email);
+    MemberDTO findByUserId(String id);
     void registerGoogleUser(MemberDTO member);
-    MemberDTO handleGoogleLogin(GoogleUserDTO GoogleUser);
-    }
-	
+}

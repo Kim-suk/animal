@@ -7,7 +7,20 @@ body, html {
     flex-direction: column;
 }
 
-
+/* 헤더 수정 */
+#header {
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #bcbcbc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
 
 /* 컨테이너 설정 (푸터를 아래에 고정하기 위해) */
 #container {
@@ -15,7 +28,7 @@ body, html {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 /* 동물 사이드바 */
@@ -45,9 +58,5 @@ body, html {
     padding: 10px;
     background-color: black;
     color: white;
-    text-align: center;footer {
-    
-}
-
-
+    text-align: center;
 }

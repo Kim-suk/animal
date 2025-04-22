@@ -1,30 +1,36 @@
 package com.test.animal.board.controller;
 
-import java.io.IOException;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.test.animal.board.dto.BoardDTO;
-import com.test.animal.board.dto.CommentDTO;
-
+import com.test.animal.board.dto.ImageDTO;
 
 public interface BoardController {
-	public String getBoardList(BoardDTO dto, @RequestParam("category") String category, Model model);
-	public String getBoard(@RequestParam("bno") int bno,
-            @RequestParam("category") String category,
-            Model model);
-	public String insertBoard(MultipartHttpServletRequest mRequest, @RequestParam("category") String category) throws IOException;
-	public String updateBoardForm(@RequestParam("bno") int bno, @RequestParam("category") String category, Model model);	
-	public String updateBoard(MultipartHttpServletRequest mRequest,
-            @ModelAttribute("board") BoardDTO dto,
-            @RequestParam("category") String category,
-            @RequestParam(value = "thumbnail", required = false) String thumbnailFileName,
-            @RequestParam(value = "deleteImages", required = false) List<String> deleteImages) throws Exception;
-	public String deleteBoard(BoardDTO dto, @RequestParam("category") String category);
-	public String insertComment(CommentDTO cdto, @RequestParam("category") String category) throws IOException;
-	public String likeAction(@RequestParam("bno") int bno) throws IOException;
+	public ModelAndView listArticles(HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+	public ModelAndView form(
+			@RequestParam(value="parentNo", required = true) Integer parentNo,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+	public ResponseEntity addNewArticle(MultipartHttpServletRequest mRequest,
+			HttpServletResponse response) throws Exception;
+	public ModelAndView viewArticle(
+			@RequestParam("articleNo") int articleNo,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+	public ResponseEntity modArticle(MultipartHttpServletRequest mRequest,
+			HttpServletResponse response) throws Exception;
+	public ResponseEntity removeArticle(
+			@RequestParam("articleNo") int articleNo,
+			HttpServletRequest Request,
+			HttpServletResponse response) throws Exception;
+	public ResponseEntity deleteImage(
+			@RequestParam("image") ImageDTO image,
+			HttpServletRequest mRequest,
+			HttpServletResponse response) throws Exception;
 }

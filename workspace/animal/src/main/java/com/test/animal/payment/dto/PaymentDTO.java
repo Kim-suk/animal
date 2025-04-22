@@ -1,43 +1,26 @@
 package com.test.animal.payment.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 public class PaymentDTO {
-
-    private String id;
-    private String userId;
-    private Date paymentDate;
+	
+    private String paymentId;
+    private String memberId;
     private double totalAmount;
-    private String paymentMethod;
-    private String paymentStatus;
-    private String orderNumber;
+    private Date paymentDate;  // 결제 시간 추가
     
-    public PaymentDTO(String orderNumber, String paymentStatus) {
-        this.orderNumber = orderNumber;
-        this.paymentStatus = paymentStatus;
-    }
-    
-	public PaymentDTO() {
-		// TODO Auto-generated constructor stub
+	public String getPaymentId() {
+		return paymentId;
 	}
-
-	public String getId() {
-		return id;
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public String getMemberId() {
+		return memberId;
 	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public Date getPaymentDate() {
-		return paymentDate;
-	}
-	public void setPaymentDate(Date paymentDate) {
-		this.paymentDate = paymentDate;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public double getTotalAmount() {
 		return totalAmount;
@@ -45,23 +28,11 @@ public class PaymentDTO {
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-	public String getPaymentMethod() {
-		return paymentMethod;
+	public Date getPaymentDate() {
+		return paymentDate;
 	}
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setPaymentDate(Date paymentDate) {
+		this.paymentDate = paymentDate;
 	}
-	public String getPaymentStatus() {
-		return paymentStatus;
-	}
-	public void setPaymentStatus(String paymentStatus) {
-		this.paymentStatus = paymentStatus;
-	}
-	public String getOrderNumber() {
-		return orderNumber;
-	}
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
-	}
-    
+
 }

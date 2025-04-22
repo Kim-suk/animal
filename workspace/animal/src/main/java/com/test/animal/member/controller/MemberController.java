@@ -1,4 +1,4 @@
-	package com.test.animal.member.controller;
+package com.test.animal.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

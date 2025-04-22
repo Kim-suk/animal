@@ -10,10 +10,9 @@ import com.test.animal.animal_hospital.dto.AnimalHospitalDTO;
 @Mapper
 public interface AnimalHospitalDAO {
 
-	public void insertHospitals(List<AnimalHospitalDTO> list);
+	void batchInsertHospitals(List<AnimalHospitalDTO> hospitalList);
 
-	public List<AnimalHospitalDTO> getAllHospitals();
-	public AnimalHospitalDTO getHospitalById(int id);
+	List<AnimalHospitalDTO> findHospitalsWithin5km(Map<String, Object> params);
 
 
 }

@@ -31,31 +31,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/cat/cat_think.jsp" />
 	</definition>
 	
-	<definition name="/cat/cat_about" extends="baseLayout">
-		<put-attribute name="title" value="강아지의 모든것!"/>
-		<put-attribute name="body" value="/WEB-INF/views/cat/cat_about.jsp" />
-	</definition>
-	
-	<definition name="/cat/cat_detail" extends="baseLayout">
-		<put-attribute name="title" value=""/>
-		<put-attribute name="body" value="/WEB-INF/views/cat/cat_detail.jsp" />
-	</definition>
-	
-	<definition name="/cat/cat_responsible" extends="baseLayout">
-		<put-attribute name="title" value="🐾 고양이를 위한 책임감 있는 보호자 되기"/>
-		<put-attribute name="body" value="/WEB-INF/views/cat/cat_responsible.jsp" />
-	</definition>
-	
-		<!-- 강아지 뷰어 -->
 	<definition name="/dog/dog_type" extends="animalLayout">
 		<put-attribute name="title" value="품종"/>
 		<put-attribute name="side" value="/WEB-INF/views/common/side_dog.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_type.jsp" />
-	</definition>
-	
-	<definition name="/dog/dog_think" extends="animalLayout">
-		<put-attribute name="title" value="강아지를 기를까 생각중이신가요?"/>
-		<put-attribute name="body" value="/WEB-INF/views/dog/dog_think.jsp" />
 	</definition>
 	
 	<definition name="/dog/dog_puppy" extends="animalLayout">
@@ -64,19 +43,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_puppy.jsp" />
 	</definition>
 	
-	<definition name="/dog/dog_about" extends="baseLayout">
-		<put-attribute name="title" value="강아지의 모든것!"/>
-		<put-attribute name="body" value="/WEB-INF/views/dog/dog_about.jsp" />
+	<definition name="/dog/dog_think" extends="animalLayout">
+		<put-attribute name="title" value="강아지를 기를까 생각중이신가요?"/>
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_think.jsp" />
 	</definition>
 	
+	<definition name="/dog/dog_all" extends="baseLayout">
+		<put-attribute name="title" value="강아지의 모든것!"/>
+		<put-attribute name="body" value="/WEB-INF/views/dog/dog_all.jsp" />
+	</definition>
+	
+	<!-- 강아지 뷰어 -->
 	<definition name="/dog/dog_detail" extends="baseLayout">
 		<put-attribute name="title" value="치와왕"/>
 		<put-attribute name="body" value="/WEB-INF/views/dog/dog_detail.jsp" />
-	</definition>
-	
-	<definition name="/dog/dog_responsible" extends="baseLayout">
-		<put-attribute name="title" value="🐾 강아지를 위한 책임감 있는 보호자 되기"/>
-		<put-attribute name="body" value="/WEB-INF/views/dog/dog_responsible.jsp" />
 	</definition>
 	
 </tiles-definitions>

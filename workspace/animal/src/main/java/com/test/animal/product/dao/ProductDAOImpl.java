@@ -16,19 +16,19 @@ public class ProductDAOImpl implements ProductDAO{
 	@Autowired
 	private SqlSession session;
 	
-	// »óÇ° »ó¼¼
+	// ìƒí’ˆ ìƒì„¸
 	@Override
 	public ProductDTO productDetail(String id) {
 		return session.selectOne("mapper.product.productDetail", id);
 	}
 	
-	// °í¾çÀÌ ¸ÅÀÎ
+	// ê³ ì–‘ì´ ë§¤ì¸
 	@Override
 	public List<ProductDTO> catTop10() {
 	    return session.selectList("mapper.product.getCatTop10");
 	}
 	
-	// °í¾çÀÌ °£½Ä
+	// ê³ ì–‘ì´ ê°„ì‹
 	@Override
 	public List<ProductDTO> catFeedProducts() {
 		// TODO Auto-generated method stub
@@ -40,7 +40,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catFeedFilter", paramMap);
 	}
 
-	// °í¾çÀÌ °£½Ä
+	// ê³ ì–‘ì´ ê°„ì‹
 	@Override
 	public List<ProductDTO> catTreatProducts() {
 		// TODO Auto-generated method stub
@@ -52,7 +52,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catTreatFilter", paramMap);
 	}
 
-	// °í¾çÀÌ ¸ğ·¡
+	// ê³ ì–‘ì´ ëª¨ë˜
 	@Override
 	public List<ProductDTO> catSandProducts() {
 		// TODO Auto-generated method stub
@@ -64,7 +64,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catSandFilter", paramMap);
 	}
 
-	// °í¾çÀÌ ÀÌµ¿Àå
+	// ê³ ì–‘ì´ ì´ë™ì¥
 	@Override
 	public List<ProductDTO> catCarrierProducts() {
 		// TODO Auto-generated method stub
@@ -76,7 +76,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catCarrierFilter", paramMap);
 	}
 
-	// °í¾çÀÌ Àå³­°¨
+	// ê³ ì–‘ì´ ì¥ë‚œê°
 	@Override
 	public List<ProductDTO> catToyProducts() {
 		// TODO Auto-generated method stub
@@ -88,7 +88,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catToyFilter", paramMap);
 	}
 	
-	// °í¾çÀÌ ¸ñ¿å¿ëÇ°
+	// ê³ ì–‘ì´ ëª©ìš•ìš©í’ˆ
 	@Override
 	public List<ProductDTO> catBathProducts() {
 		// TODO Auto-generated method stub
@@ -100,7 +100,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catBathFilter", paramMap);
 	}
 
-	// °í¾çÀÌ ÇÏ¿ì½º
+	// ê³ ì–‘ì´ í•˜ìš°ìŠ¤
 	@Override
 	public List<ProductDTO> catHouseProducts() {
 		// TODO Auto-generated method stub
@@ -112,7 +112,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catHouseFilter", paramMap);
 	}
 
-	// °í¾çÀÌ ½Ä±â
+	// ê³ ì–‘ì´ ì‹ê¸°
 	@Override
 	public List<ProductDTO> catDishProducts() {
 		// TODO Auto-generated method stub
@@ -124,14 +124,14 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.catDishFilter", paramMap);
 	}
 
-	// °­¾ÆÁö ¸ŞÀÎ
+	// ê°•ì•„ì§€ ë©”ì¸
 	@Override
 	public List<ProductDTO> dogTop10() {
 		// TODO Auto-generated method stub
 		return session.selectList("mapper.product.getDogTop10");
 	}
 
-	// °­¾ÆÁö »ç·á
+	// ê°•ì•„ì§€ ì‚¬ë£Œ
 	@Override
 	public List<ProductDTO> dogFeedProducts() {
 		// TODO Auto-generated method stub
@@ -143,7 +143,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.dogFeedFilter", paramMap);
 	}
 
-	// °­¾ÆÁö °£½Ä
+	// ê°•ì•„ì§€ ê°„ì‹
 	@Override
 	public List<ProductDTO> dogTreatProducts() {
 		// TODO Auto-generated method stub
@@ -155,7 +155,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.dogTreatFilter", paramMap);
 	}
 
-	// °­¾ÆÁö ¹èº¯¿ëÇ°
+	// ê°•ì•„ì§€ ë°°ë³€ìš©í’ˆ
 	@Override
 	public List<ProductDTO> dogPoopProducts() {
 		// TODO Auto-generated method stub
@@ -167,7 +167,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.dogPoopFilter", paramMap);
 	}
 
-	// °­¾ÆÁö ÀÌµ¿Àå
+	// ê°•ì•„ì§€ ì´ë™ì¥
 	@Override
 	public List<ProductDTO> dogCarrierProducts() {
 		// TODO Auto-generated method stub
@@ -179,7 +179,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.dogCarrierFilter", paramMap);
 	}
 
-	// °­¾ÆÁö Àå³­°¨
+	// ê°•ì•„ì§€ ì¥ë‚œê°
 	@Override
 	public List<ProductDTO> dogToyProducts() {
 		// TODO Auto-generated method stub
@@ -191,7 +191,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.dogToyFilter", paramMap);
 	}
 
-	// °­¾ÆÁö ¸ñ¿å¿ëÇ°
+	// ê°•ì•„ì§€ ëª©ìš•ìš©í’ˆ
 	@Override
 	public List<ProductDTO> dogBathProducts() {
 		// TODO Auto-generated method stub
@@ -203,7 +203,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.dogBathFilter", paramMap);
 	}
 	
-	// °­¾ÆÁö ÇÏ¿ì½º
+	// ê°•ì•„ì§€ í•˜ìš°ìŠ¤
 	@Override
 	public List<ProductDTO> dogHouseProducts() {
 		// TODO Auto-generated method stub
@@ -215,7 +215,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return session.selectList("mapper.product.dogHouseFilter", paramMap);
 	}
 
-	// °­¾ÆÁö ½Ä±â
+	// ê°•ì•„ì§€ ì‹ê¸°
 	@Override
 	public List<ProductDTO> dogDishProducts() {
 		// TODO Auto-generated method stub

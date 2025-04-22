@@ -93,12 +93,7 @@
 			<button onclick="submitSelected()">결제하기</button>
 		</div>
 	</div>
-<script src="https://js.tosspayments.com/v1/payment-widget"></script>
-<script>
-  const clientKey = "test_ck_XZYkKL4MrjDqGEyZ5Oya30zJwlEW"; // 발급받은 클라이언트 키
-  const customerKey = "test_sk_oEjb0gm23PWw9a5qzNK48pGwBJn5"; // 고유한 고객 식별자
-  const paymentWidget = PaymentWidget(clientKey, customerKey);
-</script>
+
 	<script>
     // 수량 변경 시 개별 상품 가격 업데이트 + 총합 재계산
     document.querySelectorAll(".quantity-input").forEach(input => {
@@ -142,7 +137,7 @@
     document.getElementById("totalPrice").innerText = total.toLocaleString();
 }
 
-    // 결제 버튼 클릭 시 선택된 상품 정보 콘솔에 출력 (디버깅용)
+    // 결제 버튼 클릭 시 선택된 상품 정보 콘솔에 출력
     function submitSelected() {
     const selected = document.querySelectorAll(".cart-checkbox:checked");
     if (selected.length === 0) {
@@ -153,40 +148,44 @@
     // form 생성
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "/animal/payment/ready"; // 결제 준비 Controller 경로 (Spring에서 처리)
+    form.action = "/animal/payment/process";  // 실제 DB 저장 처리하는 컨트롤러 URL
     
+    // 🔥 memberId 추가
+    const memberId = selected[0].closest('.cart-item').querySelector('.delete-btn').dataset.memberId;
+    const inputMemberId = document.createElement("input");
+    inputMemberId.type = "hidden";
+    inputMemberId.name = "memberId";
+    inputMemberId.value = memberId;
+    form.appendChild(inputMemberId);
+
     // 선택된 상품 정보 반복해서 form에 추가
     selected.forEach(cb => {
         const cartItem = cb.closest('.cart-item');
         const quantityInput = cartItem.querySelector('.quantity-input');
-        
+
         const productId = cb.value;
         const productName = cb.dataset.productName;
         const quantity = quantityInput.value;
         const price = cb.dataset.price;
 
-        // 상품ID
         const inputId = document.createElement("input");
         inputId.type = "hidden";
         inputId.name = "productIds";
         inputId.value = productId;
         form.appendChild(inputId);
 
-        // 상품명
         const inputName = document.createElement("input");
         inputName.type = "hidden";
         inputName.name = "productNames";
         inputName.value = productName;
         form.appendChild(inputName);
 
-        // 수량
         const inputQty = document.createElement("input");
         inputQty.type = "hidden";
         inputQty.name = "quantities";
         inputQty.value = quantity;
         form.appendChild(inputQty);
 
-        // 단가
         const inputPrice = document.createElement("input");
         inputPrice.type = "hidden";
         inputPrice.name = "prices";
@@ -197,6 +196,7 @@
     document.body.appendChild(form);
     form.submit();
 }
+
 
     // 페이지 로딩 후 초기 총합 설정
     updateTotalPrice();

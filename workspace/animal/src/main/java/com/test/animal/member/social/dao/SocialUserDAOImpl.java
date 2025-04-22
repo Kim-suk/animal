@@ -29,8 +29,8 @@ public class SocialUserDAOImpl implements SocialUserDAO {
     }
 
     @Override
-    public int insertNaverUser(MemberDTO member) {
-        return sqlSession.insert(NAMESPACE + ".insertNaverUser", member);
+    public void insertNaverUser(MemberDTO member) {
+        sqlSession.insert(NAMESPACE + ".insertNaverUser", member);
     }
 
     @Override
@@ -43,38 +43,21 @@ public class SocialUserDAOImpl implements SocialUserDAO {
         sqlSession.insert(NAMESPACE + ".insertKakaoUser", member);
     }
 
-    public MemberDTO selectByEmail(String email) {
-        return sqlSession.selectOne("mapper.member.selectByEmail", email); // ✅ 매퍼 XML과 일치
-    }
-
 	@Override
-	public MemberDTO selectByUserId(String id) {
+	public MemberDTO findByEmail(String email) {
 		// TODO Auto-generated method stub
-		 return sqlSession.selectOne("mapper.member.selectByUserId", id);
+	    return sqlSession.selectOne(NAMESPACE + ".findByEmail", email);
 	}
 
 	@Override
-	public int checkUserId(String id) {
+	public void insertFacebookUser(MemberDTO member) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("mapper.member.checkUserId", id);
-	}
-
-	@Override
-	public void modMember(MemberDTO member) {
-	    sqlSession.update("mapper.member.modMember", member);
-	}
-
-	@Override
-	public int insertFacebookUser(MemberDTO member) {
-		 return sqlSession.insert(NAMESPACE + ".insertFacebookUser", member);
 		
 	}
 
 	@Override
 	public MemberDTO selectByFacebookId(String facebookId) {
-		return sqlSession.selectOne(NAMESPACE + ".selectByFacebookId", facebookId);
+		// TODO Auto-generated method stub
+		return null;
 	}
-
-	
-
 }

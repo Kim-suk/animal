@@ -1,31 +1,17 @@
 package com.test.animal.board.service;
 
 import java.util.List;
-import com.test.animal.board.dto.BoardDTO;
-import com.test.animal.board.dto.CommentDTO;
-import com.test.animal.board.dto.ImageDTO;
+import java.util.Map;
+
+import com.test.animal.board.dto.ArticleDTO;
 
 public interface BoardService {
-    List<BoardDTO> getBoardList(BoardDTO dto);
-    BoardDTO getBoard(BoardDTO dto);
 
-    void insertBoard(BoardDTO dto);
-    void insertBoardImage(ImageDTO imageDTO);
-    void updateBoardThumbnail(int bno, String thumbnailFileName);
-    void updateBoard(BoardDTO dto);
-    void deleteBoard(BoardDTO dto);
+	List<ArticleDTO> listArticles();
+	int addNewArticle(Map<String, Object> articleMap);
+	Map viewArticle(int articleNo);
+	void modArticle(Map<String, Object> articleMap);
+	void removeArticle(int articleNo);
+	int deleteImage(int imageFileNo);
 
-    List<CommentDTO> getComment(BoardDTO dto);
-    void insertComment(CommentDTO cdto);
-
-    void updateLike(int bno);
-    int selectLikeCount(int bno);
-	List<ImageDTO> getBoardImages(int bno);
-	void deleteImageByFileName(String delName);
-	void insertImage(ImageDTO imageDTO);
-	void updateCommentCountOnBoardLoad(int bno);
-	void addComment(CommentDTO cdto);
-	List<ImageDTO> getImageList(BoardDTO dto);
-	
-	List<BoardDTO> getTopHospitalReviews();
 }

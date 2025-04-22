@@ -13,10 +13,10 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
 </head>
 <body>
+	<div id="container">
 		<div id="header">
 			<tiles:insertAttribute name="header" /> 
 		</div>
-		<br><br><br><br><br><br><br>
 		 <div style="display: flex; flex: 1;">
         <div id="sidebar-product">
             <tiles:insertAttribute name="side" />
@@ -29,6 +29,6 @@
     <div id="footer">
         <tiles:insertAttribute name="footer" />
     </div>
-
+	</div>
 </body>
 </html>

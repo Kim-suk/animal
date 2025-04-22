@@ -2,8 +2,8 @@ package com.test.animal.member.social.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.animal.member.dao.MemberDAO;
 import com.test.animal.member.dto.MemberDTO;
-import com.test.animal.member.social.dao.SocialUserDAO;
 import com.test.animal.member.social.dto.GoogleUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.net.URL;
 public class GoogleLoginServiceImpl implements GoogleLoginService {
 
     @Autowired
-    private SocialUserDAO socialUserDAO;
+    private MemberDAO memberDAO;
 
     private final String clientId = "1041374005294-sei4ka3orulnm41t7fjr6971tb2jt1ct.apps.googleusercontent.com";
     private final String clientSecret = "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";
@@ -90,64 +90,27 @@ public class GoogleLoginServiceImpl implements GoogleLoginService {
     }
 
     @Override
-    public void registerGoogleUser(MemberDTO member) {
-        // 중복 체크 생략 또는 필요시 DAO에 checkUserId 추가
-        socialUserDAO.insertGoogleUser(member);
+    public MemberDTO findByGoogleId(String googleId) {
+        return memberDAO.selectByGoogleId("google_" + googleId);
     }
 
     @Override
-    public MemberDTO handleGoogleLogin(GoogleUserDTO GoogleUser) {
-        String googleId = "google_" + GoogleUser.getId();
+    public MemberDTO findByEmail(String email) {
+        return memberDAO.selectByEmail(email);
+    }
 
-        // 1. selectByGoogleId
-        MemberDTO existing = socialUserDAO.selectByGoogleId(googleId);
-        if (existing != null) return existing;
+    @Override
+    public MemberDTO findByUserId(String id) {
+        return memberDAO.selectByUserId(id);
+    }
 
-        // 2. selectByEmail
-        MemberDTO byEmail = socialUserDAO.selectByEmail(GoogleUser.getEmail());
-        if (byEmail != null) {
-            byEmail.setGoogleId(googleId);
-            byEmail.setJoinType("google");
-            // socialUserDAO.modMember(byEmail); // modMember 없으면 주석 유지 또는 MemberDAO에서 처리
-            return byEmail;
+    @Override
+    public void registerGoogleUser(MemberDTO member) {
+        int count = memberDAO.checkUserId(member.getId());
+        if (count > 0) {
+            throw new IllegalStateException("EXISTING_USER:" + member.getId());
         }
 
-        // 3. 신규 등록
-        MemberDTO newMember = new MemberDTO();
-        newMember.setId(googleId);
-        newMember.setPwd("SOCIAL");
-
-        String email = (GoogleUser.getEmail() == null || GoogleUser.getEmail().trim().isEmpty())
-                ? "noemail_" + GoogleUser.getId() + "@google.com"
-                : GoogleUser.getEmail();
-        newMember.setEmail(email);
-
-        String name = (GoogleUser.getName() == null || GoogleUser.getName().trim().isEmpty())
-                ? "구글사용자" : GoogleUser.getName();
-        newMember.setName(name);
-
-        newMember.setGoogleId(googleId);
-        newMember.setJoinType("google");
-        newMember.setAge("0");
-        newMember.setGender("U");
-
-        registerGoogleUser(newMember);
-        return newMember;
-    }
-
-    @Override
-    public MemberDTO selectByGoogleId(String googleId) {
-        return socialUserDAO.selectByGoogleId(googleId);
-    }
-
-    @Override
-    public MemberDTO selectByEmail(String email) {
-        return socialUserDAO.selectByEmail(email);
-    }
-
-    @Override
-    public MemberDTO selectByUserId(String id) {
-        // 필요 시 SocialUserDAO에 해당 메서드 추가
-        return null;
+        memberDAO.insertGoogleUser(member);
     }
 }

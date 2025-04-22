@@ -1,13 +1,13 @@
 package com.test.animal.product.dto;
 
 public class ProductDTO {
-	private String id;				// Á¦Ç°ÀÇ ¾ÆÀÌµğ
-	private String animal_type;     // µ¿¹° Å¸ÀÔ
-	private String name;			// Á¦Ç°ÀÇ ÀÌ¸§
-	private String category;		// Á¦Ç°ÀÇ Ä«Å×°í¸® Á¾·ù
-	private String description;		// Á¦Ç° ¼³¸í
-	private int price;				// Á¦Ç° °¡°İ
-	private String image_url;		// Á¦Ç° »çÁø url
+	private String id;				// ì œí’ˆì˜ ì•„ì´ë””
+	private String animal_type;     // ë™ë¬¼ íƒ€ì…
+	private String name;			// ì œí’ˆì˜ ì´ë¦„
+	private String category;		// ì œí’ˆì˜ ì¹´í…Œê³ ë¦¬ ì¢…ë¥˜
+	private String description;		// ì œí’ˆ ì„¤ëª…
+	private int price;				// ì œí’ˆ ê°€ê²©
+	private String image_url;		// ì œí’ˆ ì‚¬ì§„ url
 	
 	public String getId() {
 		return id;

@@ -6,65 +6,67 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.animal.member.dao.MemberDAO;
+
 import com.test.animal.member.dto.MemberDTO;
 
 @Service
-public class MemberServiceImpl implements MemberService {
-
-    @Autowired
-    private MemberDAO dao;
-
-    @Override
-    public List<MemberDTO> listMembers() {
-        return dao.listMembers();
-    }
-
-    @Override
-    public MemberDTO memberDetail(String id) {
-        return dao.memberDetail(id);
-    }
-
-    @Override
-    public int delMember(String id) {
-        return dao.delMember(id);
-    }
-
-    @Override
-    public int addMember(MemberDTO member) {
-        return dao.addMember(member);
-    }
-
-    @Override
-    public int modMember(MemberDTO member) {
-        return dao.modMember(member);
-    }
-
-    @Override
-    public MemberDTO login(MemberDTO member) {
-        return dao.login(member);
-    }
-
+public class MemberServiceImpl<UserMaper> implements MemberService {
+	@Autowired
+	private MemberDAO dao;
+	private UserMaper userMapper;
+	
 	@Override
-	public int checkUserId(String id) {
+	public List<MemberDTO> listMembers() {
 		// TODO Auto-generated method stub
-		return dao.checkUserId(id);
+		return dao.listMembers();
 	}
 
 	@Override
-	public MemberDTO selectByUserId(String id) {
+	public MemberDTO memberDetail(String id) {
 		// TODO Auto-generated method stub
-		return dao.selectByUserId(id);
+		return dao.memberDetail(id);
 	}
 
 	@Override
-	public MemberDTO selectByEmail(String email) {
+	public int delMember(String id) {
 		// TODO Auto-generated method stub
-		return dao.selectByEmail(email);
+		return dao.delMember(id);
 	}
 
 	@Override
-	public int updateNaverId(MemberDTO member) {
+	public int addMember(MemberDTO member) {
 		// TODO Auto-generated method stub
-		 return dao.updateNaverId(member);
+		return dao.addMember(member);
 	}
+
+	@Override
+	public int modMember(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return dao.modMember(member);
+	}
+
+	@Override
+	public MemberDTO login(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return dao.login(member);
+	}
+
+	@Override
+	public void registerNaverUser(MemberDTO member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public MemberDTO findByNaverId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }
+
+
+
+
+
+

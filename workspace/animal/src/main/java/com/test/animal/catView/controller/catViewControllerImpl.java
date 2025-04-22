@@ -1,8 +1,6 @@
 package com.test.animal.catView.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -10,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class catViewControllerImpl implements catViewController{
 	
 	@Override
-	@RequestMapping("/cat_about.do")
-	public String showCatAbout() {
-	    return "/cat/cat_about";  // Tiles���� ������ �� �̸�
+	@RequestMapping("/cat_all.do")
+	public String showCatAll() {
+	    return "/cat/cat_all";  // Tiles���� ������ �� �̸�
 	}
 
 	@Override
@@ -33,31 +31,8 @@ public class catViewControllerImpl implements catViewController{
 	@RequestMapping("/cat_type.do")
 	public String showCatType() {
 		// TODO Auto-generated method stub
-		return "/cat/cat_type";  //tiles ��ȯ?mapping?
+		return "/cat/cat_type";  //tiles ��ȯ?mapping?
 	}
 	
-	@Override
-	@RequestMapping("/cat_type/{breed}")
-	public String showCatDetail(@PathVariable("breed") String breed, Model model) {
-	    model.addAttribute("breed", breed);
-	    return "/cat/cat_detail";
-	}
-
-	@RequestMapping("/cat_responsible.do")
-	public String showCatResponsible() {
-		return "/cat/cat_responsible";
-	}
-	
-	@RequestMapping("/cat_grow.do")
-	public String showCatGrow() {
-		return "/cat/cat_grow";
-	}
-
-	@Override
-	@RequestMapping("/cat_born.do")
-	public String showCatBorn() {
-		// TODO Auto-generated method stub
-		return "/cat/cat_born";
-	}
 	
 }

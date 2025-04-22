@@ -1,14 +1,12 @@
 package com.test.animal.board.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ImageDTO {
 	private int imageFileNo;
 	private String imageFileName;
 	private Date regDate;
-	private int bno;
-	
-	
+	private int articleNo;
 	public int getImageFileNo() {
 		return imageFileNo;
 	}
@@ -27,20 +25,10 @@ public class ImageDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public int getBno() {
-		return bno;
+	public int getArticleNo() {
+		return articleNo;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setArticleNo(int articleNo) {
+		this.articleNo = articleNo;
 	}
-	
-	 @Override
-	    public String toString() {
-	        return "ImageDTO{" +
-	                "imageFileNo=" + imageFileNo +
-	                ", imageFileName='" + imageFileName + '\'' +
-	                ", regDate=" + regDate +
-	                ", bno=" + bno +
-	                '}';
-	    }
 }

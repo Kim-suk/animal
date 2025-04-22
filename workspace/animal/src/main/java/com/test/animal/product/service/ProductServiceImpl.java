@@ -22,13 +22,13 @@ public class ProductServiceImpl implements ProductService{
 		return dao.productDetail(id);
 	}
 
-	// °­¾ÆÁö ¸ŞÀÎ
+	// ê°•ì•„ì§€ ë©”ì¸
 	@Override
 	public List<ProductDTO> catTop10() {
 	    return dao.catTop10();
 	}
 	
-	// °í¾çÀÌ »ç·á
+	// ê³ ì–‘ì´ ì‚¬ë£Œ
 	@Override
 	public List<ProductDTO> catFeedProducts() {
 		// TODO Auto-generated method stub
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catFeedFilter(paramMap);
 	}
 	
-	// °í¾çÀÌ °£½Ä
+	// ê³ ì–‘ì´ ê°„ì‹
 	@Override
 	public List<ProductDTO> catTreatProducts() {
 		// TODO Auto-generated method stub
@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catTreatFilter(paramMap);
 	}
 	
-	// °í¾çÀÌ ¸ğ·¡
+	// ê³ ì–‘ì´ ëª¨ë˜
 	@Override
 	public List<ProductDTO> catSandProducts() {
 		// TODO Auto-generated method stub
@@ -73,7 +73,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catSandFilter(paramMap);
 	}
 	
-	// °í¾çÀÌ ÀÌµ¿Àå
+	// ê³ ì–‘ì´ ì´ë™ì¥
 	@Override
 	public List<ProductDTO> catCarrierProducts() {
 		// TODO Auto-generated method stub
@@ -88,7 +88,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catCarrierFilter(paramMap);
 	}
 
-	// °í¾çÀÌ Àå³­°¨
+	// ê³ ì–‘ì´ ì¥ë‚œê°
 	@Override
 	public List<ProductDTO> catToyProducts() {
 		// TODO Auto-generated method stub
@@ -103,7 +103,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catToyFilter(paramMap);
 	}
 	
-	// °í¾çÀÌ ¸ñ¿å¿ëÇ°
+	// ê³ ì–‘ì´ ëª©ìš•ìš©í’ˆ
 	@Override
 	public List<ProductDTO> catBathProducts() {
 		// TODO Auto-generated method stub
@@ -118,7 +118,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catBathFilter(paramMap);
 	}
 	
-	// °í¾çÀÌ ÇÏ¿ì½º
+	// ê³ ì–‘ì´ í•˜ìš°ìŠ¤
 	@Override
 	public List<ProductDTO> catHouseProducts() {
 		// TODO Auto-generated method stub
@@ -133,7 +133,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catHouseFilter(paramMap);
 	}
 	
-	// °í¾çÀÌ ½Ä±â
+	// ê³ ì–‘ì´ ì‹ê¸°
 	@Override
 	public List<ProductDTO> catDishProducts() {
 		// TODO Auto-generated method stub
@@ -148,14 +148,14 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catDishFilter(paramMap);
 	}
 
-	// °­¾ÆÁö ¸ŞÀÎ
+	// ê°•ì•„ì§€ ë©”ì¸
 	@Override
 	public List<ProductDTO> dogTop10() {
 		// TODO Auto-generated method stub
 		return dao.dogTop10();
 	}
 
-	// °­¾ÆÁö »ç·á
+	// ê°•ì•„ì§€ ì‚¬ë£Œ
 	@Override
 	public List<ProductDTO> dogFeedProducts() {
 		// TODO Auto-generated method stub
@@ -170,7 +170,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.dogFeedFilter(paramMap);
 	}
 
-	// °­¾ÆÁö °£½Ä
+	// ê°•ì•„ì§€ ê°„ì‹
 	@Override
 	public List<ProductDTO> dogTreatProducts() {
 		// TODO Auto-generated method stub
@@ -185,7 +185,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.dogTreatFilter(paramMap);
 	}
 
-	// °­¾ÆÁö ¹èº¯¿ëÇ°
+	// ê°•ì•„ì§€ ë°°ë³€ìš©í’ˆ
 	@Override
 	public List<ProductDTO> dogPoopProducts() {
 		// TODO Auto-generated method stub
@@ -200,7 +200,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.dogPoopFilter(paramMap);
 	}
 
-	// °­¾ÆÁö ÀÌµ¿Àå
+	// ê°•ì•„ì§€ ì´ë™ì¥
 	@Override
 	public List<ProductDTO> dogCarrierProducts() {
 		// TODO Auto-generated method stub
@@ -215,7 +215,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.dogCarrierFilter(paramMap);
 	}
 
-	// °­¾ÆÁö Àå³­°¨
+	// ê°•ì•„ì§€ ì¥ë‚œê°
 	@Override
 	public List<ProductDTO> dogToyProducts() {
 		// TODO Auto-generated method stub
@@ -230,7 +230,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.dogToyFilter(paramMap);
 	}
 
-	// °­¾ÆÁö ¸ñ¿å¿ëÇ°
+	// ê°•ì•„ì§€ ëª©ìš•ìš©í’ˆ
 	@Override
 	public List<ProductDTO> dogBathProducts() {
 		// TODO Auto-generated method stub
@@ -245,7 +245,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.dogBathFilter(paramMap);
 	}
 
-	// °­¾ÆÁö ÇÏ¿ì½º
+	// ê°•ì•„ì§€ í•˜ìš°ìŠ¤
 	@Override
 	public List<ProductDTO> dogHouseProducts() {
 		// TODO Auto-generated method stub
@@ -260,7 +260,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.dogHouseFilter(paramMap);
 	}
 
-	// °­¾ÆÁö ½Ä±â
+	// ê°•ì•„ì§€ ì‹ê¸°
 	@Override
 	public List<ProductDTO> dogDishProducts() {
 		// TODO Auto-generated method stub

@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/payment")
@@ -20,8 +18,7 @@ public class PaymentControllerImpl implements PaymentController {
     @Override
     @RequestMapping(value = "/process", method = RequestMethod.POST)
     public String processPayment(HttpServletRequest request) {
-        String memberId = request.getParameter("memberId");
-        System.out.println("✅ [DEBUG] memberId: " + memberId);
+    	String memberId = (String) request.getSession().getAttribute("loginId");
 
         String[] productIds = request.getParameterValues("productIds");
         String[] quantities = request.getParameterValues("quantities");

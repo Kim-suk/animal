@@ -173,7 +173,7 @@ a {
 						<li class="list02"><a class="list" href="#">HOSPITAL</a>
 							<ul class="sub_ul1">
 								<li><a href="${contextPath }/hospital/map.do">지도</a></li>
-								<li><a href="${contextPath }/hospital/review.do">리뷰</a></li>
+								<li><a href="${contextPath }/board/getBoardList.do?category=hospital">리뷰</a></li>
 							</ul></li>
 
 						<li class="list03"><a class="list" href="#">CAT</a>

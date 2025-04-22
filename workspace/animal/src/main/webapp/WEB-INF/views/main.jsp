@@ -174,6 +174,11 @@
             </div>
          </div>
 
+<style>
+#atc03{
+font-family: var(--e-font);
+}
+</style>
          <!-- 병원 리뷰 슬라이드 영역 -->
          <article id="atc03">
             <div class="inner">
@@ -181,7 +186,7 @@
                   <p data-aos="fade-right">Our Review</p>
                   <div class="flex">
 
-                     <div class="txt" data-aos="fade-right">병원 리뷰를 보여주는 슬라이드임.</div>
+                     <div class="txt" data-aos="fade-right">병원 리뷰를 보여주는 페이지입니다.</div>
                      <div class="pager"></div>
 
                      <!-- 리뷰 슬라이드 -->
@@ -233,7 +238,7 @@
          </script>
 
 
-         <div style="font-size: 32px; text-align: center;">CAT VIDEO</div>
+         <div style="font-size: 50px; text-align: center; font-family: var(--e-font);">CAT VIDEO</div>
          <br><br>
          <!-- 유튜브 보다가 혼남.. 제일 마지막 -->
          <!-- Swiper Container -->
@@ -319,7 +324,7 @@
                                  </h3>
                                  단순히 귀엽다고, 갖고싶다고 라는 마음을 가지고는 절대 안돼<br>어린시절에만 잠깐 좋아하는 것도
                                  안돼<br> 늙고 병들어도 끝까지 책임지고 사랑해줄 수 있어야 진짜 가족이야.<br>모든
-                                 것들을 사랑으로 감싸줄 준비가 되어 있어야 해. <a href="/sh_page/page10.php"
+                                 것들을 사랑으로 감싸줄 준비가 되어 있어야 해. <a href="/animal/cat/cat_about.do"
                                     class="more"><img
                                     src="https://co1156.shiningcorp.com/sh_img/include/inc01/img/arrow.png"
                                     alt="화살표"></a>
@@ -333,7 +338,7 @@
                                  자연스럽게 <br>스며들었습니다.
                                  <div class="top_txt">더 건강하게, 더 따뜻하게, 더 오래 함께할 수 있도록—
                                     우리는 오늘도 반려동물의 ‘행복한 삶’을 위해 나아갑니다."</div>
-                                 <a href="/sh_page/page6.php" class="bot_img">
+                                 <a href="/animal/cat/cat_about.do" class="bot_img">
                                     <div class="h_img" data-aos="fade-left">
                                        <img src="/animal/resources/image/o.jpg">
                                     </div>
@@ -348,7 +353,7 @@
                                  <div class="h_img">
                                     <img src="/animal/resources/image/sb.jpg">
                                  </div>
-                                 <a href="/sh_page/page6.php" class="i_more"><i></i>Click<br></a>
+                                 <a href="/animal/dog/dog_about.do" class="i_more"><i></i>Click<br></a>
                               </div>
                               <h2 class="en_tit" align="center">Cat</h2>
                               <div class="ko_box">
@@ -380,11 +385,11 @@
                                        됩니다.</div>
                                  </div>
                               </div>
-                              <a href="/sh_page/page7.php" class="img_r">
+                              
                                  <div class="h_img" data-aos="fade-left">
                                     <img src="/animal/resources/image/dog_cat.jfif">
                                  </div>
-                              </a>
+                              
                            </div>
                         </div>
                      </div>
@@ -445,7 +450,7 @@
                      </div>
 
                      <div class="swiper-slide">
-                        <a href="/bbs/board.php?bo_table=table13">
+                        <a href="/animal/cat/cat_about.do">
                            <div class="img_cont">
                               <img src="/animal/resources/image/toy.jfif">
                            </div>
@@ -513,8 +518,9 @@
                            <div class="num">01</div>
                            <div class="cont">
                               <p>자유 게시판</p>
-                              <div>샘플 브랜드의 홈페이지가 새롭게 리뉴얼되어 오픈했습니다! 많은 관심 부탁드립니다.더욱
-                                 편리하고 감각적인 디자인으로 지금 바로 방문하셔서 새로운 변화를 경험해 보세요.</div>
+                              <div><br>커뮤니티에 참여해 다양한 이야기를 나눠보세요!
+								일상, 고민, 유머 등 자유롭게 소통할 수 있는 공간입니다.
+								여러분의 이야기를 기다리고 있어요.</div>
                            </div> <span class="arrow"> <img
                               src="/animal/resources/image/arrow.png" alt="화살표">
                         </span>
@@ -526,8 +532,9 @@
                            <div class="num">02</div>
                            <div class="cont">
                               <p>고양이 게시판</p>
-                              <div>샘플 브랜드의 홈페이지가 새롭게 리뉴얼되어 오픈했습니다! 많은 관심 부탁드립니다.더욱
-                                 편리하고 감각적인 디자인으로 지금 바로 방문하셔서 새로운 변화를 경험해 보세요.</div>
+                              <div>고양이 집사님들을 위한 공간이에요!
+								귀여운 고양이 사진, 건강 정보, 꿀팁을 공유해보세요.
+								오늘도 냥이와 함께 행복한 하루 보내세요.</div>
                            </div> <span class="arrow"> <img
                               src="/animal/resources/image/arrow.png" alt="화살표">
                         </span>
@@ -540,8 +547,9 @@
                            <div class="cont">
                               <p>강아지 게시판</p>
 
-                              <div>샘플 브랜드의 홈페이지가 새롭게 리뉴얼되어 오픈했습니다! 많은 관심 부탁드립니다.더욱
-                                 편리하고 감각적인 디자인으로 지금 바로 방문하셔서 새로운 변화를 경험해 보세요.</div>
+                              <div>멍멍이들과 함께하는 따뜻한 이야기들이 가득!
+									강아지 산책팁부터 훈련 꿀팁까지 함께 나눠요.
+									강아지를 사랑하는 분들의 놀이터입니다.</div>
                            </div> <span class="arrow"> <img
                               src="/animal/resources/image/arrow.png" alt="화살표">
                         </span>
@@ -569,4 +577,3 @@
 </body>
 <script src="/animal/resources/js/designTail.js"></script>
 </html>
-

@@ -153,7 +153,7 @@
     // form 생성
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "/animal/payment/ready"; // 결제 준비 Controller 경로 (Spring에서 처리)
+    form.action = "/animal/payment/process"; // 결제 준비 Controller 경로 (Spring에서 처리)
     
     // 선택된 상품 정보 반복해서 form에 추가
     selected.forEach(cb => {

@@ -7,7 +7,8 @@ public class PaymentDTO {
     private String paymentId;
     private String memberId;
     private double totalAmount;
-    private Date paymentDate;  // 결제 시간 추가
+    private Date paymentDate;  
+    private String paymentstatus;  
     
 	public String getPaymentId() {
 		return paymentId;
@@ -32,6 +33,18 @@ public class PaymentDTO {
 	}
 	public void setPaymentDate(Date paymentDate) {
 		this.paymentDate = paymentDate;
+	}
+	/**
+	 * @return the paymentstatus
+	 */
+	public String getPaymentstatus() {
+		return paymentstatus;
+	}
+	/**
+	 * @param paymentstatus the paymentstatus to set
+	 */
+	public void setPaymentstatus(String paymentstatus) {
+		this.paymentstatus = paymentstatus;
 	}
     
 }

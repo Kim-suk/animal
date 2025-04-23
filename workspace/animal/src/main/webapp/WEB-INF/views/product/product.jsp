@@ -9,12 +9,14 @@ isELIgnored="false" %>
     <title>제품 상세 페이지</title>
     <style>
         .container {
+        margin-top:100px;
             display: grid;
             grid-template-columns: 2fr 3fr 1fr;
             grid-template-rows: auto auto auto;
             gap: 20px;
             padding: 30px;
             font-family: '맑은 고딕', sans-serif;
+            margin-bottom:20px;
         }
 
         .photo {
@@ -129,8 +131,8 @@ isELIgnored="false" %>
     <c:remove var="cartSuccessMessage" scope="session" />
 </c:if>
 
-<!-- 토스 페이먼츠 JS -->
-<script src="https://js.tosspayments.com/v1/payment"></script>
+ <!-- 토스 페이먼츠 JS -->
+<!-- <script src="https://js.tosspayments.com/v1/payment"></script>
 <script>
     const button = document.getElementById("payment-button");
     const productId = button.dataset.productId;
@@ -160,7 +162,7 @@ isELIgnored="false" %>
         }
     
     
-</script>
+</script>  -->
 
 </body>
 </html>

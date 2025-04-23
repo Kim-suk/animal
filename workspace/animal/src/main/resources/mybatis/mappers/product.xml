@@ -106,8 +106,8 @@
 	<select id="catSandProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
-				WHERE animal_type = '고양이' AND category = '모래'
-  		]]>
+				WHERE ahjknimal_type = '고양이' AND category = '모래'
+  		]]>ㅛ
 	</select>
 	
 	<!-- 고양이 모래 필터 -->

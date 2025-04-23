@@ -17,11 +17,11 @@
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"> </script>
 </head>
 
-<title>품종</title>
+<title>묘종</title>
 
 
 
-  <script>
+   <script>
        $(document).ready(function() {
       $('.smart-banner-bxslider').bxSlider({
          mode : 'fade', // 전환 방식: 'horizontal', 'vertical', 'fade'
@@ -46,7 +46,7 @@
                let hasResults = false;
 
                catItems.forEach(function (item) {
-                   const catName = item.querySelector("h3").textContent.toLowerCase();
+                   const catName = item.querySelector("p").textContent.toLowerCase();
 
                    if (catName.includes(keyword)) {
                        item.style.display = "block";
@@ -78,6 +78,7 @@
        
        
        </script>
+
 
 
 <style>

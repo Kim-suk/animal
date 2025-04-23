@@ -1,59 +1,64 @@
-package com.test.animal.payment.controller;
-
-import com.test.animal.payment.dto.PaymentDTO;
-import com.test.animal.payment.service.PaymentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-
-@Controller
-@RequestMapping("/payment")
-public class PaymentControllerImpl implements PaymentController {
-
-    @Autowired
-    private PaymentService paymentService;
-
-    // 결제 처리
-    @Override
-    @RequestMapping(value = "/process", method = RequestMethod.POST)
-    public String processPayment(HttpServletRequest request) {
-        String memberId = request.getParameter("memberId");
-        System.out.println("✅ [DEBUG] memberId: " + memberId);
-
-        String[] productIds = request.getParameterValues("productIds");
-        String[] quantities = request.getParameterValues("quantities");
-        String[] prices = request.getParameterValues("prices");
-
-        int totalAmount = 0;
-
-        for (int i = 0; i < productIds.length; i++) {
-            int price = Integer.parseInt(prices[i]);
-            int quantity = Integer.parseInt(quantities[i]);
-            String productId = productIds[i];
-
-            totalAmount += price * quantity;
-
-        }
-
-        // DTO 생성 및 서비스에 전달
-        PaymentDTO payment = new PaymentDTO();
-        payment.setMemberId(memberId);
-        payment.setTotalAmount(totalAmount);
-
-        // 한 번에 처리
-        paymentService.processPayment(payment);
-
-        return "/payment/success";
-    }
-
-    
-    // 결제 성공 페이지
-    @Override
-    @RequestMapping("/success")
-    public String success() {
-        return "/payment/success"; // 실제 성공 페이지 경로 확인 필요
-    }
-}
+//package com.test.animal.payment.controller;
+//
+//import com.test.animal.payment.dto.PaymentDTO;
+//import com.test.animal.payment.service.PaymentService;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.*;
+//import org.springframework.web.servlet.ModelAndView;
+//
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//@Controller
+//@RequestMapping("/payment")
+//public class PaymentControllerImpl implements PaymentController {
+//
+//    @Autowired
+//    private PaymentService paymentService;
+//
+//    // 결제 등록
+//    @Override
+//    @RequestMapping("/insert")
+//    @ResponseBody
+//    public String insertPayment(@RequestBody PaymentDTO paymentDTO) {
+//        int result = paymentService.insertPayment(paymentDTO);
+//        return result > 0 ? "success" : "fail";
+//    }
+//
+//    // 결제 상세 조회
+//    @Override
+//    @RequestMapping("/detail")
+//    public ModelAndView getPayment(@RequestParam("paymentId") String paymentId) {
+//        PaymentDTO dto = paymentService.getPaymentByOrderId(paymentId);
+//        ModelAndView mv = new ModelAndView("paymentDetail");
+//        mv.addObject("payment", dto);
+//        return mv;
+//    }
+//
+//    // 회원별 결제 목록 조회
+//    @Override
+//    @RequestMapping("/list")
+//    public ModelAndView getPaymentsByMember(@RequestParam("memberId") String memberId) {
+//        List<PaymentDTO> list = paymentService.getPaymentsByMemberId(memberId);
+//        ModelAndView mv = new ModelAndView("paymentList");
+//        mv.addObject("paymentList", list);
+//        return mv;
+//    }
+//
+//    // 결제 상태 업데이트
+//    @Override
+//    @RequestMapping("/updateStatus")
+//    @ResponseBody
+//    public String updatePaymentStatus(
+//            @RequestParam("paymentId") String paymentId,
+//            @RequestParam("status") String status
+//    ) {
+//        int result = paymentService.updatePaymentStatus(paymentId, status);
+//        return result > 0 ? "updated" : "update_failed";
+//    }
+//}

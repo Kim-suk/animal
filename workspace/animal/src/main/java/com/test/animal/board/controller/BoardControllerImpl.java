@@ -95,7 +95,7 @@ public class BoardControllerImpl implements BoardController {
 	    // 파일 처리
 	    List<MultipartFile> uploadFiles = mRequest.getFiles("uploadFiles");
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-	    String uploadPath = "C:/spring_project/workspace/animal/upload/";
+	    String uploadPath = "C:\\springframework\\workspace\\animal\\upload\\";
 
 	    List<ImageDTO> imageFileList = new ArrayList<>();
 
@@ -177,7 +177,7 @@ public class BoardControllerImpl implements BoardController {
 	                          @RequestParam(value = "deleteImages", required = false) List<String> deleteImages) throws Exception {
 
 	    dto.setCategory(category);
-	    String uploadPath = "C:/spring_project/workspace/animal/upload/";
+	    String uploadPath = "C:\\springframework\\workspace\\animal\\upload\\";
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
 	    // ✅ 1. 기존 이미지 삭제 처리

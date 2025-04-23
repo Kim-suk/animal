@@ -14,6 +14,7 @@ request.setCharacterEncoding("utf-8");
 <style>
   /* 이미지 확대 효과 */
   .product img {
+
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* 확대와 그림자 부드럽게 적용 */
     border-radius: 10px; /* 이미지 모서리 둥글게 */
   }
@@ -28,8 +29,10 @@ request.setCharacterEncoding("utf-8");
     transform: scale(1.15); /* 이미지 확대 */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* 더 강한 그림자 효과 */
   }
+ 
 </style>
 </head>
+
 <body class="bg-gray-50">
 
 	<div class="container mx-auto p-6">

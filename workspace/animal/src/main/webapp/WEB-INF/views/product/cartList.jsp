@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -8,10 +8,11 @@
 <title>장바구니</title>
 <style>
 .container {
-	display: flex;
-	justify-content: space-between;
-	padding: 30px;
-	font-family: '맑은 고딕', sans-serif;
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-between;
+  padding: 100px 60px;
+  font-family: '맑은 고딕', sans-serif;
 }
 
 .cart-items {

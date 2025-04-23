@@ -4,52 +4,57 @@
 
 <mapper namespace="mapper.member">
 
-    <resultMap type="com.test.animal.member.dto.MemberDTO" id="memResult">
-        <result property="id" column="id" />
-        <result property="pwd" column="pwd" />
-        <result property="age" column="age" />
-        <result property="name" column="name" />
-        <result property="gender" column="gender" />
-        <result property="email" column="email" />
-        <result property="joinDate" column="joinDate" />
-        <result property="naverId" column="naver_id" />
-        <result property="googleId" column="google_id" />
-        <result property="kakaoId" column="kakao_id" />
-        <result property="facebookId" column="facebook_id" />
-        <result property="joinType" column="join_type" />
-        <result property="nickname" column="nickname" />
-    </resultMap>
+	<resultMap type="com.test.animal.member.dto.MemberDTO"
+		id="memResult">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="age" column="age" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="email" column="email" />
+		<result property="joinDate" column="joinDate" />
+		<result property="naverId" column="naver_id" />
+		<result property="googleId" column="google_id" />
+		<result property="kakaoId" column="kakao_id" />
+		<result property="facebookId" column="facebook_id" />
+		<result property="profileImg" column="profile_img" />
+		<result property="joinType" column="join_type" />
+		<result property="nickname" column="nickname" />
+	</resultMap>
 
-    <!-- 아이디 중복 체크 -->
-    <select id="checkUserId" parameterType="java.lang.String" resultType="int">
+	<!-- 아이디 중복 체크 -->
+	<select id="checkUserId" parameterType="java.lang.String"
+		resultType="int">
         <![CDATA[
             SELECT COUNT(*) FROM animal_member WHERE id = #{id}
         ]]>
-    </select>
+	</select>
 
-    <!-- 전체 회원 리스트 -->
-    <select id="listMembers" resultMap="memResult">
+	<!-- 전체 회원 리스트 -->
+	<select id="listMembers" resultMap="memResult">
         <![CDATA[
             SELECT * FROM animal_member ORDER BY joinDate DESC
         ]]>
-    </select>
+	</select>
 
-    <!-- 회원 상세 -->
-    <select id="memberDetail" parameterType="java.lang.String" resultType="com.test.animal.member.dto.MemberDTO">
+	<!-- 회원 상세 -->
+	<select id="memberDetail" parameterType="java.lang.String"
+		resultType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             SELECT * FROM animal_member WHERE id = #{id}
         ]]>
-    </select>
+	</select>
 
-    <!-- 회원 삭제 -->
-    <delete id="delMember" parameterType="java.lang.String">
+	<!-- 회원 삭제 -->
+	<delete id="delMember" parameterType="java.lang.String">
         <![CDATA[
             DELETE FROM animal_member WHERE id = #{id}
         ]]>
-    </delete>
+	</delete>
 
-    <!-- 일반 회원 가입 -->
-    <insert id="addMember" parameterType="com.test.animal.member.dto.MemberDTO">
+	<!-- 일반 회원 가입 -->
+	<insert id="addMember"
+		parameterType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             INSERT INTO animal_member (
                 id, pwd, age, name, gender, email, joinDate
@@ -57,70 +62,72 @@
                 #{id}, #{pwd}, #{age}, #{name}, #{gender}, #{email}, SYSDATE
             )
         ]]>
-    </insert>
+	</insert>
 
-    <!-- 회원 수정 -->
-    <update id="modMember" parameterType="com.test.animal.member.dto.MemberDTO">
-        <![CDATA[
-            UPDATE animal_member
-            SET pwd = #{pwd},
-                age = #{age, jdbcType=INTEGER},
-                name = #{name},
-                gender = #{gender},
-                email = #{email},
-                nickname = #{nickname}
-            WHERE id = #{id}
-        ]]>
-    </update>
+	<!-- 회원 수정 -->
+	<update id="changePwd" parameterType="map">
+		UPDATE animal_member
+		SET pwd = #{pwd}
+		WHERE id = #{id}
+	</update>
 
-    <!-- 로그인 -->
-    <select id="login" parameterType="com.test.animal.member.dto.MemberDTO" resultType="com.test.animal.member.dto.MemberDTO">
+	<!-- 로그인 -->
+	<select id="login"
+		parameterType="com.test.animal.member.dto.MemberDTO"
+		resultType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             SELECT * FROM animal_member WHERE id = #{id} AND pwd = #{pwd}
         ]]>
-    </select>
+	</select>
 
-    <!-- 사용자 조회 -->
-    <select id="selectByUserId" parameterType="java.lang.String" resultType="com.test.animal.member.dto.MemberDTO">
+	<!-- 사용자 조회 -->
+	<select id="selectByUserId" parameterType="java.lang.String"
+		resultType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             SELECT * FROM animal_member WHERE id = #{id}
         ]]>
-    </select>
+	</select>
 
-    <!-- 이메일로 회원 조회 -->
-<select id="selectByEmail" parameterType="java.lang.String" resultMap="memResult">
+	<!-- 이메일로 회원 조회 -->
+	<select id="selectByEmail" parameterType="java.lang.String"
+		resultMap="memResult">
     <![CDATA[
         SELECT * FROM animal_member WHERE email = #{email, jdbcType=VARCHAR}
     ]]>
-</select>
+	</select>
 
-    <select id="selectByGoogleId" parameterType="java.lang.String" resultMap="memResult">
+	<select id="selectByGoogleId" parameterType="java.lang.String"
+		resultMap="memResult">
         <![CDATA[
             SELECT * FROM animal_member WHERE google_id = #{googleId, jdbcType=VARCHAR}
         ]]>
-    </select>
+	</select>
 
-    <select id="selectByKakaoId" parameterType="java.lang.String" resultMap="memResult">
+	<select id="selectByKakaoId" parameterType="java.lang.String"
+		resultMap="memResult">
         <![CDATA[
             SELECT * FROM animal_member WHERE kakao_id = #{kakaoId, jdbcType=VARCHAR}
         ]]>
-    </select>
+	</select>
 
-    <!-- 네이버 ID로 회원 조회 -->
-<select id="selectByNaverId" parameterType="java.lang.String" resultMap="memResult">
+	<!-- 네이버 ID로 회원 조회 -->
+	<select id="selectByNaverId" parameterType="java.lang.String"
+		resultMap="memResult">
     <![CDATA[
         SELECT * FROM animal_member WHERE naver_id = #{naverId, jdbcType=VARCHAR}
     ]]>
-</select>
+	</select>
 
-<select id="selectByFacebookId" parameterType="java.lang.String" resultMap="memResult">
+	<select id="selectByFacebookId" parameterType="java.lang.String"
+		resultMap="memResult">
     <![CDATA[
         SELECT * FROM animal_member WHERE facebook_id = #{facebookId, jdbcType=VARCHAR}
     ]]>
-</select>
+	</select>
 
 
-   <insert id="insertNaverUser" parameterType="com.test.animal.member.dto.MemberDTO">
+	<insert id="insertNaverUser"
+		parameterType="com.test.animal.member.dto.MemberDTO">
     <![CDATA[
         INSERT INTO animal_member (
             id, pwd, age, name, gender, email, nickname, join_type, naver_id, joinDate
@@ -129,8 +136,9 @@
             #{joinType}, #{naverId, jdbcType=VARCHAR}, SYSDATE
         )
     ]]>
-</insert>
-    <insert id="insertGoogleUser" parameterType="com.test.animal.member.dto.MemberDTO">
+	</insert>
+	<insert id="insertGoogleUser"
+		parameterType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             INSERT INTO animal_member (
                 id, pwd, name, email, google_id, join_type, age, gender, joinDate
@@ -138,9 +146,10 @@
                 #{id}, #{pwd}, #{name}, #{email}, #{googleId, jdbcType=VARCHAR}, #{joinType}, 0, 'U', SYSDATE
             )
         ]]>
-    </insert>
+	</insert>
 
-    <insert id="insertKakaoUser" parameterType="com.test.animal.member.dto.MemberDTO">
+	<insert id="insertKakaoUser"
+		parameterType="com.test.animal.member.dto.MemberDTO">
        
             <![CDATA[
         INSERT INTO ANIMAL_MEMBER
@@ -148,10 +157,11 @@
         VALUES
         (#{id}, #{pwd}, #{age}, #{name}, #{gender}, #{email}, #{joinType}, #{kakaoId, jdbcType=VARCHAR}, #{nickname})
     ]]>
-        
-    </insert>
-    
-    <insert id="insertFacebookUser" parameterType="com.test.animal.member.dto.MemberDTO">
+
+	</insert>
+
+	<insert id="insertFacebookUser"
+		parameterType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             INSERT INTO animal_member (
                 id, pwd, name, email, facebook_id, join_type, age, gender, joinDate
@@ -159,15 +169,17 @@
                 #{id}, #{pwd}, #{name}, #{email}, #{facebookId, jdbcType=VARCHAR}, #{joinType}, 0, 'U', SYSDATE
             )
         ]]>
-    </insert>
+	</insert>
 
-    <select id="checkEmailExists" parameterType="java.lang.String" resultType="int">
+	<select id="checkEmailExists" parameterType="java.lang.String"
+		resultType="int">
         <![CDATA[
             SELECT COUNT(*) FROM animal_member WHERE email = #{email}
         ]]>
-    </select>
+	</select>
 
-    <insert id="registerKakaoUser" parameterType="com.test.animal.member.dto.MemberDTO">
+	<insert id="registerKakaoUser"
+		parameterType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             INSERT INTO animal_member (
                 id, pwd, age, name, gender, joinDate, kakao_id, join_type, nickname
@@ -175,9 +187,10 @@
                 #{id}, #{pwd}, #{age}, #{name}, #{gender}, SYSDATE, #{kakaoId, jdbcType=VARCHAR}, #{joinType}, #{nickname}
             )
         ]]>
-    </insert>
-    
-    <insert id="registerNaverUser" parameterType="com.test.animal.member.dto.MemberDTO">
+	</insert>
+
+	<insert id="registerNaverUser"
+		parameterType="com.test.animal.member.dto.MemberDTO">
         <![CDATA[
             INSERT INTO animal_member (
                 id, pwd, age, name, gender, joinDate, naver_id, join_type, nickname
@@ -185,9 +198,10 @@
                 #{id}, #{pwd}, #{age}, #{name}, #{gender}, SYSDATE, #{naverId, jdbcType=VARCHAR}, #{joinType}, #{nickname}
             )
         ]]>
-    </insert>
-    
-    <update id="updateNaverId" parameterType="com.test.animal.member.dto.MemberDTO">
+	</insert>
+
+	<update id="updateNaverId"
+		parameterType="com.test.animal.member.dto.MemberDTO">
      <![CDATA[
         UPDATE animal_member
         SET naver_id = #{naverId},
@@ -195,6 +209,47 @@
             nickname = #{nickname}
         WHERE id = #{id}
     ]]>
-</update>
+	</update>
 
+	<select id="getPasswordByUserId" parameterType="String"
+		resultType="String">
+		SELECT pwd FROM animal_member WHERE id = #{id}
+	</select>
+
+	<update id="updatePassword" parameterType="map">
+		UPDATE animal_member SET pwd = #{pwd} WHERE id = #{id}
+	</update>
+
+	<update id="updateProfileImage"
+		parameterType="com.test.animal.member.dto.MemberDTO">
+		UPDATE animal_member SET profile_img = #{profileImg} WHERE id = #{id}
+	</update>
+
+	<select id="validateOldPwd" resultType="int" parameterType="map">
+		SELECT COUNT(*)
+		FROM animal_member
+		WHERE id = #{id} AND pwd = #{pwd}
+	</select>
+	
+	 <!-- 회원 정보 조회 -->
+    <select id="selectById" resultType="com.test.animal.member.dto.MemberDTO">
+        SELECT * FROM animal_member WHERE id = #{id}
+    </select>
+    
+     <!-- 회원 정보 수정 -->
+    <update id="updateMember" parameterType="com.test.animal.member.dto.MemberDTO">
+        UPDATE animal_member
+        SET name = #{name},
+            age = #{age},
+            gender = #{gender},
+            email = #{email}
+        WHERE id = #{id}
+    </update>
+    
+    <!-- 회원 삭제 -->
+	<delete id="deleteMember" parameterType="string">
+    	DELETE FROM animal_member
+		WHERE id = #{id}
+	</delete>
+    
 </mapper>

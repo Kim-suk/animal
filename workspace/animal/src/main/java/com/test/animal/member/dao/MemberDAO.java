@@ -5,17 +5,28 @@ import com.test.animal.member.dto.MemberDTO;
 
 public interface MemberDAO {
     
-    List<MemberDTO> listMembers();             // ÀüÃ¼ È¸¿ø ¸ñ·Ï
-    MemberDTO memberDetail(String id);         // Æ¯Á¤ È¸¿ø »ó¼¼ Á¤º¸
-    int delMember(String id);                  // È¸¿ø »èÁ¦
-    int addMember(MemberDTO member);           // È¸¿ø °¡ÀÔ
-    int modMember(MemberDTO member);           // È¸¿ø Á¤º¸ ¼öÁ¤
-    MemberDTO login(MemberDTO member);         // ÀÏ¹Ý ·Î±×ÀÎ
-    int checkUserId(String id);                // ID Áßº¹ Ã¼Å©
+    List<MemberDTO> listMembers();             // ï¿½ï¿½Ã¼ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½
+    MemberDTO memberDetail(String id);         // Æ¯ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    int delMember(String id);                  // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    int addMember(MemberDTO member);           // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    int modMember(MemberDTO member);           // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    MemberDTO login(MemberDTO member);         // ï¿½Ï¹ï¿½ ï¿½Î±ï¿½ï¿½ï¿½
+    int checkUserId(String id);                // ID ï¿½ßºï¿½ Ã¼Å©
 
-    MemberDTO selectByUserId(String id);       // ID·Î È¸¿ø Á¶È¸
+    MemberDTO selectByUserId(String id);       // IDï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½È¸
     MemberDTO selectByEmail(String email); 
-    // ÀÌ¸ÞÀÏ·Î È¸¿ø Á¶È¸
+    // ï¿½Ì¸ï¿½ï¿½Ï·ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½È¸
 	int updateNaverId(MemberDTO member);
+	
+    public int updatePassword(String id, String newPwd) throws Exception;
+
+    public int deleteMember(String id) throws Exception;
+
+    public int updateProfileImage(MemberDTO member) throws Exception;
+    public int changePwd(String id, String newPwd);
+	boolean validateOldPwd(String id, String pwd);
+	
+	MemberDTO selectById(String id);
+	void updateMember(MemberDTO member);	
 }
 	

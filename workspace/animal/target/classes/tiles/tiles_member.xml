@@ -36,4 +36,29 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/memberDetail.jsp" />
 	</definition>
 	
+	<definition name="/member/changePwdForm" extends="baseLayout">
+		<put-attribute name="title" value="정보 조회 창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/changePwdForm.jsp" />
+	</definition>
+	
+	<definition name="/member/deleteForm" extends="baseLayout">
+		<put-attribute name="title" value="정보 조회 창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/deleteForm.jsp" />
+	</definition>
+	
+	<definition name="/member/mypage" extends="baseLayout">
+		<put-attribute name="title" value="마이 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/member/mypage.jsp" />
+	</definition>
+	
+	<definition name="/member/editForm" extends="baseLayout">
+		<put-attribute name="title" value="개인정보 수정 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/member/editForm.jsp" />
+	</definition>
+	
+	<definition name="/member/deleteForm" extends="baseLayout">
+		<put-attribute name="title" value="회원탈퇴" />
+		<put-attribute name="body" value="/WEB-INF/views/member/deleteForm.jsp" />
+	</definition>
+	
 </tiles-definitions>

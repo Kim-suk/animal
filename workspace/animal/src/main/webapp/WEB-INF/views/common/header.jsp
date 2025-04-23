@@ -145,14 +145,17 @@ a {
 						<c:choose>
 							<c:when test="${not empty sessionScope.loginMember}">
 								<li><a class="nav-link" href="#" onclick="logout(event)">로그아웃</a></li>
-								<li><a class="nav-link" href="#">${sessionScope.loginName}님
+								<li><a class="nav-link" href="${contextPath}/member/mypage.do?id=${sessionScope.loginId }">${sessionScope.loginName}님
 										환영합니다.</a></li>
+										
 							</c:when>
 							<c:otherwise>
 								<li><a class="nav-link"
 									href="${contextPath}/member/loginForm.do">LOGIN</a></li>
 								<li><a class="nav-link"
 									href="${contextPath}/member/joinMember.do">SIGN UP</a></li>
+									<li><a class="nav-link"
+									href="${contextPath}/member/mypage.do">My Page</a></li>
 							</c:otherwise>
 						</c:choose>
 					</ul>

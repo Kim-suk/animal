@@ -1,6 +1,8 @@
 package com.test.animal.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +66,56 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		 return sqlSession.update("mapper.member.updateNaverId", member);
 	}
+
+	@Override
+    public int updatePassword(String id, String newPwd) throws Exception {
+        Map<String, String> param = new HashMap<>();
+        param.put("id", id);
+        param.put("pwd", newPwd);
+        return sqlSession.update("mapper.member.updatePassword", param);
+    }
+
+    @Override
+    public int deleteMember(String id) throws Exception {
+    	return sqlSession.delete("mapper.member.deleteMember", id);
+    }
+
+    @Override
+    public int updateProfileImage(MemberDTO member) throws Exception {
+        return sqlSession.update("mapper.member.updateProfileImage", member);
+    }
+
+	@Override
+	public int changePwd(String id, String newPwd) {
+		 Map<String, String> param = new HashMap<>();
+	        param.put("id", id);
+	        param.put("pwd", newPwd);
+	        return sqlSession.update("mapper.member.changePwd", param);
+	    }
+
+	@Override
+	public boolean validateOldPwd(String id, String pwd) {
+	    Map<String, String> param = new HashMap<>();
+	    param.put("id", id);
+	    param.put("pwd", pwd);
+	    
+	    // SELECT count(*) FROM ... WHERE id = #{id} AND pwd = #{pwd}
+	    int count = sqlSession.selectOne("mapper.member.validateOldPwd", param);
+	    return count > 0;
+	}
+
+	@Override
+	public MemberDTO selectById(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.member.selectById", id);
+	}
+
+	@Override
+	public void updateMember(MemberDTO member) {
+		// TODO Auto-generated method stub
+		 sqlSession.update("mapper.member.updateMember", member);
+	}
+
+
 
 }

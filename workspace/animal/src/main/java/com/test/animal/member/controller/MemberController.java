@@ -55,4 +55,46 @@ public interface MemberController {
 			HttpServletResponse response) throws Exception;
 
 	
+    public ModelAndView mypage(
+            @RequestParam("id") String id,
+            HttpServletRequest request, 
+            HttpServletResponse response) throws Exception;
+
+   
+    public ModelAndView changePwdForm(
+            HttpServletRequest request, 
+            HttpServletResponse response) throws Exception;
+
+   
+ 
+    public ModelAndView changePwd(
+    		@RequestParam("id") String id,
+            @RequestParam("oldPwd") String oldPwd,
+            @RequestParam("newPwd") String newPwd,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            RedirectAttributes redirectAttributes) throws Exception;
+
+    
+    public ModelAndView deleteForm(
+            HttpServletRequest request, 
+            HttpServletResponse response) throws Exception;
+
+   
+    public String delete(
+            @RequestParam("id") String id,
+            @RequestParam("pwd") String pwd,
+            HttpServletRequest request, 
+            HttpServletResponse response,
+            RedirectAttributes responseRedirectAttributes) throws Exception;
+    
+   
+    public ModelAndView changeProfileImageForm(
+            @RequestParam("id") String id,
+            HttpServletRequest request, 
+            HttpServletResponse response) throws Exception;
+    
+    public String editForm(@RequestParam("id") String id, HttpServletRequest request);
+    public String updateMember(MemberDTO member, RedirectAttributes rttr);
+    
 }

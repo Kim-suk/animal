@@ -14,6 +14,7 @@ public class MemberDTO {
 	private String kakaoId;   // 카카오 ID
 	private String googleId;   // 구글 ID
 	private String facebookId;   // 구글 ID
+	private String profileimg;   // 구글 ID
 	private String joinType;  // NAVER / EMAIL
 
 	public String getId() {
@@ -132,6 +133,18 @@ public class MemberDTO {
 	 */
 	public void setFacebookId(String facebookId) {
 		this.facebookId = facebookId;
+	}
+	/**
+	 * @return the profile_img
+	 */
+	public String getProfileimg() {
+		return profileimg;
+	}
+	/**
+	 * @param profile_img the profile_img to set
+	 */
+	public void setProfileimg(String profileimg) {
+		this.profileimg = profileimg;
 	}
 
 

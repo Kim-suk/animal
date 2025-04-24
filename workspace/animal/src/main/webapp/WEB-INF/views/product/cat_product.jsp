@@ -53,7 +53,7 @@ request.setCharacterEncoding("utf-8");
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* 더 강한 그림자 효과 */
   }
   #main_banner .txt .main_txt h1{font-size:190px;color:#fff;font-family:var(--e-font);margin-top:600px}
-  
+  }
 </style>
 </head>
 <body class="bg-gray-50">
@@ -68,7 +68,7 @@ request.setCharacterEncoding("utf-8");
             <div class="overlay"
                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: 1;"></div>
 
-            <!-- 텍스트 및 컨트롤 -->
+              <!-- 텍스트 및 컨트롤 -->
             <div class="txt" style="position: relative; z-index: 2;">
                <div class="main_txt">
                 

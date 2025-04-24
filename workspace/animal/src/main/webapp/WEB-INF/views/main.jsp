@@ -37,6 +37,14 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css">
 
 <style>
+.innner{
+ margin-left:0px;
+}
+.sh_notice_area {
+  overflow: hidden;
+  margin-right:0px;
+  margin-left:0px;
+}
 .swiper {
    width: 100%;
    max-width: 90%;
@@ -50,13 +58,34 @@
 }
 
 .swiper-slide iframe {
-   width: 100%;
+   width: 80%;
    height: 450px;
    border-radius: 12px;
    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .swiper-pagination {
   display: none;
+}
+#atc03 .pager .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #f29100;
+  opacity: 0.5;
+  margin: 0 4px;
+  border-radius: 50%;
+  transition: opacity 0.3s;
+}
+
+#atc03 .pager .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #fff;
+}
+
+#atc03 .pager {
+  text-align: center;
+  margin-bottom: 1000px;
+  z-index:10;
+}
 }
 </style>
 
@@ -159,14 +188,10 @@
             <!-- 텍스트 및 컨트롤 -->
             <div class="txt" style="position: relative; z-index: 2;">
                <div class="main_txt">
-                  <h1 data-aos="fade-right" class="aos-init aos-animate"
-                     style="color: white;">Turning Ideas</h1>
-                  <h2 class="ko_txt aos-init aos-animate" data-aos="fade-left"
-                     style="color: white;">
-                     “삶의 온도를 올려주는 작은 존재, 반려동물. 너와의 하루는 특별하지 않아도 어느새 특별해지고,<br>
-                     말없이 곁에 있어주는 너는 내 마음의 쉼표가 되어준다. 작은 숨결 하나로도 온 집안은 따뜻해지고,<br>
-                     가장 진심을 주는 너는 나에게 가장 조용한 위로가 된다.”
-                  </h2>
+               
+                  <h1 data-aos="fade-left" class="aos-init"
+                     style="color: rgb(242, 145, 0); font-weight:200;">Cat & Dog</h1>
+                     </div>
                </div>
             </div>
          </div>
@@ -174,23 +199,28 @@
 <style>
 #atc03{
 font-family: var(--e-font);
-}
-</style>
+  overflow: hidden; 
+  padding: -40px 40;
+
+  }	
+</style>	
          <!-- 병원 리뷰 슬라이드 영역 -->
          <article id="atc03">
             <div class="inner">
                <div class="tit_area">
                   <p data-aos="fade-right">Our Review</p>
-                  <div class="flex">
+                  
 
                      <div class="txt" data-aos="fade-right">병원 리뷰를 보여주는 페이지입니다.</div>
-                     <div class="pager"></div>
-
+                     
+	
                      <!-- 리뷰 슬라이드 -->
                      <div class="sh_notice_area">
+                     <div class="pager"></div>
                         <div class="sh_notice swiper-container">
                            <ul class="slider swiper-wrapper">
                               <c:forEach var="review" items="${reviewList}">
+                              
                                  <li class="slide swiper-slide"><a
                                     href="${contextPath }/board/getBoard.do?bno=${review.bno}&category=${review.category }">
                                        <dl>
@@ -200,7 +230,7 @@ font-family: var(--e-font);
                                           </dd>
                                           <dt>${review.title}</dt>
                                           <dd class="sh_contents">
-                                             ${fn:substring(review.content, 0, 80)}...</dd>
+                                             ${fn:substring(review.content, 80, 0)}...</dd>
                                           <dd class="info">
                                              <p>조회수: ${review.readcount}</p>
                                              <div class="more">more view</div>
@@ -219,19 +249,25 @@ font-family: var(--e-font);
 
          <!-- Swiper 초기화 스크립트 -->
          <script>
-            var atc03swiper = new Swiper("#atc03 .sh_notice", {
-               slidesPerView : 4,
-               spaceBetween : 40,
-               speed : 1600,
-               loop : true,
-               autoplay : {
-                  delay : 1000,
-               },
-               navigation : {
-                  nextEl : "#atc03 .next",
-                  prevEl : "#atc03 .prev",
-               },
-            });
+         var atc03swiper = new Swiper("#atc03 .sh_notice", {
+        	  slidesPerView: 3,
+        	  spaceBetween: 40,
+        	  speed: 1800,
+        	  loop: true,
+        	  autoplay: {
+        	    delay: 1000,
+        	  },
+        	  navigation: {
+        	    nextEl: "#atc03 .next",
+        	    prevEl: "#atc03 .prev",
+        	  },
+        	  pagination: {
+        	    el: "#atc03 .pager",
+        	    clickable: true
+        	  }
+        	});
+     
+         
          </script>
 
 
@@ -255,7 +291,7 @@ font-family: var(--e-font);
                      src="https://www.youtube.com/embed/8XlcFqmLLnc?si=zG2Sha0UQ1e2w0g1"
                      title="YouTube video" allowfullscreen frameborder="0"
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                     referrerpolicy="strict-origin-when-cross-origin"> </iframe>
+          	           referrerpolicy="strict-origin-when-cross-origin"> </iframe>
                </div>
                <!-- Slide 3 -->
                <div class="swiper-slide">
@@ -290,6 +326,10 @@ font-family: var(--e-font);
                   delay : 2500, // 2.5초마다 넘김
                   disableOnInteraction : false, // 유저가 클릭해도 계속 자동 재생
                },
+               pagination: {
+            	      el: '.pager',
+            	      clickable: true
+            	   },
                navigation : {
                   nextEl : ".swiper-button-next",
                   prevEl : ".swiper-button-prev",
@@ -423,9 +463,9 @@ font-family: var(--e-font);
                      </div>
 
                      <div class="swiper-slide">
-                        <a href="/bbs/board.php?bo_table=table13">
+                        <a href="${contextPath }/cat/cat_product.do">
                            <div class="img_cont">
-                              <img src="${contextPath }/cat/cat_product.do">
+                              <img src="/animal/resources/image/carrier.jfif">
                            </div>
                            <div class="txt box">
                               <p>이동장</p>
@@ -488,7 +528,7 @@ font-family: var(--e-font);
 
             <script>
                const swiper = new Swiper(".mySwiper", {
-                  slidesPerView : 4, // 한 화면에 몇 개 보여줄지
+                  slidesPerView : 3, // 한 화면에 몇 개 보여줄지
                   spaceBetween : 20, // 슬라이드 간 간격
                   loop : true, // 무한 루프
                   pagination : {

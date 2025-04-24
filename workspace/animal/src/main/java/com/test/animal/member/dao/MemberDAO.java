@@ -7,9 +7,6 @@ public interface MemberDAO {
     
     List<MemberDTO> listMembers();             // ��ü ȸ�� ���
     MemberDTO memberDetail(String id);         // Ư�� ȸ�� �� ����
-    int delMember(String id);                  // ȸ�� ����
-    int addMember(MemberDTO member);           // ȸ�� ����
-    int modMember(MemberDTO member);           // ȸ�� ���� ����
     MemberDTO login(MemberDTO member);         // �Ϲ� �α���
     int checkUserId(String id);                // ID �ߺ� üũ
 
@@ -22,11 +19,15 @@ public interface MemberDAO {
 
     public int deleteMember(String id) throws Exception;
 
-    public int updateProfileImage(MemberDTO member) throws Exception;
+
     public int changePwd(String id, String newPwd);
 	boolean validateOldPwd(String id, String pwd);
 	
 	MemberDTO selectById(String id);
-	void updateMember(MemberDTO member);	
+	void updateMember(MemberDTO member);
+
+	public int changeProfileImage(MemberDTO member)throws Exception;	
+	public int deleteProfileImage(MemberDTO member)throws Exception;
+	int addMember(MemberDTO member);
 }
 	

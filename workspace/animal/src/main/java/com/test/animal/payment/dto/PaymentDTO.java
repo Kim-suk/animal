@@ -4,17 +4,27 @@ import java.sql.Date;
 
 public class PaymentDTO {
 	
-    private String paymentId;
+	/*
+	 * private String paymentId; private String memberId; private double
+	 * totalAmount; private Date paymentDate; // 결제 시간 추가
+	 */    
+	
+	private String paymentKey;
+    private String orderId;
     private String memberId;
-    private double totalAmount;
-    private Date paymentDate;  
-    private String paymentstatus;  
+    private int amount;
     
-	public String getPaymentId() {
-		return paymentId;
+	public String getPaymentKey() {
+		return paymentKey;
 	}
-	public void setPaymentId(String paymentId) {
-		this.paymentId = paymentId;
+	public void setPaymentKey(String paymentKey) {
+		this.paymentKey = paymentKey;
+	}
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 	public String getMemberId() {
 		return memberId;
@@ -22,29 +32,11 @@ public class PaymentDTO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public double getTotalAmount() {
-		return totalAmount;
+	public int getAmount() {
+		return amount;
 	}
-	public void setTotalAmount(double totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-	public Date getPaymentDate() {
-		return paymentDate;
-	}
-	public void setPaymentDate(Date paymentDate) {
-		this.paymentDate = paymentDate;
-	}
-	/**
-	 * @return the paymentstatus
-	 */
-	public String getPaymentstatus() {
-		return paymentstatus;
-	}
-	/**
-	 * @param paymentstatus the paymentstatus to set
-	 */
-	public void setPaymentstatus(String paymentstatus) {
-		this.paymentstatus = paymentstatus;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
     
 }

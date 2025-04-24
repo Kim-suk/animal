@@ -15,7 +15,7 @@ import com.test.animal.member.dto.MemberDTO;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-    @Autowired
+	@Autowired
     private MemberDAO dao;
 
     @Override
@@ -26,21 +26,6 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberDTO memberDetail(String id) {
         return dao.memberDetail(id);
-    }
-
-    @Override
-    public int delMember(String id) {
-        return dao.delMember(id);
-    }
-
-    @Override
-    public int addMember(MemberDTO member) {
-        return dao.addMember(member);
-    }
-
-    @Override
-    public int modMember(MemberDTO member) {
-        return dao.modMember(member);
     }
 
     @Override
@@ -77,11 +62,10 @@ public class MemberServiceImpl implements MemberService {
         return dao.updatePassword(id, newPwd);
     }
 
-    
 
     @Override
-    public int updateProfileImage(MemberDTO member) throws Exception {
-        return dao.updateProfileImage(member);
+    public int changeProfileImage(MemberDTO member) throws Exception {
+        return dao.changeProfileImage(member);
     }
 
 	@Override
@@ -112,6 +96,14 @@ public class MemberServiceImpl implements MemberService {
     public int deleteMember(String id) throws Exception {
        return dao.deleteMember(id);
     }
+
+	@Override
+	public int addMember(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return dao.addMember(member);
+	}
+
+
 
 
 }

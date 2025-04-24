@@ -1,13 +1,14 @@
 package com.test.animal.product.dto;
 
 public class ProductDTO {
-	private String id;				// Á¦Ç°ÀÇ ¾ÆÀÌµð
-	private String animal_type;     // µ¿¹° Å¸ÀÔ
-	private String name;			// Á¦Ç°ÀÇ ÀÌ¸§
-	private String category;		// Á¦Ç°ÀÇ Ä«Å×°í¸® Á¾·ù
-	private String description;		// Á¦Ç° ¼³¸í
-	private int price;				// Á¦Ç° °¡°Ý
-	private String image_url;		// Á¦Ç° »çÁø url
+	private String id;				// ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+	private String animal_type;     // ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
+	private String name;			// ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½Ì¸ï¿½
+	private String category;		// ï¿½ï¿½Ç°ï¿½ï¿½ Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String description;		// ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
+	private int price;				// ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
+	private String image_url;		// ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ url
+	private String link;
 	
 	public String getId() {
 		return id;
@@ -56,6 +57,12 @@ public class ProductDTO {
 	}
 	public void setImage_url(String image_url) {
 		this.image_url = image_url;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 }

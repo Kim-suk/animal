@@ -8,17 +8,24 @@
 <script type="text/javascript" src="/animal/resources/script/board.js"></script>
 <link rel="stylesheet" href="/animal/resources/css/board_cu.css">
 
+<style>
+  .pretty-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e78ca4;
+    margin-bottom: 16px;
+    font-family: 'Segoe UI', 'Pretendard', sans-serif;
+  }
+</style>
+
 <title>새글등록</title>
 </head>
 <body>
 	<!-- 헤더 -->
-	<br>
-	<br>
-	<br>
-	<br>
+	<br><br><br><br><br><br>
 
 	<center>
-		<h1>게시글 등록</h1>
+		<h1 class="pretty-title">📝 게시글 등록</h1>
 		<form name="frm" action="insertBoard.do" method="post"
 			enctype="multipart/form-data">
 			<table>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -112,20 +113,6 @@ public class MemberControllerImpl implements MemberController{
 		return mav;
 	}
 
-
-	@Override
-	@RequestMapping("/member/modMember.do")
-	public ModelAndView modMember(MemberDTO member, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
-		int result = service.modMember(member);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
-		mav.addObject("msg", "modMember");
-		mav.addObject("id", member.getId());
-
-		return mav;
-	}
-
 	@Override
 	@RequestMapping("/member/loginForm.do")
 	public ModelAndView loginForm(
@@ -201,6 +188,7 @@ public class MemberControllerImpl implements MemberController{
 				String memberId = (String) session.getAttribute("loginId");
 				if (memberId != null) {
 					cartService.deleteCartByMemberId(memberId);
+					//service.deleteCartByMemberId(memberId);
 				}
 
 				session.invalidate();
@@ -271,17 +259,76 @@ public class MemberControllerImpl implements MemberController{
 	 */
 
 
-	@Override
-	@RequestMapping("/member/changeProfileImageForm.do")
-	public ModelAndView changeProfileImageForm(@RequestParam("id") String id,
-			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView("member/changeProfileImageForm");
-		mav.addObject("id", id);
-		return mav;
-	}
+	 // 프로필 이미지 변경 폼
+		/*
+		 * @Override
+		 * 
+		 * @RequestMapping("/member/changeProfileImageForm.do") public String
+		 * changeProfileImageForm(@RequestParam("id")String id, HttpServletRequest
+		 * request, HttpServletResponse response) { ModelAndView mav = new
+		 * ModelAndView("/member/changeProfileImageForm"); mav.addObject("id", id);
+		 * return "redirect:/member/changeProfileImageForm.do?id=" + id; }
+		 * 
+		 * // 프로필 이미지 업로드 처리
+		 * 
+		 * @RequestMapping(value = "/member/changeProfileImage.do", method =
+		 * RequestMethod.POST) public String changeProfileImage(@RequestParam("id")
+		 * String id,
+		 * 
+		 * @RequestParam("profileImage") MultipartFile file, HttpSession session,
+		 * RedirectAttributes rttr) { try { if (!file.isEmpty()) { String uploadDir =
+		 * "/upload/profile/"; String realPath =
+		 * session.getServletContext().getRealPath(uploadDir);
+		 * 
+		 * File dir = new File(realPath); if (!dir.exists()) dir.mkdirs();
+		 * 
+		 * String originalFilename = file.getOriginalFilename(); String ext =
+		 * originalFilename.substring(originalFilename.lastIndexOf(".")); String
+		 * newFileName = UUID.randomUUID().toString() + ext;
+		 * 
+		 * File saveFile = new File(realPath, newFileName); file.transferTo(saveFile);
+		 * 
+		 * MemberDTO member = new MemberDTO(); member.setId(id);
+		 * member.setProfileImg(newFileName);
+		 * 
+		 * service.changeProfileImage(member);
+		 * 
+		 * MemberDTO updatedMember = service.getMemberById(id);
+		 * session.setAttribute("loginMember", updatedMember);
+		 * 
+		 * rttr.addFlashAttribute("msg", "프로필 이미지가 변경되었습니다."); } else {
+		 * rttr.addFlashAttribute("error", "파일을 선택해주세요."); } } catch (Exception e) {
+		 * e.printStackTrace(); rttr.addFlashAttribute("error", "이미지 변경 중 오류 발생"); }
+		 * 
+		 * return "redirect:/member/changeProfileImageForm.do?id=" + id; }
+		 * 
+		 * 
+		 * // 프로필 이미지 삭제 (기본 이미지로)
+		 * 
+		 * @RequestMapping("/member/deleteProfileImage.do") public String
+		 * deleteProfileImage(@RequestParam("id") String id, HttpSession session,
+		 * RedirectAttributes rttr) { try { MemberDTO member =
+		 * service.getMemberById(id); if (member == null || member.getProfileImg() ==
+		 * null) { rttr.addFlashAttribute("error", "기본 이미지로 설정되어 있습니다."); return
+		 * "redirect:/member/changeProfileImageForm.do?id=" + id; }
+		 * 
+		 * String uploadDir = "/upload/profile/"; String realPath =
+		 * session.getServletContext().getRealPath(uploadDir); File imageFile = new
+		 * File(realPath, member.getProfileImg());
+		 * 
+		 * if (imageFile.exists()) imageFile.delete();
+		 * 
+		 * member.setProfileImg(null); // 또는 "default.png"로 설정
+		 * service.changeProfileImage(member);
+		 * 
+		 * session.setAttribute("loginMember", service.getMemberById(id));
+		 * rttr.addFlashAttribute("msg", "기본 프로필 이미지로 변경되었습니다."); } catch (Exception e)
+		 * { e.printStackTrace(); rttr.addFlashAttribute("error",
+		 * "프로필 이미지 삭제 중 오류가 발생했습니다."); }
+		 * 
+		 * return "redirect:/member/changeProfileImageForm.do?id=" + id; }
+		 */
 
-	
 	/*
 	 * @RequestMapping("/member/delete.do") public String delete(@RequestParae
 	 * String id,
@@ -340,18 +387,18 @@ public class MemberControllerImpl implements MemberController{
 	    // 비밀번호 검증
 	    if (member == null || !member.getPwd().equals(pwd)) {
 	        rttr.addFlashAttribute("error", "비밀번호가 일치하지 않습니다.");
-	        return "redirect:/member/deleteForm.jsp";
+	        return "redirect:/member/deleteForm.do";
 	    }
 
 	    // 탈퇴 처리
 	    try {
 	        service.deleteMember(id);
-	        rttr.addFlashAttribute("msg", "정말로 탈퇴하시겠습니까?.");
+	        rttr.addFlashAttribute("msg", "회원 탈퇴가 완료되었습니");
 	        session.invalidate(); // 세션 종료
 	        return "redirect:/"; // 메인 페이지로 이동
 	    } catch (Exception e) {
 	        rttr.addFlashAttribute("error", "회원 탈퇴에 실패했습니다.");
-	        return "redirect:/member/deleteForm.jsp";
+	        return "redirect:/member/deleteForm.do";
 	    }
 	}
 
@@ -381,10 +428,6 @@ public String delete(String id, String pwd, HttpServletRequest request, HttpServ
 	// TODO Auto-generated method stub
 	return null;
 }
-
-
-
-
 }
 
 

@@ -380,44 +380,69 @@ nav {
 .search-icon:hover {
   background-color: #000;  /* 호버 시 살짝 회색 */
 }
+
+  .breadcrumb {
+  padding-left: 200px; /* ← 여기 추가! 원하는 만큼 조절 가능 */
+  margin-top: 10px;   /* 위에 약간의 여백도 있으면 보기 좋아요 */
+  }
+  
+   .breadcrumb nav {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  }
+
+  .breadcrumb ol {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+
+  .breadcrumb li {
+    position: relative;
+    padding-right: 35px;
+    margin-right: 8px;
+  }
+
+  .breadcrumb li::after {
+    content: "➜";  /* 화살표 아이콘 */
+    position: absolute;
+    right: 0;
+    color: #ccc;
+    font-size: 35px;
+  }
+
+  .breadcrumb li:last-child::after {
+    content: "";  /* 마지막은 화살표 없음 */
+  }
+
+  .breadcrumb a {
+    text-decoration: none;
+    color: #f2728c;
+    font-weight: 600;
+    font-size: 35px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .breadcrumb a:hover {
+    color: #ff8b9e;
+    text-decoration: underline;
+  }
+
 </style>
 
 </head>
 
 <body>
-   <div data-qa="breadcrumbs" class="sc-58202797-0 iJqTVc">
-      <nav>
-         <ol class="sc-58202797-1 hmSxNI">
-            <li data-qa="breadcrumb-item" class="sc-58202797-2 gBDxJK"><a
-               href="${contextPath }/" class="sc-58202797-4 isfXxF"
-               data-qa="breadcrumb-item-text">홈페이지</a> <svg
-                  preserveAspectRatio="xMidYMid meet" focusable="false"
-                  aria-hidden="true" viewBox="0 0 32 32"
-                  class="sc-a22c687d-0 efaSlz sc-58202797-3 ghsRDc">
-                  <path
-                     d="M12.59 27a1 1 0 01-.66-.25 1 1 0 01-.1-1.41l7.49-8.58a1.23 1.23 0 000-1.52l-7.49-8.58a1 1 0 011.51-1.32l7.49 8.59a3.21 3.21 0 010 4.14l-7.49 8.59a1 1 0 01-.75.34z"
-                     data-name="Arrow Right"></path></svg></li>
-            <li data-qa="breadcrumb-item" class="sc-58202797-2 gBDxJK"><a
-               href="${contextPath }/dog/dog_type.do" class="sc-58202797-4 isfXxF"
-               data-qa="breadcrumb-item-text">반려견에 대한 모든 것</a> <svg
-                  preserveAspectRatio="xMidYMid meet" focusable="false"
-                  aria-hidden="true" viewBox="0 0 32 32"
-                  class="sc-a22c687d-0 efaSlz sc-58202797-3 ghsRDc">
-                  <path
-                     d="M12.59 27a1 1 0 01-.66-.25 1 1 0 01-.1-1.41l7.49-8.58a1.23 1.23 0 000-1.52l-7.49-8.58a1 1 0 011.51-1.32l7.49 8.59a3.21 3.21 0 010 4.14l-7.49 8.59a1 1 0 01-.75.34z"
-                     data-name="Arrow Right"></path></svg></li>
-            <li data-qa="breadcrumb-item" class="sc-58202797-2 gBDxJK"><a
-               href="${contextPath }/dog/dog_type.do" class="sc-58202797-4 isfXxF"
-               data-qa="breadcrumb-item-text">품종 라이브러리</a> <svg
-                  preserveAspectRatio="xMidYMid meet" focusable="false"
-                  aria-hidden="true" viewBox="0 0 32 32"
-                  class="sc-a22c687d-0 efaSlz sc-58202797-3 ghsRDc">
-                  <path
-                     d="M12.59 27a1 1 0 01-.66-.25 1 1 0 01-.1-1.41l7.49-8.58a1.23 1.23 0 000-1.52l-7.49-8.58a1 1 0 011.51-1.32l7.49 8.59a3.21 3.21 0 010 4.14l-7.49 8.59a1 1 0 01-.75.34z"
-                     data-name="Arrow Right"></path></svg></li>
-         </ol>
-      </nav>
-   </div>
+<br><br><br><br><br><br><br>
+  <div class="breadcrumb">
+  <nav>
+    <ol>	
+      <li><a href="${contextPath }/">홈페이지</a></li>
+      <li><a href="${contextPath }/dog/dog_about.do">반려견에 대한 모든 것</a></li>
+      <li><a href="${contextPath }/dog/dog_type.do">품종 라이브러리</a></li>
+    </ol>
+  </nav>
+</div>
 
    <div class="dog-container">
       <!-- 3D 고양이 모델 -->

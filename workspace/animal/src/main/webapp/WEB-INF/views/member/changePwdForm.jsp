@@ -4,9 +4,61 @@
 <head>
     <title>비밀번호 변경</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/animal/resources/css/default.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+.background-wave {
+  width: 110vw;
+  height: 110vh;
+  position: absolute;
+  top: -5vh;
+  left: -5vw;
+  object-fit: cover;
+  filter: url(#water);
+  opacity: 0.3; /* ✅ 투명도 조절 */
+  z-index: -1;  /* ✅ 배경으로 보내기 */
+}
+.container{
+margin-top:100px;
+ padding: 100px 60px;
+}
+.btn{
+width: 100%;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #586e65;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(3, 199, 90, 0.4);
+   margin-bottom: 15px; /* 여백 추가 */
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(3, 199, 90, 0.6);
+}
+}
+</style>
+
 <body>
+<!-- ✅ 배경 애니메이션 SVG 필터 추가 -->
+<svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+  <filter id="water">
+    <feTurbulence type="fractalNoise" baseFrequency=".05 .05" numOctaves="1" result="noise1"></feTurbulence>
+    <feColorMatrix in="noise1" type="hueRotate" values="0" result="noise2">
+      <animate attributeName="values" from="0" to="360" dur="1s" repeatCount="indefinite"/>
+    </feColorMatrix>
+    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="20" in="SourceGraphic" in2="noise2" />
+  </filter>
+</svg>
+
+<!-- ✅ 물결 애니메이션 이미지 배경 삽입 -->
+<img class="background-wave" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/467/hawaii-water%20small.jpeg" alt="animated water">
+
 <script>
 
         function validateChangePwdForm() {
@@ -101,7 +153,7 @@
         <input type="hidden" name="id" value="${sessionScope.loginId}">
 
         <button type="submit" class="btn btn-primary">변경</button>
-        <a href="mypage?id=${sessionScope.loginId}" class="btn btn-secondary">취소</a>
+        <a href="/animal/member/mypage.do?id=${sessionScope.loginId}" class="btn btn-secondary">취소</a>
     </form>
 </div>
 </body>

@@ -230,7 +230,6 @@ function checkDuplicate() {
             <div class="mb-3">
                 <label class="form-label">ID</label>
                 <input type="text" name="id" class="form-control" required>
-                <button type="button" onclick="checkDuplicate()">중복 검사</button>
             </div>
             <div class="mb-3">
                 <label class="form-label">PASSWORD</label>

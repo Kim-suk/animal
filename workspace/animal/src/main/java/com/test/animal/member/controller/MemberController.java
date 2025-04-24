@@ -2,9 +2,11 @@
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,11 +34,7 @@ public interface MemberController {
 			@ModelAttribute("dto") MemberDTO member,
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Exception;
-	
-	public ModelAndView modMember(
-			@ModelAttribute("dto") MemberDTO member,
-			HttpServletRequest request, 
-			HttpServletResponse response) throws Exception;
+
 	
 	public ModelAndView loginForm(
 			@RequestParam(value="action", required=false) String action,
@@ -88,12 +86,17 @@ public interface MemberController {
             HttpServletResponse response,
             RedirectAttributes responseRedirectAttributes) throws Exception;
     
-   
-    public ModelAndView changeProfileImageForm(
-            @RequestParam("id") String id,
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception;
+	/*
+	 * public String changeProfileImageForm(
+	 * 
+	 * @RequestParam("id") String id, HttpServletRequest request,
+	 * HttpServletResponse response) throws Exception;
+	 * 
+	 * public String deleteProfileImage(@RequestParam("id") String id, HttpSession
+	 * session, RedirectAttributes rttr);
+	 */
     
+
     public String editForm(@RequestParam("id") String id, HttpServletRequest request);
     public String updateMember(MemberDTO member, RedirectAttributes rttr);
     

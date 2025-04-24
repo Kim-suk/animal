@@ -251,5 +251,18 @@
     	DELETE FROM animal_member
 		WHERE id = #{id}
 	</delete>
-    
+	
+	<!-- 프로필 업로드 -->
+	<update id="changeProfileImage" parameterType="com.test.animal.member.dto.MemberDTO">
+    UPDATE animal_member
+    SET PROFILE_IMG = #{profileImg}
+    WHERE id = #{id}
+</update>
+	
+    <!-- 프로필 이미지 기본 이미지로 초기화 -->
+<update id="deleteProfileImage" parameterType="String">
+    UPDATE animal_member
+    SET profile_Img = NULL
+    WHERE id = #{id}
+</update> 
 </mapper>

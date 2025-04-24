@@ -62,9 +62,9 @@
 
 <br><br><br><br>
 
-	
+		
 	<center>
-	<h2>모두의 게시판 '${board.bno}번째 게시글'</h2>
+	<h2>'${board.bno}번째 게시글'</h2>
 		
 	<table id="getboard">
 		<tr>

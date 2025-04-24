@@ -411,7 +411,7 @@ font-family: var(--e-font);
                   <div class="swiper-wrapper">
 
                      <div class="swiper-slide">
-                        <a href="/bbs/board.php?bo_table=table13">
+                        <a href="${contextPath }/cat/cat_product.do">
                            <div class="img_cont">
                               <img src="/animal/resources/image/food.jfif">
                            </div>
@@ -425,7 +425,7 @@ font-family: var(--e-font);
                      <div class="swiper-slide">
                         <a href="/bbs/board.php?bo_table=table13">
                            <div class="img_cont">
-                              <img src="/animal/resources/image/carrier.jfif">
+                              <img src="${contextPath }/cat/cat_product.do">
                            </div>
                            <div class="txt box">
                               <p>이동장</p>
@@ -435,7 +435,7 @@ font-family: var(--e-font);
                      </div>
 
                      <div class="swiper-slide">
-                        <a href="/bbs/board.php?bo_table=table13">
+                        <a href="${contextPath }/cat/cat_product.do">
                            <div class="img_cont">
                               <img src="/animal/resources/image/snack.jfif">
                            </div>
@@ -447,7 +447,7 @@ font-family: var(--e-font);
                      </div>
 
                      <div class="swiper-slide">
-                        <a href="/animal/cat/cat_about.do">
+                        <a href="${contextPath }/cat/cat_product.do">
                            <div class="img_cont">
                               <img src="/animal/resources/image/toy.jfif">
                            </div>
@@ -461,7 +461,7 @@ font-family: var(--e-font);
                      <div class="swiper-slide">
                         <a href="/bbs/board.php?bo_table=table13">
                            <div class="img_cont">
-                              <img src="/animal/resources/image/bath.jfif">
+                              <img src="${contextPath }/dog/dog_product.do">
                            </div>
                            <div class="txt_box">
                               <p>목욕 용품</p>
@@ -471,7 +471,7 @@ font-family: var(--e-font);
                      </div>
 
                      <div class="swiper-slide">
-                        <a href="/bbs/board.php?bo_table=table13">
+                        <a href="${contextPath }/dog/dog_product.do">
                            <div class="img_cont">
                               <img src="/animal/resources/image/dish.jfif">
                            </div>

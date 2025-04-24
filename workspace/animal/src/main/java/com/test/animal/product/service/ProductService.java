@@ -6,76 +6,76 @@ import java.util.Map;
 import com.test.animal.product.dto.ProductDTO;
 
 public interface ProductService {
-	// »óÁ¡ ¼¼ºÎÁ¤º¸
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	ProductDTO productDetail(String id);
 	
-	// °í¾çÀÌ ¸ÞÀÎ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	List<ProductDTO> catTop10();
 	
-	// °í¾çÀÌ »ç·á
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	List<ProductDTO> catFeedProducts();
 	List<ProductDTO> catFeedFilter(Map<String, List<String>> filters, int count);
 	
-	// °í¾çÀÌ °£½Ä
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	List<ProductDTO> catTreatProducts();
 	List<ProductDTO> catTreatFilter(Map<String, List<String>> filters, int count);
 	
-	// °í¾çÀÌ ¸ð·¡
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	List<ProductDTO> catSandProducts();
 	List<ProductDTO> catSandFilter(Map<String, List<String>> filters, int count);
 
-	// °í¾çÀÌ ÀÌµ¿Àå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½
 	List<ProductDTO> catCarrierProducts();
 	List<ProductDTO> catCarrierFilter(Map<String, List<String>> filters, int count);
 	
-	// °í¾çÀÌ Àå³­°¨
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½å³­ï¿½ï¿½
 	List<ProductDTO> catToyProducts();
 	List<ProductDTO> catToyFilter(Map<String, List<String>> filters, int count);
 	
-	// °í¾çÀÌ ¸ñ¿å¿ëÇ°
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°
 	List<ProductDTO> catBathProducts();
 	List<ProductDTO> catBathFilter(Map<String, List<String>> filters, int count);
 
-	// °í¾çÀÌ ÇÏ¿ì½º
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ì½º
 	List<ProductDTO> catHouseProducts();
 	List<ProductDTO> catHouseFilter(Map<String, List<String>> filters, int count);
 	
-	// °í¾çÀÌ ½Ä±â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
 	List<ProductDTO> catDishProducts();
 	List<ProductDTO> catDishFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö ¸ÞÀÎ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	List<ProductDTO> dogTop10();
 
-	// °­¾ÆÁö »ç·á 
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 	List<ProductDTO> dogFeedProducts();
 	List<ProductDTO> dogFeedFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö °£½Ä
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	List<ProductDTO> dogTreatProducts();
 	List<ProductDTO> dogTreatFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö ¹èº¯¿ëÇ°
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½èº¯ï¿½ï¿½Ç°
 	List<ProductDTO> dogPoopProducts();
 	List<ProductDTO> dogPoopFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö ÀÌµ¿Àå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½
 	List<ProductDTO> dogCarrierProducts();
 	List<ProductDTO> dogCarrierFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö Àå³­°¨
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½å³­ï¿½ï¿½
 	List<ProductDTO> dogToyProducts();
 	List<ProductDTO> dogToyFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö ¸ñ¿å¿ëÇ°
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°
 	List<ProductDTO> dogBathProducts();
 	List<ProductDTO> dogBathFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö ÇÏ¿ì½º
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ì½º
 	List<ProductDTO> dogHouseProducts();
 	List<ProductDTO> dogHouseFilter(Map<String, List<String>> filters, int count);
 
-	// °­¾ÆÁö ½Ä±â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
 	List<ProductDTO> dogDishProducts();
 	List<ProductDTO> dogDishFilter(Map<String, List<String>> filters, int count);
 	

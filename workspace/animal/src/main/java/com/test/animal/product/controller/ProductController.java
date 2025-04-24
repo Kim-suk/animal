@@ -11,60 +11,60 @@ import com.test.animal.product.dto.ProductDTO;
 
 public interface ProductController {
 	
-	// »óÇ° »ó¼¼
+	// ï¿½ï¿½Ç° ï¿½ï¿½
 	ModelAndView productDetail(ProductDTO product, HttpServletRequest request, HttpServletResponse response);
-	// °í¾çÀÌ Å¾10
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¾10
 	ModelAndView catTop10();
 	
-	// °í¾çÀÌ »ç·á ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catFeedFilter(List<String> age, List<String> weight, List<String> ingredient, List<String> grainSize);
 	
-	// °í¾çÀÌ °£½Ä ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catTreatFilter(List<String> target, List<String> kind, List<String> ingredient, List<String> function);
 	
-	// °í¾çÀÌ ¸ð·¡ ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catSandFilter(List<String> sandType, List<String> aroma, List<String> capacity);
 
-	// °í¾çÀÌ ÀÌµ¿Àå ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catCarrierFilter(List<String> weight, List<String> carrierType);
 	
-	// °í¾çÀÌ Àå³­°¨ ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½å³­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catToyFilter(List<String> toyType, List<String> form);
 	
-	// °í¾çÀÌ ¸ñ¿å¿ëÇ° ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catBathFilter(List<String> bathType, List<String> dandruff);
 	
-	// °í¾çÀÌ ÇÏ¿ì½º ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ì½º ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catHouseFilter(List<String> houseType, List<String> capacity);
 	
-	// °í¾çÀÌ ½Ä±â ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView catDishFilter(List<String> material, List<String> size, List<String> automatic);
 	
-	//°­¾ÆÁö//
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½//
 	ModelAndView dogtop10();
 	
-	// °­¾ÆÁö »ç·á ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogFeedFilter(List<String> age, List<String> weight, List<String> ingredient, List<String> grainSize);
 	
-	// °­¾ÆÁö °£½Ä ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogTreatFilter(List<String> target, List<String> kind, List<String> ingredient, List<String> function);
 	
-	// °­¾ÆÁö ¹èº¯¿ëÇ° ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½èº¯ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogPoopFilter(List<String> type, List<String> size);
 
-	// °­¾ÆÁö ÀÌµ¿Àå ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogCarrierFilter(List<String> weight, List<String> carrierType);
 	
-	// °­¾ÆÁö Àå³­°¨ ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½å³­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogToyFilter(List<String> toyType, List<String> form);
 	
-	// °­¾ÆÁö ¸ñ¿å¿ëÇ° ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogBathFilter(List<String> bathType, List<String> dandruff);
 	
-	// °­¾ÆÁö ÇÏ¿ì½º ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ì½º ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogHouseFilter(List<String> houseType, List<String> capacity);
 	
-	// °­¾ÆÁö ½Ä±â ÇÊÅÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ModelAndView dogDishFilter(List<String> material, List<String> size, List<String> automatic);
 
 }

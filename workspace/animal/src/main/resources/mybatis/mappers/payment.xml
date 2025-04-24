@@ -3,34 +3,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.payment">
-	<resultMap type="paymentDTO" id="payResult">
-		<result property="orderid" column="orderid" />
-		<result property="amount" column="namountame" />
-		<result property="ordername" column="ordername" />
-		<result property="customername" column="customername" />
-		<result property="customeremail" column="customeremail" />
-		<result property="returnurl" column="returnurl" />
-	</resultMap>
-   
-      <!-- 결제 정보 삽입 -->
-    <insert id="insertPayment" parameterType="com.test.animal.payment.dto.PaymentDTO">
-        INSERT INTO payment_table
-        (orderid, namountame, ordername, customername, customeremail, returnurl)
-        VALUES
-        (#{orderId}, #{amount}, #{orderName}, #{customerName}, #{customerEmail}, #{returnUrl})
-    </insert>
 
-    <!-- 주문 ID로 결제 정보 조회 -->
-    <select id="selectPaymentByOrderId" resultMap="payResult" parameterType="String">
-        SELECT orderid, namountame, ordername, customername, customeremail, returnurl
-        FROM payment_table
-        WHERE orderid = #{orderId}
-    </select>
+    <!-- 결제 정보 저장 -->
+<!--     <insert id="insertPayment" parameterType="paymentDTO">
+      INSERT INTO payment (
+        payment_id,
+        member_id,
+        total_amount,
+        payment_date
+      ) VALUES (
+        payment_seq.NEXTVAL,  시퀀스 사용
+        #{memberId},
+        #{totalAmount}, 
+        SYSDATE
+      )
+    </insert> -->
+    
+    <insert id="insertPayment" parameterType="paymentDTO">
+    INSERT INTO payment (paymentKey, orderId, member_id, amount)
+    VALUES (#{paymentKey}, #{orderId}, #{memberId}, #{amount})
+	</insert>
 
-    <!-- 결제 금액 및 상품명 등으로 결제 정보 조회 -->
-    <select id="selectPaymentByCustomerEmail" resultMap="payResult" parameterType="String">
-        SELECT orderid, namountame, ordername, customername, customeremail, returnurl
-        FROM payment_table
-        WHERE customeremail = #{customerEmail}
-    </select>
+<select id="selectPaymentByOrderId" parameterType="string" resultType="paymentDTO">
+    SELECT * FROM payment WHERE orderId = #{orderId}
+</select>
+
 </mapper>

@@ -2,6 +2,9 @@ package com.test.animal.member.dto;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberDTO {
 	private String id;
 	private String pwd;
@@ -137,13 +140,13 @@ public class MemberDTO {
 	/**
 	 * @return the profile_img
 	 */
-	public String getProfileimg() {
+	public String getprofileimg() {
 		return profileimg;
 	}
 	/**
 	 * @param profile_img the profile_img to set
 	 */
-	public void setProfileimg(String profileimg) {
+	public void setprofileimg(String profileimg) {
 		this.profileimg = profileimg;
 	}
 

@@ -26,9 +26,9 @@
     <div class="cont_area" data-aos="fade-left">
         <h2 class="tit">Hospital <span> Location</span></h2>
         <ul class="loc">
-            <li><span class="material-symbols-outlined">Hospital_name</span><h3 id="hospitalName"></h3></li>
-            <li><span class="material-symbols-outlined">Hospital_number</span><P id="hospitalPhone"></P></li>
-            <li><span class="material-symbols-outlined">Hospital_address</span><p id="hospitalAddress"></p></li>
+            <li><span class="material-symbols-outlined" >Hospital_name</span><h3 style="margin-left: 100px" id="hospitalName"></h3></li>
+            <li><span class="material-symbols-outlined">Hospital_number</span><P style="margin-left: 100px" id="hospitalPhone"></P></li>
+            <li><span class="material-symbols-outlined">Hospital_address</span><p style="margin-left: 100px" id="hospitalAddress"></p></li>
             <li>
                 <img src="https://hos1034.shiningcorp.com/sh_img/include/inc05/img/kakao_map.png" alt="카카오맵">
                 <a href="">카카오맵 보기<img src="https://hos1034.shiningcorp.com/sh_img/include/inc05/img/arrow.png" alt="화살표"></a>

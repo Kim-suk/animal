@@ -11,9 +11,10 @@
 		<result property="description" column="description" />
 		<result property="price" column="price" />
 		<result property="image_url" column="image_url" />
+		<result property="link" column="link" />
 	</resultMap>
 
-	<!-- 제품 설명 -->
+	<!-- 제품 상세 설명 -->
 	<select id="productDetail" resultType="ProductDTO" parameterType="String">
 		  SELECT * FROM product
 		  WHERE id = #{id, jdbcType=VARCHAR}
@@ -22,7 +23,7 @@
 	<!-- 제품 전체 목록 불러오기 -->
 	<select id="productList" resultMap="proResult">
 		SELECT id, animal_type, name,
-		category, description, price, image_url
+		category, description, price, image_url, link
 		FROM product ORDER BY id ASC
 	</select>
 
@@ -106,8 +107,8 @@
 	<select id="catSandProducts" resultType="productDTO">
   		<![CDATA[
     		SELECT * FROM product 
-				WHERE ahjknimal_type = '고양이' AND category = '모래'
-  		]]>ㅛ
+				WHERE animal_type = '고양이' AND category = '모래'
+  		]]>
 	</select>
 	
 	<!-- 고양이 모래 필터 -->

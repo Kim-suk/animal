@@ -13,22 +13,21 @@
 <link rel="stylesheet" href="/animal/resources/css/style.css?v=1.0.3">
 </head>
 <body>
-		<div id="header">
-			<tiles:insertAttribute name="header" /> 
-		</div>
-		<br><br><br><br><br><br><br>
-		 <div style="display: flex; flex: 1;">
-        <div id="sidebar-product">
+      <div id="header">
+         <tiles:insertAttribute name="header" /> 
+      </div>
+      <div id="content">
+            <tiles:insertAttribute name="body" />
+       
+       <div id="sidebar-product" style="margin-left:0px;">
             <tiles:insertAttribute name="side" />
         </div>
-        <div id="content">
-            <tiles:insertAttribute name="body" />
+         </div>
         </div>
-    </div>
-
     <div id="footer">
         <tiles:insertAttribute name="footer" />
     </div>
 
 </body>
 </html>
+

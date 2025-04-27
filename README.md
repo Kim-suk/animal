@@ -130,7 +130,7 @@ KG아이티뱅크에서 주간하는 Spring Framework를 사용해서 만든 웹
 
 <hr style="border: 3px solid #000;">
 
-## 🛠 사용 기술
+## ⚙ 사용 기술
 <table>
   <tr>
     <th style="background-color:#6DB33F; color:white; padding: 10px;">Backend</th>

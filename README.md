@@ -180,6 +180,7 @@ KG아이티뱅크에서 주간하는 Spring Framework를 사용해서 만든 웹
 <hr style="border: 3px solid #000;">
 
 ## 🧭스토리 보드
+![storyboard](https://github.com/user-attachments/assets/fd532a6e-6ee7-417c-963e-398d41ab48c7)
 
 <hr style="border: 3px solid #000;">
 

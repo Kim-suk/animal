@@ -31,8 +31,6 @@ KG아이티뱅크에서 주간하는 Spring Framework를 사용해서 만든 웹
 
 ## 🔎 주요 기능
 
-## 🔎 주요 기능
-
 <details>
 <summary>✅ 로그인 (Login)</summary>
 

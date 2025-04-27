@@ -131,10 +131,35 @@ KG아이티뱅크에서 주간하는 Spring Framework를 사용해서 만든 웹
 <hr style="border: 3px solid #000;">
 
 ## 🛠 사용 기술
-Backend: Java 11, Spring Framework 3.1.1, MyBatis
-Frontend: JSP, HTML5, CSS3, JavaScript
-Database: Oracle (ojdbc8)
-Version Control: Git, GitHub
+<table>
+  <tr>
+    <th style="background-color:#6DB33F; color:white; padding: 10px;">Backend</th>
+    <td style="background-color:#F2F2F2; padding: 10px;">
+      <b>Java</b>: 11<br>
+      <b>Framework</b>: Spring 3.1.1<br>
+      <b>ORM</b>: MyBatis
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color:#6DB33F; color:white; padding: 10px;">Frontend</th>
+    <td style="background-color:#F2F2F2; padding: 10px;">
+      <b>Languages</b>: JSP, HTML5, CSS3, JavaScript
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color:#6DB33F; color:white; padding: 10px;">Database</th>
+    <td style="background-color:#F2F2F2; padding: 10px;">
+      <b>DBMS</b>: Oracle (ojdbc8)
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color:#6DB33F; color:white; padding: 10px;">Version Control</th>
+    <td style="background-color:#F2F2F2; padding: 10px;">
+      <b>Tools</b>: Git, GitHub
+    </td>
+  </tr>
+</table>
+
 
 <hr style="border: 3px solid #000;">
 

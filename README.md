@@ -159,7 +159,7 @@ Version Control: Git, GitHub
 <hr style="border: 3px solid #000;">
 
 ## PRESENTATION
-
+### 📎[계란고냥이](https://docs.google.com/presentation/d/1CY25JnAKzPIY2Xtao2h9KX9L9YvBFZdpKj--OTn5MUw/edit?slide=id.p1#slide=id.p1)
 ## 🧶ERD ( DB 설계)
 ![ERD](https://github.com/user-attachments/assets/b6b1a397-8bfd-49bb-a878-e45952142601)
 

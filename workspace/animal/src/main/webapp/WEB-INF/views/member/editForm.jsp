@@ -108,15 +108,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="gender" class="form-label">성별</label>
-            <select class="form-select" id="gender" name="gender">
-                <option value="M" ${member.gender == 'M' ? 'selected' : ''}>남성</option>
-                <option value="F" ${member.gender == 'F' ? 'selected' : ''}>여성</option>
-                <option value="U" ${member.gender == 'U' ? 'selected' : ''}>기타/비공개</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
             <label for="email" class="form-label">이메일</label>
             <input type="email" class="form-control" id="email" name="email" value="${member.email}" required>
         </div>

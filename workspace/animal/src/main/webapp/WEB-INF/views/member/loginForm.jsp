@@ -23,11 +23,11 @@
       </script>
    </c:when>
    <c:when test='${param.result == "joinSuccess"}'>
-    <script>alert('회원가입이 완료되었습니다. 로그인 해 주세요.');</script>
-</c:when>
-<c:when test='${param.result == "joinFailed"}'>
-    <script>alert('회원가입에 실패했습니다. 다시 시도해 주세요.');</script>
-</c:when>
+      <script>alert('회원가입이 완료되었습니다. 로그인 해 주세요.');</script>
+   </c:when>
+   <c:when test='${param.result == "joinFailed"}'>
+      <script>alert('회원가입에 실패했습니다. 다시 시도해 주세요.');</script>
+   </c:when>
 </c:choose>
 <style>
 
@@ -164,69 +164,6 @@
 }
     
 </style>
-
-<script>
-
-    // 아이디 저장 쿠키 처리
-    const savedId = getCookie("savedId");
-    if (savedId !== "") {
-      document.getElementById("id").value = savedId;
-      document.getElementById("saveIdCheck").checked = true;
-    }
-    
-    
-    // 1. 네이버 로그인 객체 생성
-    const naverLogin = new naver.LoginWithNaverId({
-      clientId: "gvp5HrUQ4UssNFDKYTkF", // 실제 네이버 Client ID
-      callbackUrl: "http://localhost:8080/animal/member/naverLogin", // 네이버에 등록된 콜백 URL
-      isPopup: false, // 팝업 로그인 X
-    });
-
-    // 2. 초기화
-    naverLogin.init();
-
-    // 3. 버튼에 클릭 이벤트 연결
-    document.addEventListener("DOMContentLoaded", function () {
-      const naverBtn = document.getElementById("naverLoginBtn");
-      if (naverBtn) {
-        naverBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          naverLogin.login(); // 실제 로그인 요청
-        });
-      }
-    });
-  </script>
-
-<script>
-  function saveId() {
-    const id = document.getElementById("id").value;
-    const checked = document.getElementById("saveIdCheck").checked;
-    if (checked) {
-      setCookie("savedId", id, 7); // 7일 저장
-    } else {
-      deleteCookie("savedId");
-    }
-    return true;
-  }
-
-  function setCookie(name, value, days) {
-    const d = new Date();
-    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-    document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
-  }
-
-  function getCookie(name) {
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
-    return "";
-  }
-
-  function deleteCookie(name) {
-    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  }
-</script>
-
 </head>
 <body>
 <!-- ✅ 배경 애니메이션 SVG 필터 추가 -->
@@ -258,9 +195,6 @@
         <label for="pwd" class="form-label">PASSWORD</label>
         <input type="password" class="form-control" id="pwd" name="pwd" required>
       </div>
-      <label>
-        <input type="checkbox" id="saveIdCheck"> 아이디 저장
-      </label>
      <button type="submit" class="login-btn">LOGIN</button>
     </form>
 

@@ -154,8 +154,6 @@ a {
 									href="${contextPath}/member/loginForm.do">LOGIN</a></li>
 								<li><a class="nav-link"
 									href="${contextPath}/member/joinMember.do">SIGN UP</a></li>
-									<li><a class="nav-link"
-									href="${contextPath}/member/mypage.do">My Page</a></li>
 							</c:otherwise>
 						</c:choose>
 					</ul>

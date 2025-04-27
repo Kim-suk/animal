@@ -23,6 +23,4 @@ $(function(){
 	};
 	window.onkeydown = handlemouseEvent;
 	window.onkeyup = handlemouseEvent;
-	console.log("%c�살＜��","font-size:25px;color:#f00");
-	console.log("%c�꾩옱 �묒냽�� �ъ씠�몄쓽 �붿옄�� ���묎텒�� (二�)�ㅼ씠�앹뿉 �덉뒿�덈떎. 臾대떒�쇰줈 �붿옄�� �섏젙/諛고룷/�먮ℓ �� 踰뺤쟻 梨낆엫�� 臾쇱쓣 �� �덉뒿�덈떎.","font-size:16px");
-});
+	});

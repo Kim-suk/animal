@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -80,12 +79,10 @@
 						        data-member-id="${cart.memberId}">
 						    삭제
 						</button>
-
 					</div>
 				</div>
 			</c:forEach>
 		</div>
-
 		<div class="cart-summary">
 			<h3>결제 요약</h3>
 			<div class="price-label">
@@ -232,8 +229,6 @@
             });
         });
     });
-
-
 </script>
 </body>
 </html>

@@ -30,4 +30,5 @@ public interface BoardDAO {
 	List<ImageDTO> getImageListByBno(int bno);
 	List<BoardDTO> getTopHospitalReviews();
 	
+	
 }

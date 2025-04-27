@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -143,6 +144,11 @@
             <p><strong>카카오 ID:</strong> ${member.kakaoId}</p>
             <p><strong>구글 ID:</strong> ${member.googleId}</p>
             <p><strong>페이스북 ID:</strong> ${member.facebookId}</p>
+            
+               <c:if test="${empty products}">
+        		<p style="font-size: 18px;">결제한 상품이 없습니다.</p>
+   			 </c:if>
+   			 
         </div>
         <br><br><br><br><br><br><br><br>
         <div class="mypage-buttons">

@@ -20,6 +20,8 @@ public class BoardDTO {
 	private int like_it;
 
 	private String searchKeyword;
+	 private String searchCondition; // 검색 조건 (title, content 등)
+	
 	private MultipartFile uploadFile;
 	
 	
@@ -113,5 +115,16 @@ public class BoardDTO {
 				+ thumbnail + ", comment_count=" + comment_count + ", like_it=" + like_it + ", searchKeyword=" + searchKeyword
 				+ ", uploadFile=" + uploadFile + "]";
 	}
-	
+	/**
+	 * @return the searchCondition
+	 */
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	/**
+	 * @param searchCondition the searchCondition to set
+	 */
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}	
 }

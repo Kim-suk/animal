@@ -28,4 +28,5 @@ public interface BoardService {
 	List<ImageDTO> getImageList(BoardDTO dto);
 	
 	List<BoardDTO> getTopHospitalReviews();
+	
 }

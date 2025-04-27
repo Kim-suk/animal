@@ -29,25 +29,7 @@
             <li><span class="material-symbols-outlined" >Hospital_name</span><h3 style="margin-left: 100px" id="hospitalName"></h3></li>
             <li><span class="material-symbols-outlined">Hospital_number</span><P style="margin-left: 100px" id="hospitalPhone"></P></li>
             <li><span class="material-symbols-outlined">Hospital_address</span><p style="margin-left: 100px" id="hospitalAddress"></p></li>
-            <li>
-                <img src="https://hos1034.shiningcorp.com/sh_img/include/inc05/img/kakao_map.png" alt="카카오맵">
-                <a href="">카카오맵 보기<img src="https://hos1034.shiningcorp.com/sh_img/include/inc05/img/arrow.png" alt="화살표"></a>
-         </li>
         </ul>
-
-        <div class="sch">
-            <p class="s_tit">진료시간 안내</p>
-            <ul>
-                <li>
-                    <p class="day">주간</p>
-                    <p class="time">월 · 수 · 금  오전 9시 ~ 오후 7시</p>
-                </li>
-                <li>
-                    <p class="day">야간</p>
-                    <p class="time">화 · 목 오전 9시 ~ 오후 9시</p>
-                </li>
-            </ul>
-        </div>
     </div>
 </article>
 </section>

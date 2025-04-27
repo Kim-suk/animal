@@ -1,14 +1,13 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>글 상세</title>
 <%
     String currentURL = (String) request.getAttribute("javax.servlet.forward.request_uri");
     String queryString = request.getQueryString();
@@ -22,47 +21,16 @@
 <!-- 기존 JS -->
 <script type="text/javascript" src="/animal/resources/script/board.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/animal/resources/css/board_r.css">
 <link rel="stylesheet" href="/animal/resources/css/boardList.css">
+<script type="text/javascript" src="/animal/resources/script/swiper.js"></script>
 
-
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-<!-- Swiper 초기화 -->
-<script>
-  var swiper;
-  window.onload = function() {
-    swiper = new Swiper(".mySwiper", {
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      }
-    });
-  };
-</script>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>글 상세</title>
 </head>
 <body>
-
-<br><br><br><br>
-
-		
+<br><br><br><br>	
 	<center>
 	<h2>'${board.bno}번째 게시글'</h2>
 		
@@ -79,11 +47,10 @@
 				</c:if>
 			</td>
 		</tr>
-
 		<tr>
 			<!-- Swiper 이미지 슬라이더 영역 -->
 			<td id="img_td" rowspan="7">
-				<div class="swiper mySwiper" style="width: 700px; height: auto; min-height: 600px;">
+				<div class="swiper miSwiper" style="width: 700px; height: auto; min-height: 600px;">
 				  <div class="swiper-wrapper">
 				    <c:forEach var="img" items="${imageList}">
 				      <div class="swiper-slide">
@@ -91,25 +58,20 @@
 				      </div>
 				    </c:forEach>
 				  </div>
-
 				  <!-- 하단 점 -->
 				  <div class="swiper-pagination"></div>
-
 				  <!-- 네비게이션 버튼 -->
 				  <div class="swiper-button-next"></div>
 				  <div class="swiper-button-prev"></div>
 				</div>
 			</td>
-
 			<td style="font-size:30; height:60px;">&nbsp; <b>${board.title }</b></td>
 			<td width="150px">작성자 <b>${board.id }</b> </td>
-		</tr>
-		
+		</tr>	
 		<tr>
 			<td height="20px">&nbsp; <fmt:formatDate value="${board.writedate }" pattern="yy-MM-dd HH:mm:ss"/></td>
 			<td>조회수 <b>${board.readcount }</b></td>
 		</tr>
-
 		<tr>
 			<td colspan="2">
 				<div class='table-scroll'>
@@ -145,8 +107,7 @@
 				</table>
 				</div>
 			</td>		
-		</tr>
-		
+		</tr>	
 		<tr>
 			<td height="10px"colspan="2" id="like_form">
 				<a style="font-size: 15px;">
@@ -155,7 +116,6 @@
 				</a>
 			</td>
 		</tr>
-
 		<tr>
 			<td height="50px" colspan="2">
 				<table>
@@ -176,13 +136,11 @@
 				</table>
 			</td>
 		</tr>
-
 		<tr>
 			<td colspan="2"></td>
 		</tr>
 	</table>
-
-	<hr>
+		<hr>
 	</center>
 <br><br><br>
 </body>

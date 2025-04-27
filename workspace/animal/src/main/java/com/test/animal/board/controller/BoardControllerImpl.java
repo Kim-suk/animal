@@ -27,42 +27,65 @@ public class BoardControllerImpl implements BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	// 寃뚯떆湲� 紐⑸줉
-		@RequestMapping("/board/getBoardList.do")
-		public String getBoardList(BoardDTO dto, @RequestParam("category") String category, Model model) {
-		    List<BoardDTO> boardList = boardService.getBoardList(dto);
+	@RequestMapping("/board/getBoardList.do")
+	public String getBoardList(BoardDTO dto, 
+	                           @RequestParam("category") String category,
+	                           @RequestParam(value = "searchCondition", required = false) String searchCondition, 
+	                           @RequestParam(value = "searchKeyword", required = false) String searchKeyword, 
+	                           Model model) {
 
-			
-			   for (BoardDTO board : boardList) {
-			        System.out.println("Board Thumbnail: " + board.getThumbnail());
-			    }
-			
-			model.addAttribute("boardList", boardService.getBoardList(dto));
-			model.addAttribute("category", category);
-			return "/board/getBoardList";
-		}
+	    // 검색 조건과 검색어가 null이면 기본적으로 설정 (기본값: 제목, 빈 문자열)
+	    if (searchCondition == null) {
+	        searchCondition = "TITLE";  // 기본 검색 조건: 제목
+	    }
+	    if (searchKeyword == null) {
+	        searchKeyword = "";  // 기본 검색어: 빈 문자열
+	    }
 
-		@RequestMapping("/board/getBoard.do")
-		public String getBoard(@RequestParam("bno") int bno,
-		                       @RequestParam("category") String category,
-		                       Model model) {
-		    BoardDTO dto = new BoardDTO();
-		    dto.setBno(bno);
-		    dto.setCategory(category);
-		    
-		    boardService.updateCommentCountOnBoardLoad(dto.getBno());
+	    // DTO에 검색 조건과 검색어, 카테고리 설정
+	    dto.setSearchCondition(searchCondition);
+	    dto.setSearchKeyword(searchKeyword);
+	    dto.setCategory(category);
 
-		    model.addAttribute("board", boardService.getBoard(dto));
-		    
-		    List<ImageDTO> imageList = boardService.getImageList(dto); // <- 여기에 실제 이미지 리스트를 가져오는 서비스 로직이 있어야 함
-		    model.addAttribute("imageList", imageList); // <- 여기에 넣어줍니다.
-		    
-		    List<CommentDTO> cmt_list = boardService.getComment(dto);
-		    model.addAttribute("cmt_list", cmt_list);
-		    model.addAttribute("category", category);
+	    // 게시판 목록 조회
+	    List<BoardDTO> boardList = boardService.getBoardList(dto);
 
-		    return "/board/getBoard";
-		}
+	    // 모델에 데이터를 추가
+	    model.addAttribute("boardList", boardList);
+	    model.addAttribute("category", category);
+	    model.addAttribute("searchCondition", searchCondition);  // 검색 조건
+	    model.addAttribute("searchKeyword", searchKeyword);      // 검색어
+
+	    return "/board/getBoardList";
+	}
+
+	@RequestMapping("/board/getBoard.do")
+	public String getBoard(@RequestParam("bno") int bno, 
+	                       @RequestParam("category") String category, 
+	                       Model model) {
+	    // 게시글 정보 가져오기
+	    BoardDTO dto = new BoardDTO();
+	    dto.setBno(bno);
+	    dto.setCategory(category);
+
+	    boardService.updateCommentCountOnBoardLoad(dto.getBno());
+
+	    // 해당 게시글 가져오기
+	    model.addAttribute("board", boardService.getBoard(dto));
+
+	    // 게시글에 관련된 이미지 리스트 가져오기
+	    List<ImageDTO> imageList = boardService.getImageList(dto);
+	    model.addAttribute("imageList", imageList);
+
+	    // 댓글 리스트 가져오기
+	    List<CommentDTO> cmt_list = boardService.getComment(dto);
+	    model.addAttribute("cmt_list", cmt_list);
+
+	    model.addAttribute("category", category);
+
+	    return "/board/getBoard";
+	}
+
 		
 		
 		
@@ -273,6 +296,5 @@ public class BoardControllerImpl implements BoardController {
 		obj.put("like", like);
 		return obj.toString();
 	}
-
 }
 

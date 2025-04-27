@@ -433,15 +433,8 @@ nav {
 </head>
 
 <body>
-<br><br><br><br><br><br><br>
+<br><br><br>
   <div class="breadcrumb">
-  <nav>
-    <ol>	
-      <li><a href="${contextPath }/">홈페이지</a></li>
-      <li><a href="${contextPath }/dog/dog_about.do">반려견에 대한 모든 것</a></li>
-      <li><a href="${contextPath }/dog/dog_type.do">품종 라이브러리</a></li>
-    </ol>
-  </nav>
 </div>
 
    <div class="dog-container">

@@ -115,4 +115,5 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return boardDAO.getTopHospitalReviews();
 	}
+
 }

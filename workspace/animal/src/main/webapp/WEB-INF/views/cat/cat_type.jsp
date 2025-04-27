@@ -106,7 +106,7 @@
 }
 
  .cat-container {	
- 		position: fixed;
+ 	  position: fixed;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -434,18 +434,11 @@ nav {
 </head>
 <body>
 
-<br><br><br><br><br><br><br>
+
   <div class="breadcrumb">
-  <nav>
-    <ol>
-      <li><a href="${contextPath }/">홈페이지</a></li>
-      <li><a href="${contextPath }/cat/cat_about.do">반려묘에 대한 모든 것</a></li>
-      <li><a href="${contextPath }/cat/cat_type.do">품종 라이브러리</a></li>
-    </ol>
-  </nav>
 </div>
   <!-- Main 컨텐츠 영역 -->
- 
+ <br><br>
 <div class="cat-container">
       <!-- 3D 모델뷰어 -->
       <model-viewer

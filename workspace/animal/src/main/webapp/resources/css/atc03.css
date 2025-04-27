@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#atc03{
+font-family: var(--e-font);
+  overflow: hidden; 
+  padding: -40px 40;
+
+  }	
+  
+  /* Swiper 인디케이터 위치 조정 */
+#atc03 .swiper-pagination {
+  position: absolute;
+  bottom: 10px; /* 슬라이드 하단에서 10px */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+#atc03 .pager .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #f29100;
+  opacity: 0.5;
+  margin: 0 4px;
+  border-radius: 50%;
+  transition: opacity 0.3s;
+}
+
+#atc03 .pager .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #fff;
+}
+
+#atc03 .pager {
+  text-align: center;
+  margin-bottom: 1000px;
+  z-index:10;
+	}
+	
+	

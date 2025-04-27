@@ -125,7 +125,5 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardDTO> getTopHospitalReviews() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE + "getTopHospitalReviews");
-	}
-
-	
+	}	
 }

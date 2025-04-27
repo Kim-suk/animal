@@ -9,17 +9,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="/animal/resources/css/default.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<meta charset="UTF-8">
-<title>회원 가입</title>
-<script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/animal/resources/css/default.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <title>회원 가입</title>
+</head>
+<body>
 
-  회원가입 유효성 검사
- 
+<script>
 function join() {
-    var form = document.forms['joinForm']; 
+    var form = document.forms['joinForm'];
 
     if (!form.id.value.trim()) {
         alert("아이디를 입력해주세요.");
@@ -69,49 +69,15 @@ function join() {
         return false;
     }
 
-    if (form.pwd.value !== form.password_re.value) {
-        alert("비밀번호가 일치하지 않습니다.");
-        form.password_re.focus();
-        return false;
+    // 회원가입 완료 alert
+    if (confirm("회원가입이 완료되었습니다! 로그인 페이지로 이동할까요?")) {
+        form.submit(); // 폼을 실제로 서버에 제출
     }
 
-    alert("회원가입이 완료되었습니다!");
- 
-    // 폼 제출 후 로그인 페이지로 이동
-    setTimeout(function () {
-        form.submit();
-        window.location.href = "/animal/member/loginForm.do"; 
-    }, 1000);
-
-    return false; // 폼이 즉시 제출되는 것을 방지하고 setTimeout을 기다리도록 함
-}
-
- // ID 중복 검사
-function checkDuplicate() {
-            var userId = $("#userId").val();
-
-            if (userId.trim() === "") {
-                $("#result").css("color", "red").text("아이디를 입력하세요.");
-                return;
-            }
-
-            $.ajax({
-                type: "GET",
-                url: "/user/checkId",
-                data: { userId: userId },
-                success: function(response) {
-                    if (response === "available") {
-                        $("#result").css("color", "green").text("사용 가능한 아이디입니다.");
-                    } else {
-                        $("#result").css("color", "red").text("이미 사용 중인 아이디입니다.");
-                    }
-                },
-                error: function() {
-                    $("#result").css("color", "red").text("서버 오류가 발생했습니다.");
-                }
-            });
+    return false; // 기본 동작 막기
 }
 </script>
+
 <style>
       
       .background-wave {
@@ -235,10 +201,6 @@ function checkDuplicate() {
                 <label class="form-label">PASSWORD</label>
                 <input type="password" name="pwd" class="form-control" required>
               <p id="result"></p>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">CONFIRM PASSWORD</label>
-                <input type="password" name="password_re" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="birthdate">AGE</label>

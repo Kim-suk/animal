@@ -43,14 +43,27 @@
 		SELECT bno, title, thumbnail, comment_count, like_it
 		FROM board
 		WHERE 1=1
-		<if test="searchKeyword != null">
-			AND (title LIKE '%'||#{searchKeyword}||'%'
-			OR content LIKE '%'||#{searchKeyword}||'%'
-			OR hashtag LIKE '%'||#{searchKeyword}||'%')
+		<if test="searchKeyword != null and searchKeyword != ''">
+			AND
+			<choose>
+				<when test="searchCondition == 'TITLE'">
+					title LIKE '%' || #{searchKeyword} || '%'
+				</when>
+				<when test="searchCondition == 'CONTENT'">
+					content LIKE '%' || #{searchKeyword} || '%'
+				</when>
+				<when test="searchCondition == 'TAG'">
+					hashtag LIKE '%' || #{searchKeyword} || '%'
+				</when>
+				
+			</choose>
 		</if>
 		AND category = #{category}
 		ORDER BY bno DESC
 	</select>
+
+
+
 
 	<!-- 게시글 상세 보기 -->
 	<select id="getBoard" parameterType="boardDTO"
@@ -214,15 +227,17 @@
 		WHERE bno =
 		#{bno}
 	</select>
-	
+
 	<!-- 메인쪽 게시글 swiper 부분 -->
 	<select id="getTopHospitalReviews" resultType="boardDTO">
-    SELECT bno, category, title, content, writedate, readcount
-    FROM board
-    WHERE category = 'hospital'
-    ORDER BY readcount DESC
-    FETCH FIRST 5 ROWS ONLY
-</select>
+		SELECT bno,
+		category, title, content, writedate, readcount
+		FROM board
+		WHERE category
+		= 'hospital'
+		ORDER BY readcount DESC
+		FETCH FIRST 5 ROWS ONLY
+	</select>
 
 
 </mapper>

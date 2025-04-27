@@ -184,7 +184,7 @@ KG아이티뱅크에서 주간하는 Spring Framework를 사용해서 만든 웹
 
 <hr style="border: 3px solid #000;">
 
-## PRESENTATION
+## 🗃 PRESENTATION
 ### 📎[계란고냥이](https://docs.google.com/presentation/d/1CY25JnAKzPIY2Xtao2h9KX9L9YvBFZdpKj--OTn5MUw/edit?slide=id.p1#slide=id.p1)
 ## 🧶ERD ( DB 설계)
 ![ERD](https://github.com/user-attachments/assets/b6b1a397-8bfd-49bb-a878-e45952142601)

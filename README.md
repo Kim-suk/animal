@@ -27,7 +27,7 @@ KG아이티뱅크에서 주간하는 Spring Framework를 사용해서 만든 웹
   - [GitHub](https://github.com/ypk0680)
   
 - 🧩 **정성효**
-  - [GitHub](https://github.com/your-github-id)
+  - [GitHub](https://github.com/hyo1216)
 
 ## 🔎 주요 기능
 
